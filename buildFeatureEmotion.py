@@ -4,8 +4,8 @@ import ast
 def buildFeatureEmotion(postfile, resultfile):
 
     Ntext_posts = 0
-    Ntext_posts_eng = 2909
-    Ntext_posts_token = 5291
+    Ntext_posts_eng = 3438
+    Ntext_posts_token = 6376
     postfile = open(postfile,"r")
 
 
@@ -44,6 +44,6 @@ def validCheck(post_item):
         return False
 
 if __name__ == "__main__":
-    postfile = "C:/Users/zjs50/OneDrive/Documents/data/posts_0.txt"
-    resultfile = "C:/Users/zjs50/OneDrive/Documents/data/posts_Feature_Emotion.txt"
+    postfile = "data/posts_0.txt"
+    resultfile = "data/posts_Feature_Emotion.txt"
     buildFeatureEmotion(postfile=postfile, resultfile= resultfile)

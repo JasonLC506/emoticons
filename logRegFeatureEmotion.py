@@ -185,7 +185,7 @@ def DataSimulated(Nsamp, Nfeature, Nclass, Beta, Robs, Lrandom=0.5):
     return x,y
 
 if __name__ == "__main__":
-    x,y= dataClean("C:/Users/zjs50/OneDrive/Documents/data/posts_Feature_Emotion.txt")
+    x,y= dataClean("data/posts_Feature_Emotion.txt")
     print "number of samples: ", x.shape[0]
     result = trainTest(x,y)
     for item in result:
