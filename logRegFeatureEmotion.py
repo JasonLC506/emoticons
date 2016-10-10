@@ -1,6 +1,8 @@
 import sklearn
 from sklearn import linear_model
 from sklearn.model_selection import KFold
+from sklearn import preprocessing
+from queryAlchemy import emotion_list as EL
 import numpy as np
 import ast
 import math
@@ -48,6 +50,11 @@ def trainTest(x,y,cv=10):
 
         # from multilabel to multiclass based on independencec assumption
         x_train, y_train = multiClass(x_train,y_train)
+
+        # feature standardization #
+        scaler = preprocessing.StandardScaler().fit(x_train)
+        x_train = scaler.transform(x_train)
+        x_test = scaler.transform(x_test)
 
         # training and predict
         y_pred, coef, interc = logRegFeatureEmotion(x_train, y_train, x_test)
@@ -187,10 +194,24 @@ def DataSimulated(Nsamp, Nfeature, Nclass, Beta, Robs, Lrandom=0.5):
 if __name__ == "__main__":
     x,y= dataClean("data/posts_Feature_Emotion.txt")
     print "number of samples: ", x.shape[0]
+
+    ### test ####
+    # feature = 0 # chose single feature to fit
+    # feature_name = EL[feature]
+    # result = trainTest(x[:,feature].reshape([x.shape[0],1]),y)
+    # feature_name = "No feature"
+    # X_non =np.ones([y.shape[0],1]).astype("float")
+    # result = trainTest(X_non,y)
     result = trainTest(x,y)
+    feature_name = "all"
+    print "------%s feature -----" % feature_name
     for item in result:
         print item
-
+    # write2result #
+    file = open("result.txt","a")
+    file.write("------%s feature -----" % feature_name)
+    file.write(str(result))
+    file.close()
 
     # ## test ###
     # Nfeature = 4
