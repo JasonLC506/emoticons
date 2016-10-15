@@ -3,7 +3,7 @@ from logRegFeatureEmotion import *
 from sklearn.model_selection import KFold
 
 a = np.array([[1,2],[2,3],[3,4]])
-b = a[:,0]
-print b.shape
+c = np.sum(a,axis=1,keepdims=True)
+print a*1.0/c
 
-print b[2,:]
+print a>3
