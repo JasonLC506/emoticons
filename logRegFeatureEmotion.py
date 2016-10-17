@@ -6,6 +6,7 @@ from queryAlchemy import emotion_list as EL
 import numpy as np
 import ast
 import math
+import itertools
 
 emoticon_list = ["Like","Love","Sad","Wow","Haha","Angry"]
 NOISE = 0.001
@@ -79,14 +80,16 @@ def trainTest(x,y,cv=10):
 def perfMeasure(y_pred, y_test):
     # performance measurement #
     # with background noise probability distribution
-    Nperf=3
-    perf_list={"acc3":0, "dcg":1, "llh":2}
+    Nsamp = y_test.shape[0]
+    Nclass = y_test.shape[1]
+
+    perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "kld":3+Nclass}
+    Nperf = max(perf_list.values())+1
     perf=[0 for i in range(Nperf)]
 
     rank_test = map(rankOrder,y_test)
     rank_pred = map(rankOrder,y_pred)
-    Nsamp = y_test.shape[0]
-    Nclass = y_test.shape[1]
+
 
 
     # acc3 #
@@ -126,13 +129,47 @@ def perfMeasure(y_pred, y_test):
             llh += (y_test[i][j]*math.log(y_pred_noise[i][j])-maxllh)
         llh = llh + sum(y_test[i])*math.log(sum(y_test[i]))
         perf[perf_list["llh"]] += llh
+    perf[perf_list["kld"]] = perf[perf_list["llh"]]/(1.0*np.sum(y)) ## normalized by total emoticons
+    perf[perf_list["llh"]]=perf[perf_list["llh"]]/(1.0*Nsamp) ## normalized by # samples
+
+    # recall #
+    recall = map(recallAll, itertools.izip(rank_pred,rank_test))
+    recall = np.array(recall)
+    recall = np.mean(recall,axis=0)
+    for i in range(Nclass):
+        perf[perf_list["recall"]+i] = recall[i]
 
     return perf
+
+def recallAll(two_rank):
+    # calculate recall for all classes with input (rank1,rank2)
+    pred,test = two_rank
+    if type(pred)!=list:
+        pred = pred.tolist()
+    if type(test)!=list:
+        test = test.tolist()
+    Nclass = len(test)
+    recall = [1.0 for i in range(Nclass)]
+    for rank_test in range(Nclass):
+        emoti = test[rank_test]
+        if emoti<0:
+            continue
+        if emoti not in pred:
+            recall[emoti] = 0.0
+            continue
+        rank_pred = pred.index(emoti)
+        if rank_pred > rank_test:
+            recall[emoti] = 0.0
+        ### test
+        # print "rank_test", rank_test, "emoti", emoti, "rank_pred", rank_pred
+    return recall
+
 
 def addNoise(dist_list):
     noise = np.array([NOISE for i in range(dist_list.shape[1])])
     return map(lambda x: (x+noise)/sum(x+noise), dist_list)
 def rankOrder(dist):
+    # output rank[i] = j ( means j is the index of item ranking i)
     rank=[i for i in range(len(dist))]
     for i in range(1,len(dist)):
         for j in range(1,len(dist)-i+1):
@@ -199,11 +236,11 @@ if __name__ == "__main__":
     # feature = 0 # chose single feature to fit
     # feature_name = EL[feature]
     # result = trainTest(x[:,feature].reshape([x.shape[0],1]),y)
-    # feature_name = "No feature"
-    # X_non =np.ones([y.shape[0],1]).astype("float")
-    # result = trainTest(X_non,y)
-    result = trainTest(x,y)
-    feature_name = "all"
+    feature_name = "No feature"
+    X_non =np.ones([y.shape[0],1]).astype("float")
+    result = trainTest(X_non,y)
+    # result = trainTest(x,y)
+    # feature_name = "all"
     print "------%s feature -----" % feature_name
     for item in result:
         print item

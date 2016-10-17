@@ -1,9 +1,13 @@
 import numpy as np
 from logRegFeatureEmotion import *
 from sklearn.model_selection import KFold
+import itertools
 
-a = np.array([[1,2],[2,3],[3,4]])
-c = np.sum(a,axis=1,keepdims=True)
-print a*1.0/c
-
-print a>3
+def adding(additor):
+    a = additor[0]
+    b = additor[1]
+    z = a+b
+    return z
+a =[1 for i in range(3)]
+u,v,w = a
+print u,v,w,a
