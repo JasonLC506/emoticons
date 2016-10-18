@@ -8,6 +8,7 @@ def adding(additor):
     b = additor[1]
     z = a+b
     return z
-a =[1 for i in range(3)]
-u,v,w = a
-print u,v,w,a
+a =[np.nan, 1, 2]
+b =np.array([a,[2,1,2],[1,2,1]])
+c = np.nanmean(b,axis=0)
+print c

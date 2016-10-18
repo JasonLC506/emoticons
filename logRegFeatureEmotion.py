@@ -69,8 +69,8 @@ def trainTest(x,y,cv=10):
     coef = np.mean(coefi,axis=0)
     coef_std = np.std(coefi,axis=0)
     performance = np.array(performance)
-    perf = np.mean(performance,axis=0)
-    perf_std = np.std(performance,axis=0)
+    perf = np.nanmean(performance,axis=0)
+    perf_std = np.nanstd(performance,axis=0)
     intercept = np.array(intercept)
     interc = np.mean(intercept,axis=0)
     interc_std = np.std(intercept,axis=0)
@@ -83,7 +83,7 @@ def perfMeasure(y_pred, y_test):
     Nsamp = y_test.shape[0]
     Nclass = y_test.shape[1]
 
-    perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "kld":3+Nclass}
+    perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "recallsub": 3+Nclass, "Nsc": 3+2*Nclass, "kld": 3 + 3*Nclass}
     Nperf = max(perf_list.values())+1
     perf=[0 for i in range(Nperf)]
 
@@ -139,10 +139,16 @@ def perfMeasure(y_pred, y_test):
     for i in range(Nclass):
         perf[perf_list["recall"]+i] = recall[i]
 
+    # recallsub #
+    recall_sub, Nsamp_class = recallSub(rank_pred, rank_test)
+    for i in range(Nclass):
+        perf[perf_list["recallsub"]+i] = recall_sub[i]
+        perf[perf_list["Nsc"]+i] = Nsamp_class[i]
     return perf
 
 def recallAll(two_rank):
     # calculate recall for all classes with input (rank1,rank2)
+    # consider all posts
     pred,test = two_rank
     if type(pred)!=list:
         pred = pred.tolist()
@@ -164,6 +170,38 @@ def recallAll(two_rank):
         # print "rank_test", rank_test, "emoti", emoti, "rank_pred", rank_pred
     return recall
 
+def recallSub(rank_pred, rank_test):
+    # consider recall of each emoticon in those posts it appears in
+    if type(rank_pred)!=list:
+        rank_pred = rank_pred.tolist()
+    if type(rank_test)!=list:
+        rank_test = rank_test.tolist()
+    Nclass = len(rank_pred[0])
+    recall = [[] for i in range(Nclass)]
+    Nsamp_class = [0.0 for i in range(Nclass)]  # #samples each class appears in
+    Nsamp = len(rank_pred)
+
+    for i in range(Nsamp):
+        for emoti in range(Nclass):
+            if emoti not in rank_test[i]:
+                continue    # no such emoticon appears
+            Nsamp_class[emoti] += 1
+            rt = rank_test[i].index(emoti)
+            if emoti not in rank_pred[i]:
+                recall[emoti].append(0.0)
+                continue
+            rp = rank_pred[i].index(emoti)
+            if rp <= rt:
+                recall[emoti].append(1.0)
+            else:
+                recall[emoti].append(0.0)
+    for i in range(Nclass):
+        if Nsamp_class[i] < 1.0:
+            recall[i] = np.nan
+        else:
+            recall[i] = sum(recall[i])/Nsamp_class[i]
+
+    return recall, Nsamp_class
 
 def addNoise(dist_list):
     noise = np.array([NOISE for i in range(dist_list.shape[1])])
@@ -236,18 +274,19 @@ if __name__ == "__main__":
     # feature = 0 # chose single feature to fit
     # feature_name = EL[feature]
     # result = trainTest(x[:,feature].reshape([x.shape[0],1]),y)
-    feature_name = "No feature"
-    X_non =np.ones([y.shape[0],1]).astype("float")
-    result = trainTest(X_non,y)
-    # result = trainTest(x,y)
-    # feature_name = "all"
+    # feature_name = "No feature"
+    # X_non =np.ones([y.shape[0],1]).astype("float")
+    # result = trainTest(X_non,y)
+    result = trainTest(x,y)
+    feature_name = "all"
     print "------%s feature -----" % feature_name
     for item in result:
         print item
     # write2result #
     file = open("result.txt","a")
     file.write("------%s feature -----" % feature_name)
-    file.write(str(result))
+    for item in result:
+        file.write(str(item)+"\n")
     file.close()
 
     # ## test ###

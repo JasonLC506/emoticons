@@ -3,11 +3,14 @@ from logRegFeatureEmotion import emoticon_list
 from scipy.stats import pearsonr
 import numpy as np
 from queryAlchemy import emotion_list
+from logRegFeatureEmotion import rankOrder
 
 def stats(y):
     total = y.shape[0]
+    Nclass = len(emoticon_list)
     like_only = 0
-    emoticons_total = [0 for i in range(len(emoticon_list))]
+    emoticons_total = [0 for i in range(Nclass)]
+    emoticon_sig = [0 for i in range(Nclass)] ## second large when led by "like" or first large
     like_total = 0
     for post in y:
         if np.sum(post[1:])==0:
@@ -16,11 +19,20 @@ def stats(y):
         else:
             for i in range(len(emoticon_list)):
                 emoticons_total[i] += post[i]
+        rank = rankOrder(post)
+        if rank[0]==0:
+            if rank[1]>=0:
+                emoticon_sig[rank[1]]+=1
+        else:
+            if rank[0]>0:
+                emoticon_sig[rank[0]]+=1
     print "total posts: ", total
     print "posts with only like: ", like_only
     print "emoticons in multiemoticon posts: ", emoticon_list
     print "                                  ", emoticons_total
+    print "posts with significant emoticon:  ", emoticon_sig
     print "total likes in only like posts: ", like_total
+
 
 def statsAnal(x,y):
     N_feature = x.shape[1]

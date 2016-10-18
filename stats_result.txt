@@ -2,6 +2,7 @@ total posts:  4085
 posts with only like:  3028
 emoticons in multiemoticon posts:  ['Like', 'Love', 'Sad', 'Wow', 'Haha', 'Angry']
                                    [154837.0, 1930.0, 175.0, 465.0, 633.0, 129.0]
+                                   posts with significant emoticon:   [0, 618, 50, 140, 236, 13]
 total likes in only like posts:  63489.0
 emoticon: Like
 emotion:  ['anger', 'joy', 'fear', 'sadness', 'disgust']
