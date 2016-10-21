@@ -1,15 +1,13 @@
 import numpy as np
-import logRegFeatureEmotion
+import logRegFeatureEmotion as LogR
 
 MINNODE = 1
 
-def divideset(x,y,samples, feature, value):
+def divideset(x,samples, feature, value):
     # divide samples (index) into two sets according to split value
 
     if type(x) != np.ndarray:
         x= np.array(x)
-    if type(y) != np.ndarray:
-        y = np.array(y)
     if type(samples)!= np.ndarray:
         samples = np.array(samples)
     split_function = None
@@ -23,6 +21,7 @@ def divideset(x,y,samples, feature, value):
     set1 = samples[index]
     set2 = samples[index==False]
     return set1, set2
+
 
 def giniRank(y,samples):
     # y should be ranking data here
@@ -44,8 +43,12 @@ def giniRank(y,samples):
             gini_rank += gini*n
         else:
             gini = sum([n_class[i]*(n-n_class[i]) for i in range(Nclass)])*1.0/n/n
-            gini_rank += gini * n
+            gini_rank += gini * n # adding weight of size
+        # ### test ###
+        # print "n_class: ", n_class
+        # print "gini: ", gini
     return gini_rank
+
 
 def rankResult(y,samples):
     if type(y) != np.ndarray:
@@ -53,17 +56,30 @@ def rankResult(y,samples):
     Ranks = y.shape[1]
     N_class = Ranks
     result = []
+    n_class =[[] for i in range(N_class)]
     for rank in range(N_class):
-        n_class = [0 for i in range(N_class)]
+        n_class[rank] = [0 for i in range(N_class)]
         for sample in samples:
             emoti = y[sample,rank]
             if emoti>=0:
-                n_class[emoti]+=1
-        max_value = max(n_class)
-        for i in range(N_class):
-            if n_class[i] == max_value and i not in result:
-                result.append(i)
+                n_class[rank][emoti]+=1
+        # assign ranking #
+        if sum(n_class[rank])==0:
+            result.append(-1)
+            continue
+        flag = False
+        while flag == False:
+            max_value = max(n_class[rank])
+            for i in range(N_class):
+                if n_class[rank][i] == max_value:
+                    if i not in result:
+                        result.append(i)
+                        flag = True
+                    else:
+                        n_class[rank][i] = 0
     return result
+
+
 class decisionnode:
     def __init__(self,feature=-1,value=None, result = None, tb=None, fb=None):
         self.feature = feature
@@ -72,13 +88,14 @@ class decisionnode:
         self.tb = tb
         self.fb = fb
 
+
 def buildtree(x,y, samples, criterion = giniRank, min_node=1):
     if type(x) != np.ndarray:
-        y = np.array(x)
+        x = np.array(x)
     if type(y) != np.ndarray:
         y = np.array(y)
     if type(samples) != np.ndarray:
-        y = np.array(samples)
+        samples = np.array(samples)
     if len(samples) == 0:
         return decisionnode()
     current_criterion = criterion(y,samples)
@@ -97,12 +114,12 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
         for sample in samples:
             values[x[sample,feature]]=1
         for value in values.keys():
-            samps1, samps2 = divideset(x,y,samples,feature,value)
+            samps1, samps2 = divideset(x,samples,feature,value)
 
             ## gain by split
             # giniRank already include size of node weight
-            gain = criterion(y,samps1)+criterion(y,samps2)-current_criterion
-            if gain>best_gain and len(samps1)*len(samps2)>0:
+            gain = current_criterion - (criterion(y,samps1)+criterion(y,samps2))
+            if gain > best_gain and len(samps1)*len(samps2)>0:
                 best_gain = gain
                 best_split = [feature,value]
                 best_sets = [samps1, samps2]
@@ -113,3 +130,48 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
                             tb = tb, fb = fb)
     else:
         return decisionnode(result = rankResult(y,samples))
+
+def printtree(tree,indent=""):
+    if tree.result != None:
+        print(indent+str(tree.result))
+    else:
+        print(indent+str(tree.feature)+">="+str(tree.value)+"?")
+        print(indent+"T->\n")
+        printtree(tree.tb,indent+"  ")
+        print(indent + "F->\n")
+        printtree(tree.fb,indent+"  ")
+
+def predict(observation,tree):
+    # prediction of single observation
+    if tree.result!=None:
+        return tree.result
+    value = observation[tree.feature]
+    branch = None
+    if isinstance(value,int) or isinstance(value,float):
+        if value>=tree.value:
+            branch = tree.tb
+        else:
+            branch = tree.fb
+    else:
+        raise("nominal feature not supported")
+    return predict(observation,branch)
+
+if __name__ == "__main__":
+    ### test ###
+    Nsamp = 4
+    Nfeature = 5
+    Nclass = 6
+    x = np.arange(Nsamp*Nfeature,dtype="float").reshape([Nsamp,Nfeature])
+    x += np.random.random(x.shape)*10
+    y = np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
+    y *= 2
+    y = y.astype(int)
+    y = map(LogR.rankOrder,y)
+    print x
+    print y
+    samples = [i for i in range(Nsamp)]
+    tree = buildtree(x,y,samples)
+    printtree(tree)
+
+    # set1,set2 = divideset(x,samples,2,24)
+    # print set1, set2
