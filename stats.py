@@ -11,6 +11,7 @@ def stats(y):
     like_only = 0
     emoticons_total = [0 for i in range(Nclass)]
     emoticon_sig = [0 for i in range(Nclass)] ## second large when led by "like" or first large
+    emoticon_exist = [0 for i in range(Nclass)]
     like_total = 0
     for post in y:
         if np.sum(post[1:])==0:
@@ -19,6 +20,9 @@ def stats(y):
         else:
             for i in range(len(emoticon_list)):
                 emoticons_total[i] += post[i]
+        for i in range(Nclass):
+            if post[i]>=1:
+                emoticon_exist[i]+=1
         rank = rankOrder(post)
         if rank[0]==0:
             if rank[1]>=0:
@@ -28,8 +32,9 @@ def stats(y):
                 emoticon_sig[rank[0]]+=1
     print "total posts: ", total
     print "posts with only like: ", like_only
-    print "emoticons in multiemoticon posts: ", emoticon_list
-    print "                                  ", emoticons_total
+    print "                                  ", emoticon_list
+    print "emoticons in multiemoticon posts: ", emoticons_total
+    print "posts with certain emoticon:      ", emoticon_exist
     print "posts with significant emoticon:  ", emoticon_sig
     print "total likes in only like posts: ", like_total
 

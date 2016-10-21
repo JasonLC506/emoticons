@@ -3,12 +3,7 @@ from logRegFeatureEmotion import *
 from sklearn.model_selection import KFold
 import itertools
 
-def adding(additor):
-    a = additor[0]
-    b = additor[1]
-    z = a+b
-    return z
-a =[np.nan, 1, 2]
-b =np.array([a,[2,1,2],[1,2,1]])
-c = np.nanmean(b,axis=0)
-print c
+
+a =[1,2,2,3,4,5,3,5]
+a = np.array(a)
+print np.argmax(a)
