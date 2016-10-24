@@ -50,8 +50,37 @@ def giniRank(y,samples):
     return gini_rank
 
 
+# def rankResult(y,samples):
+#     if type(y) != np.ndarray:
+#         y = np.array(y)
+#     Ranks = y.shape[1]
+#     N_class = Ranks
+#     result = []
+#     n_class =[[] for i in range(N_class)]
+#     for rank in range(N_class):
+#         n_class[rank] = [0 for i in range(N_class)]
+#         for sample in samples:
+#             emoti = y[sample,rank]
+#             if emoti>=0:
+#                 n_class[rank][emoti]+=1
+#         # assign ranking #
+#         if sum(n_class[rank])==0:
+#             result.append(-1)
+#             continue
+#         flag = False
+#         while flag == False:
+#             max_value = max(n_class[rank])
+#             for i in range(N_class):
+#                 if n_class[rank][i] == max_value:
+#                     if i not in result:
+#                         result.append(i)
+#                         flag = True
+#                     else:
+#                         n_class[rank][i] = 0
+#     return result
+
 def rankResult(y,samples):
-    if type(y) != np.ndarray:
+    if type(y)!=np.ndarray:
         y = np.array(y)
     Ranks = y.shape[1]
     N_class = Ranks
@@ -63,20 +92,28 @@ def rankResult(y,samples):
             emoti = y[sample,rank]
             if emoti>=0:
                 n_class[rank][emoti]+=1
+    for rank in range(N_class):
         # assign ranking #
-        if sum(n_class[rank])==0:
-            result.append(-1)
-            continue
+        # current rank with highest priority, when zero appearance, from highest rank to lowest #
+        priority = [i for i in range(N_class) if i != rank]
+        priority.insert(0,rank)
         flag = False
-        while flag == False:
-            max_value = max(n_class[rank])
-            for i in range(N_class):
-                if n_class[rank][i] == max_value:
-                    if i not in result:
-                        result.append(i)
-                        flag = True
-                    else:
-                        n_class[rank][i] = 0
+        for i in priority:
+            n_class_cur = n_class[i]
+            while not flag:
+                max_value = max(n_class_cur)
+                if max_value < 1:
+                    break # all are 0 in current rank
+                emoti = n_class_cur.index(max_value)
+                if emoti not in result:
+                    result.append(emoti)
+                    flag = True # find best emoticon
+                else:
+                    n_class_cur[emoti]=0
+            if flag:
+                break
+        if not flag:
+            result.append(-1)
     return result
 
 
@@ -110,6 +147,8 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
     N_feature = x.shape[1]
 
     for feature in range(N_feature):
+        feature = N_feature - 1 - feature ### test
+
         values ={}
         for sample in samples:
             values[x[sample,feature]]=1
@@ -156,22 +195,27 @@ def predict(observation,tree):
         raise("nominal feature not supported")
     return predict(observation,branch)
 
-if __name__ == "__main__":
-    ### test ###
-    Nsamp = 4
-    Nfeature = 5
-    Nclass = 6
+def dataSimulated(Nsamp, Nfeature, Nclass):
+    np.random.seed(seed=10)
     x = np.arange(Nsamp*Nfeature,dtype="float").reshape([Nsamp,Nfeature])
     x += np.random.random(x.shape)*10
     y = np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
     y *= 2
     y = y.astype(int)
     y = map(LogR.rankOrder,y)
+    return x,y
+
+
+if __name__ == "__main__":
+    ### test ###
+    x,y = dataSimulated(Nsamp=6,Nfeature=5,Nclass=6)
     print x
     print y
-    samples = [i for i in range(Nsamp)]
+    samples = [i for i in range(x.shape[0])]
     tree = buildtree(x,y,samples)
     printtree(tree)
+
+    # print rankResult(y,samples)
 
     # set1,set2 = divideset(x,samples,2,24)
     # print set1, set2
