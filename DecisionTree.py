@@ -184,12 +184,12 @@ def printtree(tree,indent=""):
     else:
         alpha_list.insert(tree.alpha)
         print(indent+str(tree.feature)+">="+str(tree.value)+"?")
+        print(indent+"alpha: "+ str(tree.alpha))
         print(indent+"T->\n")
         printtree(tree.tb,indent+"  ")
         print(indent + "F->\n")
         printtree(tree.fb,indent+"  ")
-    # for pruning #
-    alpha_list.printAll()
+
 
 class orderList:
     def __init__(self):
@@ -245,6 +245,7 @@ if __name__ == "__main__":
     tree = buildtree(x,y,samples)
     alpha_list = orderList()
     printtree(tree)
+    alpha_list.printAll()
 
     # print rankResult(y,samples)
 
