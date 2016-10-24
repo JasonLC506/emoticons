@@ -1,5 +1,6 @@
 import numpy as np
 import logRegFeatureEmotion as LogR
+from logRegFeatureEmotion import *
 
 MINNODE = 1
 
@@ -171,24 +172,42 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
     if best_gain>0:
         tb = buildtree(x,y, best_sets[0], min_node = min_node)
         fb = buildtree(x,y, best_sets[1], min_node = min_node)
-        return decisionnode(feature=best_split[0], value = best_split[1],
+        return decisionnode(feature = best_split[0], value = best_split[1], result = rankResult(y,samples),
                             tb = tb, fb = fb,
                             gain = (tb.gain+fb.gain+best_gain), size_subtree = (tb.size+fb.size))
     else:
         return decisionnode(result = rankResult(y,samples))
 
+def prune(tree, alpha):
+    if tree.tb == None:
+        return decisionnode(result = tree.result)
+    else:
+        if tree.alpha >= alpha:
+            tb = prune(tree.tb, alpha)
+            fb = prune(tree.fb, alpha)
+            return decisionnode(feature = tree.feature, value = tree.value, result = tree.result,
+                                tb = tb, fb = fb)
+        else:
+            return decisionnode(result = tree.result)
+
+
 def printtree(tree,indent=""):
-    global alpha_list
-    if tree.result != None:
+    if tree.tb == None:
         print(indent+str(tree.result))
     else:
-        alpha_list.insert(tree.alpha)
         print(indent+str(tree.feature)+">="+str(tree.value)+"?")
-        print(indent+"alpha: "+ str(tree.alpha))
         print(indent+"T->\n")
         printtree(tree.tb,indent+"  ")
         print(indent + "F->\n")
         printtree(tree.fb,indent+"  ")
+
+def alphaList(tree,alpha_list):
+    if tree.tb != None:
+        alpha_list.insert(tree.alpha)
+        alphaList(tree.tb, alpha_list)
+        alphaList(tree.fb, alpha_list)
+    else:
+        pass
 
 
 class orderList:
@@ -208,10 +227,25 @@ class orderList:
     def printAll(self):
         print self.list
 
+    def length(self):
+        return len(self.list)
+
+
+def buildPruneList(x,y):
+    # x: Nsamp*Nfeature; y: Nsamp*Nrank
+    samples = [i for i in range(x.shape[0])]
+    tree_max = buildtree(x,y,samples)
+    alpha_list = orderList()    # initialize
+    alphaList(tree_max, alpha_list)
+    PruneList = {}
+    for alpha in alpha_list.list:
+        PruneList[alpha] = prune(tree_max,alpha)
+    return PruneList
+
 
 def predict(observation,tree):
     # prediction of single observation
-    if tree.result!=None:
+    if tree.tb == None:
         return tree.result
     value = observation[tree.feature]
     branch = None
@@ -223,6 +257,44 @@ def predict(observation,tree):
     else:
         raise("nominal feature not supported")
     return predict(observation,branch)
+
+
+def decisionTree(x_train, y_train, x_test, alpha = None):
+    # x: Nsamp*Nfeature, y: Nsamp*Nrank ranking data
+    prune_list = buildPruneList(x_train, y_train)
+    alpha_list = prune_list.keys()
+    alpha_list.sort()
+    y_pred_list = []
+    if alpha == None:
+        for alpha_try in alpha_list:
+            y_pred = []
+            for obs in x_test:
+                y_pred.append(predict(obs,prune_list[alpha_try]))
+            y_pred_list.append(y_pred)
+        return alpha_list, y_pred_list
+    else:
+        y_pred=[]
+        if alpha > max(alpha_list):
+            raise "too large alpha"
+        for alpha_try in alpha_list:
+            if alpha_try >= alpha:
+                for obs in x_test:
+                    y_pred.append(predict(obs, prune_list[alpha_try]))
+                y_pred_list.append(y_pred)
+        return alpha, y_pred
+
+
+# def hyperParometer(x_par, y_par, cv = 5, alpha_try_list = np.linspace(0.0,5.0,10)):
+#     prune_list = buildPruneList(x_par, y_par)
+#     alpha_list = prune_list.keys()
+#     alpha_list.sort()
+#
+#     indicator = 0.0 # performance measure to optimize
+#     for alpha_try in alpha_try_list:
+#         tree = None
+#         for alpha in
+#         result = crossValidate(x_par,y_par,cv=cv, alpha=alpha_try,tree=prune_list[alpha])
+
 
 def dataSimulated(Nsamp, Nfeature, Nclass):
     np.random.seed(seed=10)
@@ -241,11 +313,14 @@ if __name__ == "__main__":
     x,y = dataSimulated(Nsamp=6,Nfeature=5,Nclass=6)
     print x
     print y
-    samples = [i for i in range(x.shape[0])]
-    tree = buildtree(x,y,samples)
-    alpha_list = orderList()
-    printtree(tree)
-    alpha_list.printAll()
+    prune_list = buildPruneList(x,y)
+    alpha_list = prune_list.keys()
+    alpha_list.sort()
+    for alpha in alpha_list:
+        print "alpha <= ", alpha, "\n"
+        printtree(prune_list[alpha])
+        print "----------------------------------------------"
+
 
     # print rankResult(y,samples)
 

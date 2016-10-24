@@ -7,6 +7,7 @@ import numpy as np
 import ast
 import math
 import itertools
+from DecisionTree import *
 
 emoticon_list = ["Like","Love","Sad","Wow","Haha","Angry"]
 NOISE = 0.001
@@ -36,13 +37,45 @@ def dataClean(datafile):
     y = np.asarray(y,dtype="float")
     return x,y
 
-def trainTest(x,y,cv=10):
-    ###  error measure
-    performance =[]
-    coefi=[]
-    intercept=[]
+
+def multiClass(x,y):
+    # reducing multiclass samples with cumulative # labels to samples each with one label
+    y_shape = y.shape
+    n_sample = y_shape[0]
+    n_class = y_shape[1]
+
+    rep = np.sum(y, axis = 1)
+    x_rep = np.repeat(x,rep.astype(int),axis=0)
+
+    base_class = np.array([i for i in range(n_class)])
+    y_rep = np.repeat(base_class.reshape([1,n_class]),n_sample,axis = 0)
+    y_rep = y_rep.reshape([n_class*n_sample])
+    rep = y.reshape([n_class*n_sample])
+    y_rep = np.repeat(y_rep,rep.astype(int))
+
+    return x_rep, y_rep
+
+
+
+def logRegFeatureEmotion(x_training,y_training, x_test):
+    logReg = linear_model.LogisticRegression(C=1e9, fit_intercept=True, multi_class="ovr")### test
+    fitResult = logReg.fit(x_training,y_training)
+    y= fitResult.predict_proba(x_test)
+    coef = logReg.coef_
+    intercept = logReg.intercept_
+    return y, coef, intercept
+
+
+def crossValidate(x,y, method = logRegFeatureEmotion,cv=10, alpha_try_list = None, tree = None):
+    #  error measure
+    results = []
+    if method == logRegFeatureEmotion:
+        results = {"perf":[], "coef":[], "interc":[]}
+    if method == decisionTree:
+        results = {"perf":[[[]for i in range(len(alpha_try_list))] for j in range(cv)], "alpha": alpha_try_list}
     # cross validation #
     kf = KFold(n_splits = cv, shuffle = True, random_state = 0) ## for testing fixing random_state
+    iteration = 0
     for train,test in kf.split(x):
         x_train = x[train,:]
         y_train = y[train,:]
@@ -57,29 +90,45 @@ def trainTest(x,y,cv=10):
         x_train = scaler.transform(x_train)
         x_test = scaler.transform(x_test)
 
+        if method == decisionTree:
+            y_train = map(rankOrder, y_train)
+            y_test = map(rankOrder, y_test)
+
         # training and predict
-        y_pred, coef, interc = logRegFeatureEmotion(x_train, y_train, x_test)
+        result = method(x_train, y_train, x_test)
 
         # performance measure
-        performance.append(perfMeasure(y_pred,y_test))
-        coefi.append(coef)
-        intercept.append(interc)
+        if method == logRegFeatureEmotion:
+            y_pred, coef, interc = result
+            results["perf"].append(perfMeasure(y_pred,y_test))
+            results["coef"].append(coef)
+            results["interc"].append(interc)
 
-    coefi = np.array(coefi)
-    coef = np.mean(coefi,axis=0)
-    coef_std = np.std(coefi,axis=0)
-    performance = np.array(performance)
-    perf = np.nanmean(performance,axis=0)
-    perf_std = np.nanstd(performance,axis=0)
-    intercept = np.array(intercept)
-    interc = np.mean(intercept,axis=0)
-    interc_std = np.std(intercept,axis=0)
+        if method == decisionTree:
+            alpha_list, y_pred_list = result
+            for alpha in alpha_list:
+                for alpha_try_ind in range(len(alpha_try_list)):
+                    if alpha_try_list[alpha_try_ind]<=alpha:
+                        results["perf"][iteration][alpha_try_ind]=perfMeasure(y_pred_list[alpha],y_test,rankopt=True)
+                    else:
+                        break
 
-    return coef, coef_std, perf, perf_std, interc, interc_std
+        iteration += 1
 
-def perfMeasure(y_pred, y_test):
+    for key in results.keys():
+        item = np.array(results[key])
+        mean = np.nanmean(item, axis = 0)
+        std = np.nanstd(item, axis = 0)
+        results[key] = [mean, std]
+
+    return results
+
+
+def perfMeasure(y_pred, y_test, rankopt = False):
     # performance measurement #
     # with background noise probability distribution
+    if type(y_test)!= np.ndarray:
+        y_test = np.array(y_test)
     Nsamp = y_test.shape[0]
     Nclass = y_test.shape[1]
 
@@ -87,10 +136,12 @@ def perfMeasure(y_pred, y_test):
     Nperf = max(perf_list.values())+1
     perf=[0 for i in range(Nperf)]
 
-    rank_test = map(rankOrder,y_test)
-    rank_pred = map(rankOrder,y_pred)
-
-
+    if not rankopt:
+        rank_test = map(rankOrder,y_test)
+        rank_pred = map(rankOrder,y_pred)
+    else:
+        rank_test = y_test.tolist()
+        rank_pred = y_pred.tolist()
 
     # acc3 #
     if Nclass>=3:
@@ -104,18 +155,23 @@ def perfMeasure(y_pred, y_test):
     else:
         print "cannot calculate acc@3 for less than 3 classes"
 
-    # dcg #
-    for i in range(Nsamp):
-        dcg = 0
-        maxdcg = 0
-        for j in range(Nclass):
-            if rank_pred[i][j]>=0:
-                dcg += y_test[i][rank_pred[i][j]]/math.log(j+2)
-            if rank_test[i][j]>=0:
-                maxdcg += y_test[i][rank_test[i][j]]/math.log(j+2)
-        perf[perf_list["dcg"]] += dcg*1.0/maxdcg
-    perf[perf_list["dcg"]]= perf[perf_list["dcg"]] /(1.0*Nsamp)
+    # recall #
+    recall = map(recallAll, itertools.izip(rank_pred, rank_test))
+    recall = np.array(recall)
+    recall = np.mean(recall, axis=0)
+    for i in range(Nclass):
+        perf[perf_list["recall"] + i] = recall[i]
 
+    # recallsub #
+    recall_sub, Nsamp_class = recallSub(rank_pred, rank_test)
+    for i in range(Nclass):
+        perf[perf_list["recallsub"] + i] = recall_sub[i]
+        perf[perf_list["Nsc"] + i] = Nsamp_class[i]
+    # #
+    if rankopt:
+        return perf
+
+    # --------------- for probability output ------------------------ #
     # llh (log-likelihood)#
     y_pred_noise=addNoise(y_pred)# add noise prior
     # y_pred_noise = y_pred
@@ -132,19 +188,20 @@ def perfMeasure(y_pred, y_test):
     perf[perf_list["kld"]] = perf[perf_list["llh"]]/(1.0*np.sum(y)) ## normalized by total emoticons
     perf[perf_list["llh"]]=perf[perf_list["llh"]]/(1.0*Nsamp) ## normalized by # samples
 
-    # recall #
-    recall = map(recallAll, itertools.izip(rank_pred,rank_test))
-    recall = np.array(recall)
-    recall = np.mean(recall,axis=0)
-    for i in range(Nclass):
-        perf[perf_list["recall"]+i] = recall[i]
+    # dcg #
+    for i in range(Nsamp):
+        dcg = 0
+        maxdcg = 0
+        for j in range(Nclass):
+            if rank_pred[i][j]>=0:
+                dcg += y_test[i][rank_pred[i][j]]/math.log(j+2)
+            if rank_test[i][j]>=0:
+                maxdcg += y_test[i][rank_test[i][j]]/math.log(j+2)
+        perf[perf_list["dcg"]] += dcg*1.0/maxdcg
+    perf[perf_list["dcg"]]= perf[perf_list["dcg"]] /(1.0*Nsamp)
 
-    # recallsub #
-    recall_sub, Nsamp_class = recallSub(rank_pred, rank_test)
-    for i in range(Nclass):
-        perf[perf_list["recallsub"]+i] = recall_sub[i]
-        perf[perf_list["Nsc"]+i] = Nsamp_class[i]
     return perf
+
 
 def recallAll(two_rank):
     # calculate recall for all classes with input (rank1,rank2)
@@ -221,33 +278,6 @@ def rankOrder(dist):
     return rank
 
 
-def multiClass(x,y):
-    # reducing multiclass samples with cumulative # labels to samples each with one label
-    y_shape = y.shape
-    n_sample = y_shape[0]
-    n_class = y_shape[1]
-
-    rep = np.sum(y, axis = 1)
-    x_rep = np.repeat(x,rep.astype(int),axis=0)
-
-    base_class = np.array([i for i in range(n_class)])
-    y_rep = np.repeat(base_class.reshape([1,n_class]),n_sample,axis = 0)
-    y_rep = y_rep.reshape([n_class*n_sample])
-    rep = y.reshape([n_class*n_sample])
-    y_rep = np.repeat(y_rep,rep.astype(int))
-
-    return x_rep, y_rep
-
-
-
-def logRegFeatureEmotion(x_training,y_training, x_test):
-    logReg = linear_model.LogisticRegression(C=1e9, fit_intercept=True, multi_class="ovr")### test
-    fitResult = logReg.fit(x_training,y_training)
-    y= fitResult.predict_proba(x_test)
-    coef = logReg.coef_
-    intercept = logReg.intercept_
-    return y, coef, intercept
-
 def DataSimulated(Nsamp, Nfeature, Nclass, Beta, Robs, Lrandom=0.5):
     x=np.random.random((Nsamp,Nfeature))
     beta = Beta.reshape([Nclass,Nfeature])
@@ -277,17 +307,16 @@ if __name__ == "__main__":
     # feature_name = "No feature"
     # X_non =np.ones([y.shape[0],1]).astype("float")
     # result = trainTest(X_non,y)
-    result = trainTest(x,y)
+    result = crossValidate(x,y)
     feature_name = "all"
     print "------%s feature -----" % feature_name
-    for item in result:
-        print item
+    print result
     # write2result #
-    file = open("result.txt","a")
-    file.write("------%s feature -----" % feature_name)
-    for item in result:
-        file.write(str(item)+"\n")
-    file.close()
+    # file = open("result.txt","a")
+    # file.write("------%s feature -----" % feature_name)
+    # for item in result:
+    #     file.write(str(item)+"\n")
+    # file.close()
 
     # ## test ###
     # Nfeature = 4
