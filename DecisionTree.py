@@ -118,12 +118,18 @@ def rankResult(y,samples):
 
 
 class decisionnode:
-    def __init__(self,feature=-1,value=None, result = None, tb=None, fb=None):
+    def __init__(self,feature=-1,value=None, result = None, tb=None, fb=None, gain=0.0, size_subtree = 1):
         self.feature = feature
         self.value = value
         self.result = result
         self.tb = tb
         self.fb = fb
+        # pruning #
+        self.gain = gain
+        self.size = size_subtree
+        self.alpha = -1.0
+        if self.size > 1:
+            self.alpha = gain/(self.size-1)
 
 
 def buildtree(x,y, samples, criterion = giniRank, min_node=1):
@@ -166,19 +172,42 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
         tb = buildtree(x,y, best_sets[0], min_node = min_node)
         fb = buildtree(x,y, best_sets[1], min_node = min_node)
         return decisionnode(feature=best_split[0], value = best_split[1],
-                            tb = tb, fb = fb)
+                            tb = tb, fb = fb,
+                            gain = (tb.gain+fb.gain+best_gain), size_subtree = (tb.size+fb.size))
     else:
         return decisionnode(result = rankResult(y,samples))
 
 def printtree(tree,indent=""):
+    global alpha_list
     if tree.result != None:
         print(indent+str(tree.result))
     else:
+        alpha_list.insert(tree.alpha)
         print(indent+str(tree.feature)+">="+str(tree.value)+"?")
         print(indent+"T->\n")
         printtree(tree.tb,indent+"  ")
         print(indent + "F->\n")
         printtree(tree.fb,indent+"  ")
+    # for pruning #
+    alpha_list.printAll()
+
+class orderList:
+    def __init__(self):
+        self.list = []
+
+    def insert(self, x):
+        L = len(self.list)
+        for i in range(L):
+            if self.list[i] > x:
+                self.list.insert(i,x)
+                return self
+            elif self.list[i] == x:
+                return self
+        self.list.append(x)
+
+    def printAll(self):
+        print self.list
+
 
 def predict(observation,tree):
     # prediction of single observation
@@ -207,12 +236,14 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
 
 
 if __name__ == "__main__":
+
     ### test ###
     x,y = dataSimulated(Nsamp=6,Nfeature=5,Nclass=6)
     print x
     print y
     samples = [i for i in range(x.shape[0])]
     tree = buildtree(x,y,samples)
+    alpha_list = orderList()
     printtree(tree)
 
     # print rankResult(y,samples)
