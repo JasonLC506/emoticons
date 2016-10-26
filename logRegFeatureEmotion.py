@@ -102,6 +102,8 @@ def crossValidate(x,y, method = "logReg",cv=10, alpha = None):
                 # print "start searching alpha:", datetime.now() ### test
                 alpha_sel, perf = hyperParometer(x_train,y_train)
                 # print "finish searching alpha:", datetime.now(), alpha ### test
+            else:
+                alpha_sel = alpha
             result = decisionTree(x_train, y_train, x_test, alpha = alpha_sel)
         elif method == "logReg":
             result = logRegFeatureEmotion(x_train, y_train, x_test)

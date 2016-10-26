@@ -473,7 +473,7 @@ if __name__ == "__main__":
     y = label2Rank(y)
     tree = buildtree(x,y,samples=np.arange(y.shape[0]))
     printtree(tree)
-    result = LogR.crossValidate(x,y,"dT",cv=5, alpha=None)
+    result = LogR.crossValidate(x,y,"dT",cv=5, alpha=0.0)
     file = open("result_dt.txt","a")
     file.write(str(result)+"\n")
     file.close()
