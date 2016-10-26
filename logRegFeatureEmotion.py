@@ -8,6 +8,8 @@ import ast
 import math
 import itertools
 from DecisionTree import *
+from datetime import datetime
+from scipy.stats.mstats import gmean
 
 emoticon_list = ["Like","Love","Sad","Wow","Haha","Angry"]
 NOISE = 0.001
@@ -66,16 +68,16 @@ def logRegFeatureEmotion(x_training,y_training, x_test):
     return y, coef, intercept
 
 
-def crossValidate(x,y, method = logRegFeatureEmotion,cv=10, alpha_try_list = None, tree = None):
+def crossValidate(x,y, method = "logReg",cv=10, alpha = None):
     #  error measure
     results = []
-    if method == logRegFeatureEmotion:
+    if method == "logReg":
         results = {"perf":[], "coef":[], "interc":[]}
-    if method == decisionTree:
-        results = {"perf":[[[]for i in range(len(alpha_try_list))] for j in range(cv)], "alpha": alpha_try_list}
+    elif method == "dT":
+        results = {"alpha": [], "perf":[]}
+
     # cross validation #
     kf = KFold(n_splits = cv, shuffle = True, random_state = 0) ## for testing fixing random_state
-    iteration = 0
     for train,test in kf.split(x):
         x_train = x[train,:]
         y_train = y[train,:]
@@ -83,37 +85,38 @@ def crossValidate(x,y, method = logRegFeatureEmotion,cv=10, alpha_try_list = Non
         y_test = y[test,:]
 
         # from multilabel to multiclass based on independencec assumption
-        x_train, y_train = multiClass(x_train,y_train)
+        if method == "logReg":
+            x_train, y_train = multiClass(x_train,y_train)
+        elif method == "dT":
+            pass # already in rank representation
 
         # feature standardization #
         scaler = preprocessing.StandardScaler().fit(x_train)
         x_train = scaler.transform(x_train)
         x_test = scaler.transform(x_test)
 
-        if method == decisionTree:
-            y_train = map(rankOrder, y_train)
-            y_test = map(rankOrder, y_test)
-
         # training and predict
-        result = method(x_train, y_train, x_test)
+        if method == "dT":
+            if alpha == None:
+                ## nested select validate and test ##
+                # print "start searching alpha:", datetime.now() ### test
+                alpha_sel, perf = hyperParometer(x_train,y_train)
+                # print "finish searching alpha:", datetime.now(), alpha ### test
+            result = decisionTree(x_train, y_train, x_test, alpha = alpha_sel)
+        elif method == "logReg":
+            result = logRegFeatureEmotion(x_train, y_train, x_test)
 
         # performance measure
-        if method == logRegFeatureEmotion:
+        if method == "logReg":
             y_pred, coef, interc = result
             results["perf"].append(perfMeasure(y_pred,y_test))
             results["coef"].append(coef)
             results["interc"].append(interc)
-
-        if method == decisionTree:
-            alpha_list, y_pred_list = result
-            for alpha in alpha_list:
-                for alpha_try_ind in range(len(alpha_try_list)):
-                    if alpha_try_list[alpha_try_ind]<=alpha:
-                        results["perf"][iteration][alpha_try_ind]=perfMeasure(y_pred_list[alpha],y_test,rankopt=True)
-                    else:
-                        break
-
-        iteration += 1
+        elif method == "dT":
+            alpha_sel, y_pred = result
+            results["perf"].append(perfMeasure(y_pred,y_test,rankopt=True))
+            results["alpha"].append(alpha_sel)
+            print alpha_sel, "alpha"
 
     for key in results.keys():
         item = np.array(results[key])
@@ -132,7 +135,8 @@ def perfMeasure(y_pred, y_test, rankopt = False):
     Nsamp = y_test.shape[0]
     Nclass = y_test.shape[1]
 
-    perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "recallsub": 3+Nclass, "Nsc": 3+2*Nclass, "kld": 3 + 3*Nclass}
+    perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "recallsub": 3+Nclass, "Nsc": 3+2*Nclass, "kld": 3 + 3*Nclass,
+               "g_mean":4+3*Nclass}
     Nperf = max(perf_list.values())+1
     perf=[0 for i in range(Nperf)]
 
@@ -140,8 +144,14 @@ def perfMeasure(y_pred, y_test, rankopt = False):
         rank_test = map(rankOrder,y_test)
         rank_pred = map(rankOrder,y_pred)
     else:
-        rank_test = y_test.tolist()
-        rank_pred = y_pred.tolist()
+        if type(y_test) == np.ndarray:
+            rank_test = y_test.tolist()
+        else:
+            rank_test = y_test
+        if type(y_pred) == np.ndarray:
+            rank_pred = y_pred.tolist()
+        else:
+            rank_pred = y_pred
 
     # acc3 #
     if Nclass>=3:
@@ -167,6 +177,11 @@ def perfMeasure(y_pred, y_test, rankopt = False):
     for i in range(Nclass):
         perf[perf_list["recallsub"] + i] = recall_sub[i]
         perf[perf_list["Nsc"] + i] = Nsamp_class[i]
+
+    # G-Mean #
+    g_mean = gmean(recall_sub)
+    perf[perf_list["g_mean"]] = g_mean
+
     # #
     if rankopt:
         return perf
@@ -312,11 +327,11 @@ if __name__ == "__main__":
     print "------%s feature -----" % feature_name
     print result
     # write2result #
-    # file = open("result.txt","a")
-    # file.write("------%s feature -----" % feature_name)
-    # for item in result:
-    #     file.write(str(item)+"\n")
-    # file.close()
+    file = open("result.txt","a")
+    file.write("------%s feature -----" % feature_name)
+    for item in result:
+        file.write(str(item)+"\n")
+    file.close()
 
     # ## test ###
     # Nfeature = 4

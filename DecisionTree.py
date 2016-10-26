@@ -1,6 +1,9 @@
 import numpy as np
 import logRegFeatureEmotion as LogR
-from logRegFeatureEmotion import *
+from sklearn.model_selection import KFold
+from functools import partial
+from scipy.stats.mstats import gmean
+from datetime import datetime
 
 MINNODE = 1
 
@@ -36,7 +39,7 @@ def giniRank(y,samples):
         n_class = [0.0 for i in range(Nclass)]
         gini = 0.0
         for sample in samples:
-            emoti = y[sample,rank]
+            emoti = int(y[sample,rank])
             if emoti>=0:
                 n_class[emoti]+=1
         n = sum(n_class)
@@ -49,6 +52,100 @@ def giniRank(y,samples):
         # print "n_class: ", n_class
         # print "gini: ", gini
     return gini_rank
+
+
+def bestSplit(x, y, samples, feature, min_node = 1):
+    min_gini = -1
+    best_split = 0
+    best_sets = []
+
+    Nsamp = len(samples)
+    Ranks = y.shape[1]
+    Nclass = Ranks
+
+    temp = [(x[samples[i],feature],samples[i]) for i in range(len(samples))]
+    dtype = [("value", float),("index", int)]
+    x_ord = np.sort(np.array(temp,dtype=dtype), order="value")
+
+    n_rc = [[[0.0 for i in range(Nclass)] for j in range(Ranks)] for i in range(2)]
+    # n_rc[0] results for tb; n_rc[1] results for fb
+
+    n_rc[0] = nRankClass(y,samples)
+
+    j = 0
+    old_value = x_ord[0][0]
+    for i in range(Nsamp-1):
+        value = x_ord[i][0]
+        if value == old_value:
+            n_rc[0] = nRankClassDel(n_rc[0],y[x_ord[i][1],:])
+            n_rc[1] = nRankClassAdd(n_rc[1],y[x_ord[i][1],:])
+            if x_ord[i+1][0] > value:
+                j=i+1
+                old_value = x_ord[i+1][0]
+                gini_tb = giniRank_e(n_rc[0])
+                gini_fb = giniRank_e(n_rc[1])
+                gini = gini_tb + gini_fb
+                # print "current gini", gini_tb, gini_fb
+                # print "current sets", [[y[n,:] for n in range(j,Nsamp)], [y[m,:] for m in range(j)]]
+                if min_gini < 0 or min_gini >= gini:
+                    min_gini = gini
+                    best_split = j
+
+    best_sets = [[x_ord[i][1] for i in range(best_split,Nsamp)], [x_ord[j][1]for j in range(best_split)]]
+    best_split = [feature, x_ord[best_split][0]]
+
+    return min_gini, best_split, best_sets
+
+def giniRank_e(n_rc):
+    Ranks = len(n_rc)
+    Nclass = len(n_rc[0])
+    gini_rank = 0.0
+    for rank in range(Ranks):
+        gini = 0.0
+        n = sum(n_rc[rank])
+        if n < 1:
+            gini_rank +=gini*n
+        else:
+            gini = sum([n_rc[rank][i]*(n-n_rc[rank][i]) for i in range(Nclass)]) *1.0/n/n
+            gini_rank += gini*n
+    return gini_rank
+
+
+def nRankClassDel(n_rc, y_rank):
+    Ranks = len(n_rc)
+    Nclass = len(n_rc[0])
+    for rank in range(Ranks):
+        emoti = int(y_rank[rank])
+        if emoti<0:
+            break
+        n_rc[rank][emoti] = n_rc[rank][emoti] - 1
+        if n_rc[rank][emoti]<0:
+            print "wrong delete"
+    return n_rc
+
+def nRankClassAdd(n_rc,y_rank):
+    Ranks = len(n_rc)
+    for rank in range(Ranks):
+        emoti = int(y_rank[rank])
+        if emoti < 0:
+            break
+        n_rc[rank][emoti] += 1
+    return n_rc
+
+def nRankClass(y,samples):
+    if type(y) != np.ndarray:
+        y = np.array(y)
+    Ranks = y.shape[1]
+    Nclass = Ranks
+    n_rc = [[0.0 for i in range(Nclass)] for j in range(Ranks)]
+    for rank in range(Ranks):
+        for sample in samples:
+            emoti = int(y[sample,rank])
+            if emoti>=0:
+                n_rc[rank][emoti]+=1
+    return n_rc
+
+
 
 
 # def rankResult(y,samples):
@@ -133,7 +230,7 @@ class decisionnode:
             self.alpha = gain/(self.size-1)
 
 
-def buildtree(x,y, samples, criterion = giniRank, min_node=1):
+def buildtree(x,y, samples, min_node=1):
     if type(x) != np.ndarray:
         x = np.array(x)
     if type(y) != np.ndarray:
@@ -142,7 +239,7 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
         samples = np.array(samples)
     if len(samples) == 0:
         return decisionnode()
-    current_criterion = criterion(y,samples)
+    current_criterion = giniRank_e(nRankClass(y,samples))
 
     if len(samples)<= min_node:
         return decisionnode(result=rankResult(y,samples))
@@ -154,21 +251,14 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
     N_feature = x.shape[1]
 
     for feature in range(N_feature):
-        feature = N_feature - 1 - feature ### test
+        # nlogn selection
+        best_gini, split, sets = bestSplit(x,y,samples,feature)
+        gain = current_criterion - best_gini
+        if gain > best_gain and len(sets[0]) * len(sets[1]) > 0:
+            best_gain = gain
+            best_split = split
+            best_sets = sets
 
-        values ={}
-        for sample in samples:
-            values[x[sample,feature]]=1
-        for value in values.keys():
-            samps1, samps2 = divideset(x,samples,feature,value)
-
-            ## gain by split
-            # giniRank already include size of node weight
-            gain = current_criterion - (criterion(y,samps1)+criterion(y,samps2))
-            if gain > best_gain and len(samps1)*len(samps2)>0:
-                best_gain = gain
-                best_split = [feature,value]
-                best_sets = [samps1, samps2]
     if best_gain>0:
         tb = buildtree(x,y, best_sets[0], min_node = min_node)
         fb = buildtree(x,y, best_sets[1], min_node = min_node)
@@ -177,6 +267,7 @@ def buildtree(x,y, samples, criterion = giniRank, min_node=1):
                             gain = (tb.gain+fb.gain+best_gain), size_subtree = (tb.size+fb.size))
     else:
         return decisionnode(result = rankResult(y,samples))
+
 
 def prune(tree, alpha):
     if tree.tb == None:
@@ -238,17 +329,23 @@ def buildPruneList(x,y):
     alpha_list = orderList()    # initialize
     alphaList(tree_max, alpha_list)
     PruneList = {}
+    # insert the largest alpha to include root tree #
+    alpha_max = max(alpha_list.list) + 1
+    alpha_list.insert(alpha_max)
     for alpha in alpha_list.list:
         PruneList[alpha] = prune(tree_max,alpha)
+
     return PruneList
 
 
-def predict(observation,tree):
+def predict(observation,tree, alpha):
     # prediction of single observation
     if tree.tb == None:
         return tree.result
+    if tree.alpha >= 0:
+        if tree.alpha < alpha:
+            return tree.result
     value = observation[tree.feature]
-    branch = None
     if isinstance(value,int) or isinstance(value,float):
         if value>=tree.value:
             branch = tree.tb
@@ -256,44 +353,86 @@ def predict(observation,tree):
             branch = tree.fb
     else:
         raise("nominal feature not supported")
-    return predict(observation,branch)
+    return predict(observation,branch,alpha)
 
 
 def decisionTree(x_train, y_train, x_test, alpha = None):
     # x: Nsamp*Nfeature, y: Nsamp*Nrank ranking data
-    prune_list = buildPruneList(x_train, y_train)
-    alpha_list = prune_list.keys()
-    alpha_list.sort()
+    # prune_list = buildPruneList(x_train, y_train)
+    # alpha_list = prune_list.keys()
+    # alpha_list.sort()
+    # print "start building tree: ", datetime.now() ### test
+    tree = buildtree(x_train, y_train, [i for i in range(x_train.shape[0])])
+    # print "end building tree: ", datetime.now() ### test
+    alpha_list = orderList()
+    alphaList(tree,alpha_list)
+    alpha_max = max(alpha_list.list) + 1
+    alpha_list.insert(alpha_max)
     y_pred_list = []
     if alpha == None:
-        for alpha_try in alpha_list:
+        for alpha_try in alpha_list.list:
             y_pred = []
             for obs in x_test:
-                y_pred.append(predict(obs,prune_list[alpha_try]))
+                y_pred.append(predict(obs,tree,alpha_try))
             y_pred_list.append(y_pred)
-        return alpha_list, y_pred_list
+        return alpha_list.list, y_pred_list
     else:
         y_pred=[]
-        if alpha > max(alpha_list):
-            raise "too large alpha"
-        for alpha_try in alpha_list:
-            if alpha_try >= alpha:
-                for obs in x_test:
-                    y_pred.append(predict(obs, prune_list[alpha_try]))
-                y_pred_list.append(y_pred)
+        for obs in x_test:
+            y_pred.append(predict(obs, tree, alpha))
         return alpha, y_pred
 
 
-# def hyperParometer(x_par, y_par, cv = 5, alpha_try_list = np.linspace(0.0,5.0,10)):
-#     prune_list = buildPruneList(x_par, y_par)
-#     alpha_list = prune_list.keys()
-#     alpha_list.sort()
-#
-#     indicator = 0.0 # performance measure to optimize
-#     for alpha_try in alpha_try_list:
-#         tree = None
-#         for alpha in
-#         result = crossValidate(x_par,y_par,cv=cv, alpha=alpha_try,tree=prune_list[alpha])
+def hyperParometer(x, y, cv = 5, alpha_try_list = np.linspace(0.0,5.0,10)):
+    # select pruning hyperparometer by cross validation #
+    ntrial = len(alpha_try_list)
+    perf = [0.0 for i in range(ntrial)]
+    # cross validation #
+    kf = KFold(n_splits = cv, shuffle = True, random_state = 0) ## for testing fixing random_state
+    for train,test in kf.split(x):
+        x_train = x[train,:]
+        y_train = y[train,:]
+        x_test = x[test,:]
+        y_test = y[test,:]
+        # print "start building prediction: ", datetime.now() ### test
+        alpha_list, y_pred_list = decisionTree(x_train, y_train, x_test)
+        # print "end building prediction: ", datetime.now() ### test
+        Nalpha = len(alpha_list)
+        performance = [GMean(y_pred_list[i],y_test) for i in range(Nalpha)]
+        # assign performance value to each alpha_try #
+        for trial in range(ntrial):
+            alpha_try = alpha_try_list[trial]
+            overlarge = True
+            for ind in range(Nalpha-1):
+                if alpha_try <= alpha_list[ind]:
+                    perf[trial] += performance[ind]
+                    overlarge = False
+                    break
+            if overlarge:
+                perf[trial] += performance[Nalpha-1]
+    # find best performance alpha and perf value #
+    max_perf = max(perf)
+    max_ind = None
+    for trial in range(ntrial):
+        ind = ntrial-1-trial    # prefer larger alpha in same perf
+        if perf[ind] == max_perf:
+            max_ind = ind
+            break
+    return alpha_try_list[max_ind], perf[max_ind]*1.0/cv
+
+
+def GMean(y_pred, y_test):
+    recall, Nsamp_class = LogR.recallSub(y_pred, y_test)
+    recall = np.array(recall,dtype="float")
+    g_mean = gmean(recall)
+    return g_mean
+
+def selectTrainTest(x, y, frac = np.array([2.0,1.0,1.0]), cv_select=5, cv_test=5, select_crt = GMean):
+    Nsamps = x.shape[0]
+    frac_train = int(frac[0]/np.sum(frac)*Nsamps)
+    frac_valid = int(frac[1]/np.sum(frac)*Nsamps)
+    frac_test = int(frac[2]/np.sum(frac)*Nsamps)
+    pass
 
 
 def dataSimulated(Nsamp, Nfeature, Nclass):
@@ -304,22 +443,40 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
     y *= 2
     y = y.astype(int)
     y = map(LogR.rankOrder,y)
+    y = np.array(y)
     return x,y
+
+
+def label2Rank(y):
+    y = map(LogR.rankOrder,y)
+    y = np.array(y, dtype=int)
+    return y
 
 
 if __name__ == "__main__":
 
     ### test ###
-    x,y = dataSimulated(Nsamp=6,Nfeature=5,Nclass=6)
-    print x
-    print y
-    prune_list = buildPruneList(x,y)
-    alpha_list = prune_list.keys()
-    alpha_list.sort()
-    for alpha in alpha_list:
-        print "alpha <= ", alpha, "\n"
-        printtree(prune_list[alpha])
-        print "----------------------------------------------"
+    # x,y = dataSimulated(Nsamp=1000,Nfeature=5,Nclass=6)
+    # samples = np.random.choice(np.arange(1000), 5, replace=False)
+    # bestSplit(x,y,samples,0)
+
+    # print bestSplit(x,y,samples,2)
+    # prune_list = buildPruneList(x,y)
+    # alpha_list = prune_list.keys()
+    # alpha_list.sort()
+    # for alpha in alpha_list:
+    #     print "alpha <= ", alpha, "\n"
+    #     printtree(prune_list[alpha])
+    #     print "----------------------------------------------"
+
+    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    y = label2Rank(y)
+    tree = buildtree(x,y,samples=np.arange(y.shape[0]))
+    printtree(tree)
+    result = LogR.crossValidate(x,y,"dT",cv=5, alpha=None)
+    file = open("result_dt.txt","a")
+    file.write(str(result)+"\n")
+    file.close()
 
 
     # print rankResult(y,samples)
