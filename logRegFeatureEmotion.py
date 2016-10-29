@@ -13,6 +13,7 @@ from scipy.stats.mstats import gmean
 
 emoticon_list = ["Like","Love","Sad","Wow","Haha","Angry"]
 NOISE = 0.001
+NONERECALL = 1e-3
 
 def dataClean(datafile):
     file = open(datafile,"r")
@@ -58,7 +59,6 @@ def multiClass(x,y):
     return x_rep, y_rep
 
 
-
 def logRegFeatureEmotion(x_training,y_training, x_test):
     logReg = linear_model.LogisticRegression(C=1e9, fit_intercept=True, multi_class="ovr")### test
     fitResult = logReg.fit(x_training,y_training)
@@ -68,7 +68,7 @@ def logRegFeatureEmotion(x_training,y_training, x_test):
     return y, coef, intercept
 
 
-def crossValidate(x,y, method = "logReg",cv=10, alpha = None):
+def crossValidate(x,y, method = "logReg",cv=5, alpha = None):
     #  error measure
     results = []
     if method == "logReg":
@@ -77,6 +77,7 @@ def crossValidate(x,y, method = "logReg",cv=10, alpha = None):
         results = {"alpha": [], "perf":[]}
 
     # cross validation #
+    np.random.seed(1100)
     kf = KFold(n_splits = cv, shuffle = True, random_state = 0) ## for testing fixing random_state
     for train,test in kf.split(x):
         x_train = x[train,:]
@@ -138,7 +139,7 @@ def perfMeasure(y_pred, y_test, rankopt = False):
     Nclass = y_test.shape[1]
 
     perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "recallsub": 3+Nclass, "Nsc": 3+2*Nclass, "kld": 3 + 3*Nclass,
-               "g_mean":4+3*Nclass}
+               "g_mean":4+3*Nclass, "kendalltau": 5+3*Nclass}
     Nperf = max(perf_list.values())+1
     perf=[0 for i in range(Nperf)]
 
@@ -184,6 +185,8 @@ def perfMeasure(y_pred, y_test, rankopt = False):
     g_mean = gmean(recall_sub)
     perf[perf_list["g_mean"]] = g_mean
 
+    # Kendall's Tau traditional one#
+    perf[perf_list["kendalltau"]] = KendallTau(rank_pred, rank_test)
     # #
     if rankopt:
         return perf
@@ -218,6 +221,47 @@ def perfMeasure(y_pred, y_test, rankopt = False):
     perf[perf_list["dcg"]]= perf[perf_list["dcg"]] /(1.0*Nsamp)
 
     return perf
+
+
+def KendallTau(rank_pred, rank_test):
+    # traditionally defined based on concordant and discordant pairs
+    # that is missing pairs are excluded
+    if type(rank_pred)!=list:
+        rank_pred = rank_pred.tolist()
+    if type(rank_test)!=list:
+        rank_test = rank_test.tolist()
+    Nsamp = len(rank_test)
+    Nrank = len(rank_test[0]) # the length of each complete rank
+
+    tau = [np.nan for i in range(Nsamp)]
+    for samp in range(Nsamp):
+        cor = 0
+        dis = 0
+        rt = rank_test[samp]
+        rp = rank_pred[samp]
+        for i in range(Nrank):
+            emoti_i = rt[i]
+            if emoti_i < 0:  # no emoti at the index, emoti_j<0 too
+                break   # same for lower ranking emoti
+            for j in range(i+1, Nrank):
+                emoti_j = rt[j]
+                if emoti_j < 0:
+                    break # use traditional Kendall, no such constraint exists
+                if emoti_i not in rp: # higher ranked emoti not exist, discordant
+                    break # use traditional Kendall, no such constraint exists
+                if emoti_j not in rp:
+                    break # use traditional Kendall, no such constraint exists
+                else:
+                    pred_i = rp.index(emoti_i)
+                    pred_j = rp.index(emoti_j)
+                    if pred_i < pred_j:
+                        cor += 1
+                    else:
+                        dis += 1
+        if cor + dis >= 1:
+            tau[samp] = (cor - dis) * 1.0 / (cor + dis)
+    tau = np.array(tau,dtype = "float")
+    return np.nanmean(tau)
 
 
 def recallAll(two_rank):
@@ -274,6 +318,9 @@ def recallSub(rank_pred, rank_test):
             recall[i] = np.nan
         else:
             recall[i] = sum(recall[i])/Nsamp_class[i]
+            if recall[i] < NONERECALL:
+                print "NONERECALL:", recall[i], "for emoticon:", i
+                recall[i] = NONERECALL
 
     return recall, Nsamp_class
 
@@ -321,18 +368,19 @@ if __name__ == "__main__":
     # feature = 0 # chose single feature to fit
     # feature_name = EL[feature]
     # result = trainTest(x[:,feature].reshape([x.shape[0],1]),y)
-    # feature_name = "No feature"
-    # X_non =np.ones([y.shape[0],1]).astype("float")
-    # result = trainTest(X_non,y)
-    result = crossValidate(x,y)
-    feature_name = "all"
+    feature_name = "No feature"
+    X_non =np.ones([y.shape[0],1]).astype("float")
+    result = crossValidate(X_non,y)
+    # result = crossValidate(x,y)
+    # feature_name = "all"
     print "------%s feature -----" % feature_name
     print result
     # write2result #
     file = open("result.txt","a")
-    file.write("------%s feature -----" % feature_name)
-    for item in result:
-        file.write(str(item)+"\n")
+    file.write("------%s feature -----\n" % feature_name)
+    file.write("NONERECALL: %f\n" % NONERECALL)
+    file.write("CV: %d\n" % 5)
+    file.write(str(result)+"\n")
     file.close()
 
     # ## test ###

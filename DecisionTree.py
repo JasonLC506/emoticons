@@ -471,10 +471,10 @@ if __name__ == "__main__":
 
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = label2Rank(y)
-    tree = buildtree(x,y,samples=np.arange(y.shape[0]))
-    printtree(tree)
     result = LogR.crossValidate(x,y,"dT",cv=5, alpha=0.0)
     file = open("result_dt.txt","a")
+    file.write("NONERECALL: %f\n" % LogR.NONERECALL)
+    file.write("CV: %d\n" % 5)
     file.write(str(result)+"\n")
     file.close()
 
