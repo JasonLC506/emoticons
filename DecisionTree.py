@@ -96,6 +96,7 @@ def bestSplit(x, y, samples, feature, min_node = 1):
 
     return min_gini, best_split, best_sets
 
+
 def giniRank_e(n_rc):
     Ranks = len(n_rc)
     Nclass = len(n_rc[0])
@@ -146,8 +147,6 @@ def nRankClass(y,samples):
     return n_rc
 
 
-
-
 # def rankResult(y,samples):
 #     if type(y) != np.ndarray:
 #         y = np.array(y)
@@ -176,6 +175,7 @@ def nRankClass(y,samples):
 #                     else:
 #                         n_class[rank][i] = 0
 #     return result
+
 
 def rankResult(y,samples):
     if type(y)!=np.ndarray:

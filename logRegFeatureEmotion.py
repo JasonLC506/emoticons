@@ -205,7 +205,7 @@ def perfMeasure(y_pred, y_test, rankopt = False):
             llh += (y_test[i][j]*math.log(y_pred_noise[i][j])-maxllh)
         llh = llh + sum(y_test[i])*math.log(sum(y_test[i]))
         perf[perf_list["llh"]] += llh
-    perf[perf_list["kld"]] = perf[perf_list["llh"]]/(1.0*np.sum(y)) ## normalized by total emoticons
+    perf[perf_list["kld"]] = perf[perf_list["llh"]]/(1.0*np.sum(y_test)) ## normalized by total emoticons
     perf[perf_list["llh"]]=perf[perf_list["llh"]]/(1.0*Nsamp) ## normalized by # samples
 
     # dcg #
