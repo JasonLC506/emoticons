@@ -39,6 +39,46 @@ def stats(y):
     print "total likes in only like posts: ", like_total
 
 
+def pairwise(y):
+    Nclass = len(emoticon_list)
+    # first and second dimension is the indices of emoticon pairs, the first value is # posts first emoticon rank higher
+    # than the second, vise versa
+    paircomp = [[[0,0] for i in range(Nclass)] for j in range(Nclass)] # take not appearing emoticons to rank the lowest
+    paircomp_sub = [[[0,0] for i in range(Nclass)] for j in range(Nclass)] # excluding not appearing emoticons
+    y = y.tolist()
+    for post in y:
+        for i in range(Nclass):
+            for j in range(i+1, Nclass):
+                if post[i] < 1:
+                    if post[j] >= 1:
+                        paircomp[i][j][1] += 1
+                    # else both zero, no comparison
+                else: # emoticon i exists
+                    if post[j] < 1:
+                        paircomp[i][j][0] += 1
+                    else: # both exist
+                        if post[i] > post[j]:
+                            paircomp[i][j][0] += 1
+                            paircomp_sub[i][j][0] += 1
+                        elif post[i] < post[j]:
+                            paircomp[i][j][1] += 1
+                            paircomp_sub[i][j][1] += 1
+    n_pair = 0
+    n_pair_sub = 0
+    for i in range(Nclass):
+        for j in range(i+1, Nclass):
+            n_pair += sum(paircomp[i][j])
+            n_pair_sub += sum(paircomp_sub[i][j])
+    print "complete paircompare:", "(total %d)" % n_pair
+    print "emoticon ", "\t".join(emoticon_list)
+    for i in range(Nclass):
+        print emoticon_list[i], "\t".join(map(str, paircomp[i]))
+    print "appearing paircompare:", "(total %d)" % n_pair_sub
+    print "emoticon ", "\t".join(emoticon_list)
+    for i in range(Nclass):
+        print emoticon_list[i], "\t".join(map(str, paircomp_sub[i]))
+
+
 def statsAnal(x,y):
     N_feature = x.shape[1]
     N_class = y.shape[1]
@@ -70,3 +110,4 @@ if __name__ == "__main__":
     x, y = dataClean("data/posts_Feature_Emotion.txt")
     stats(y)
     statsAnal(x,y)
+    pairwise(y)
