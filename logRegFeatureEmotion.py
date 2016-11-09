@@ -60,7 +60,7 @@ def multiClass(x,y):
 
 
 def logRegFeatureEmotion(x_training,y_training, x_test):
-    logReg = linear_model.LogisticRegression(C=1e9, fit_intercept=True, multi_class="ovr")### test
+    logReg = linear_model.LogisticRegression(C=1e9, fit_intercept=True, multi_class="multinomial", solver="newton-cg")### test
     fitResult = logReg.fit(x_training,y_training)
     y= fitResult.predict_proba(x_test)
     coef = logReg.coef_
@@ -324,9 +324,12 @@ def recallSub(rank_pred, rank_test):
 
     return recall, Nsamp_class
 
+
 def addNoise(dist_list):
     noise = np.array([NOISE for i in range(dist_list.shape[1])])
     return map(lambda x: (x+noise)/sum(x+noise), dist_list)
+
+
 def rankOrder(dist):
     # output rank[i] = j ( means j is the index of item ranking i)
     rank=[i for i in range(len(dist))]
@@ -365,9 +368,6 @@ if __name__ == "__main__":
     print "number of samples: ", x.shape[0]
 
     ### test ####
-    # feature = 0 # chose single feature to fit
-    # feature_name = EL[feature]
-    # result = trainTest(x[:,feature].reshape([x.shape[0],1]),y)
     feature_name = "No feature"
     X_non =np.ones([y.shape[0],1]).astype("float")
     result = crossValidate(X_non,y)
