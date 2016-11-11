@@ -20,6 +20,4 @@ def rankPer():
 
 
 perf = np.arange(2*3).reshape([2,3])
-weight = np.arange(3)
-print np.inner(perf,weight)
-
+print perf.ndim
