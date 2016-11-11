@@ -48,6 +48,7 @@ def MM(ranks, max_iter = 10, iter_out = False):
 
     if not flag_cvg:
         print "warning: MM fails to converge"
+
     # start = datetime.now()
     theta = MMMallowTheta(ranks_cplt, median)
     # duration = datetime.now()-start
@@ -197,7 +198,7 @@ def bestSplit(x, y, samples, feature, min_node=1):
     :return:
     """
 
-    min_var = -1
+    min_var = None
     best_split = 0
     best_sets = []
     best_sets_result = []
@@ -228,7 +229,7 @@ def bestSplit(x, y, samples, feature, min_node=1):
                 # print "time: ", duration.total_seconds()
                 # print "left_result: ", left_result, "right_result: ", right_result, "left_size: ", left_size, "right_size: ", right_size
                 variance = 1.0*Nsamp/(left_size*left_result[0]+right_size*right_result[0]) # 1/theta
-                if min_var < 0 or min_var > variance:
+                if min_var is None or min_var > variance:
                     min_var = variance
                     best_sets = [left_samps, right_samps]
                     best_split = [feature, value] # >= split
@@ -239,6 +240,7 @@ def bestSplit(x, y, samples, feature, min_node=1):
         left_size += 1
         right_size += -1
         old_value = value
+
     return min_var, best_split, best_sets, best_sets_result
 
 
@@ -275,6 +277,8 @@ def buildtree(x,y, samples, min_node=1, result_cur = None):
     for feature in range(N_feature):
         # nlogn selection
         min_var, split, sets, sets_result = bestSplit(x,y,samples,feature)
+        if min_var is None:
+            continue
         gain = result_cur[0] - min_var
         # print "feature: ", feature, "gain: ", gain, "result_cur: ", result_cur, "min_var: ", min_var ### test
         if gain > best_gain and len(sets[0]) * len(sets[1]) > 0:
@@ -282,11 +286,11 @@ def buildtree(x,y, samples, min_node=1, result_cur = None):
             best_split = split
             best_sets = sets
             best_sets_result = sets_result
-    duration = datetime.now - start ### test
+    duration = datetime.now() - start ### test
     print "Nsamps: ", len(samples)
     print "duration: ", duration.total_seconds()
 
-    if best_gain>0:
+    if best_gain > 0:
         tb = buildtree(x,y, best_sets[0], min_node = min_node, result_cur = best_sets_result[0])
         fb = buildtree(x,y, best_sets[1], min_node = min_node, result_cur = best_sets_result[1])
         return DTme.decisionnode(feature = best_split[0], value = best_split[1], result = result_cur[1],
@@ -336,6 +340,7 @@ def rankO2New(rank_old):
             labels.remove(label)
         else:
             non = i
+            break
     if non >= 0:
         for label in labels:
             rank_new[label][0] = non
@@ -394,7 +399,7 @@ def crossValidate(x,y, method = "dT",cv=5, alpha = None):
 
 if __name__ == "__main__":
 
-    ### test ###
+    # ### test ###
     # x, y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     # if type(y) == np.ndarray:
     #     y = y.tolist()
@@ -418,7 +423,10 @@ if __name__ == "__main__":
 
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = DTme.label2Rank(y)
+    start = datetime.now()
     result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
+    duration = datetime.now() -start
+    print "total time: ", duration.total_seconds()
     file = open("result_dt_mallows.txt","a")
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)
