@@ -6,6 +6,7 @@ from scipy.optimize import ridder
 import random
 import math
 import numpy as np
+import logRegFeatureEmotion as LogR
 
 """
 rankform = [[highest_possible_rank, lowest_possible_rank] for emoticon in emoticon_list]
@@ -168,25 +169,29 @@ def bestSplit(x, y, samples, feature, min_node=1):
     dtype = [("value", float),("index", int)]
     x_ord = np.sort(np.array(temp,dtype=dtype), order = "value")
 
-    old_value = x_ord[0][0]
-    left_size =1
-    right_size = Nsamp-1
-    left_samps = np.array([x_ord[0][1]])
-    right_samps = np.array([x_ord[s][1] for s in range(1, Nsamp)])
-    for i in range(1,Nsamp-1): # avoid 0 split
+    old_value = None
+    left_size =0
+    right_size = Nsamp
+    left_samps = np.array([],dtype=np.int16)
+    right_samps = np.array([x_ord[s][1] for s in range(Nsamp)],dtype=np.int16)
+    for i in range(Nsamp): # avoid 0 split
         value = x_ord[i][0]
-        if value != old_value:
-            # a valid split #
-            left_result = MM(y[left_samps])
-            right_result = MM(y[right_samps])
-            variance = (left_size*left_result[0]+right_size*right_result[0])/(1.0*Nsamp)
-            if min_var < 0 or min_var > variance:
-                min_var = variance
-                best_sets = [left_samps, right_samps]
-                best_split = [feature, value] # >= split
-                best_sets_result = [left_result, right_result]
+        if old_value is not None:
+            print "i = ", i ###test
+            if value != old_value:
+                # a valid split #
+                print left_samps, right_samps ### test
+                left_result = MM(y[left_samps])
+                right_result = MM(y[right_samps])
+                # print "left_result: ", left_result, "right_result: ", right_result, "left_size: ", left_size, "right_size: ", right_size
+                variance = 1.0*Nsamp/(left_size*left_result[0]+right_size*right_result[0]) # 1/theta
+                if min_var < 0 or min_var > variance:
+                    min_var = variance
+                    best_sets = [left_samps, right_samps]
+                    best_split = [feature, value] # >= split
+                    best_sets_result = [left_result, right_result]
 
-        np.append(left_samps, x_ord[i][1])
+        left_samps = np.append(left_samps, x_ord[i][1])
         right_samps = np.delete(right_samps, 0)
         left_size += 1
         right_size += -1
@@ -221,6 +226,7 @@ def buildtree(x,y, samples, min_node=1, result_cur = None):
         # nlogn selection
         min_var, split, sets, sets_result = bestSplit(x,y,samples,feature)
         gain = result_cur[0] - min_var
+        print "feature: ", feature, "gain: ", gain, "result_cur: ", result_cur, "min_var: ", min_var ### test
         if gain > best_gain and len(sets[0]) * len(sets[1]) > 0:
             best_gain = gain
             best_split = split
@@ -237,6 +243,33 @@ def buildtree(x,y, samples, min_node=1, result_cur = None):
         return DTme.decisionnode(result = result_cur[1])
 
 
+def predict(observation, tree, alpha):
+    if tree.tb == None:
+        return rankN2Old(tree.result)
+    if tree.alpha >= 0:
+        if tree.alpha < alpha:
+            return rankN2Old(tree.result)
+    value = observation[tree.feature]
+    if isinstance(value,int) or isinstance(value,float):
+        if value>=tree.value:
+            branch = tree.tb
+        else:
+            branch = tree.fb
+    else:
+        raise("nominal feature not supported")
+    return predict(observation,branch,alpha)
 
 
+def rankN2Old(rank_new):
+    # the new rank must be complete #
+    Nclass = len(rank_new)
+    rank_old = [0 for i in range(Nclass)]
+    for label in range(Nclass):
+        rank_old[rank_new[label][0]] = label
+    return rank_old
+
+
+DTme.bestSplit = bestSplit
+DTme.buildtree = buildtree
+DTme.predict = predict
 
