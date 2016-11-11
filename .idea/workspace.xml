@@ -20,11 +20,11 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1130">
-                    <caret line="377" column="20" selection-start-line="377" selection-start-column="20" selection-end-line="377" selection-end-column="20" />
+                  <state relative-caret-position="586">
+                    <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
                     <folding>
                       <element signature="e#0#14#0" expanded="true" />
                     </folding>
@@ -32,11 +32,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="DecisionTree.py" pinned="false" current-in-tab="false">
+            <file leaf-file-name="DecisionTree.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/DecisionTree.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-5355">
-                    <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+                  <state relative-caret-position="526">
+                    <caret line="204" column="52" selection-start-line="204" selection-start-column="52" selection-end-line="204" selection-end-column="52" />
                     <folding>
                       <element signature="e#0#18#0" expanded="true" />
                       <element signature="e#3164#3510#0" expanded="false" />
@@ -75,9 +75,11 @@
       <file leaf-file-name="DecisionTreeMallows.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DecisionTreeMallows.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="289">
+              <caret line="213" column="19" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,7 +99,7 @@
       <file leaf-file-name="RankPairPref.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RankPairPref.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="2754">
               <caret line="162" column="24" selection-start-line="162" selection-start-column="24" selection-end-line="162" selection-end-column="24" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -203,7 +205,7 @@
       <pane id="Scratches" />
     </panes>
   </component>
-  <component name="RunManager" selected="Python.RankPairPref">
+  <component name="RunManager" selected="Python.DecisionTreeMallows">
     <configuration default="false" name="logRegFeatureEmotion" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -238,23 +240,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="DecisionTree" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DecisionTree.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="balancedTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -285,6 +270,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RankPairPref.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DecisionTreeMallows" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="emoticons" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DecisionTreeMallows.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -426,17 +428,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.logRegFeatureEmotion" />
       <item index="1" class="java.lang.String" itemvalue="Python.test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.DecisionTree" />
-      <item index="3" class="java.lang.String" itemvalue="Python.balancedTest" />
-      <item index="4" class="java.lang.String" itemvalue="Python.RankPairPref" />
+      <item index="2" class="java.lang.String" itemvalue="Python.balancedTest" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RankPairPref" />
+      <item index="4" class="java.lang.String" itemvalue="Python.DecisionTreeMallows" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RankPairPref" />
-        <item index="1" class="java.lang.String" itemvalue="Python.logRegFeatureEmotion" />
-        <item index="2" class="java.lang.String" itemvalue="Python.balancedTest" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.DecisionTree" />
+        <item index="0" class="java.lang.String" itemvalue="Python.DecisionTreeMallows" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RankPairPref" />
+        <item index="2" class="java.lang.String" itemvalue="Python.logRegFeatureEmotion" />
+        <item index="3" class="java.lang.String" itemvalue="Python.balancedTest" />
+        <item index="4" class="java.lang.String" itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -772,16 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RankPairPref.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="162" column="24" selection-start-line="162" selection-start-column="24" selection-end-line="162" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result_rpp.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -800,25 +792,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DecisionTree.py">
+    <entry file="file://$PROJECT_DIR$/RankPairPref.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5355">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        <state relative-caret-position="2754">
+          <caret line="162" column="24" selection-start-line="162" selection-start-column="24" selection-end-line="162" selection-end-column="24" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3164#3510#0" expanded="false" />
-            <element signature="e#3550#3826#0" expanded="false" />
-            <element signature="e#3864#4032#0" expanded="false" />
-            <element signature="e#4065#4399#0" expanded="false" />
-            <element signature="e#4402#4430#0" expanded="false" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1130">
-          <caret line="377" column="20" selection-start-line="377" selection-start-column="20" selection-end-line="377" selection-end-column="20" />
+        <state relative-caret-position="586">
+          <caret line="345" column="0" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -827,9 +814,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeMallows.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="63" column="16" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="289">
+          <caret line="213" column="19" selection-start-line="213" selection-start-column="19" selection-end-line="213" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DecisionTree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="204" column="52" selection-start-line="204" selection-start-column="52" selection-end-line="204" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#3164#3510#0" expanded="false" />
+            <element signature="e#3550#3826#0" expanded="false" />
+            <element signature="e#3864#4032#0" expanded="false" />
+            <element signature="e#4065#4399#0" expanded="false" />
+            <element signature="e#4402#4430#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
