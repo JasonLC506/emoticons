@@ -21,26 +21,26 @@ def MM(ranks, max_iter = 10, iter_out = False):
     """
     if type(ranks)==np.ndarray:
         ranks = ranks.tolist()
-    start = datetime.now() ### test
+    # start = datetime.now() ### test
     median = MMInit(ranks)
-    duration = datetime.now()-start ### test
-    print "init_time: ", duration.total_seconds()###test
+    # duration = datetime.now()-start ### test
+    # print "init_time: ", duration.total_seconds()###test
     flag_cvg = False
     for iter in range(max_iter):
         ranks_cplt = []
-        start = datetime.now()
+        # start = datetime.now()
         for rank in ranks:
             ranks_cplt.append(MMExt(rank, median))
-        duration = datetime.now()-start
-        print "extension_time: ", duration.total_seconds()
-        start = datetime.now()
+        # duration = datetime.now()-start
+        # print "extension_time: ", duration.total_seconds()
+        # start = datetime.now()
         median_new = MMBC(ranks_cplt)
-        duration = datetime.now()-start
-        print "borda count time: ", duration.total_seconds()
-        start = datetime.now()
+        # duration = datetime.now()-start
+        # print "borda count time: ", duration.total_seconds()
+        # start = datetime.now()
         if median_new == median:
-            duration = datetime.now() - start
-            print "compare time: ", duration.total_seconds()
+            # duration = datetime.now() - start
+            # print "compare time: ", duration.total_seconds()
             flag_cvg = True
             break
         else:
@@ -48,10 +48,10 @@ def MM(ranks, max_iter = 10, iter_out = False):
 
     if not flag_cvg:
         print "warning: MM fails to converge"
-    start = datetime.now()
+    # start = datetime.now()
     theta = MMMallowTheta(ranks_cplt, median)
-    duration = datetime.now()-start
-    print "find theta time: ", duration.total_seconds()
+    # duration = datetime.now()-start
+    # print "find theta time: ", duration.total_seconds()
     if iter_out:
         return theta, median, iter
     return theta, median
@@ -220,12 +220,12 @@ def bestSplit(x, y, samples, feature, min_node=1):
             if value != old_value:
                 # a valid split #
                 # print left_samps, right_samps ### test
-                start = datetime.now()### test
+                # start = datetime.now()### test
                 left_result = MM(y[left_samps])
                 right_result = MM(y[right_samps])
-                duration = datetime.now() - start ###test
-                print "samps: ", left_size, right_size
-                print "time: ", duration.total_seconds()
+                # duration = datetime.now() - start ###test
+                # print "samps: ", left_size, right_size
+                # print "time: ", duration.total_seconds()
                 # print "left_result: ", left_result, "right_result: ", right_result, "left_size: ", left_size, "right_size: ", right_size
                 variance = 1.0*Nsamp/(left_size*left_result[0]+right_size*right_result[0]) # 1/theta
                 if min_var < 0 or min_var > variance:
@@ -395,32 +395,32 @@ def crossValidate(x,y, method = "dT",cv=5, alpha = None):
 if __name__ == "__main__":
 
     ### test ###
-    x, y = LogR.dataClean("data/posts_Feature_Emotion.txt")
-    if type(y) == np.ndarray:
-        y = y.tolist()
-    y = map(score2rank, y)
-    y = np.array(y)
-    print "Nsamps: ", y.shape[0]
-    start = datetime.now()
-    theta, median, iter = MM(y, iter_out=True)
-    duration = datetime.now() - start
-    print "time: ", duration.total_seconds(), " theta, median, iter", theta, median, iter
+    # x, y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    # if type(y) == np.ndarray:
+    #     y = y.tolist()
+    # y = map(score2rank, y)
+    # y = np.array(y)
+    # print "Nsamps: ", y.shape[0]
+    # start = datetime.now()
+    # theta, median, iter = MM(y, iter_out=True)
+    # duration = datetime.now() - start
+    # print "time: ", duration.total_seconds(), " theta, median, iter", theta, median, iter
 
-    print "#### test machine time ####"
-    Nsamp = y.shape[0]
-    start = datetime.now()
-    m = 0
-    for i in range(Nsamp):
-        for j in range(Nsamp):
-            m+=1
-    duration = datetime.now()-start
-    print "test machine time: ", duration.total_seconds()
+    # print "#### test machine time ####"
+    # Nsamp = y.shape[0]
+    # start = datetime.now()
+    # m = 0
+    # for i in range(Nsamp):
+        # for j in range(Nsamp):
+        #     m+=1
+    # duration = datetime.now()-start
+    # print "test machine time: ", duration.total_seconds()
 
-    # x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
-    # y = DTme.label2Rank(y)
-    # result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
-    # file = open("result_dt_mallows.txt","a")
-    # file.write("NONERECALL: %f\n" % LogR.NONERECALL)
-    # file.write("CV: %d\n" % 5)
-    # file.write(str(result)+"\n")
-    # file.close()
+    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    y = DTme.label2Rank(y)
+    result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
+    file = open("result_dt_mallows.txt","a")
+    file.write("NONERECALL: %f\n" % LogR.NONERECALL)
+    file.write("CV: %d\n" % 5)
+    file.write(str(result)+"\n")
+    file.close()
