@@ -27,14 +27,19 @@ def dataClean(datafile):
             continue
         if sample["feature_emotion"][0]<0:
             continue
-        x.append(sample["feature_emotion"])
         emoticons = [0 for i in range(len(emoticon_list))]
         for j in range(len(emoticon_list)):
             if emoticon_list[j] in sample["emoticons"].keys():
                 emoticons[j] = sample["emoticons"][emoticon_list[j]]
             else:
                 emoticons[j] = 0
-        y.append(emoticons)
+        flag_withemoticon = False
+        for j in range(len(emoticon_list)):
+            if emoticons[j]>0:
+                flag_withemoticon = True
+        if flag_withemoticon:
+            x.append(sample["feature_emotion"])
+            y.append(emoticons)
     file.close()
     x = np.asarray(x,dtype="float")
     y = np.asarray(y,dtype="float")
@@ -203,7 +208,11 @@ def perfMeasure(y_pred, y_test, rankopt = False):
             else:
                 maxllh=y_test[i][j]*math.log(y_test[i][j])
             llh += (y_test[i][j]*math.log(y_pred_noise[i][j])-maxllh)
-        llh = llh + sum(y_test[i])*math.log(sum(y_test[i]))
+        try:
+            llh = llh + sum(y_test[i])*math.log(sum(y_test[i]))
+        except ValueError, e:
+            print y_test[i]
+            raise e
         perf[perf_list["llh"]] += llh
     perf[perf_list["kld"]] = perf[perf_list["llh"]]/(1.0*np.sum(y_test)) ## normalized by total emoticons
     perf[perf_list["llh"]]=perf[perf_list["llh"]]/(1.0*Nsamp) ## normalized by # samples
@@ -368,15 +377,16 @@ if __name__ == "__main__":
     print "number of samples: ", x.shape[0]
 
     ### test ####
-    feature_name = "No feature"
-    X_non =np.ones([y.shape[0],1]).astype("float")
-    result = crossValidate(X_non,y)
-    # result = crossValidate(x,y)
-    # feature_name = "all"
+    # feature_name = "No feature"
+    # X_non =np.ones([y.shape[0],1]).astype("float")
+    # result = crossValidate(X_non,y)
+    result = crossValidate(x,y)
+    feature_name = "all"
     print "------%s feature -----" % feature_name
     print result
     # write2result #
     file = open("result.txt","a")
+    file.write("number of samples: %d\n" % x.shape[0])
     file.write("------%s feature -----\n" % feature_name)
     file.write("NONERECALL: %f\n" % NONERECALL)
     file.write("CV: %d\n" % 5)

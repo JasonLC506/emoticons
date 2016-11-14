@@ -1,0 +1,35 @@
+Metadata-Version: 1.1
+Name: Python-wrapper
+Version: 0.8.0
+Summary: A wrapper for the Lymbix API that allows you to easily use the service's methods
+Home-page: https://github.com/lymbix/Python-wrapper
+Author: Maxime Santerre
+Author-email: msanterre@lymbix.com
+License: MIT
+Description: The Lymbix sentiment analysis wrapper is a module that eases the use of the API for python developers.
+        
+        INSTALL
+        -------
+        Installing the package is the same as all python modules.
+        
+        You need to run the following:
+         -python setup.py install (you might have to run it with sudo)
+        
+        
+        USAGE
+        ------
+        
+        import lymbix
+        
+        api = lymbix.Lymbix("API KEY")
+        
+        result = api.tonalize("Lymbix loves you")
+        
+        print result
+        
+Keywords: lymbix api sentiment analysis
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Information Analysis

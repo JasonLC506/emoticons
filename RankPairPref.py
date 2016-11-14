@@ -165,6 +165,7 @@ if __name__ == "__main__":
     print result
     # write2result #
     file = open("result_rpp.txt","a")
+    file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)
     file.write("Abstention %s\n" % str(Absention))
