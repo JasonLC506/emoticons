@@ -285,6 +285,7 @@ def buildtree(x,y, samples, min_node=1, result_cur = None):
             best_split = split
             best_sets = sets
             best_sets_result = sets_result
+        return 0
     duration = datetime.now() - start ### test
     print "Nsamps: ", len(samples)
     print "duration: ", duration.total_seconds()
@@ -422,8 +423,9 @@ if __name__ == "__main__":
 
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = DTme.label2Rank(y)
+    samps = np.arange(y.shape[0])
     start = datetime.now()
-    result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
+    result = buildtree(x,y, samps)
     duration = datetime.now() -start
     print "total time: ", duration.total_seconds()
     file = open("result_dt_mallows.txt","a")

@@ -8,7 +8,10 @@ import math
 import numpy as np
 from sklearn.model_selection import KFold
 import logRegFeatureEmotion as LogR
+from joblib import Parallel, delayed
+import multiprocessing
 
+NUM_CORES = 10
 """
 rankform = [[highest_possible_rank, lowest_possible_rank] for emoticon in emoticon_list]
 """
@@ -214,6 +217,10 @@ def bestSplit(x, y, samples, feature, min_node=1):
     right_size = Nsamp
     left_samps = np.array([],dtype=np.int16)
     right_samps = np.array([x_ord[s][1] for s in range(Nsamp)],dtype=np.int16)
+    ## ----- parallel ------ ##
+    split_samps = []
+    split_values = []
+    split_sizes = []
     for i in range(Nsamp): # avoid 0 split
         value = x_ord[i][0]
         if old_value is not None:
@@ -222,25 +229,50 @@ def bestSplit(x, y, samples, feature, min_node=1):
                 # a valid split #
                 # print left_samps, right_samps ### test
                 # start = datetime.now()### test
-                left_result = MM(y[left_samps])
-                right_result = MM(y[right_samps])
+                #left_result = MM(y[left_samps])
+                #right_result = MM(y[right_samps])
                 # duration = datetime.now() - start ###test
                 # print "samps: ", left_size, right_size
                 # print "time: ", duration.total_seconds()
                 # print "left_result: ", left_result, "right_result: ", right_result, "left_size: ", left_size, "right_size: ", right_size
-                inv_variance = (left_size*left_result[0]+right_size*right_result[0])/(1.0*Nsamp) # 1/theta
-                if max_inv_var is None or max_inv_var < inv_variance:
-                    max_inv_var = inv_variance
-                    best_sets = [left_samps, right_samps]
-                    best_split = [feature, value] # >= split
-                    best_sets_result = [left_result, right_result]
-
+                #inv_variance = (left_size*left_result[0]+right_size*right_result[0])/(1.0*Nsamp) # 1/theta
+                #if max_inv_var is None or max_inv_var < inv_variance:
+                #    max_inv_var = inv_variance
+                #    best_split = [feature, value] # >= split
+                #    best_sets_result = [left_result, right_result]
+                split_samps.append([left_samps, right_samps])
+                split_values.append(value) # >= split
+                split_sizes.append([left_size, right_size])
         left_samps = np.append(left_samps, x_ord[i][1])
         right_samps = np.delete(right_samps, 0)
         left_size += 1
         right_size += -1
         old_value = value
+    Nsplits = len(split_values)
+    if Nsplits < 1:
+        return None, [feature, -1], [[],[]], [[],[]]
+    results = Parallel(n_jobs=NUM_CORES)(delayed(split_MM)(y[split_samps[i][0]], y[split_samps[i][1]], split_sizes[i], i) for i in range(Nsplits))
+    ## results = Nsplits * [index, inv_var, best_sets_result]
+    best = max(results, key = lambda x: x[1])
+    ind = best[0]
+    max_inv_var = best[1]
+    best_split = [feature, split_values[ind]]
+    best_sets = split_samps[ind]
+    best_sets_result = best[2]
+    #print "max_inv_var", max_inv_var  ### test
     return max_inv_var, best_split, best_sets, best_sets_result
+
+
+def split_MM(left_set, right_set, split_sizes,split_ind):
+    best_sets_result = [[],[]]
+    best_sets_result[0] = MM(left_set)
+    best_sets_result[1] = MM(right_set)
+    left_size = split_sizes[0]
+    right_size = split_sizes[1]
+    total_size = left_size + right_size
+    inv_var = (left_size*best_sets_result[0][0] + right_size*best_sets_result[1][0])/(1.0*total_size)
+    return [split_ind, inv_var, best_sets_result]
+
 
 
 def buildtree(x,y, samples, min_node=1, result_cur = None):
@@ -285,6 +317,7 @@ def buildtree(x,y, samples, min_node=1, result_cur = None):
             best_split = split
             best_sets = sets
             best_sets_result = sets_result
+        return 0
     duration = datetime.now() - start ### test
     print "Nsamps: ", len(samples)
     print "duration: ", duration.total_seconds()
@@ -422,12 +455,8 @@ if __name__ == "__main__":
 
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = DTme.label2Rank(y)
+    samps = np.arange(y.shape[0])
     start = datetime.now()
-    result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
+    buildtree(x,y, samps)
     duration = datetime.now() -start
     print "total time: ", duration.total_seconds()
-    file = open("result_dt_mallows.txt","a")
-    file.write("NONERECALL: %f\n" % LogR.NONERECALL)
-    file.write("CV: %d\n" % 5)
-    file.write(str(result)+"\n")
-    file.close()
