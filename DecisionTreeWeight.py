@@ -1,3 +1,7 @@
+"""
+Using gini_rank as split and also pruning
+pruning hyperparameter validation using G-mean
+"""
 import numpy as np
 import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
@@ -451,6 +455,14 @@ def label2Rank(y):
     y = map(LogR.rankOrder,y)
     y = np.array(y, dtype=int)
     return y
+
+
+def rankWeight(rank):
+    """
+    :param rank:  rank in old rank form
+    :return: weight given to sample with input rank
+    """
+    return 0
 
 
 if __name__ == "__main__":
