@@ -19,5 +19,5 @@ def rankPer():
     rank_per = [[] for i in range(N_per)]
 
 
-perf = np.arange(2*3).reshape([2,3])
-print perf.ndim
+a = [1,3,4,5,np.nan,0]
+print a.index(min(a)), min(a)
