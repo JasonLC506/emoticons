@@ -4,8 +4,8 @@ import ast
 def buildFeatureEmotion(postfile, resultfile):
 
     Ntext_posts = 0
-    Ntext_posts_eng = 4708
-    Ntext_posts_token = 9660
+    Ntext_posts_eng = 5295
+    Ntext_posts_token = 10719
     postfile = open(postfile,"r")
 
     file_result = open(resultfile,"r")
