@@ -13,6 +13,50 @@ import logRegFeatureEmotion as LogR
 rankform = [[highest_possible_rank, lowest_possible_rank] for emoticon in emoticon_list]
 """
 
+# def MM(ranks, max_iter = 10, iter_out = False):
+#     """
+#     The modified MM algorithm proposed for incomplete ranks
+#     :param ranks: y in ranks in given nodes
+#     :return: the deviation theta and the node result (median)
+#     """
+#     if type(ranks)==np.ndarray:
+#         ranks = ranks.tolist()
+#     start = datetime.now() ### test
+#     median = MMInit(ranks)
+#     duration = datetime.now()-start ### test
+#     print "init_time: ", duration.total_seconds()###test
+#     flag_cvg = False
+#     for iter in range(max_iter):
+#         ranks_cplt = []
+#         start = datetime.now()
+#         for rank in ranks:
+#             ranks_cplt.append(MMExt(rank, median))
+#         duration = datetime.now()-start
+#         print "extension_time: ", duration.total_seconds()
+#         start = datetime.now()
+#         median_new = MMBC(ranks_cplt)
+#         duration = datetime.now()-start
+#         print "borda count time: ", duration.total_seconds()
+#         start = datetime.now()
+#         if median_new == median:
+#             duration = datetime.now() - start
+#             print "compare time: ", duration.total_seconds()
+#             flag_cvg = True
+#             break
+#         else:
+#             median = median_new
+#
+#     if not flag_cvg:
+#         print "warning: MM fails to converge"
+#     start = datetime.now()
+#     theta = MMMallowTheta(ranks_cplt, median)
+#     duration = datetime.now()-start
+#     print "find theta time: ", duration.total_seconds()
+#     if iter_out:
+#         return theta, median, iter
+#     return theta, median
+
+
 def MM(ranks, max_iter = 10, iter_out = False):
     """
     The modified MM algorithm proposed for incomplete ranks
@@ -26,11 +70,12 @@ def MM(ranks, max_iter = 10, iter_out = False):
     duration = datetime.now()-start ### test
     print "init_time: ", duration.total_seconds()###test
     flag_cvg = False
+    Nsamps = len(ranks)
     for iter in range(max_iter):
-        ranks_cplt = []
+        ranks_cplt = [[] for i in range(Nsamps)]
         start = datetime.now()
-        for rank in ranks:
-            ranks_cplt.append(MMExt(rank, median))
+        for i in range(Nsamps):
+            ranks_cplt[i] = (MMExt(ranks[i], median))
         duration = datetime.now()-start
         print "extension_time: ", duration.total_seconds()
         start = datetime.now()
@@ -71,6 +116,7 @@ def MMInit(ranks):
     init_rank = score2rank(rscore, cplt=True)
     return init_rank
 
+
 def MMExt(rank,median):
     # Given median rank, find most probable consistent extensions for input incomplete rank #
     # robust for complete rank input #
@@ -80,11 +126,11 @@ def MMExt(rank,median):
     for label in range(Nclass):
         ind = median[label][0]
         prior[ind] = label
-    position_taken = []
+    position_taken = [False for i in range(Nclass)]
     for label in prior:
         for position in range(rank[label][0], rank[label][1] + 1):
-            if position not in position_taken:
-                position_taken.append(position)
+            if not position_taken[position]:
+                position_taken[position] = True
                 ext_rank[label][0] = position
                 ext_rank[label][1] = position
                 break
@@ -400,6 +446,7 @@ if __name__ == "__main__":
         y = y.tolist()
     y = map(score2rank, y)
     y = np.array(y)
+    print y[0]
     print "Nsamps: ", y.shape[0]
     start = datetime.now()
     theta, median, iter = MM(y, iter_out=True)
@@ -410,13 +457,22 @@ if __name__ == "__main__":
     Nsamp = y.shape[0]
     start = datetime.now()
     m = 0
-    for i in range(Nsamp):
-        for j in range(Nsamp):
-            m+=1
+    for i in xrange(Nsamp):
+        for j in xrange(Nsamp):
+            m = j * 1.0 * i
     duration = datetime.now()-start
     print "test machine time: ", duration.total_seconds()
 
     # x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+
+    # time_ext1 = 0.0
+    # time_ext2 = 0.0
+    # for i in range(1000):
+    #     MMExt(y[0], [[0,0],[1,1],[2,2],[3,3],[4,4],[5,5]])
+    # print time_ext1
+    # print time_ext2
+
+
     # y = DTme.label2Rank(y)
     # result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
     # file = open("result_dt_mallows.txt","a")
