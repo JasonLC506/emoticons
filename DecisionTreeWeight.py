@@ -25,10 +25,9 @@ class DecisionTree(object):
         self.size = size_subtree
         self.alpha = -1.0
 
-
-
+    # independent functions #
     def buildtree(self, x_train, y_train, weights = None, samples = None, stop_criterion_mis_rate = None,
-                  stop_criterion_min_node = None, stop_criterion_gain = 0.0):
+                  stop_criterion_min_node = 1, stop_criterion_gain = 0.0):
         if samples is None:
             samples = np.arange(y_train.shape[0])
         if weights is None: # not weighted tree
@@ -44,6 +43,7 @@ class DecisionTree(object):
         ## check if stop ##
         if stop_criterion_mis_rate is not None and self.mis_rate < stop_criterion_mis_rate or \
             stop_criterion_min_node is not None and Nsamp <= stop_criterion_min_node:
+            # print "mis_rate: ", self.mis_rate
             return self
 
         ## find split ##
@@ -75,7 +75,35 @@ class DecisionTree(object):
         else:
             return self
 
+    def printtree(self, indent=""):
+        if self.tb is None:
+            print(indent + str(self.result))
+        else:
+            print(indent + str(self.feature) + ">=" + str(self.value) + "?")
+            print(indent + "T->\n")
+            self.tb.printtree(indent + "   ")
+            print(indent + "F->\n")
+            self.fb.printtree(indent + "   ")
 
+    def predict(self, x_test, alpha = 0):
+        if x_test.ndim == 2: # batch predict
+            y_pred = []
+            for samp in range(x_test.shape[0]):
+                y_pred.append(self.predict(x_test[samp], alpha))
+            return np.array(y_pred)
+        else: # individual predict
+            if self.tb is None:
+                return self.result
+            if self.alpha >= 0:
+                if self.alpha < alpha:
+                    return self.result
+            value = x_test[self.feature]
+            if value >= self.value:
+                return self.tb.predict(x_test,alpha)
+            else:
+                return self.fb.predict(x_test,alpha)
+
+    # dependent functions #
     def nodeResult(self, y_s, w_s):
         """
         calculate the predict result for the node
@@ -83,8 +111,32 @@ class DecisionTree(object):
         :param w_s: weights of corresponding samples
         :return: type(y)
         """
-        pass
-
+        n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
+        Ranks = y_s.shape[1]
+        result = []
+        for rank in range(Ranks):
+            # assign ranking #
+            # current rank with highest priority, when zero appearance, from highest rank to lowest #
+            priority = [i for i in range(Ranks) if i != rank]
+            priority.insert(0, rank)
+            flag = False
+            for i in priority:
+                n_class_cur = n_rc[i]
+                while not flag:
+                    max_value = max(n_class_cur)
+                    if max_value == 0:
+                        break  # all are 0 in current rank
+                    emoti = n_class_cur.index(max_value)
+                    if emoti not in result:
+                        result.append(emoti)
+                        flag = True  # find best emoticon
+                    else:
+                        n_class_cur[emoti] = 0
+                if flag:
+                    break
+            if not flag:
+                result.append(-1)
+        return np.array(result)
 
     def misRate(self, y_s, w_s, result):
         """
@@ -94,8 +146,29 @@ class DecisionTree(object):
         :param result: predicted result for the node
         :return: float
         """
-        pass
+        Norm = np.sum(w_s)
+        mis = 0.0
+        for i in range(y_s.shape[0]):
+            if self.diffLabel(result, y_s[i]):
+                mis += w_s[i]
+        return (mis/Norm)
 
+    def diffLabel(self, y_pred, y):
+        """
+        check if two labels are different
+        current for two ranks, False if all emoticons in y is recalled by y_pred
+        :param y_pred: predicted rank
+        :param y: true rank
+        :return: True or False
+        """
+        for rank in range(len(y)):
+            emoti = y[rank]
+            if emoti >= 0:
+                if y_pred[rank]!= emoti:
+                    return True
+            else:# not present emoticons follow
+                return False
+        return False
 
     def splitCriterion(self, y_s, w_s):
         """
@@ -158,7 +231,7 @@ class DecisionTree(object):
                         gini = gini_tb + gini_fb
                         # print "current gini", gini_tb, gini_fb
                         # print "current sets", [[y[n,:] for n in range(j,Nsamp)], [y[m,:] for m in range(j)]]
-                        if min_gini_sub < 0 or min_gini >= gini:
+                        if min_gini_sub < 0 or min_gini_sub >= gini:
                             min_gini_sub = gini
                             best_split_sub = j
                             gini_s_sub = [gini_tb, gini_fb]
@@ -172,11 +245,10 @@ class DecisionTree(object):
         feature_min = min_gini.index(gini_min)
         best_split = best_split[feature_min]
         best_sets = best_sets[feature_min]
-        gini_s_sub = gini_s_sub[feature_min]
+        gini_s_sub = gini_s[feature_min]
         return gini_min, [feature_min, best_split], best_sets
 
-
-    def nRankClass(self,y,weights, samples):
+    def nRankClass(self, y, weights, samples):
         if type(y) != np.ndarray:
             y = np.array(y)
         Ranks = y.shape[1]
@@ -188,7 +260,6 @@ class DecisionTree(object):
                 if emoti >= 0:
                     n_rc[rank][emoti] += weights[sample]
         return n_rc
-
 
     def nRankClassChange(self, n_rc, y_rank, weight, method):
         Ranks = len(n_rc)
@@ -207,7 +278,6 @@ class DecisionTree(object):
                 print "wrong delete"
         return n_rc
 
-
     def giniRank_e(self, n_rc):
         Ranks = len(n_rc)
         Nclass = len(n_rc[0])
@@ -215,13 +285,12 @@ class DecisionTree(object):
         for rank in range(Ranks):
             gini = 0.0
             n = sum(n_rc[rank])
-            if n < 1:
+            if n == 0:
                 gini_rank += gini * n
             else:
                 gini = sum([n_rc[rank][i] * (n - n_rc[rank][i]) for i in range(Nclass)]) * 1.0 / n
                 gini_rank += gini
         return gini_rank
-
 
     def splitGain(self, cri_cur, cri_split):
         """
@@ -232,7 +301,6 @@ class DecisionTree(object):
         :return: float
         """
         return (cri_cur - cri_split)
-
 
     def pruneGain(self, split_cri_gain, tb_Nsamp, fb_Nsamp):
         """
@@ -246,4 +314,76 @@ class DecisionTree(object):
         return (self.mis_rate - split_mis_rate)
 
 
-dt = DecisionTree()
+def crossValidate(x,y, cv=5, alpha = 0):
+
+    results = {"alpha": [], "perf": []}
+
+    # cross validation #
+    np.random.seed(1100)
+    kf = KFold(n_splits=cv, shuffle=True, random_state=0)  ## for testing fixing random_state
+    for train, test in kf.split(x):
+        x_train = x[train, :]
+        y_train = y[train, :]
+        x_test = x[test, :]
+        y_test = y[test, :]
+
+        # training and predict
+
+        # if alpha == None:
+        #     ## nested select validate and test ##
+        #     # print "start searching alpha:", datetime.now() ### test
+        #     alpha_sel, perf = DTme.hyperParometer(x_train, y_train)
+        #     # print "finish searching alpha:", datetime.now(), alpha ### test
+        # else:
+        #     alpha_sel = alpha
+        tree = DecisionTree().buildtree(x_train,y_train)
+
+        # performance measure
+        alpha_sel, y_pred = alpha, tree.predict(x_test, alpha)
+        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["alpha"].append(alpha_sel)
+        print alpha_sel, "alpha"
+
+    for key in results.keys():
+        item = np.array(results[key])
+        mean = np.nanmean(item, axis=0)
+        std = np.nanstd(item, axis=0)
+        results[key] = [mean, std]
+
+    return results
+
+
+def label2Rank(y):
+    y = map(LogR.rankOrder, y)
+    y = np.array(y, dtype=int)
+    return y
+
+
+def dataSimulated(Nsamp, Nfeature, Nclass):
+    np.random.seed(seed=10)
+    x = np.arange(Nsamp*Nfeature,dtype="float").reshape([Nsamp,Nfeature])
+    x += np.random.random(x.shape)*10
+    y = np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
+    y *= 2
+    y = y.astype(int)
+    y = map(LogR.rankOrder,y)
+    y = np.array(y)
+    return x,y
+
+if __name__ == "__main__":
+    x,y = dataSimulated(8, 3, 6)
+    print x
+    print y
+    Nsamp = x.shape[0]
+    weight = 1.0/Nsamp
+    weights = np.array([weight for i in range(Nsamp)], dtype = np.float32)
+    print weights
+    tree = DecisionTree().buildtree(x,y,weights, stop_criterion_mis_rate=0.4)
+    tree.printtree()
+    for i in range(x.shape[0]):
+        y_pred = tree.predict(x[i])
+        print y_pred, y[i]
+    # x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    # y = label2Rank(y)
+    # result = crossValidate(x,y)
+    # print result
