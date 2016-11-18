@@ -105,8 +105,10 @@ class DecisionTree(object):
         :param w_s:
         :return: float
         """
-        pass
-
+        samples = np.arange(y_s.shape[0])
+        n_rc = self.nRankClass(y_s,w_s,samples)
+        gini = self.giniRank_e(n_rc)
+        return gini
 
     def bestSplit(self, x, y, weights, samples):
         """
@@ -128,6 +130,7 @@ class DecisionTree(object):
         min_gini = [np.nan for f in range(Nfeature)]
         best_split = [None for f in range(Nfeature)]
         best_sets = [[] for f in range(Nfeature)]
+        gini_s = [[0,0] for f in range(Nfeature)]
 
         for feature in range(Nfeature):
             min_gini_sub = -1
@@ -158,15 +161,18 @@ class DecisionTree(object):
                         if min_gini_sub < 0 or min_gini >= gini:
                             min_gini_sub = gini
                             best_split_sub = j
+                            gini_s_sub = [gini_tb, gini_fb]
             if min_gini_sub >= 0:
                 min_gini[feature] = min_gini_sub
                 best_split[feature] = x_ord[best_split_sub][0]
                 best_sets[feature] = [[x_ord[i][1] for i in range(best_split_sub,Nsamp)],
                                       [x_ord[j][1]for j in range(best_split_sub)]]
+                gini_s[feature] = gini_s_sub
         gini_min = min(min_gini)
         feature_min = min_gini.index(gini_min)
         best_split = best_split[feature_min]
         best_sets = best_sets[feature_min]
+        gini_s_sub = gini_s_sub[feature_min]
         return gini_min, [feature_min, best_split], best_sets
 
 
