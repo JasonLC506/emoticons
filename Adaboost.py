@@ -154,8 +154,8 @@ if __name__ == "__main__":
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = label2Rank(y)
     # x,y = dataSimulated(100,3,5)
-    for j in range(5):
-        stop_criterion_mis_rate = 0.5 - 0.1*j
+    for j in range(1,6):
+        stop_criterion_mis_rate = 0.22 - 0.04*j
         for m in range(10):
             ITER_MAX = 10 + m*10
             result = crossValidate(x,y, nocross = True)
