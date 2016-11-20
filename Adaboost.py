@@ -8,9 +8,9 @@ from DecisionTreeWeight import label2Rank
 from DecisionTreeWeight import dataSimulated
 import logRegFeatureEmotion as LogR
 
-ITER_MAX = 100
+ITER_MAX = 30
 stop_criterion_mis_rate = 0.1
-output = 10
+output = 1
 def adaboost(x_train, y_train, x_test = None, y_test = None, output = output, iter_max = ITER_MAX):
 
     Nsamp = y_train.shape[0]
@@ -154,14 +154,14 @@ if __name__ == "__main__":
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = label2Rank(y)
     # x,y = dataSimulated(100,3,5)
-    for j in range(1,6):
-        stop_criterion_mis_rate = 0.22 - 0.04*j
-        for m in range(10):
-            ITER_MAX = 10 + m*10
-            result = crossValidate(x,y, nocross = True)
-            print result
-            with open("result_boost.txt","a") as f:
-                f.write("Nsamp: %d\n" % x.shape[0])
-                f.write("iter_max "+str(ITER_MAX)+"\n")
-                f.write("stop misclassification rate %f\n" %stop_criterion_mis_rate)
-                f.write(str(result)+"\n")
+    # for j in range(1,6):
+    #     stop_criterion_mis_rate = 0.22 - 0.04*j
+    #     for m in range(10):
+    #         ITER_MAX = 10 + m*10
+    result = crossValidate(x,y, nocross = False)
+    print result
+    with open("result_boost.txt","a") as f:
+        f.write("Nsamp: %d\n" % x.shape[0])
+        f.write("iter_max "+str(ITER_MAX)+"\n")
+        f.write("stop misclassification rate %f\n" %stop_criterion_mis_rate)
+        f.write(str(result)+"\n")

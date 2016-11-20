@@ -314,7 +314,8 @@ class DecisionTree(object):
         return (self.mis_rate - split_mis_rate)
 
 
-def crossValidate(x,y, cv=5, alpha = 0):
+def crossValidate(x,y, cv=5, alpha = 0, stop_criterion_mis_rate = None, stop_criterion_min_node = 1,
+                  stop_criterion_gain = 0.0):
 
     results = {"alpha": [], "perf": []}
 
@@ -336,7 +337,10 @@ def crossValidate(x,y, cv=5, alpha = 0):
         #     # print "finish searching alpha:", datetime.now(), alpha ### test
         # else:
         #     alpha_sel = alpha
-        tree = DecisionTree().buildtree(x_train,y_train)
+        tree = DecisionTree().buildtree(x_train,y_train,
+                                        stop_criterion_mis_rate= stop_criterion_mis_rate,
+                                        stop_criterion_min_node = stop_criterion_min_node,
+                                        stop_criterion_gain=stop_criterion_gain)
 
         # performance measure
         alpha_sel, y_pred = alpha, tree.predict(x_test, alpha)
@@ -371,19 +375,21 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
     return x,y
 
 if __name__ == "__main__":
-    x,y = dataSimulated(8, 3, 6)
-    print x
-    print y
-    Nsamp = x.shape[0]
-    weight = 1.0/Nsamp
-    weights = np.array([weight for i in range(Nsamp)], dtype = np.float32)
-    print weights
-    tree = DecisionTree().buildtree(x,y,weights, stop_criterion_mis_rate=0.4)
-    tree.printtree()
-    for i in range(x.shape[0]):
-        y_pred = tree.predict(x[i])
-        print y_pred, y[i]
-    # x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
-    # y = label2Rank(y)
-    # result = crossValidate(x,y)
-    # print result
+    ### test ###
+    # x,y = dataSimulated(8, 3, 6)
+    # print x
+    # print y
+    # Nsamp = x.shape[0]
+    # weight = 1.0/Nsamp
+    # weights = np.array([weight for i in range(Nsamp)], dtype = np.float32)
+    # print weights
+    # tree = DecisionTree().buildtree(x,y,weights, stop_criterion_mis_rate=0.4)
+    # tree.printtree()
+    # for i in range(x.shape[0]):
+    #     y_pred = tree.predict(x[i])
+    #     print y_pred, y[i]
+
+    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    y = label2Rank(y)
+    result = crossValidate(x,y, stop_criterion_mis_rate=0.1)
+    print result
