@@ -1,0 +1,470 @@
+Traceback (most recent call last):
+  File "Adaboost.py", line 5, in <module>
+    from sklearn.model_selection import KFold
+ImportError: No module named sklearn.model_selection
+
+wc 1.19313523345
+iter:  1
+time for 1 iters: 62.866809
+wc 1.11822389465
+iter:  2
+time for 1 iters: 93.693291
+wc 1.11205198355
+iter:  3
+time for 1 iters: 84.351666
+wc 1.12955538341
+iter:  4
+time for 1 iters: 91.990448
+wc 1.13910019881
+iter:  5
+time for 1 iters: 78.195991
+wc 1.104498708
+iter:  6
+time for 1 iters: 87.133568
+wc 1.14203643753
+iter:  7
+time for 1 iters: 77.208564
+wc 1.10919138775
+iter:  8
+time for 1 iters: 87.888925
+wc 1.13710822206
+iter:  9
+time for 1 iters: 81.654870
+wc 1.11994554001
+iter:  10
+time for 1 iters: 93.236941
+wc 1.14022078803
+iter:  11
+time for 1 iters: 78.615794
+wc 1.10065338462
+iter:  12
+time for 1 iters: 91.153563
+wc 1.13533754964
+iter:  13
+time for 1 iters: 74.329913
+wc 1.10654462159
+iter:  14
+time for 1 iters: 92.111468
+wc 1.13975462216
+iter:  15
+time for 1 iters: 77.316812
+wc 1.09620106398
+iter:  16
+time for 1 iters: 93.873609
+wc 1.15444942366
+iter:  17
+time for 1 iters: 77.855149
+wc 1.08383398494
+iter:  18
+time for 1 iters: 92.436987
+wc 1.15999520643
+iter:  19
+time for 1 iters: 88.366460
+wc 1.09413377002
+iter:  20
+time for 1 iters: 104.259283
+wc 1.1916878828
+iter:  21
+time for 1 iters: 84.561149
+wc 1.0816839651
+iter:  22
+time for 1 iters: 90.770315
+wc 1.15666378323
+iter:  23
+time for 1 iters: 87.465927
+wc 1.11261561713
+iter:  24
+time for 1 iters: 93.022676
+wc 1.14524742876
+iter:  25
+time for 1 iters: 87.271227
+wc 1.07517467701
+iter:  26
+time for 1 iters: 85.593758
+wc 1.15156629129
+iter:  27
+time for 1 iters: 76.547730
+wc 1.0873352389
+iter:  28
+time for 1 iters: 91.594073
+wc 1.13620834856
+iter:  29
+time for 1 iters: 79.268983
+wc 1.10456750554
+iter:  30
+time for 1 iters: 93.888421
+wc 1.20252543765
+iter:  1
+time for 1 iters: 70.197031
+wc 1.10298901248
+iter:  2
+time for 1 iters: 100.043888
+wc 1.11184781971
+iter:  3
+time for 1 iters: 76.085649
+wc 1.11726961542
+iter:  4
+time for 1 iters: 103.741780
+wc 1.14267195608
+iter:  5
+time for 1 iters: 78.861040
+wc 1.10510966025
+iter:  6
+time for 1 iters: 91.802622
+wc 1.12022202932
+iter:  7
+time for 1 iters: 76.337690
+wc 1.11298553459
+iter:  8
+time for 1 iters: 97.546789
+wc 1.10924902756
+iter:  9
+time for 1 iters: 76.061215
+wc 1.12092545864
+iter:  10
+time for 1 iters: 97.163037
+wc 1.12739126469
+iter:  11
+time for 1 iters: 79.957321
+wc 1.10997467418
+iter:  12
+time for 1 iters: 92.643307
+wc 1.14321800737
+iter:  13
+time for 1 iters: 84.867562
+wc 1.08016687791
+iter:  14
+time for 1 iters: 90.052548
+wc 1.13796622666
+iter:  15
+time for 1 iters: 81.993945
+wc 1.0996789649
+iter:  16
+time for 1 iters: 88.668872
+wc 1.13433006201
+iter:  17
+time for 1 iters: 86.409581
+wc 1.08475020301
+iter:  18
+time for 1 iters: 95.793234
+wc 1.14846012853
+iter:  19
+time for 1 iters: 84.550627
+wc 1.08112987543
+iter:  20
+time for 1 iters: 87.280697
+wc 1.14296355822
+iter:  21
+time for 1 iters: 80.883712
+wc 1.095258841
+iter:  22
+time for 1 iters: 90.901284
+wc 1.12989157006
+iter:  23
+time for 1 iters: 83.459610
+wc 1.08422824092
+iter:  24
+time for 1 iters: 90.783015
+wc 1.14489919229
+iter:  25
+time for 1 iters: 80.430304
+wc 1.09142554291
+iter:  26
+time for 1 iters: 97.665256
+wc 1.13842835945
+iter:  27
+time for 1 iters: 83.522346
+wc 1.0997117051
+iter:  28
+time for 1 iters: 95.131039
+wc 1.1303660585
+iter:  29
+time for 1 iters: 82.574299
+wc 1.09923307626
+iter:  30
+time for 1 iters: 89.721054
+wc 1.18023047207
+iter:  1
+time for 1 iters: 62.352783
+wc 1.1144002728
+iter:  2
+time for 1 iters: 94.691291
+wc 1.1148099296
+iter:  3
+time for 1 iters: 74.849515
+wc 1.11509757404
+iter:  4
+time for 1 iters: 88.813083
+wc 1.11870788492
+iter:  5
+time for 1 iters: 84.044767
+wc 1.09568609004
+iter:  6
+time for 1 iters: 91.488454
+wc 1.13290922412
+iter:  7
+time for 1 iters: 80.525350
+wc 1.09934397039
+iter:  8
+time for 1 iters: 92.165740
+wc 1.13854741115
+iter:  9
+time for 1 iters: 84.533195
+wc 1.09601118939
+iter:  10
+time for 1 iters: 89.953093
+wc 1.17521784048
+iter:  11
+time for 1 iters: 85.914838
+wc 1.08258634138
+iter:  12
+time for 1 iters: 87.190213
+wc 1.14883183255
+iter:  13
+time for 1 iters: 86.038216
+wc 1.08842790742
+iter:  14
+time for 1 iters: 88.265486
+wc 1.15237776355
+iter:  15
+time for 1 iters: 88.131176
+wc 1.0908580807
+iter:  16
+time for 1 iters: 90.500506
+wc 1.15348164267
+iter:  17
+time for 1 iters: 86.678215
+wc 1.07837440189
+iter:  18
+time for 1 iters: 90.787351
+wc 1.15164518888
+iter:  19
+time for 1 iters: 86.418639
+wc 1.08599216189
+iter:  20
+time for 1 iters: 87.707368
+wc 1.14998358045
+iter:  21
+time for 1 iters: 80.004261
+wc 1.07625339979
+iter:  22
+time for 1 iters: 93.761462
+wc 1.15086181902
+iter:  23
+time for 1 iters: 90.502650
+wc 1.07717363541
+iter:  24
+time for 1 iters: 93.123786
+wc 1.1618554774
+iter:  25
+time for 1 iters: 86.059351
+wc 1.08118508685
+iter:  26
+time for 1 iters: 86.550274
+wc 1.15940155326
+iter:  27
+time for 1 iters: 80.820042
+wc 1.06984190108
+iter:  28
+time for 1 iters: 96.476206
+wc 1.15084455438
+iter:  29
+time for 1 iters: 76.137589
+wc 1.08571476751
+iter:  30
+time for 1 iters: 93.030905
+wc 1.19266960199
+iter:  1
+time for 1 iters: 62.246456
+wc 1.11620467767
+iter:  2
+time for 1 iters: 92.882632
+wc 1.12098526007
+iter:  3
+time for 1 iters: 74.942511
+wc 1.12057061397
+iter:  4
+time for 1 iters: 94.836207
+wc 1.14556332135
+iter:  5
+time for 1 iters: 75.952664
+wc 1.10373857618
+iter:  6
+time for 1 iters: 95.849379
+wc 1.12810277725
+iter:  7
+time for 1 iters: 82.255613
+wc 1.11912971942
+iter:  8
+time for 1 iters: 92.269329
+wc 1.12661481585
+iter:  9
+time for 1 iters: 72.559248
+wc 1.10800985231
+iter:  10
+time for 1 iters: 87.874360
+wc 1.13955705422
+iter:  11
+time for 1 iters: 75.900668
+wc 1.1074033744
+iter:  12
+time for 1 iters: 90.751986
+wc 1.14676251933
+iter:  13
+time for 1 iters: 81.963336
+wc 1.09408648193
+iter:  14
+time for 1 iters: 94.241372
+wc 1.1525903049
+iter:  15
+time for 1 iters: 86.822805
+wc 1.08961885417
+iter:  16
+time for 1 iters: 86.459896
+wc 1.16065212171
+iter:  17
+time for 1 iters: 85.518461
+wc 1.09080586276
+iter:  18
+time for 1 iters: 84.908908
+wc 1.15343034352
+iter:  19
+time for 1 iters: 85.885932
+wc 1.10966305267
+iter:  20
+time for 1 iters: 82.688169
+wc 1.15781067324
+iter:  21
+time for 1 iters: 86.824694
+wc 1.08252649297
+iter:  22
+time for 1 iters: 95.233174
+wc 1.15861024441
+iter:  23
+time for 1 iters: 82.654011
+wc 1.08279304469
+iter:  24
+time for 1 iters: 92.812386
+wc 1.16080579637
+iter:  25
+time for 1 iters: 83.020371
+wc 1.08391856395
+iter:  26
+time for 1 iters: 89.647054
+wc 1.15725465047
+iter:  27
+time for 1 iters: 87.171355
+wc 1.09823967999
+iter:  28
+time for 1 iters: 88.915637
+wc 1.15436175151
+iter:  29
+time for 1 iters: 82.754631
+wc 1.09680167716
+iter:  30
+time for 1 iters: 92.537588
+wc 1.16451691429
+iter:  1
+time for 1 iters: 62.816897
+wc 1.10759297939
+iter:  2
+time for 1 iters: 96.337496
+wc 1.0905320769
+iter:  3
+time for 1 iters: 83.401864
+wc 1.10207666659
+iter:  4
+time for 1 iters: 92.757077
+wc 1.09198185797
+iter:  5
+time for 1 iters: 79.604549
+wc 1.08698628051
+iter:  6
+time for 1 iters: 90.200530
+wc 1.1075396273
+iter:  7
+time for 1 iters: 89.358867
+wc 1.08645978361
+iter:  8
+time for 1 iters: 95.873771
+wc 1.118826115
+iter:  9
+time for 1 iters: 78.387884
+wc 1.07712350195
+iter:  10
+time for 1 iters: 97.206627
+wc 1.12845217129
+iter:  11
+time for 1 iters: 93.245298
+wc 1.07256247224
+iter:  12
+time for 1 iters: 108.038008
+wc 1.12248832706
+iter:  13
+time for 1 iters: 96.697412
+wc 1.08227769988
+iter:  14
+time for 1 iters: 100.215507
+wc 1.11819555545
+iter:  15
+time for 1 iters: 101.965488
+wc 1.07643504181
+iter:  16
+time for 1 iters: 106.329842
+wc 1.12412599863
+iter:  17
+time for 1 iters: 98.980017
+wc 1.08252227578
+iter:  18
+time for 1 iters: 106.131993
+wc 1.12528444994
+iter:  19
+time for 1 iters: 96.569557
+wc 1.06125182369
+iter:  20
+time for 1 iters: 98.367356
+wc 1.11907329451
+iter:  21
+time for 1 iters: 94.756227
+wc 1.07453663036
+iter:  22
+time for 1 iters: 98.454121
+wc 1.12557102009
+iter:  23
+time for 1 iters: 100.074277
+wc 1.08018228221
+iter:  24
+time for 1 iters: 84.648726
+wc 1.12248584795
+iter:  25
+time for 1 iters: 82.898232
+wc 1.07778277622
+iter:  26
+time for 1 iters: 94.283142
+wc 1.14693932285
+iter:  27
+time for 1 iters: 83.199270
+wc 1.04697880604
+iter:  28
+time for 1 iters: 95.924149
+wc 1.13851447887
+iter:  29
+time for 1 iters: 108.225052
+wc 1.0708651774
+iter:  30
+time for 1 iters: 101.026013
+{'perf': [array([  8.59089624e-01,   0.00000000e+00,   0.00000000e+00,
+         9.99770049e-01,   9.84017404e-01,   9.79533242e-01,
+         9.58664069e-01,   9.35150077e-01,   9.88271947e-01,
+         9.99767813e-01,   9.31035638e-01,   1.40163684e-01,
+         4.96841152e-01,   2.03111899e-01,   1.38609907e-01,
+         3.44560000e+03,   8.06200000e+02,   8.30000000e+01,
+         2.85200000e+02,   2.83200000e+02,   4.72000000e+01,
+         0.00000000e+00,   3.46159820e-01,   9.34481888e-01]), array([  4.22473901e-03,   0.00000000e+00,   0.00000000e+00,
+         3.35208502e-04,   1.64294439e-03,   1.38829415e-03,
+         4.65268712e-03,   1.29185951e-03,   2.78875620e-03,
+         3.38597832e-04,   6.96512023e-03,   5.22000729e-02,
+         1.50917444e-02,   1.50848330e-02,   2.00816142e-02,
+         3.82622529e+00,   9.26066952e+00,   6.03324125e+00,
+         2.38193199e+01,   7.73045924e+00,   1.05527248e+01,
+         0.00000000e+00,   2.07580848e-02,   7.35074003e-03])]}
