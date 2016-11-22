@@ -23,7 +23,7 @@
             <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1071">
+                  <state relative-caret-position="-2865">
                     <caret line="147" column="37" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
                     <folding>
                       <element signature="e#0#14#0" expanded="true" />
@@ -32,11 +32,11 @@
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="DecisionTree.py" pinned="false" current-in-tab="true">
+            <file leaf-file-name="DecisionTree.py" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/DecisionTree.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="637">
-                    <caret line="471" column="0" selection-start-line="471" selection-start-column="0" selection-end-line="472" selection-end-column="21" />
+                  <state relative-caret-position="926">
+                    <caret line="476" column="52" selection-start-line="476" selection-start-column="52" selection-end-line="476" selection-end-column="52" />
                     <folding>
                       <element signature="e#0#18#0" expanded="true" />
                       <element signature="e#254#793#0" expanded="false" />
@@ -69,6 +69,27 @@
                 </provider>
               </entry>
             </file>
+            <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="603">
+                    <caret line="442" column="0" selection-start-line="440" selection-start-column="0" selection-end-line="442" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#97#115#0" expanded="true" />
+                      <marker date="1479842127190" expanded="false" signature="505:771" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="3298:3626" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="3669:4300" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="4365:5645" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="6725:7052" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="10191:10593" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="10656:11170" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="11655:11972" placeholder="..." />
+                      <marker date="1479842127190" expanded="false" signature="12034:12494" placeholder="..." />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
           </leaf>
         </state>
       </content>
@@ -83,22 +104,10 @@
       <file leaf-file-name="buildFeatureEmotion.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buildFeatureEmotion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-478">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="94">
+              <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RankPairPref.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RankPairPref.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,7 +116,7 @@
       <file leaf-file-name="result_rpp.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/result_rpp.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="213">
               <caret line="67" column="60" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
               <folding />
             </state>
@@ -117,40 +126,18 @@
       <file leaf-file-name="result_dt.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/result_dt.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="41" />
+            <state relative-caret-position="145">
+              <caret line="98" column="60" selection-start-line="98" selection-start-column="60" selection-end-line="98" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="366" column="10" selection-start-line="366" selection-start-column="10" selection-end-line="366" selection-end-column="10" />
-              <folding>
-                <element signature="e#97#115#0" expanded="true" />
-                <element signature="e#486#743#0" expanded="false" />
-                <element signature="e#3279#3598#0" expanded="false" />
-                <element signature="e#3650#4278#0" expanded="false" />
-                <element signature="e#4346#5617#0" expanded="false" />
-                <element signature="e#6706#7024#0" expanded="false" />
-                <element signature="e#10172#10565#0" expanded="false" />
-                <element signature="e#10637#11142#0" expanded="false" />
-                <element signature="e#11636#11944#0" expanded="false" />
-                <element signature="e#12015#12466#0" expanded="false" />
-                <element signature="e#13765#13835#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Adaboost.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Adaboost.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Adaboost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="132" column="15" selection-start-line="132" selection-start-column="15" selection-end-line="132" selection-end-column="15" />
+            <state relative-caret-position="306">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -158,11 +145,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="result_boost.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="result_boost.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/result_boost.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="298">
-              <caret line="441" column="60" selection-start-line="441" selection-start-column="60" selection-end-line="441" selection-end-column="60" />
+              <caret line="915" column="60" selection-start-line="915" selection-start-column="60" selection-end-line="915" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_dt_mallows.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/result_dt_mallows.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -171,8 +168,8 @@
       <file leaf-file-name="stats.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="95" column="30" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
+            <state relative-caret-position="731">
+              <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -181,8 +178,8 @@
       <file leaf-file-name="stats_result.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats_result.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="23" column="109" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
+            <state relative-caret-position="264">
+              <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -191,8 +188,8 @@
       <file leaf-file-name="result.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/result.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="259" column="6" selection-start-line="259" selection-start-column="6" selection-end-line="260" selection-end-column="60" />
+            <state relative-caret-position="281">
+              <caret line="265" column="27" selection-start-line="265" selection-start-column="27" selection-end-line="265" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -213,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/stats.py" />
         <option value="$PROJECT_DIR$/emoticons/test.py" />
         <option value="$PROJECT_DIR$/emoticons/DescisionTree.py" />
         <option value="$PROJECT_DIR$/balancedTest.txt" />
@@ -225,13 +221,15 @@
         <option value="$PROJECT_DIR$/queryAlchemy.py" />
         <option value="$PROJECT_DIR$/RankPairPref.py" />
         <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
-        <option value="$PROJECT_DIR$/result_dt.txt" />
         <option value="$PROJECT_DIR$/result_rpp.txt" />
         <option value="$PROJECT_DIR$/stats_result.txt" />
         <option value="$PROJECT_DIR$/DecisionTree.py" />
-        <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
-        <option value="$PROJECT_DIR$/Adaboost.py" />
         <option value="$PROJECT_DIR$/result_boost.txt" />
+        <option value="$PROJECT_DIR$/result_dt_mallows.txt" />
+        <option value="$PROJECT_DIR$/stats.py" />
+        <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
+        <option value="$PROJECT_DIR$/result_dt.txt" />
+        <option value="$PROJECT_DIR$/Adaboost.py" />
       </list>
     </option>
   </component>
@@ -295,7 +293,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Adaboost">
+  <component name="RunManager" selected="Python.DecisionTreeWeight">
     <configuration default="false" name="RankPairPref" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -524,10 +522,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Adaboost" />
-        <item index="1" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
-        <item index="2" class="java.lang.String" itemvalue="Python.DecisionTree" />
-        <item index="3" class="java.lang.String" itemvalue="Python.stats" />
+        <item index="0" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
+        <item index="1" class="java.lang.String" itemvalue="Python.stats" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Adaboost" />
+        <item index="3" class="java.lang.String" itemvalue="Python.DecisionTree" />
         <item index="4" class="java.lang.String" itemvalue="Python.RankPairPref" />
       </list>
     </recent_temporary>
@@ -552,7 +550,7 @@
     <frame x="-1288" y="304" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1296875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5326902" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -865,51 +863,7 @@
         <state relative-caret-position="68">
           <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result_rpp.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="67" column="60" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/result.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="259" column="6" selection-start-line="259" selection-start-column="6" selection-end-line="260" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="95" column="30" selection-start-line="95" selection-start-column="30" selection-end-line="95" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="147" column="37" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buildFeatureEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-478">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -924,30 +878,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
+    <entry file="file://$PROJECT_DIR$/buildFeatureEmotion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="366" column="10" selection-start-line="366" selection-start-column="10" selection-end-line="366" selection-end-column="10" />
+        <state relative-caret-position="94">
+          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
           <folding>
-            <element signature="e#97#115#0" expanded="true" />
-            <element signature="e#486#743#0" expanded="false" />
-            <element signature="e#3279#3598#0" expanded="false" />
-            <element signature="e#3650#4278#0" expanded="false" />
-            <element signature="e#4346#5617#0" expanded="false" />
-            <element signature="e#6706#7024#0" expanded="false" />
-            <element signature="e#10172#10565#0" expanded="false" />
-            <element signature="e#10637#11142#0" expanded="false" />
-            <element signature="e#11636#11944#0" expanded="false" />
-            <element signature="e#12015#12466#0" expanded="false" />
-            <element signature="e#13765#13835#0" expanded="false" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2865">
+          <caret line="147" column="37" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats_result.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="471" column="0" selection-start-line="471" selection-start-column="0" selection-end-line="472" selection-end-column="21" />
+        <state relative-caret-position="926">
+          <caret line="476" column="52" selection-start-line="476" selection-start-column="52" selection-end-line="476" selection-end-column="52" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#254#793#0" expanded="false" />
@@ -967,37 +937,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result_dt.txt">
+    <entry file="file://$PROJECT_DIR$/result_dt_mallows.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="41" />
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stats_result.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="23" column="109" selection-start-line="23" selection-start-column="109" selection-end-line="23" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Adaboost.py">
+    <entry file="file://$PROJECT_DIR$/result.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
-          <caret line="132" column="15" selection-start-line="132" selection-start-column="15" selection-end-line="132" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+          <caret line="265" column="27" selection-start-line="265" selection-start-column="27" selection-end-line="265" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/result_boost.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
-          <caret line="441" column="60" selection-start-line="441" selection-start-column="60" selection-end-line="441" selection-end-column="60" />
+          <caret line="915" column="60" selection-start-line="915" selection-start-column="60" selection-end-line="915" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_rpp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="67" column="60" selection-start-line="67" selection-start-column="60" selection-end-line="67" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result_dt.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="98" column="60" selection-start-line="98" selection-start-column="60" selection-end-line="98" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="442" column="0" selection-start-line="440" selection-start-column="0" selection-end-line="442" selection-end-column="0" />
+          <folding>
+            <element signature="e#97#115#0" expanded="true" />
+            <marker date="1479842127190" expanded="false" signature="505:771" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="3298:3626" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="3669:4300" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="4365:5645" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="6725:7052" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="10191:10593" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="10656:11170" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="11655:11972" placeholder="..." />
+            <marker date="1479842127190" expanded="false" signature="12034:12494" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Adaboost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

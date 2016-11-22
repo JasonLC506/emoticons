@@ -8,6 +8,8 @@ from sklearn.model_selection import KFold
 from functools import partial
 from scipy.stats.mstats import gmean
 from datetime import datetime
+from stats import pairwise
+
 
 class DecisionTree(object):
     """
@@ -314,7 +316,7 @@ class DecisionTree(object):
         return (self.mis_rate - split_mis_rate)
 
 
-def crossValidate(x,y, cv=5, alpha = 0, stop_criterion_mis_rate = None, stop_criterion_min_node = 1,
+def crossValidate(x,y, cv=5, alpha = 0, rank_weight = False, stop_criterion_mis_rate = None, stop_criterion_min_node = 1,
                   stop_criterion_gain = 0.0):
 
     results = {"alpha": [], "perf": []}
@@ -337,7 +339,11 @@ def crossValidate(x,y, cv=5, alpha = 0, stop_criterion_mis_rate = None, stop_cri
         #     # print "finish searching alpha:", datetime.now(), alpha ### test
         # else:
         #     alpha_sel = alpha
-        tree = DecisionTree().buildtree(x_train,y_train,
+        if rank_weight:
+            weights = rank2Weight(y_train)
+        else:
+            weights = None
+        tree = DecisionTree().buildtree(x_train,y_train, weights,
                                         stop_criterion_mis_rate= stop_criterion_mis_rate,
                                         stop_criterion_min_node = stop_criterion_min_node,
                                         stop_criterion_gain=stop_criterion_gain)
@@ -361,6 +367,55 @@ def label2Rank(y):
     y = map(LogR.rankOrder, y)
     y = np.array(y, dtype=int)
     return y
+
+
+def rank2Weight(y_s):
+    """
+
+    :param y_s: old rank form
+    :return: weights np.ndarray
+    """
+    Nsamp = y_s.shape[0]
+    Nclass = y_s.shape[1]
+    weights = np.ones(Nsamp,dtype=np.float32)
+    paircomp, paircomp_sub = rankPairwise(y_s)
+    for samp in range(Nsamp):
+        rank = y_s[samp]
+        emoti_list = [emoti for emoti in range(Nclass)]
+        for i in range(Nclass-1):
+            emoti = int(rank[i])
+            if emoti < 0:# following rank positions contain only -1
+                break
+            emoti_list.remove(emoti)
+            for emoti_cmp in emoti_list:
+                n_big = paircomp[emoti][emoti_cmp]   # including comparison with missing emoticons
+                n_small = paircomp[emoti_cmp][emoti]
+                if n_big > 0 and n_small > 0: # valid only when both > 0
+                    weight_new = (1.0 * n_small)/n_big
+                    if weights[samp] < weight_new:
+                        weights[samp] = weight_new
+    return weights
+
+
+def rankPairwise(y_s):
+    Nclass = y_s.shape[1]
+    # first and second dimension is the indices of emoticon pairs, the first value is # posts first emoticon rank higher
+    # than the second, vise versa
+    paircomp = [[0 for i in range(Nclass)] for j in range(Nclass)] # take not appearing emoticons to rank the lowest
+    paircomp_sub = [[0 for i in range(Nclass)] for j in range(Nclass)] # excluding not appearing emoticons
+    y_s = y_s.tolist()
+    for post in y_s:
+        emoti_list = [emoti for emoti in range(Nclass)]
+        for i in range(Nclass-1):
+            emoti = int(post[i])
+            if emoti < 0:
+                break
+            emoti_list.remove(emoti)
+            for emoti_cmp in emoti_list:
+                paircomp[emoti][emoti_cmp] += 1
+                if emoti_cmp in post:
+                    paircomp_sub[emoti][emoti_cmp] += 1
+    return paircomp, paircomp_sub
 
 
 def dataSimulated(Nsamp, Nfeature, Nclass):
@@ -389,7 +444,17 @@ if __name__ == "__main__":
     #     y_pred = tree.predict(x[i])
     #     print y_pred, y[i]
 
+
+
     x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
     y = label2Rank(y)
-    result = crossValidate(x,y, stop_criterion_mis_rate=0.1)
+    # weights = rank2Weight(y)
+    # paircmp, _ = rankPairwise(y)
+    # print "\n".join(map(str,paircmp))
+    # # print weights
+    # print np.max(weights), np.min(weights), np.mean(weights), np.std(weights)
+    # weights = rank2Weight(y)
+    # print np.max(weights), np.min(weights), np.mean(weights), np.std(weights)
+
+    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = True)
     print result

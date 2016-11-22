@@ -5,22 +5,30 @@ from datetime import timedelta
 from sklearn.model_selection import KFold
 from DecisionTreeWeight import DecisionTree
 from DecisionTreeWeight import label2Rank
+from DecisionTreeWeight import rank2Weight
 from DecisionTreeWeight import dataSimulated
 import logRegFeatureEmotion as LogR
 
-ITER_MAX = 30
+ITER_MAX = 100
 stop_criterion_mis_rate = 0.1
-output = 1
-def adaboost(x_train, y_train, x_test = None, y_test = None, output = output, iter_max = ITER_MAX):
+output = 10
+cost = "init_weight"
+def adaboost(x_train, y_train, x_test = None, y_test = None, output = output, iter_max = ITER_MAX, cost = None):
 
     Nsamp = y_train.shape[0]
 
     classifiers = []
 
     # initialize weights #
-    weight = 1.0/Nsamp
-    weights_init = np.array([weight for i in range(Nsamp)], dtype = np.float32)
-    weights = weights_init
+    if cost is None:
+        weight = 1.0/Nsamp
+        weights_init = np.array([weight for i in range(Nsamp)], dtype = np.float32)
+        weights = weights_init
+    elif cost == "init_weight":
+        weights_init = rank2Weight(y_train)
+        weights = weights_init
+    else:
+        raise(ValueError, "unsupported cost type")
 
     start = datetime.now() # timer
     for iter in range(iter_max):
@@ -61,10 +69,10 @@ def adaboost(x_train, y_train, x_test = None, y_test = None, output = output, it
 
         # realtime output #
         if output is not None and (iter+1) % output == 0:
-            # y_pred = predict(x_test,classifiers)
-            # performance = LogR.perfMeasure(y_pred,y_test,rankopt = True)
+            y_pred = predict(x_test,classifiers)
+            performance = LogR.perfMeasure(y_pred,y_test,rankopt = True)
             print "iter: ", iter+1
-            # print performance
+            print performance
             # Nsamp_test = x_test.shape[0]
             # compare_results = [False for i in range(Nsamp_test)]  # whether correctly predicted
             # for i in range(Nsamp_test):
@@ -110,7 +118,7 @@ def predict(x_test, classifiers):
         return y_pred
 
 
-def crossValidate(x,y, cv=5, nocross = False):
+def crossValidate(x,y, cv=5, nocross = False, cost = None, iter_max = ITER_MAX):
 
     results = {"perf": []}
 
@@ -132,7 +140,7 @@ def crossValidate(x,y, cv=5, nocross = False):
         #     # print "finish searching alpha:", datetime.now(), alpha ### test
         # else:
         #     alpha_sel = alpha
-        classifiers = adaboost(x_train,y_train,x_test,y_test, iter_max= ITER_MAX)
+        classifiers = adaboost(x_train,y_train,x_test,y_test, iter_max= iter_max, cost = cost)
 
         # performance measure
         y_pred = predict(x_test, classifiers)
@@ -158,10 +166,11 @@ if __name__ == "__main__":
     #     stop_criterion_mis_rate = 0.22 - 0.04*j
     #     for m in range(10):
     #         ITER_MAX = 10 + m*10
-    result = crossValidate(x,y, nocross = False)
+    result = crossValidate(x,y, nocross = False, iter_max=ITER_MAX, cost = "init_weight")
     print result
     with open("result_boost.txt","a") as f:
         f.write("Nsamp: %d\n" % x.shape[0])
         f.write("iter_max "+str(ITER_MAX)+"\n")
         f.write("stop misclassification rate %f\n" %stop_criterion_mis_rate)
+        f.write("cost: initial weight v_0\n")
         f.write(str(result)+"\n")

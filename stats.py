@@ -63,6 +63,12 @@ def pairwise(y):
                         elif post[i] < post[j]:
                             paircomp[i][j][1] += 1
                             paircomp_sub[i][j][1] += 1
+    for i in range(1,Nclass):
+        for j in range(i):
+            paircomp[i][j][0] = paircomp[j][i][1]
+            paircomp[i][j][1] = paircomp[j][i][0]
+            paircomp_sub[i][j][0] = paircomp_sub[j][i][1]
+            paircomp_sub[i][j][1] = paircomp_sub[j][i][0]
     n_pair = 0
     n_pair_sub = 0
     for i in range(Nclass):
@@ -77,6 +83,7 @@ def pairwise(y):
     print "emoticon ", "\t".join(emoticon_list)
     for i in range(Nclass):
         print emoticon_list[i], "\t".join(map(str, paircomp_sub[i]))
+    return paircomp, paircomp_sub
 
 
 def statsAnal(x,y):
