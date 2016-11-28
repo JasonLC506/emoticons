@@ -20,4 +20,4 @@ def rankPer():
 
 
 a = [1,3,4,5,np.nan,0]
-print a.index(min(a)), min(a)
+print " ".join(map(str,a))

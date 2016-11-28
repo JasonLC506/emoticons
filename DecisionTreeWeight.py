@@ -397,6 +397,45 @@ def rank2Weight(y_s):
     return weights
 
 
+def rank2Weight_cost(y_s, cost_level = np.arange(1.0,0.4,-0.1,dtype=np.float16)):
+    """
+
+    :param y_s: old rank form
+    :param cost_level: levels of cost to be chosen
+    :return: weights np.ndarray
+    """
+    Nsamp = y_s.shape[0]
+    Nclass = y_s.shape[1]
+    print cost_level, cost_level[-1] ### test
+    weights = np.ones(Nsamp,dtype=np.float32)*cost_level[-1]
+    paircomp, paircomp_sub = rankPairwise(y_s)
+    for samp in range(Nsamp):
+        rank = y_s[samp]
+        emoti_list = [emoti for emoti in range(Nclass)]
+        for i in range(Nclass-1):
+            emoti = int(rank[i])
+            if emoti < 0:# following rank positions contain only -1
+                break
+            emoti_list.remove(emoti)
+            for emoti_cmp in emoti_list:
+                n_big = paircomp[emoti][emoti_cmp]   # including comparison with missing emoticons
+                n_small = paircomp[emoti_cmp][emoti]
+                if n_big > 0 and n_small > 0: # valid only when both > 0
+                    weight_new_score = (1.0 * n_small)/n_big
+                    cost = int(- np.log2(weight_new_score))
+                    if cost < 0:
+                        weight_new = cost_level[0]
+                    elif cost > (len(cost_level)-1):
+                        weight_new = cost_level[-1]
+                    else:
+                        weight_new = cost_level[cost]
+                    if weights[samp] < weight_new:
+                        weights[samp] = weight_new
+    print "cost stats, mean, std, min, max ", np.mean(weights), np.std(weights), np.min(weights), np.max(weights) ### test
+
+    return weights
+
+
 def rankPairwise(y_s):
     Nclass = y_s.shape[1]
     # first and second dimension is the indices of emoticon pairs, the first value is # posts first emoticon rank higher
