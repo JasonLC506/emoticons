@@ -9,9 +9,9 @@ from DecisionTreeWeight import rank2Weight
 from DecisionTreeWeight import dataSimulated
 import logRegFeatureEmotion as LogR
 
-ITER_MAX = 100
+ITER_MAX = 10
 stop_criterion_mis_rate = 0.1
-output = 10
+output = 1
 cost = "init_weight"
 def adaboost(x_train, y_train, x_test = None, y_test = None, output = output, iter_max = ITER_MAX, cost = None):
 
@@ -166,7 +166,7 @@ if __name__ == "__main__":
     #     stop_criterion_mis_rate = 0.22 - 0.04*j
     #     for m in range(10):
     #         ITER_MAX = 10 + m*10
-    result = crossValidate(x,y, nocross = False, iter_max=ITER_MAX, cost = "init_weight")
+    result = crossValidate(x,y, nocross = False, iter_max=ITER_MAX, cost = cost)
     print result
     with open("result_boost.txt","a") as f:
         f.write("Nsamp: %d\n" % x.shape[0])
