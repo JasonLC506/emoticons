@@ -14,7 +14,7 @@ ITER_MAX = 100
 stop_criterion_mis_rate = 0.1
 output = 1
 cost = "C2"
-COST_LEVEL = np.arange(1.0,0.5,-0.05,dtype=np.float16)
+COST_LEVEL = np.arange(1.0,0.1,-0.1,dtype=np.float16)
 LOGFILE = "adaboost_realtime.log"
 
 
