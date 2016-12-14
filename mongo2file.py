@@ -8,9 +8,9 @@ db = client["dataSet"]
 collection= db["reactions_collection_"+newspage]
 print collection.count()
 
-for post in collection.find():
-    del post["_id"]
-    with open(filename,"a") as f:
+with open(filename, "w") as f:
+    for post in collection.find():
+        del post["_id"]
         f.write(str(post)+"\n")
 
     
