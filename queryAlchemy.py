@@ -3,16 +3,25 @@ from watson_developer_cloud import AlchemyLanguageV1
 from watson_developer_cloud.watson_developer_cloud_service import WatsonException
 
 emotion_list = ["anger", "joy", "fear", "sadness", "disgust"]
-api_key_standard = "b30a622ffafbf3b1c959371e116c01cb993b4a61"
+api_key_standard = "39e7693b1e263c52f69d8f7e5e3aadb638f4aea7"
 
-def queryAlchemy(text):
+def queryAlchemy(text="", url=""):
 
     alchemy_language = AlchemyLanguageV1(api_key=api_key_standard)
     try:
-        result = alchemy_language.combined(
-            text = text,
-            extract = "doc-emotion"
-        )
+        if len(text)>0:
+            result = alchemy_language.combined(
+                text = text,
+                extract = "doc-emotion"
+            )
+        elif len(url)>0:
+            result = alchemy_language.combined(
+                url = url,
+                extract = "doc-emotion"
+            )
+        else:
+            print "empty query"
+            return [-1.0 for i in range(len(emotion_list))]
     except WatsonException, e:
         print(e.message)
         if "unsupported" not in e.message:

@@ -19,5 +19,6 @@ def rankPer():
     rank_per = [[] for i in range(N_per)]
 
 
-a = [1,3,4,5,np.nan,0]
-print " ".join(map(str,a))
+s="Lsdbadsf"
+b=s.upper()
+print s, b

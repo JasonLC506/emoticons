@@ -38,7 +38,7 @@ def buildFeatureEmotion(postfile, resultfile):
                         break
                 if flag_rep == True:
                     continue
-                post_item["feature_emotion"]=queryAlchemy.queryAlchemy(post_item["text"])
+                post_item["feature_emotion"]=queryAlchemy.queryAlchemy(text=post_item["text"])
                 if post_item["feature_emotion"][0]>=0:
                     Ntext_posts_eng += 1
                 print("Ntext_posts: ", Ntext_posts,)
