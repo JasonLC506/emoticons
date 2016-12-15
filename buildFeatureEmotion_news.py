@@ -6,7 +6,7 @@ logfile = "log_buildFeatureEmotion_new"
 
 def buildFeatureEmotion(postfile, resultfile):
 
-    Nposts_token = 1004
+    Nposts_token = 5784
 
     Nposts = 0
     N_posts_valid = 0
@@ -62,6 +62,6 @@ def validCheck(post):
         return False
 
 if __name__ == "__main__":
-    postfile = "data/atlantic_raw"
-    resultfile = "data/atlantic_Feature_linkemotion.txt"
+    postfile = "data/wsj_raw"
+    resultfile = "data/wsj_Feature_linkemotion.txt"
     buildFeatureEmotion(postfile=postfile, resultfile=resultfile)

@@ -19,6 +19,3 @@ def rankPer():
     rank_per = [[] for i in range(N_per)]
 
 
-s="Lsdbadsf"
-b=s.upper()
-print s, b
