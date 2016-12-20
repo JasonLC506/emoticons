@@ -19,3 +19,7 @@ def rankPer():
     rank_per = [[] for i in range(N_per)]
 
 
+a = [1,2,3,4]
+print a
+print a.pop(0)
+print a
