@@ -114,7 +114,7 @@ def statsAnal(x,y):
 
 
 if __name__ == "__main__":
-    x, y = dataClean("data/atlantic_Feature_linkemotion.txt")
+    x, y = dataClean("data/wsj_Feature_linkemotion.txt")
     stats(y)
     statsAnal(x,y)
     pairwise(y)
