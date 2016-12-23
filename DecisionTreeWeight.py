@@ -10,6 +10,8 @@ from scipy.stats.mstats import gmean
 from datetime import datetime
 from stats import pairwise
 
+from logRegFeatureEmotion import NONERECALL
+
 
 class DecisionTree(object):
     """
@@ -485,7 +487,7 @@ if __name__ == "__main__":
 
 
 
-    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    x,y = LogR.dataClean("data/wsj_Feature_linkemotion.txt")
     y = label2Rank(y)
     # weights = rank2Weight(y)
     # paircmp, _ = rankPairwise(y)
@@ -496,4 +498,11 @@ if __name__ == "__main__":
     # print np.max(weights), np.min(weights), np.mean(weights), np.std(weights)
 
     result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = True)
+    # write2result #
+    file = open("result_dt_wsj.txt","a")
+    file.write("number of samples: %d\n" % x.shape[0])
+    file.write("NONERECALL: %f\n" % NONERECALL)
+    file.write("CV: %d\n" % 5)
+    file.write(str(result)+"\n")
+    file.close()
     print result
