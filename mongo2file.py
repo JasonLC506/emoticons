@@ -1,6 +1,6 @@
 import pymongo
 
-newspage = "wsj"
+newspage = "nytimes_final"
 filename = "./data/"+newspage+"_raw"
 
 client = pymongo.MongoClient()

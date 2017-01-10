@@ -61,5 +61,6 @@ def queryAlchemy(text="", url=""):
     return emotions
 
 if __name__ == "__main__":
-    queryAlchemy("you are my sunshine.")
+    queryAlchemy(url="http://nyti.ms/2esrU8N")
+
 
