@@ -2,6 +2,7 @@ from logRegFeatureEmotion import dataClean
 from logRegFeatureEmotion import emoticon_list
 from scipy.stats import pearsonr
 import numpy as np
+import math
 from queryAlchemy import emotion_list
 from logRegFeatureEmotion import rankOrder
 
@@ -86,6 +87,18 @@ def pairwise(y):
     return paircomp, paircomp_sub
 
 
+def imbalanceMeasure(paircomp):
+    Nclass = len(paircomp)
+    imba = 0
+    cnt_pair = 0
+    for i in range(Nclass):
+        for j in range(i+1, Nclass):
+            imba += abs(math.log(paircomp[i][j][0])-math.log(paircomp[i][j][1]))
+            cnt_pair += 1
+    print "imba: ", imba/cnt_pair
+    return imba/cnt_pair
+
+
 def statsAnal(x,y):
     N_feature = x.shape[1]
     N_class = y.shape[1]
@@ -117,4 +130,5 @@ if __name__ == "__main__":
     x, y = dataClean("data/nytimes_Feature_linkemotion.txt")
     stats(y)
     statsAnal(x,y)
-    pairwise(y)
+    paircomp, paircomp_sub = pairwise(y)
+    imbalanceMeasure(paircomp)

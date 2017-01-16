@@ -15,18 +15,18 @@ from pymongo import MongoClient
 #setting up DataBase
 client = MongoClient("mongodb://localhost:27017")
 db = client.dataSet
-my_col = db.reactions_collection_nytimes_final
+my_col = db.reactions_collection_foxnews
 next_col = db.next_collection
 user_col = db.test_collection
 comm_col = db.trump_collection
 
 #connecting to FB graph API
-APP_ID = '1842196376027654'
-APP_SECRET = '80b12310850e1131a523910c02b91e61'
+APP_ID = '1667170370247678'
+APP_SECRET = '6829d69135dab88c93930f1a3f80b3ab'
 graph = facebook.GraphAPI(APP_ID + "|" + APP_SECRET)
 
 #setting up initial/basic query
-to_scrape_lists = ["nytimes"]
+to_scrape_lists = ["FoxNews"]
 query = "/posts/?fields=id,reactions,created_time,message,link&limit=26"
 comment_query = "/posts/?fields=id,message,comments&limit=26"
 
@@ -193,8 +193,10 @@ def getReactionData(page_name):
 	new_query = new_query + "&since=2016-03-01" + "&until=2016-10-18"
 	profile = graph.get_object(new_query)
 	i=0
+        cnt = 0
 	while True:
 		try:
+                        print "current post %d, id:" % cnt, profile["data"][i]["id"]
 			like_count, love_count, sad_count, haha_count, angry_count, wow_count, thankful_count = get_reactions_data_for_post(profile["data"][i]["reactions"])
 			created_time = profile["data"][i]["created_time"]
 			insert_row = my_col.insert_one(
@@ -213,6 +215,7 @@ def getReactionData(page_name):
 				}
 			)
 			i=i+1
+                        cnt += 1
 		except IndexError:
 			try:
 				profile = requests.get(profile["paging"]["next"]).json()
