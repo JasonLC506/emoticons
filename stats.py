@@ -93,9 +93,21 @@ def imbalanceMeasure(paircomp):
     cnt_pair = 0
     for i in range(Nclass):
         for j in range(i+1, Nclass):
-            imba += abs(math.log(paircomp[i][j][0])-math.log(paircomp[i][j][1]))
+            imba += abs(math.log(paircomp[i][j][0]+1)-math.log(paircomp[i][j][1]+1))
             cnt_pair += 1
     print "imba: ", imba/cnt_pair
+    return imba/cnt_pair
+
+
+def imbalanceMeasureNolike(paircomp):
+    Nclass = len(paircomp)
+    imba = 0
+    cnt_pair = 0
+    for i in range(1,Nclass):
+        for j in range(i+1, Nclass):
+            imba += abs(math.log(paircomp[i][j][0]+1)-math.log(paircomp[i][j][1]+1))
+            cnt_pair += 1
+    print "imba without like: ", imba/cnt_pair
     return imba/cnt_pair
 
 
@@ -127,8 +139,9 @@ def statsAnal(x,y):
 
 
 if __name__ == "__main__":
-    x, y = dataClean("data/nytimes_Feature_linkemotion.txt")
+    x, y = dataClean("data/posts_Feature_Emotion.txt")
     stats(y)
     statsAnal(x,y)
     paircomp, paircomp_sub = pairwise(y)
     imbalanceMeasure(paircomp)
+    imbalanceMeasureNolike(paircomp)
