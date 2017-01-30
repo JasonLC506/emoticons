@@ -157,14 +157,14 @@ def simulatedtest():
 
 
 if __name__ == "__main__":
-    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    x,y = LogR.dataClean("data/foxnews_Feature_linkemotion.txt")
     print "number of samples: ", x.shape[0]
-    Absention = True
+    Absention = False
     Inverse_laplace = 64
     result = crossValidate(x, y, cv=5, Abstention=Absention, Inverse_laplace=Inverse_laplace)
     print result
     # write2result #
-    file = open("result_rpp_nytimes.txt","a")
+    file = open("result_rpp_foxnews.txt","a")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)
