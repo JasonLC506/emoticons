@@ -15,7 +15,8 @@ api_key_list = ["39e7693b1e263c52f69d8f7e5e3aadb638f4aea7",
                 "06de8298744390593ddca1ca921336abcb7b64c6",
                 "333e563f905a56564e28d55f53b09309353ef1a2",
                 "a594d0764fa642fb6cd61188e7425e72434932cd",
-                "d5f021ed0a280cf7d1da1c83202f237f225e53ce"]
+                "d5f021ed0a280cf7d1da1c83202f237f225e53ce",
+                "5b8107ba31eb326400a2014bf776abf437d68aec"]# in charge
 
 def queryAlchemy(text="", url=""):
     global api_key_list

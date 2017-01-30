@@ -2,11 +2,11 @@ import queryAlchemy
 import ast
 from logRegFeatureEmotion import emoticon_list
 
-logfile = "log_buildFeatureEmotion_new"
+logfile = "log_buildFeatureEmotion_foxnews"
 
 def buildFeatureEmotion(postfile, resultfile):
 
-    Nposts_token = 3632
+    Nposts_token = 844
 
     Nposts = 0
     N_posts_valid = 0
@@ -39,14 +39,25 @@ def buildFeatureEmotion(postfile, resultfile):
                 post_item["emoticons"][emoticon] = 0
 
         # emotion feature #
-        try:
-            post_item["feature_emotion"] = queryAlchemy.queryAlchemy(url=post["LINK"])
-            with open(logfile,"a") as log:
-                log.write("%d post succeed\n" % Nposts)
-        except:
-            with open(logfile,"a") as log:
-                log.write("%d post fail\n" % Nposts)
-            break
+        if "www.facebook.com" in post["LINK"] or ".gif" in post["LINK"]:
+            # the link toward photo or video/ newspage dependent #
+            try:
+                post_item["feature_emotion"] = queryAlchemy.queryAlchemy(text=post["MESSAGE"])
+                with open(logfile,"a") as log:
+                    log.write("%d post succeed\n" % Nposts)
+            except:
+                with open(logfile,"a") as log:
+                    log.write("%d post fail\n" % Nposts)
+                break
+        else:
+            try:
+                post_item["feature_emotion"] = queryAlchemy.queryAlchemy(url=post["LINK"])
+                with open(logfile,"a") as log:
+                    log.write("%d post succeed\n" % Nposts)
+            except:
+                with open(logfile,"a") as log:
+                    log.write("%d post fail\n" % Nposts)
+                break
 
         # write to file #
         with open(resultfile,"a") as f:
@@ -62,6 +73,6 @@ def validCheck(post):
         return False
 
 if __name__ == "__main__":
-    postfile = "data/nytimes_final_raw"
-    resultfile = "data/nytimes_Feature_linkemotion.txt"
+    postfile = "data/foxnews_raw"
+    resultfile = "data/foxnews_Feature_linkemotion.txt"
     buildFeatureEmotion(postfile=postfile, resultfile=resultfile)

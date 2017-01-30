@@ -190,7 +190,7 @@ def getUserCommentData(page_name):
 #get post reactions count
 def getReactionData(page_name):
 	new_query = page_name + query
-	new_query = new_query + "&since=2016-03-01" + "&until=2016-10-18"
+	new_query = new_query + "&since=2016-03-01" + "&until=2016-08-13"
 	profile = graph.get_object(new_query)
 	i=0
         cnt = 0
