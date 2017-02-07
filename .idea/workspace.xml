@@ -26,7 +26,7 @@
       <file leaf-file-name="stats.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="492">
+            <state relative-caret-position="2295">
               <caret line="141" column="63" selection-start-line="141" selection-start-column="63" selection-end-line="141" selection-end-column="63" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -38,7 +38,7 @@
       <file leaf-file-name="stats_result_foxnews.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stats_result_foxnews.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
+            <state relative-caret-position="816">
               <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
               <folding />
             </state>
@@ -48,8 +48,8 @@
       <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="400" column="16" selection-start-line="400" selection-start-column="16" selection-end-line="400" selection-end-column="16" />
+            <state relative-caret-position="457">
+              <caret line="483" column="16" selection-start-line="483" selection-start-column="16" selection-end-line="483" selection-end-column="16" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -57,11 +57,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="result_wsj.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/result_wsj.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1173">
+              <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
-              <caret line="364" column="18" selection-start-line="364" selection-start-column="18" selection-end-line="364" selection-end-column="18" />
+            <state relative-caret-position="219">
+              <caret line="489" column="38" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -90,8 +100,8 @@
       <file leaf-file-name="RankPairPref.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RankPairPref.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
+            <state relative-caret-position="338">
+              <caret line="166" column="35" selection-start-line="166" selection-start-column="35" selection-end-line="166" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -139,12 +149,12 @@
         <option value="$PROJECT_DIR$/deduplicate.py" />
         <option value="$PROJECT_DIR$/stats.py" />
         <option value="$PROJECT_DIR$/stats_result_foxnews.txt" />
-        <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
         <option value="$PROJECT_DIR$/result_dt_nytimes.txt" />
         <option value="$PROJECT_DIR$/result_dt_wsj.txt" />
-        <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
         <option value="$PROJECT_DIR$/result_dt_washington.txt" />
+        <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
         <option value="$PROJECT_DIR$/RankPairPref.py" />
+        <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
       </list>
     </option>
   </component>
@@ -180,6 +190,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -214,7 +225,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -226,7 +236,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.RankPairPref">
+  <component name="RunManager" selected="Python.DecisionTreeWeight">
     <configuration default="false" name="stats" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -455,8 +465,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RankPairPref" />
-        <item index="1" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
+        <item index="0" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RankPairPref" />
         <item index="2" class="java.lang.String" itemvalue="Python.logRegFeatureEmotion" />
         <item index="3" class="java.lang.String" itemvalue="Python.stats" />
         <item index="4" class="java.lang.String" itemvalue="Python.deduplicate" />
@@ -480,7 +490,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -665,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result_wsj.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="60" selection-start-line="8" selection-start-column="60" selection-end-line="8" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result_rpp_nytimes.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -704,7 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3417">
           <caret line="210" column="37" selection-start-line="210" selection-start-column="37" selection-end-line="210" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -712,7 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="48" column="18" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -720,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -728,7 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="816">
           <caret line="48" column="34" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,7 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4471">
           <caret line="263" column="59" selection-start-line="263" selection-start-column="45" selection-end-line="263" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -744,7 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="49" column="32" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,7 +749,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
           <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,7 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="58" column="60" selection-start-line="58" selection-start-column="60" selection-end-line="58" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-918">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84881">
           <caret line="5014" column="0" selection-start-line="5014" selection-start-column="0" selection-end-line="5014" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-80514">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,13 +791,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
+        <state relative-caret-position="2295">
           <caret line="141" column="63" selection-start-line="141" selection-start-column="63" selection-end-line="141" selection-end-column="63" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -816,19 +806,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stats_result_foxnews.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
+        <state relative-caret-position="816">
           <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="400" column="16" selection-start-line="400" selection-start-column="16" selection-end-line="400" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -836,7 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="668">
           <caret line="477" column="30" selection-start-line="477" selection-start-column="30" selection-end-line="477" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -844,9 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -854,9 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -864,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="61" selection-start-line="17" selection-start-column="61" selection-end-line="17" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -872,7 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,15 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RankPairPref.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="161" column="21" selection-start-line="161" selection-start-column="21" selection-end-line="161" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,10 +870,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/result_wsj.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="483" column="16" selection-start-line="483" selection-start-column="16" selection-end-line="483" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RankPairPref.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="166" column="35" selection-start-line="166" selection-start-column="35" selection-end-line="166" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="364" column="18" selection-start-line="364" selection-start-column="18" selection-end-line="364" selection-end-column="18" />
+        <state relative-caret-position="219">
+          <caret line="489" column="38" selection-start-line="489" selection-start-column="38" selection-end-line="489" selection-end-column="38" />
           <folding />
         </state>
       </provider>

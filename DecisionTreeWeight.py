@@ -487,7 +487,7 @@ if __name__ == "__main__":
 
 
 
-    x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
+    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
     y = label2Rank(y)
     # weights = rank2Weight(y)
     # paircmp, _ = rankPairwise(y)
@@ -499,7 +499,7 @@ if __name__ == "__main__":
 
     result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
     # write2result #
-    file = open("result_dt_washington.txt","a")
+    file = open("result_dt_nytimes.txt","a")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % NONERECALL)
     file.write("CV: %d\n" % 5)

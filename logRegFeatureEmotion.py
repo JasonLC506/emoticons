@@ -459,19 +459,19 @@ def DataSimulated(Nsamp, Nfeature, Nclass, Beta, Robs, Lrandom=0.5):
     return x,y
 
 if __name__ == "__main__":
-    x,y= dataClean("data/washington_Feature_linkemotion.txt")
+    x,y= dataClean("data/nytimes_Feature_linkemotion.txt")
     print "number of samples: ", x.shape[0]
 
     ### test ####
-    feature_name = "No feature"
-    X_non =np.ones([y.shape[0],1]).astype("float")
-    result = crossValidate(X_non,y)
-    # result = crossValidate(x,y)
-    # feature_name = "all"
+    # feature_name = "No feature"
+    # X_non =np.ones([y.shape[0],1]).astype("float")
+    # result = crossValidate(X_non,y)
+    result = crossValidate(x,y)
+    feature_name = "all"
     print "------%s feature -----" % feature_name
     print result
     # write2result #
-    file = open("result_washington.txt","a")
+    file = open("result_nytimes.txt","a")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("------%s feature -----\n" % feature_name)
     file.write("NONERECALL: %f\n" % NONERECALL)
