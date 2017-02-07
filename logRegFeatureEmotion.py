@@ -144,7 +144,8 @@ def perfMeasure(y_pred, y_test, rankopt = False):
     Nclass = y_test.shape[1]
 
     perf_list={"acc3":0, "dcg":1, "llh":2, "recall":3, "recallsub": 3+Nclass, "Nsc": 3+2*Nclass, "kld": 3 + 3*Nclass,
-               "g_mean":4+3*Nclass, "kendalltau": 5+3*Nclass}
+               "g_mean":4+3*Nclass, "kendalltau": 5+3*Nclass,
+               "recallpair": 6+3*Nclass, "Nsp": 6+3*Nclass+Nclass*Nclass, "g_mean_pair": 6+3*Nclass+2*Nclass*Nclass}
     Nperf = max(perf_list.values())+1
     perf=[0 for i in range(Nperf)]
 
@@ -186,8 +187,26 @@ def perfMeasure(y_pred, y_test, rankopt = False):
         perf[perf_list["recallsub"] + i] = recall_sub[i]
         perf[perf_list["Nsc"] + i] = Nsamp_class[i]
 
+    # recallpair #
+    recall_pair, Nsamp_pair = recallPair(rank_pred, rank_test)
+    cnt = 0
+    for i in range(Nclass):
+        for j in range(Nclass):
+            perf[perf_list["recallpair"] + cnt] =recall_pair[i][j]
+            perf[perf_list["Nsp"] + cnt] = Nsamp_pair[i][j]
+            cnt += 1
+
+    # G-Mean-pair #
+    recall_pair = np.array(recall_pair)
+    recall_pair_masked = np.ma.masked_invalid(recall_pair)
+    g_mean_pair = gmean(recall_pair_masked, axis=None)
+    perf[perf_list["g_mean_pair"]] = g_mean_pair
+
     # G-Mean #
-    g_mean = gmean(recall_sub)
+    recall_sub = np.array(recall_sub)
+    recall_sub_masked = np.ma.masked_invalid(recall_sub)
+    g_mean = gmean(recall_sub_masked)
+    # g_mean = gmean(recall)
     perf[perf_list["g_mean"]] = g_mean
 
     # Kendall's Tau traditional one#
@@ -334,6 +353,73 @@ def recallSub(rank_pred, rank_test):
     return recall, Nsamp_class
 
 
+def recallPair(rank_pred, rank_test):
+    # include labels not appearing in rank #
+    if type(rank_pred)!=list:
+        rank_pred = rank_pred.tolist()
+    if type(rank_test)!=list:
+        rank_test = rank_test.tolist()
+    Nclass = len(rank_pred[0])
+    recall = [[0 for i in range(Nclass)] for j in range(Nclass)]
+    Nsamp_pair = [[0 for i in range(Nclass)] for j in range(Nclass)]
+    Nsamp = len(rank_pred)
+
+    for i in range(Nsamp):
+        for emoti_a in range(Nclass):
+            for emoti_b in range(emoti_a + 1, Nclass):
+                prior = None
+                latter = None
+                if emoti_a not in rank_test[i]:
+                    if emoti_b not in rank_test[i]:
+                        continue
+                    else:
+                        prior = emoti_b
+                        latter = emoti_a
+                else:
+                    if emoti_b not in rank_test[i]:
+                        prior = emoti_a
+                        latter = emoti_b
+                    else:
+                        # both appear in rank #
+                        ind_a = rank_test[i].index(emoti_a)
+                        ind_b = rank_test[i].index(emoti_b)
+                        if ind_a < ind_b:
+                            prior = emoti_a
+                            latter = emoti_b
+                        else:
+                            prior = emoti_b
+                            latter = emoti_a
+                if prior is None or latter is None:
+                    continue
+
+                Nsamp_pair[prior][latter] += 1
+
+                if prior not in rank_pred[i]:
+                    continue
+                else:
+                    if latter not in rank_pred[i]:
+                        recall[prior][latter] += 1
+                    else:
+                        if rank_pred[i].index(prior) < rank_pred[i].index(latter):
+                            recall[prior][latter] += 1
+                        else:
+                            continue
+
+    for i in range(Nclass):
+        for j in range(i+1, Nclass):
+            if Nsamp_pair[i][j] < 1:
+                recall[i][j] = np.NaN
+            else:
+                recall[i][j] = float(recall[i][j]+1)/(Nsamp_pair[i][j]+2)
+            if Nsamp_pair[j][i] < 1:
+                recall[j][i] = np.NaN
+            else:
+                recall[j][i] = float(recall[j][i]+1)/(Nsamp_pair[j][i]+2)
+    for i in range(Nclass):
+        recall[i][i] = np.nan
+    return recall, Nsamp_pair
+
+
 def addNoise(dist_list):
     noise = np.array([NOISE for i in range(dist_list.shape[1])])
     return map(lambda x: (x+noise)/sum(x+noise), dist_list)
@@ -373,19 +459,19 @@ def DataSimulated(Nsamp, Nfeature, Nclass, Beta, Robs, Lrandom=0.5):
     return x,y
 
 if __name__ == "__main__":
-    x,y= dataClean("data/foxnews_Feature_linkemotion.txt")
+    x,y= dataClean("data/washington_Feature_linkemotion.txt")
     print "number of samples: ", x.shape[0]
 
     ### test ####
-    # feature_name = "No feature"
-    # X_non =np.ones([y.shape[0],1]).astype("float")
-    # result = crossValidate(X_non,y)
-    result = crossValidate(x,y)
-    feature_name = "all"
+    feature_name = "No feature"
+    X_non =np.ones([y.shape[0],1]).astype("float")
+    result = crossValidate(X_non,y)
+    # result = crossValidate(x,y)
+    # feature_name = "all"
     print "------%s feature -----" % feature_name
     print result
     # write2result #
-    file = open("result_foxnews.txt","a")
+    file = open("result_washington.txt","a")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("------%s feature -----\n" % feature_name)
     file.write("NONERECALL: %f\n" % NONERECALL)
