@@ -5,6 +5,7 @@ pruning hyperparameter validation using G-mean
 import numpy as np
 import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
+from readSushiData import readSushiData
 from functools import partial
 from scipy.stats.mstats import gmean
 from datetime import datetime
@@ -487,8 +488,10 @@ if __name__ == "__main__":
 
 
 
-    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
-    y = label2Rank(y)
+    # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    # y = label2Rank(y)
+    ### sushi data ###
+    x,y = readSushiData()
     # weights = rank2Weight(y)
     # paircmp, _ = rankPairwise(y)
     # print "\n".join(map(str,paircmp))
@@ -499,7 +502,7 @@ if __name__ == "__main__":
 
     result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
     # write2result #
-    file = open("result_dt_nytimes.txt","a")
+    file = open("result_dt_sushi.txt","a")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % NONERECALL)
     file.write("CV: %d\n" % 5)

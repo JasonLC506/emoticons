@@ -3,6 +3,7 @@ import numpy as np
 from queryAlchemy import emotion_list
 from logRegFeatureEmotion import emoticon_list
 from sklearn.model_selection import KFold
+from readSushiData import readSushiData
 
 def score2pair(x,y, k = 2, Abstention = False):
     """
@@ -156,15 +157,36 @@ def simulatedtest():
     print ranks
 
 
+def rank2score(rank):
+    """
+    transforming rank vector to score with (d-i),
+    where d is the highest rank +1, and i is the rank position
+    only complete rank!!!
+    specific for transforming ranking vector data into rpp framework
+    :param rank: rank vector with label id on its ranking position
+    :return: score label vector
+    """
+    Nclass = len(rank)
+    scores = [0 for i in range(Nclass)]
+    for pos in range(Nclass):
+        scores[rank[pos]] = Nclass - pos
+    return scores
+
+
 if __name__ == "__main__":
-    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    ## for ranking data ##
+    x,y = readSushiData()
+    y = y.tolist()
+    y = map(rank2score, y)
+    y = np.array(y)
     print "number of samples: ", x.shape[0]
-    Absention = True
+    Absention = False
     Inverse_laplace = 64
     result = crossValidate(x, y, cv=5, Abstention=Absention, Inverse_laplace=Inverse_laplace)
     print result
     # write2result #
-    file = open("result_rpp_nytimes.txt","a")
+    file = open("result_rpp_sushi.txt","a")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)

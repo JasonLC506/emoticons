@@ -399,18 +399,20 @@ def hyperParometer(x, y, cv = 5, alpha_try_list = np.linspace(0.0,5.0,10)):
         alpha_list, y_pred_list = decisionTree(x_train, y_train, x_test)
         # print "end building prediction: ", datetime.now() ### test
         Nalpha = len(alpha_list)
-        performance = [GMean(y_pred_list[i],y_test) for i in range(Nalpha)]
+        ### pruning try ###
+        # performance = [GMean(y_pred_list[i],y_test) for i in range(Nalpha)]
+        performance = [LogR.KendallTau(y_pred_list[i],y_test) for i in range(Nalpha)]
         # assign performance value to each alpha_try #
         for trial in range(ntrial):
             alpha_try = alpha_try_list[trial]
             overlarge = True
             for ind in range(Nalpha-1):
                 if alpha_try <= alpha_list[ind]:
-                    perf[trial] += performance[ind]
+                    perf[trial] = performance[ind]
                     overlarge = False
                     break
             if overlarge:
-                perf[trial] += performance[Nalpha-1]
+                perf[trial] = performance[Nalpha-1]
     # find best performance alpha and perf value #
     max_perf = max(perf)
     max_ind = None
@@ -475,7 +477,8 @@ if __name__ == "__main__":
     ## rank data ##
     x,y = readSushiData()
     result = LogR.crossValidate(x,y,"dT",cv=5)
-    file = open("result_dt_sushi.txt","a")
+    file = open("result_dt_sushi_prune_try.txt","a")
+    file.write("Kendall's tau\n")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)
