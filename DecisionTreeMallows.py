@@ -451,9 +451,11 @@ if __name__ == "__main__":
     # print "test machine time: ", duration.total_seconds()
 
     x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    Nclass=y.shape[1]
+    print "Nclass: ", Nclass
     y = DTme.label2Rank(y)
     start = datetime.now()
-    result = crossValidate(x,y,"dT",cv=5, alpha=0.0)
+    result = crossValidate(x,y,"dT",cv=5, alpha=0.0, min_node = 2*Nclass)
     duration = datetime.now() -start
     print "total time: ", duration.total_seconds()
     file = open("result_dt_mallows_nytimes.txt","a")
