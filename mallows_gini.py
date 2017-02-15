@@ -1,7 +1,12 @@
 import itertools
 import math
 from matplotlib import pyplot as plt
+# from matplotlib import rc
 import numpy as np
+
+# rc("text", usetex=True)
+# plt.rc("text", usetex=True)
+# plt.rc('font', family='serif')
 
 def inversions(rank, baserank):
     Nclass = len(rank)
@@ -40,7 +45,7 @@ def EGini(rankprob):
 plt.figure(1)
 theta_list = np.arange(0.0, 10.0, 0.1)
 theta_list = theta_list.tolist()
-for N in range(3,8):
+for N in range(3,7):
     EGini_list = [0.0 for i in range(len(theta_list))]
     EGini_pos_list = [[0.0 for i in range(len(theta_list))] for pos in range(N)]
     for i in range(len(theta_list)):
@@ -61,11 +66,14 @@ for N in range(3,8):
         # for pos in range(N):
             # EGini_pos_list[pos][i]=eGini_pos[pos]
     ### test ###
-    EGini_list=map(lambda x: x/(N-1), EGini_list)
+    # EGini_list=map(lambda x: x/(N-1), EGini_list)
 
     # for pos in range(N):
         # plt.subplot(N+1,1,pos+1)
         # plt.plot(theta_list, EGini_pos_list[pos])
-    plt.plot(theta_list, EGini_list, label=str(N))
+    plt.plot(theta_list, EGini_list, label="d="+str(N))
+plt.ylabel("E(Gini)")
+plt.xlabel(r"$\theta$")
 plt.legend()
 plt.show()
+plt.savefig("Mallows2Gini.svg", format="svg")
