@@ -86,6 +86,15 @@ if __name__ == "__main__":
     x,y= dataClean("data/nytimes_Feature_linkemotion.txt")
     # print "number of samples: ", x.shape[0]
     print y.shape[1]
+    x, y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    y = label2Rank(y)
+    sizes = [10 * i for i in range(1, 11)]
+    for size in sizes:
+        samples = np.arange(y.shape[0])
+        np.random.shuffle(samples)
+        x, y = x[samples[:size]], y[samples[:size]]
+        print x,y
+        break
 #
 #     ### test ####
 #     feature_name = "No feature"
