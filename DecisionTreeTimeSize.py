@@ -492,7 +492,7 @@ if __name__ == "__main__":
 
     x_total,y_total = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
     y_total = label2Rank(y_total)
-    sizes = [100*i for i in range(1,11)]
+    sizes = [100*i for i in range(1,41)]
     np.random.seed(2017)
     for size in sizes:
         samples = np.arange(y_total.shape[0])
