@@ -5,6 +5,9 @@ from functools import partial
 from scipy.stats.mstats import gmean
 from datetime import datetime
 from readSushiData import readSushiData
+from scipy.stats import rankdata
+from DecisionTreeMallows import score2rank
+
 
 MINNODE = 1
 
@@ -178,42 +181,67 @@ def nRankClass(y,samples):
 #     return result
 
 
-def rankResult(y,samples):
+# def rankResult(y,samples):
+#     if type(y)!=np.ndarray:
+#         y = np.array(y)
+#     Ranks = y.shape[1]
+#     N_class = Ranks
+#     result = []
+#     n_class =[[] for i in range(N_class)]
+#     for rank in range(N_class):
+#         n_class[rank] = [0 for i in range(N_class)]
+#         for sample in samples:
+#             emoti = y[sample,rank]
+#             if emoti>=0:
+#                 n_class[rank][emoti]+=1
+#     for rank in range(N_class):
+#         # assign ranking #
+#         # current rank with highest priority, when zero appearance, from highest rank to lowest #
+#         priority = [i for i in range(N_class) if i != rank]
+#         priority.insert(0,rank)
+#         flag = False
+#         for i in priority:
+#             n_class_cur = n_class[i]
+#             while not flag:
+#                 max_value = max(n_class_cur)
+#                 if max_value < 1:
+#                     break # all are 0 in current rank
+#                 emoti = n_class_cur.index(max_value)
+#                 if emoti not in result:
+#                     result.append(emoti)
+#                     flag = True # find best emoticon
+#                 else:
+#                     n_class_cur[emoti]=0
+#             if flag:
+#                 break
+#         if not flag:
+#             result.append(-1)
+#     return result
+
+def rankResult(y, samples):
+    ## bordar count ##
+
     if type(y)!=np.ndarray:
         y = np.array(y)
-    Ranks = y.shape[1]
-    N_class = Ranks
-    result = []
-    n_class =[[] for i in range(N_class)]
-    for rank in range(N_class):
-        n_class[rank] = [0 for i in range(N_class)]
-        for sample in samples:
-            emoti = y[sample,rank]
-            if emoti>=0:
-                n_class[rank][emoti]+=1
-    for rank in range(N_class):
-        # assign ranking #
-        # current rank with highest priority, when zero appearance, from highest rank to lowest #
-        priority = [i for i in range(N_class) if i != rank]
-        priority.insert(0,rank)
-        flag = False
-        for i in priority:
-            n_class_cur = n_class[i]
-            while not flag:
-                max_value = max(n_class_cur)
-                if max_value < 1:
-                    break # all are 0 in current rank
-                emoti = n_class_cur.index(max_value)
-                if emoti not in result:
-                    result.append(emoti)
-                    flag = True # find best emoticon
-                else:
-                    n_class_cur[emoti]=0
-            if flag:
-                break
-        if not flag:
-            result.append(-1)
-    return result
+    NRanks = y.shape[1]
+    N_class = NRanks
+    score_label_sum = [0 for i in range(N_class)]
+    ranks = y[samples].tolist()
+    for rank in ranks:
+        score_label = [0 for i in range(N_class)]
+        for pos in range(N_class):
+            label = rank[pos]
+            if label >= 0:
+                score_label[label]+= (N_class - pos)
+        for lab in range(N_class):
+            score_label_sum[lab] += score_label[lab]
+    rank_double = score2rank(score_label_sum, cplt=True)
+    rank = [-1 for pos in range(N_class)]
+    for label in range(N_class):
+        pos = rank_double[label][0]
+        if score_label_sum[pos]>0:
+            rank[pos] = label
+    return rank
 
 
 class decisionnode:
@@ -399,20 +427,18 @@ def hyperParometer(x, y, cv = 5, alpha_try_list = np.linspace(0.0,5.0,10)):
         alpha_list, y_pred_list = decisionTree(x_train, y_train, x_test)
         # print "end building prediction: ", datetime.now() ### test
         Nalpha = len(alpha_list)
-        ### pruning try ###
-        # performance = [GMean(y_pred_list[i],y_test) for i in range(Nalpha)]
-        performance = [LogR.KendallTau(y_pred_list[i],y_test) for i in range(Nalpha)]
+        performance = [GMean(y_pred_list[i],y_test) for i in range(Nalpha)]
         # assign performance value to each alpha_try #
         for trial in range(ntrial):
             alpha_try = alpha_try_list[trial]
             overlarge = True
             for ind in range(Nalpha-1):
                 if alpha_try <= alpha_list[ind]:
-                    perf[trial] = performance[ind]
+                    perf[trial] += performance[ind]
                     overlarge = False
                     break
             if overlarge:
-                perf[trial] = performance[Nalpha-1]
+                perf[trial] += performance[Nalpha-1]
     # find best performance alpha and perf value #
     max_perf = max(perf)
     max_ind = None
@@ -456,6 +482,56 @@ def label2Rank(y):
     return y
 
 
+def crossValidate(x,y, method = "logReg",cv=5, alpha = None):
+    #  error measure
+    results = []
+    if method == "logReg":
+        results = {"perf":[], "coef":[], "interc":[]}
+    elif method == "dT":
+        results = {"alpha": [], "perf":[]}
+
+    # cross validation #
+    np.random.seed(1100)
+    kf = KFold(n_splits = cv, shuffle = True, random_state = 0) ## for testing fixing random_state
+    for train,test in kf.split(x):
+        x_train = x[train,:]
+        y_train = y[train,:]
+        x_test = x[test,:]
+        y_test = y[test,:]
+
+        # from multilabel to multiclass based on independencec assumption
+        if method == "logReg":
+            x_train, y_train = LogR.multiClass(x_train,y_train)
+        elif method == "dT":
+            pass # already in rank representation
+
+        # training and predict
+        if method == "dT":
+            if alpha == None:
+                ## nested select validate and test ##
+                # print "start searching alpha:", datetime.now() ### test
+                alpha_sel, perf = hyperParometer(x_train,y_train)
+                # print "finish searching alpha:", datetime.now(), alpha ### test
+            else:
+                alpha_sel = alpha
+            result = decisionTree(x_train, y_train, x_test, alpha = alpha_sel)
+
+
+        # performance measure
+
+        alpha_sel, y_pred = result
+        results["perf"].append(LogR.perfMeasure(y_pred,y_test,rankopt=True))
+        results["alpha"].append(alpha_sel)
+        print alpha_sel, "alpha"
+
+    for key in results.keys():
+        item = np.array(results[key])
+        mean = np.nanmean(item, axis = 0)
+        std = np.nanstd(item, axis = 0)
+        results[key] = [mean, std]
+
+    return results
+
 if __name__ == "__main__":
 
     ### test ###
@@ -472,13 +548,13 @@ if __name__ == "__main__":
     #     printtree(prune_list[alpha])
     #     print "----------------------------------------------"
 
-    # x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
-    # y = label2Rank(y)
+    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    y = label2Rank(y)
     ## rank data ##
-    x,y = readSushiData()
-    result = LogR.crossValidate(x,y,"dT",cv=5)
-    file = open("result_dt_sushi_prune_try.txt","a")
-    file.write("Kendall's tau\n")
+    # x,y = readSushiData()
+    result = crossValidate(x,y,"dT",cv=5, alpha=0)
+    file = open("result_dt_prunetry.txt","a")
+    file.write("bordar count\n")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)
