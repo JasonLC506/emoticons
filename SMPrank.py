@@ -4,13 +4,14 @@ follow Grbovic et al. 2013 IJCAI [1]
 """
 import numpy as np
 import warnings
+import logRegFeatureEmotion as LogR
 
 
-class SMPrank(object):
-    def __int__(self, K):
+class SmpRank(object):
+    def __init__(self, K):
         ## intrinsic parameters ##
-        self.mfeature = [np.nan for c in range(K)]
-        self.mpairlabel = [np.nan for c in range(K)]
+        self.mfeature = [[] for c in range(K)]
+        self.mpairlabel = [[] for c in range(K)]
         self.varfeature = None
         self.varpairlabel = None
         self.K = K
@@ -31,13 +32,20 @@ class SMPrank(object):
         self.decaylearningrate = np.nan
         self.initlearningrate = 0.04 # from [1] empirical #
 
-    def fit(self, x_train, y_train, x_valid = None, y_valid = None, Max_epoch = 10):
+    def fit(self, x_train, y_train_rank, x_valid = None, y_valid = None, Max_epoch = 10):
         """
 
         :param x_train: N*d np.array
-        :param y_train: pairwise comparison matrix n*L*L np.array
+        :param y_train_rank: N*L np.array ranking vectors
         :return: self
         """
+        ## transform ranking to preference matrix ##
+        if type(y_train_rank) == np.ndarray:
+            y_train_rank = y_train_rank.tolist()
+        y_train = map(self.rank2pair, y_train_rank)
+        y_train = np.array(y_train, dtype = np.float32)
+
+        ## build validate set if not given ##
         if x_valid is None:
             N0 = x_train.shape[0]
             samps = np.arange(N0)
@@ -51,6 +59,7 @@ class SMPrank(object):
         N = x_train.shape[0]
         d = x_train.shape[1]
         L = y_train.shape[1]
+        print "N, d, L: ", N, d, L
 
         self.initialize(N,d,L, x_train, y_train)
 
@@ -93,11 +102,11 @@ class SMPrank(object):
             y_rank_pred = [[] for i in range(N)]
             for samp in range(N):
                 y_rank_pred[samp] = self.predict(x_test[samp])
-            return np.array(y_rank_pred, dtype = np.int8)
+            return np.array(y_rank_pred)
 
         ## weighted average of preference matrices ##
         self.probcal(x_test)
-        y_pred = np.zeros([self.L, self.L], dtype = np.float16)
+        y_pred = np.zeros([self.L, self.L], dtype = np.float32)
         for k in range(self.K):
             y_pred = y_pred + self.probfeature[k] * self.mpairlabel[k]
 
@@ -115,17 +124,61 @@ class SMPrank(object):
         """
         y_rank = []
         labels = [label for label in range(self.L)]
+        y_to_max = np.array(y)
         while len(labels)>0:
-            ind_max = np.argmax(y)
+            # find max value pair in preference matrix #
+            ind_max = np.argmax(y_to_max)
             prior, latter = ind_max / self.L, ind_max % self.L
+            val_max = y_to_max[prior, latter]
+            if val_max == 0:
+                break
             # for test #
             if prior not in labels:
                 print y
-                raise("cannot find maximum in remaining labels")
+                print "y_to_max", y_to_max
+                print prior, latter
+                print y_rank
+                print labels
+                raise ValueError("cannot find maximum in remaining labels")
+            # search highest agree score position #
+            agree_add_max = 0.0
+            pos_max = 0
             for pos in range(len(y_rank)+1):
-                rank_temp = [l for l in y_rank]
-                rank_temp.insert(pos, prior)
-                pass
+                # rank_temp = [l for l in y_rank]
+                # rank_temp.insert(pos, prior)
+                agree_add_temp = self.agreeScoreUpdate(y_rank, y, pos, prior)
+                if agree_add_temp >= agree_add_max:
+                    agree_add_max = agree_add_temp
+                    pos_max = pos
+            # update ranking, label set and preference matrix
+            y_rank.insert(pos_max, prior)
+            del labels[labels.index(prior)]
+            y_to_max[prior,:] = 0.0 ## not to be picked again ##
+            for ll in y_rank:
+                if ll != prior:
+                    y[ll, prior] = 0.0
+                    y[prior, ll] = 0.0
+        # tail abstention #
+        for pos in range(len(y_rank), self.L):
+            y_rank.append(-1)
+        return y_rank
+
+    def agreeScoreUpdate(self, ranking, preference, pos, prior):
+        """
+        calculate the agree score change with adding prior to ranking at pos
+        :param ranking: current ranking vector
+        :param preference: preference matrix L*L np.ndarray
+        :return: agree score change
+        """
+        rank_temp = [label for label in ranking]
+        rank_temp.insert(pos, prior)
+        agree_add = 0.0
+        for i in range(len(rank_temp)):
+            if i > pos:
+                agree_add += preference[i, pos]
+            elif i < pos:
+                agree_add += preference[pos, i]
+        return agree_add
 
     def initialize(self, N, d, L, x_train, y_train):
         ## initialize parameters according [1] ##
@@ -145,20 +198,31 @@ class SMPrank(object):
 
         cf = 0
         cp = 0
+        features = []
+        pairlabels = []
         for samp in range(N):
             x_samp = x_train[samp]
             y_samp = y_train[samp]
-            if x_samp not in self.mfeature and cf < self.K:
+            if not self.check(features, x_samp) and cf < self.K:
                 self.mfeature[cf] = x_samp
+                features.append(x_samp)
                 cf += 1
-            if y_samp not in self.mpairlabel and cp < self.K:
+            if not self.check(pairlabels, y_samp) and cp < self.K:
                 self.mpairlabel[cp] = self.complete(y_samp)
+                pairlabels.append(y_samp)
                 cp += 1
             if cf >= self.K and cp >= self.K:
                 break
         if cf < self.K or cp < self.K:
             print "distinct features: ", cf, "distinct pairlabel: ", cp
-            raise("too many prototypes")
+            raise ValueError("too many prototypes")
+
+    def check(self, list, vector):
+        isin = False
+        for vect in list:
+            if np.array_equal(vect, vector):
+                isin = True
+        return isin
 
     def complete(self, y):
         for i in range(self.L):
@@ -216,5 +280,42 @@ class SMPrank(object):
             self.probsum += self.probfeature[k] * self.probpairlabel[k]
 
 
+    def rank2pair(self, ranking):
+        """
+        transform ranking to pairwise comparison matrix
+        :param ranking: ranking vector
+        :return: np.ndarray
+        """
+        if type(ranking) == np.ndarray:
+            ranking = ranking.tolist()
+        L = len(ranking)
+        pref = np.zeros([L,L])
+        labels = [label for label in range(L)]
+        for i in range(L):
+            prior = ranking[i]
+            if prior < 0:
+                break # tail abstention #
+            del labels[labels.index(prior)]
+            for label in labels:
+                pref[prior, label] = 1
+        return pref
+
+
 def frobeniusGaussianCore(x, m, sigma):
     return np.exp(-pow(np.linalg.norm(x - m)/sigma, 2))
+
+
+def simulateddata(N, L, d):
+    x_train = np.random.random([N,d])
+    y_train = np.zeros([N,L])
+    for i in range(N):
+        y_train[i] = np.array(LogR.rankOrder(x_train[i].tolist()))
+    return x_train, y_train
+
+
+if __name__ == "__main__":
+    x, y = simulateddata(10, 5, 5)
+    smprank = SmpRank(3)
+    smprank.fit(x,y)
+    print y
+    print smprank.predict(x)

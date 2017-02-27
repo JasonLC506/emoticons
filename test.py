@@ -21,5 +21,9 @@ from scipy.stats.mstats import gmean
 c = 10.0
 print np.log(c)
 b = [2,3,1,4]
-del b[b.index(2)]
+b.insert(4,5)
 print b
+
+d = [b]
+d.append([])
+print b, d, b in d, [] in d
