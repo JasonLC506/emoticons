@@ -5,6 +5,7 @@ follow Grbovic et al. 2013 IJCAI [1]
 import numpy as np
 import warnings
 import logRegFeatureEmotion as LogR
+import math
 
 
 class SmpRank(object):
@@ -147,10 +148,12 @@ class SmpRank(object):
                 # rank_temp = [l for l in y_rank]
                 # rank_temp.insert(pos, prior)
                 agree_add_temp = self.agreeScoreUpdate(y_rank, y, pos, prior)
+                print pos, prior, agree_add_temp ### test ###
                 if agree_add_temp >= agree_add_max:
                     agree_add_max = agree_add_temp
                     pos_max = pos
             # update ranking, label set and preference matrix
+            print "y_rank", y_rank### test ###
             y_rank.insert(pos_max, prior)
             del labels[labels.index(prior)]
             y_to_max[prior,:] = 0.0 ## not to be picked again ##
@@ -297,7 +300,7 @@ class SmpRank(object):
                 break # tail abstention #
             del labels[labels.index(prior)]
             for label in labels:
-                pref[prior, label] = 1
+                pref[prior, label] = 1.0
         return pref
 
 
@@ -315,7 +318,15 @@ def simulateddata(N, L, d):
 
 if __name__ == "__main__":
     x, y = simulateddata(10, 5, 5)
-    smprank = SmpRank(3)
-    smprank.fit(x,y)
-    print y
-    print smprank.predict(x)
+    # print x
+    # smprank = SmpRank(3)
+    # smprank.fit(x,y, Max_epoch = 100)
+    print y[0]
+    # print smprank.predict(x)
+
+    ### test ###
+    smp = SmpRank(3)
+    smp.L=5
+    pairlabels = smp.rank2pair(y[0])
+    print pairlabels
+    print smp.aggregate(pairlabels)
