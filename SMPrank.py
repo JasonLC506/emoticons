@@ -5,6 +5,8 @@ follow Grbovic et al. 2013 IJCAI [1]
 import numpy as np
 import warnings
 import logRegFeatureEmotion as LogR
+from sklearn.model_selection import KFold
+from DecisionTree import label2Rank
 import math
 
 
@@ -33,7 +35,7 @@ class SmpRank(object):
         self.decaylearningrate = np.nan
         self.initlearningrate = 0.04 # from [1] empirical #
 
-    def fit(self, x_train, y_train_rank, x_valid = None, y_valid = None, Max_epoch = 10):
+    def fit(self, x_train, y_train_rank, x_valid = None, y_valid = None, Max_epoch = 100):
         """
 
         :param x_train: N*d np.array
@@ -89,6 +91,7 @@ class SmpRank(object):
             if not np.isnan(loss_valid) and loss_valid < loss_valid_now:
                 print "early stop at the end of epoch: ", epoch
                 return self
+            loss_valid = loss_valid_now
         return self
 
     def predict(self, x_test):
@@ -103,7 +106,7 @@ class SmpRank(object):
             y_rank_pred = [[] for i in range(N)]
             for samp in range(N):
                 y_rank_pred[samp] = self.predict(x_test[samp])
-            return np.array(y_rank_pred)
+            return np.array(y_rank_pred, dtype=np.int8)
 
         ## weighted average of preference matrices ##
         self.probcal(x_test)
@@ -148,13 +151,13 @@ class SmpRank(object):
                 # rank_temp = [l for l in y_rank]
                 # rank_temp.insert(pos, prior)
                 agree_add_temp = self.agreeScoreUpdate(y_rank, y, pos, prior)
-                print pos, prior, agree_add_temp ### test ###
+                # print pos, prior, agree_add_temp ### test ###
                 if agree_add_temp >= agree_add_max:
                     agree_add_max = agree_add_temp
                     pos_max = pos
             # update ranking, label set and preference matrix
-            print "y_rank", y_rank### test ###
             y_rank.insert(pos_max, prior)
+            # print "y_rank", y_rank### test ###
             del labels[labels.index(prior)]
             y_to_max[prior,:] = 0.0 ## not to be picked again ##
             for ll in y_rank:
@@ -175,12 +178,13 @@ class SmpRank(object):
         """
         rank_temp = [label for label in ranking]
         rank_temp.insert(pos, prior)
+        # print rank_temp ### test
         agree_add = 0.0
         for i in range(len(rank_temp)):
-            if i > pos:
-                agree_add += preference[i, pos]
-            elif i < pos:
-                agree_add += preference[pos, i]
+            if i < pos:
+                agree_add += preference[rank_temp[i], prior]
+            elif i > pos:
+                agree_add += preference[prior, rank_temp[i]]
         return agree_add
 
     def initialize(self, N, d, L, x_train, y_train):
@@ -282,8 +286,7 @@ class SmpRank(object):
             self.probfeature[k] = self.probfeature[k] / sum_probf
             self.probsum += self.probfeature[k] * self.probpairlabel[k]
 
-
-    def rank2pair(self, ranking):
+    def rank2pair(self, ranking, complete=True):
         """
         transform ranking to pairwise comparison matrix
         :param ranking: ranking vector
@@ -301,6 +304,12 @@ class SmpRank(object):
             del labels[labels.index(prior)]
             for label in labels:
                 pref[prior, label] = 1.0
+        # complete preference #
+        for i in range(L):
+            for j in range(i+1, L):
+                if pref[i,j]<0.001 and pref[j,i]<0.001:
+                    pref[i,j]=0.5
+                    pref[j,i]=0.5
         return pref
 
 
@@ -308,25 +317,47 @@ def frobeniusGaussianCore(x, m, sigma):
     return np.exp(-pow(np.linalg.norm(x - m)/sigma, 2))
 
 
+def crossValidate(x, y, cv=5, K=None):
+    """
+    :param y: N*L ranking vectors
+    :return:
+    """
+    results = {"perf": []}
+
+    ## cross validation ##
+    np.random.seed(1100)
+    kf = KFold(n_splits=cv, shuffle=True, random_state=0)
+    for train, test in kf.split(x):
+        x_train = x[train, :]
+        y_train = y[train, :]
+        x_test = x[test, :]
+        y_test = y[test, :]
+
+        y_pred = SmpRank(K=K).fit(x_train, y_train).predict(x_test)
+        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        print results["perf"][-1]
+
+    for key in results.keys():
+        item = np.array(results[key])
+        mean = np.nanmean(item, axis=0)
+        std = np.nanstd(item, axis=0)
+        results[key] = [mean, std]
+
+    return results
+
 def simulateddata(N, L, d):
     x_train = np.random.random([N,d])
-    y_train = np.zeros([N,L])
+    y_train = np.zeros([N,L], dtype=np.int8)
     for i in range(N):
         y_train[i] = np.array(LogR.rankOrder(x_train[i].tolist()))
     return x_train, y_train
 
 
 if __name__ == "__main__":
-    x, y = simulateddata(10, 5, 5)
-    # print x
-    # smprank = SmpRank(3)
-    # smprank.fit(x,y, Max_epoch = 100)
-    print y[0]
-    # print smprank.predict(x)
-
-    ### test ###
-    smp = SmpRank(3)
-    smp.L=5
-    pairlabels = smp.rank2pair(y[0])
-    print pairlabels
-    print smp.aggregate(pairlabels)
+    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    y = label2Rank(y)
+    results = crossValidate(x,y,K=100)
+    print results
+    with open("results/result_SMP_nytimes.txt", "a") as f:
+        f.write(str(results))
+        f.write("\n")
