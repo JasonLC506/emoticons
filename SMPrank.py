@@ -354,10 +354,10 @@ def simulateddata(N, L, d):
 
 
 if __name__ == "__main__":
-    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
     y = label2Rank(y)
     results = crossValidate(x,y,K=100)
     print results
-    with open("results/result_SMP_nytimes.txt", "a") as f:
+    with open("results/result_SMP_washington.txt", "a") as f:
         f.write(str(results))
         f.write("\n")
