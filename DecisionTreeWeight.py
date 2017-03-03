@@ -18,13 +18,14 @@ class DecisionTree(object):
     """
     binary tree
     """
-    def __init__(self, feature=-1, value=None, result = None, tb=None, fb=None, gain=0.0, mis_rate = None, size_subtree = 1):
+    def __init__(self, feature=-1, value=None, result = None, tb=None, fb=None, pb=None, gain=0.0, mis_rate = None, size_subtree = 1):
         self.feature = feature
         self.value = value
         self.result = result
         self.tb = tb
         self.fb = fb
         # pruning #
+        self.pb = pb
         self.mis_rate = mis_rate
         self.gain = gain
         self.size = size_subtree
@@ -61,7 +62,7 @@ class DecisionTree(object):
 
         ## split or stop ##
         if gain > stop_criterion_gain: # split
-            children = [DecisionTree() for c in range(2)]
+            children = [DecisionTree(pb=self) for c in range(2)]
             for c in range(2):
                 children[c].buildtree(samples = best_sets[c],
                                           x_train = x_train, y_train = y_train, weights = weights,
@@ -73,9 +74,8 @@ class DecisionTree(object):
             self.feature = best_split[0]
             self.value = best_split[1]
             self.size = self.tb.size + self.fb.size
-            self.gain = self.pruneGain(gain, len(best_sets[0]), len(best_sets[1]))
-            self.size = self.tb.size + self.fb.size
-            self.alpha = self.gain / (self.size - 1)
+            self.gain = self.pruneGain(len(best_sets[0]), len(best_sets[1]))
+            # self.alpha = self.gain / (self.size - 1)
             return self
         else:
             return self
@@ -307,7 +307,7 @@ class DecisionTree(object):
         """
         return (cri_cur - cri_split)
 
-    def pruneGain(self, split_cri_gain, tb_Nsamp, fb_Nsamp):
+    def pruneGain(self, tb_Nsamp, fb_Nsamp):
         """
         calculate the gain compared to complete split of the substree rooted at current node
         for now, gain is concerned about misclassification rate
@@ -315,8 +315,9 @@ class DecisionTree(object):
         :return: float
         """
         Nsamp = tb_Nsamp + fb_Nsamp
-        split_mis_rate = (tb_Nsamp * self.tb.mis_rate + fb_Nsamp * self.fb.mis_rate)/Nsamp
-        return (self.mis_rate - split_mis_rate)
+        gain_this_level = self.mis_rate * Nsamp - (tb_Nsamp * self.tb.mis_rate + fb_Nsamp * self.fb.mis_rate)
+        gain_from_leaf = gain_this_level + self.tb.gain + self.fb.gain
+        return gain_from_leaf
 
 
 def crossValidate(x,y, cv=5, alpha = 0, rank_weight = False, stop_criterion_mis_rate = None, stop_criterion_min_node = 1,
