@@ -18,12 +18,6 @@ from scipy.stats.mstats import gmean
 # b = 3*2.4/3.5 * a - a
 # print b
 
-c = 10.0
-print np.log(c)
-b = [2,3,1,4]
-b.insert(4,5)
-print b
-
-d = [b]
-d.append([])
-print b, d, b in d, [] in d
+a = {}
+b = []
+print type(a)==dict, type(b)==list
