@@ -51,9 +51,10 @@ class BiHeap(object):
         else:
             return self.originlist[self.pointer(self.heap[index])]
 
-    def pop(self):
+    def pop(self, NOTOUT = False):
         item = self.fetch(0)
-        self.delete(0)
+        if item is not None and not NOTOUT:
+            self.delete(0)
         return item
 
     def insert(self, item):
@@ -63,6 +64,9 @@ class BiHeap(object):
         self.heap.append([self.itemkeyvalue(item),self.maxpointer])
         self.revmap[self.itemidentifier(item)] = self.length-1
         self.upsort(self.length - 1)
+        ### test
+        assert len(self.heap) == len(self.originlist)
+        assert len(self.heap) == len(self.revmap)
         return self
 
     def delete(self, index):
@@ -74,23 +78,41 @@ class BiHeap(object):
             print self.heap
             raise ValueError("index out of range")
         temp = self.heap[index]
-        del self.revmap[self.itemidentifier(self.fetch(index))]
         self.heap[index] = self.heap[self.length - 1]
+        self.heap[self.length - 1] = temp
         self.revmap[self.itemidentifier(self.fetch(index))] = index
-        self.downsort(index)
+        del self.revmap[self.itemidentifier(self.fetch(self.length -1))]
         del self.heap[self.length -1]
         self.length += -1
+        self.downsort(index)
 
         del self.originlist[self.pointer(temp)]
-
+        ### test
+        assert len(self.heap) == len(self.originlist)
+        assert len(self.heap) == len(self.revmap)
         return self
 
     def update(self, index, item):
+
+        ### test
+        assert len(self.heap) == len(self.originlist)
+        assert len(self.heap) == len(self.revmap)
+
         olditem = self.fetch(index)
         if olditem is None:
             raise ValueError("index out of range")
         else:
             self.originlist[self.pointer(self.heap[index])] = item
+            id = self.itemidentifier(item)
+            oldid = self.itemidentifier(olditem)
+
+            del self.revmap[oldid]
+            self.revmap[id] = index
+
+            ### test
+            assert len(self.heap) == len(self.originlist)
+            assert len(self.heap) == len(self.revmap)
+
             oldvalue = self.itemkeyvalue(olditem)
             newvalue = self.itemkeyvalue(item)
             self.heap[index][0] = newvalue # heap structure dependent
@@ -98,6 +120,10 @@ class BiHeap(object):
                 self.upsort(index)
             else:
                 self.downsort(index)
+
+        ### test
+        assert len(self.heap) == len(self.originlist)
+        assert len(self.heap) == len(self.revmap)
         return self
 
     def itemkeyvalue(self, item):
@@ -129,6 +155,9 @@ class BiHeap(object):
             self.revmap[self.itemidentifier(self.fetch(cindex))] = cindex
             self.revmap[self.itemidentifier(self.fetch(pindex))] = pindex
             self.upsort(pindex)
+        ### test
+        assert len(self.heap) == len(self.originlist)
+        assert len(self.heap) == len(self.revmap)
         return self
 
     def downsort(self, pindex):
@@ -148,9 +177,21 @@ class BiHeap(object):
         if not preferp:
             self.heap[optiindex] = self.heap[pindex]
             self.heap[pindex] = optiitem
+
+            # ### test
+            # print "pindex", pindex
+            # print "optiindex", optiindex
+            # print self.revmap
+            # print self.originlist
+            # print self.heap
+
             self.revmap[self.itemidentifier(self.fetch(pindex))] = pindex
             self.revmap[self.itemidentifier(self.fetch(optiindex))] = optiindex
+            ### test
+            assert len(self.heap) == len(self.originlist)
+            assert len(self.heap) == len(self.revmap)
             self.downsort(optiindex)
+
         return self
 
     def compare(self, v1, v2):

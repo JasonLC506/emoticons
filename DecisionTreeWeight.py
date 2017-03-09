@@ -129,7 +129,7 @@ class DecisionTree(object):
             # print alpha_list.originlist
             # print alpha_list.heap
             ###
-            index, alpha = alpha_list.pop()
+            index, alpha = alpha_list.pop(NOTOUT=True)
             alpha_list_final.append(alpha)
             self.alphaupdate(index, alpha_list, alpha, new_leaf = True)
         return alpha_list_final
@@ -149,6 +149,13 @@ class DecisionTree(object):
             node.alpha = node.gain / (node.size - 1)
             if node.alpha < alpha_min:
                 raise ValueError("yao shou la, derivation failed?")
+            ### test
+            if alpha_heap.find(index) is None:
+                print alpha_heap.revmap
+                print alpha_heap.heap
+                print alpha_heap.originlist
+                print index
+
             alpha_heap.update(alpha_heap.find(index), [index, node.alpha])
         ## update antecedent ##
         if node.pb is not None:
