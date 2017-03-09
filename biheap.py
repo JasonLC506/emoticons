@@ -15,24 +15,35 @@ class BiHeap(object):
         self.key = None
         self.originlist = {}
         self.maxpointer = None
+        self.revmap = {}
 
-    def buildheap(self, list_unsorted, minimal = True, key = None):
+    def buildheap(self, list_unsorted, minimal = True, key = None, identifier = None):
         """
         :param list_unsorted:
         :param minimal: True for minimal heap, False for maximal heap
-        :param key: for diction or list input, the index can be string or int;
+        :param key: key field for comparison
+                    for diction or list input, the index can be string or int;
                     default using whole input
+        :param identifier: identifier for each item
         """
         self.length = len(list_unsorted)
         self.minimal = minimal
         self.originlist = {pointer: list_unsorted[pointer] for pointer in range(self.length)}
         self.maxpointer = self.length - 1
         self.key = key
+        self.identifier = identifier
         self.heap = [[self.itemkeyvalue(self.originlist[index]), index] for index in range(self.length)]
+        self.revmap = {self.itemidentifier(self.originlist[index]): index for index in range(self.length)}
         for p in range(self.length/2):
             pindex = self.length/2 - p -1
             self.downsort(pindex)
         return self
+
+    def find(self, identifier):
+        if identifier in self.revmap.keys():
+            return self.revmap[identifier]
+        else:
+            return None
 
     def fetch(self, index):
         if index >= self.length:
@@ -50,19 +61,25 @@ class BiHeap(object):
         self.originlist[self.maxpointer] = item
         self.length += 1
         self.heap.append([self.itemkeyvalue(item),self.maxpointer])
+        self.revmap[self.itemidentifier(item)] = self.length-1
         self.upsort(self.length - 1)
         return self
 
     def delete(self, index):
+        if index is None:
+            return self
         if index >= self.length:
             raise ValueError("index out of range")
         temp = self.heap[index]
+        del self.revmap[self.itemidentifier(self.fetch(index))]
         self.heap[index] = self.heap[self.length - 1]
+        self.revmap[self.itemidentifier(self.fetch(index))] = index
         self.downsort(index)
         del self.heap[self.length -1]
         self.length += -1
 
         del self.originlist[self.pointer(temp)]
+
         return self
 
     def update(self, index, item):
@@ -86,6 +103,12 @@ class BiHeap(object):
         else:
             return item[self.key]
 
+    def itemidentifier(self, item):
+        if self.identifier is None:
+            return item
+        else:
+            return item[self.identifier]
+
     def keyvalue(self, heapitem):
         return heapitem[0] # heap structure dependent
 
@@ -100,6 +123,8 @@ class BiHeap(object):
             temp = self.heap[cindex]
             self.heap[cindex] = self.heap[pindex]
             self.heap[pindex] = temp
+            self.revmap[self.itemidentifier(self.fetch(cindex))] = cindex
+            self.revmap[self.itemidentifier(self.fetch(pindex))] = pindex
             self.upsort(pindex)
         return self
 
@@ -120,6 +145,8 @@ class BiHeap(object):
         if not preferp:
             self.heap[optiindex] = self.heap[pindex]
             self.heap[pindex] = optiitem
+            self.revmap[self.itemidentifier(self.fetch(pindex))] = pindex
+            self.revmap[self.itemidentifier(self.fetch(optiindex))] = optiindex
             self.downsort(optiindex)
         return self
 
@@ -159,21 +186,18 @@ class BiHeap(object):
 
 if __name__ == "__main__":
     h = BiHeap()
-    h.buildheap([[7,2,3,4],[2,1,1,1],[4,0,1,0],[5,3,4,2]], key=2)
+    h.buildheap([[7,2,3,4],[2,1,1,1],[4,0,1,0],[5,3,4,2]], key=2, identifier = 0)
     h.insert([1,2,9,0])
     h.delete(0)
     h.update(0,[3,7,5,9])
     print h.originlist
     print h.heap
-    print h.pop()
-    print h.fetch(3)
+    print h.revmap
 
     h2 = BiHeap().buildheap([2,3,4,1,5,7], minimal=False)
     h2.insert(-1)
     print h2.originlist
     print h2.heap
-    print h2.pop()
-    print h2.fetch(3)
-    h2.delete(3)
-    print h2.fetch(3)
-    print h2.length
+
+
+    print h2.find(-2)

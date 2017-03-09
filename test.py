@@ -18,6 +18,18 @@ from scipy.stats.mstats import gmean
 # b = 3*2.4/3.5 * a - a
 # print b
 
-a = {}
-b = []
-print type(a)==dict, type(b)==list
+class A:
+    def __init__(self, k):
+        self.k = k
+
+a = A(1)
+b = A(2)
+c = A(3)
+L = [a,b]
+for item in L:
+    print item.k
+L.append(c)
+c.k = 4
+for item in L:
+    print item.k
+

@@ -6,6 +6,7 @@ import numpy as np
 import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
 from readSushiData import readSushiData
+from biheap import BiHeap
 from functools import partial
 from scipy.stats.mstats import gmean
 from datetime import datetime
@@ -18,13 +19,22 @@ class DecisionTree(object):
     """
     binary tree
     """
-    def __init__(self, feature=-1, value=None, result = None, tb=None, fb=None, pb=None, gain=0.0, mis_rate = None, size_subtree = 1):
+    def __init__(self, feature=-1, value=None, result = None, tb=None, fb=None, pb=None, root=None,  gain=0.0, mis_rate = None, size_subtree = 1, Nsamp = 0):
         self.feature = feature
         self.value = value
         self.result = result
         self.tb = tb
         self.fb = fb
+        self.Nsamp = Nsamp
+        self.nodelist = []
+        if root is None:
+            ## root node ##
+            self.nodelist.append(self)
+            self.root = self
+        else:
+            self.root = root
         # pruning #
+
         self.pb = pb
         self.mis_rate = mis_rate
         self.gain = gain
@@ -45,6 +55,7 @@ class DecisionTree(object):
         ## to be writen to current node ##
         self.result = self.nodeResult(y_train[samples], weights[samples])
         self.mis_rate = self.misRate(y_train[samples], weights[samples], self.result)
+        self.Nsamp = Nsamp
 
         ## check if stop ##
         if stop_criterion_mis_rate is not None and self.mis_rate < stop_criterion_mis_rate or \
@@ -62,19 +73,25 @@ class DecisionTree(object):
 
         ## split or stop ##
         if gain > stop_criterion_gain: # split
-            children = [DecisionTree(pb=self) for c in range(2)]
+            pos = len(self.root.nodelist) - 1
+            children = [DecisionTree(pb=pos, root=self.root) for c in range(2)]
             for c in range(2):
+                self.root.nodelist.append(children[c])
+                if c == 0:
+                    self.tb = len(self.root.nodelist) - 1
+                else:
+                    self.fb = len(self.root.nodelist) - 1
                 children[c].buildtree(samples = best_sets[c],
                                           x_train = x_train, y_train = y_train, weights = weights,
                                           stop_criterion_mis_rate = stop_criterion_mis_rate,
                                           stop_criterion_min_node = stop_criterion_min_node,
                                           stop_criterion_gain = stop_criterion_gain)
-            self.tb = children[0]
-            self.fb = children[1]
+            # self.tb = children[0]
+            # self.fb = children[1]
             self.feature = best_split[0]
             self.value = best_split[1]
-            self.size = self.tb.size + self.fb.size
-            self.gain = self.pruneGain(len(best_sets[0]), len(best_sets[1]))
+            self.size = children[0].size + children[1].size
+            self.gain = self.pruneGain()
             # self.alpha = self.gain / (self.size - 1)
             return self
         else:
@@ -86,9 +103,62 @@ class DecisionTree(object):
         else:
             print(indent + str(self.feature) + ">=" + str(self.value) + "?")
             print(indent + "T->\n")
-            self.tb.printtree(indent + "   ")
+            self.root.nodelist[self.tb].printtree(indent + "   ")
             print(indent + "F->\n")
-            self.fb.printtree(indent + "   ")
+            self.root.nodelist[self.fb].printtree(indent + "   ")
+
+    def alphalist(self):
+        ## here self must be root node ##
+
+        # initialize alpha list #
+        alpha_list = []
+        for i in range(len(self.nodelist)):
+            node = self.nodelist[i]
+            if node.size > 1:
+                # only internal node #
+                node.alpha = node.gain/(node.size - 1)
+                alpha_list.append([i, node.alpha])
+        alpha_list = BiHeap().buildheap(alpha_list, key = 1, identifier=0)
+
+        alpha_list_final = []
+
+        # recursively get alphalist #
+        while alpha_list.length > 0:
+            index, alpha = alpha_list.pop()
+            alpha_list_final.append(alpha)
+            self.alphaupdate(index, alpha_list, alpha, new_leaf = True)
+        return alpha_list_final
+
+    def alphaupdate(self, index, alpha_heap, alpha_min, new_leaf = False):
+        ## here self must be root node ##
+
+        node = self.nodelist[index]
+        if new_leaf:
+            node.gain = 0.0
+            node.size = 1
+            ## descendent delete from alpha_list ##
+            self.branchdelete(index, alpha_heap)
+        else:
+            node.gain = node.pruneGain()
+            node.size = self.nodelist[node.tb].size + self.nodelist[node.fb].size
+            node.alpha = node.gain / (node.size - 1)
+            if node.alpha < alpha_min:
+                raise ValueError("yao shou la, derivation failed?")
+            alpha_heap.update(alpha_heap.find(index), [index, node.alpha])
+        ## update antecedent ##
+        if node.pb is not None:
+            self.alphaupdate(node.pb, alpha_heap, alpha_min)
+
+    def branchdelete(self, index, alpha_heap):
+        """
+        delete from alpha_heap
+        """
+        node = self.nodelist[index]
+        alpha_heap.delete(alpha_heap.find(index))
+        if node.tb is not None:
+            self.branchdelete(node.tb, alpha_heap)
+            self.branchdelete(node.fb, alpha_heap)
+
 
     def predict(self, x_test, alpha = 0):
         if x_test.ndim == 2: # batch predict
@@ -104,9 +174,9 @@ class DecisionTree(object):
                     return self.result
             value = x_test[self.feature]
             if value >= self.value:
-                return self.tb.predict(x_test,alpha)
+                return self.root.nodelist[self.tb].predict(x_test,alpha)
             else:
-                return self.fb.predict(x_test,alpha)
+                return self.root.nodelist[self.fb].predict(x_test,alpha)
 
     # dependent functions #
     def nodeResult(self, y_s, w_s):
@@ -307,16 +377,17 @@ class DecisionTree(object):
         """
         return (cri_cur - cri_split)
 
-    def pruneGain(self, tb_Nsamp, fb_Nsamp):
+    def pruneGain(self):
         """
         calculate the gain compared to complete split of the substree rooted at current node
         for now, gain is concerned about misclassification rate
         :param split_cri_gain: gain of current split in terms of split_criterion
         :return: float
         """
-        Nsamp = tb_Nsamp + fb_Nsamp
-        gain_this_level = self.mis_rate * Nsamp - (tb_Nsamp * self.tb.mis_rate + fb_Nsamp * self.fb.mis_rate)
-        gain_from_leaf = gain_this_level + self.tb.gain + self.fb.gain
+        tb = self.root.nodelist[self.tb]
+        fb = self.root.nodelist[self.fb]
+        gain_this_level = self.mis_rate * self.Nsamp - (tb.Nsamp * tb.mis_rate + fb.Nsamp * fb.mis_rate)
+        gain_from_leaf = gain_this_level + tb.gain + fb.gain
         return gain_from_leaf
 
 
@@ -473,40 +544,32 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
     return x,y
 
 if __name__ == "__main__":
-    ### test ###
-    # x,y = dataSimulated(8, 3, 6)
-    # print x
-    # print y
-    # Nsamp = x.shape[0]
-    # weight = 1.0/Nsamp
-    # weights = np.array([weight for i in range(Nsamp)], dtype = np.float32)
-    # print weights
-    # tree = DecisionTree().buildtree(x,y,weights, stop_criterion_mis_rate=0.4)
-    # tree.printtree()
-    # for i in range(x.shape[0]):
-    #     y_pred = tree.predict(x[i])
-    #     print y_pred, y[i]
+    ## test ###
+    x,y = dataSimulated(8, 3, 6)
+    print x
+    print y
+    Nsamp = x.shape[0]
+    tree = DecisionTree().buildtree(x,y)
+    tree.printtree()
+    print tree.nodelist
+    for i in range(x.shape[0]):
+        y_pred = tree.predict(x[i])
+        print y_pred, y[i]
 
 
 
-    # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
-    # y = label2Rank(y)
-    ### sushi data ###
-    x,y = readSushiData()
-    # weights = rank2Weight(y)
-    # paircmp, _ = rankPairwise(y)
-    # print "\n".join(map(str,paircmp))
-    # # print weights
-    # print np.max(weights), np.min(weights), np.mean(weights), np.std(weights)
-    # weights = rank2Weight(y)
-    # print np.max(weights), np.min(weights), np.mean(weights), np.std(weights)
-
-    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
-    # write2result #
-    file = open("result_dt_sushi.txt","a")
-    file.write("number of samples: %d\n" % x.shape[0])
-    file.write("NONERECALL: %f\n" % NONERECALL)
-    file.write("CV: %d\n" % 5)
-    file.write(str(result)+"\n")
-    file.close()
-    print result
+    # # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    # # y = label2Rank(y)
+    # ### sushi data ###
+    # x,y = readSushiData()
+    #
+    #
+    # result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
+    # # write2result #
+    # file = open("result_dt_sushi.txt","a")
+    # file.write("number of samples: %d\n" % x.shape[0])
+    # file.write("NONERECALL: %f\n" % NONERECALL)
+    # file.write("CV: %d\n" % 5)
+    # file.write(str(result)+"\n")
+    # file.close()
+    # print result
