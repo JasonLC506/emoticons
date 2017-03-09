@@ -124,6 +124,11 @@ class DecisionTree(object):
 
         # recursively get alphalist #
         while alpha_list.length > 0:
+            ### test ###
+            # print alpha_list.revmap
+            # print alpha_list.originlist
+            # print alpha_list.heap
+            ###
             index, alpha = alpha_list.pop()
             alpha_list_final.append(alpha)
             self.alphaupdate(index, alpha_list, alpha, new_leaf = True)
@@ -154,7 +159,17 @@ class DecisionTree(object):
         delete from alpha_heap
         """
         node = self.nodelist[index]
+        ### test ###
+        print alpha_heap.revmap
+        print alpha_heap.originlist
+        print alpha_heap.heap
+        print "delete index", index
+        print "heap index", alpha_heap.find(index)
         alpha_heap.delete(alpha_heap.find(index))
+        print alpha_heap.revmap
+        print alpha_heap.originlist
+        print alpha_heap.heap
+
         if node.tb is not None:
             self.branchdelete(node.tb, alpha_heap)
             self.branchdelete(node.fb, alpha_heap)
@@ -551,10 +566,8 @@ if __name__ == "__main__":
     Nsamp = x.shape[0]
     tree = DecisionTree().buildtree(x,y)
     tree.printtree()
-    print tree.nodelist
-    for i in range(x.shape[0]):
-        y_pred = tree.predict(x[i])
-        print y_pred, y[i]
+
+    print tree.alphalist()
 
 
 

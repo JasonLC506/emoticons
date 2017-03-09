@@ -69,6 +69,9 @@ class BiHeap(object):
         if index is None:
             return self
         if index >= self.length:
+            print self.revmap
+            print self.originlist
+            print self.heap
             raise ValueError("index out of range")
         temp = self.heap[index]
         del self.revmap[self.itemidentifier(self.fetch(index))]
