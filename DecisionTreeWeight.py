@@ -120,7 +120,7 @@ class DecisionTree(object):
                 alpha_list.append([i, node.alpha])
         alpha_list = BiHeap().buildheap(alpha_list, key = 1, identifier=0)
 
-        alpha_list_final = []
+        alpha_list_final = [0.0]
 
         # recursively get alphalist #
         while alpha_list.length > 0:
@@ -130,7 +130,8 @@ class DecisionTree(object):
             # print alpha_list.heap
             ###
             index, alpha = alpha_list.pop(NOTOUT=True)
-            alpha_list_final.append(alpha)
+            if alpha not in alpha_list_final:
+                alpha_list_final.append(alpha)
             self.alphaupdate(index, alpha_list, alpha, new_leaf = True)
         return alpha_list_final
 
@@ -142,8 +143,10 @@ class DecisionTree(object):
             node.gain = 0.0
             node.size = 1
             ## descendent delete from alpha_list ##
+            # print "branchdelete begin" ### test
             self.branchdelete(index, alpha_heap)
         else:
+            ## for antecedent nodes ##
             node.gain = node.pruneGain()
             node.size = self.nodelist[node.tb].size + self.nodelist[node.fb].size
             node.alpha = node.gain / (node.size - 1)
@@ -155,6 +158,7 @@ class DecisionTree(object):
                 print alpha_heap.heap
                 print alpha_heap.originlist
                 print index
+                raise ValueError("antescendent deleted before descendent")
 
             alpha_heap.update(alpha_heap.find(index), [index, node.alpha])
         ## update antecedent ##
@@ -166,20 +170,25 @@ class DecisionTree(object):
         delete from alpha_heap
         """
         node = self.nodelist[index]
-        ### test ###
-        print alpha_heap.revmap
-        print alpha_heap.originlist
-        print alpha_heap.heap
-        print "delete index", index
-        print "heap index", alpha_heap.find(index)
+        # ### test ###
+        # print alpha_heap.revmap
+        # print alpha_heap.originlist
+        # print alpha_heap.heap
+        # print "delete index", index
+        id = alpha_heap.find(index)
+        # print "heap index", id ### test
+        if id is None:
+            # already deleted, so is the subbranch
+            return self
         alpha_heap.delete(alpha_heap.find(index))
-        print alpha_heap.revmap
-        print alpha_heap.originlist
-        print alpha_heap.heap
+        # print alpha_heap.revmap
+        # print alpha_heap.originlist
+        # print alpha_heap.heap
 
         if node.tb is not None:
             self.branchdelete(node.tb, alpha_heap)
             self.branchdelete(node.fb, alpha_heap)
+        return self
 
 
     def predict(self, x_test, alpha = 0):
@@ -444,7 +453,7 @@ def crossValidate(x,y, cv=5, alpha = 0, rank_weight = False, stop_criterion_mis_
                                         stop_criterion_mis_rate= stop_criterion_mis_rate,
                                         stop_criterion_min_node = stop_criterion_min_node,
                                         stop_criterion_gain=stop_criterion_gain)
-
+        alpha_list = tree.alphalist()
         # performance measure
         alpha_sel, y_pred = alpha, tree.predict(x_test, alpha)
         results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
@@ -556,10 +565,13 @@ def rankPairwise(y_s):
 
 def dataSimulated(Nsamp, Nfeature, Nclass):
     np.random.seed(seed=10)
-    x = np.arange(Nsamp*Nfeature,dtype="float").reshape([Nsamp,Nfeature])
-    x += np.random.random(x.shape)*10
-    y = np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
-    y *= 2
+    # x = np.arange(Nsamp*Nfeature,dtype="float").reshape([Nsamp,Nfeature])
+    x = np.random.random(Nsamp*Nfeature).reshape([Nsamp, Nfeature])
+    transfermatrix = np.random.random(Nfeature * Nclass).reshape([Nfeature, Nclass])
+    print "transfermatrix: ", transfermatrix
+    y = np.dot(x,transfermatrix)
+    # y += np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
+    y *= 100
     y = y.astype(int)
     y = map(LogR.rankOrder,y)
     y = np.array(y)
@@ -567,15 +579,19 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
 
 if __name__ == "__main__":
     ## test ###
-    x,y = dataSimulated(8, 3, 6)
-    print x
-    print y
+    x,y = dataSimulated(10000, 3, 6)
     Nsamp = x.shape[0]
     tree = DecisionTree().buildtree(x,y)
-    tree.printtree()
 
-    print tree.alphalist()
-
+    alpha_list = tree.alphalist()
+    print alpha_list
+    for alpha in alpha_list:
+        print alpha
+        y_pred = tree.predict(x, alpha)
+        perform = LogR.perfMeasure(y_pred, y, rankopt=True)
+        print "training performance", perform
+        result = crossValidate(x,y,cv=5,alpha=alpha)
+        print "validation performance", result
 
 
     # # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
