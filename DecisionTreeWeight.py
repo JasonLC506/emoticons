@@ -107,6 +107,8 @@ class DecisionTree(object):
             print(indent + "F->\n")
             self.root.nodelist[self.fb].printtree(indent + "   ")
 
+    ####################################
+    ## pruning ##
     def alphalist(self):
         ## here self must be root node ##
 
@@ -149,8 +151,12 @@ class DecisionTree(object):
             ## for antecedent nodes ##
             node.gain = node.pruneGain()
             node.size = self.nodelist[node.tb].size + self.nodelist[node.fb].size
+            alpha_before = node.alpha
             node.alpha = node.gain / (node.size - 1)
-            if node.alpha < alpha_min:
+            if node.alpha < alpha_min - 0.01: # eliminate false alarm
+                print "before update: ", alpha_before, "after update: ", node.alpha, "alpha_min: ", alpha_min ### test
+                alpha_heap.check()
+                print alpha_heap.find(index), alpha_heap.fetch(alpha_heap.find(index)) ### test
                 raise ValueError("yao shou la, derivation failed?")
             ### test
             if alpha_heap.find(index) is None:
@@ -190,8 +196,24 @@ class DecisionTree(object):
             self.branchdelete(node.fb, alpha_heap)
         return self
 
+    # called even without pruning #
+    def misRate(self, y_s, w_s, result):
+        """
+        calculate the misclassification rate in the node
+        :param y_s: labels of samples in the tree node
+        :param w_s: the weights of corresponding samples
+        :param result: predicted result for the node
+        :return: float
+        """
+        Norm = np.sum(w_s)
+        mis = 0.0
+        for i in range(y_s.shape[0]):
+            if self.diffLabel(result, y_s[i]):
+                mis += w_s[i]
+        return (mis / Norm)
 
-    def predict(self, x_test, alpha = 0):
+    ## with or without pruning ##
+    def predict(self, x_test, alpha = 0.0):
         if x_test.ndim == 2: # batch predict
             y_pred = []
             for samp in range(x_test.shape[0]):
@@ -200,7 +222,7 @@ class DecisionTree(object):
         else: # individual predict
             if self.tb is None:
                 return self.result
-            if self.alpha >= 0:
+            if self.alpha >= 0.0:
                 if self.alpha < alpha:
                     return self.result
             value = x_test[self.feature]
@@ -208,8 +230,10 @@ class DecisionTree(object):
                 return self.root.nodelist[self.tb].predict(x_test,alpha)
             else:
                 return self.root.nodelist[self.fb].predict(x_test,alpha)
+    #######################################
 
-    # dependent functions #
+    #######################################
+    ## label ranking dependent functions ##
     def nodeResult(self, y_s, w_s):
         """
         calculate the predict result for the node
@@ -243,21 +267,6 @@ class DecisionTree(object):
             if not flag:
                 result.append(-1)
         return np.array(result)
-
-    def misRate(self, y_s, w_s, result):
-        """
-        calculate the misclassification rate in the node
-        :param y_s: labels of samples in the tree node
-        :param w_s: the weights of corresponding samples
-        :param result: predicted result for the node
-        :return: float
-        """
-        Norm = np.sum(w_s)
-        mis = 0.0
-        for i in range(y_s.shape[0]):
-            if self.diffLabel(result, y_s[i]):
-                mis += w_s[i]
-        return (mis/Norm)
 
     def diffLabel(self, y_pred, y):
         """
@@ -420,55 +429,10 @@ class DecisionTree(object):
         gain_this_level = self.mis_rate * self.Nsamp - (tb.Nsamp * tb.mis_rate + fb.Nsamp * fb.mis_rate)
         gain_from_leaf = gain_this_level + tb.gain + fb.gain
         return gain_from_leaf
+    ########################################
 
-
-def crossValidate(x,y, cv=5, alpha = 0, rank_weight = False, stop_criterion_mis_rate = None, stop_criterion_min_node = 1,
-                  stop_criterion_gain = 0.0):
-
-    results = {"alpha": [], "perf": []}
-
-    # cross validation #
-    np.random.seed(1100)
-    kf = KFold(n_splits=cv, shuffle=True, random_state=0)  ## for testing fixing random_state
-    for train, test in kf.split(x):
-        x_train = x[train, :]
-        y_train = y[train, :]
-        x_test = x[test, :]
-        y_test = y[test, :]
-
-        # training and predict
-
-        # if alpha == None:
-        #     ## nested select validate and test ##
-        #     # print "start searching alpha:", datetime.now() ### test
-        #     alpha_sel, perf = DTme.hyperParometer(x_train, y_train)
-        #     # print "finish searching alpha:", datetime.now(), alpha ### test
-        # else:
-        #     alpha_sel = alpha
-        if rank_weight:
-            weights = rank2Weight(y_train)
-        else:
-            weights = None
-        tree = DecisionTree().buildtree(x_train,y_train, weights,
-                                        stop_criterion_mis_rate= stop_criterion_mis_rate,
-                                        stop_criterion_min_node = stop_criterion_min_node,
-                                        stop_criterion_gain=stop_criterion_gain)
-        alpha_list = tree.alphalist()
-        # performance measure
-        alpha_sel, y_pred = alpha, tree.predict(x_test, alpha)
-        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
-        results["alpha"].append(alpha_sel)
-        print alpha_sel, "alpha"
-
-    for key in results.keys():
-        item = np.array(results[key])
-        mean = np.nanmean(item, axis=0)
-        std = np.nanstd(item, axis=0)
-        results[key] = [mean, std]
-
-    return results
-
-
+###########################################
+## Label ranking specific ##
 def label2Rank(y):
     y = map(LogR.rankOrder, y)
     y = np.array(y, dtype=int)
@@ -562,14 +526,112 @@ def rankPairwise(y_s):
                     paircomp_sub[emoti][emoti_cmp] += 1
     return paircomp, paircomp_sub
 
+##############################################
+## train test ##
+def hyperParameter(x, y, x_valid=None, y_valid=None, cv = 5, criteria = 0):
+    if x_valid is None:
+        # no validation set, using cross validation #
+        alpha_perform = []
+        kf = KFold(n_splits=cv, shuffle=True, random_state=0)
+        for train, valid in kf.split(x):
+            x_train = x[train,:]
+            y_train = y[train,:]
+            x_valid = x[valid,:]
+            y_valid = y[valid,:]
 
+            tree = DecisionTree().buildtree(x_train, y_train)
+            alpha_list = tree.alphalist()
+            alpha_best = [-1, None]
+            for alpha in alpha_list:
+                y_pred = tree.predict(x_valid, alpha=alpha)
+                perf = LogR.perfMeasure(y_pred, y_valid, rankopt=True)
+                perf_criteria = perf[criteria]
+                if alpha_best[1] is not None and alpha_best[1]>perf_criteria:
+                    pass
+                else:
+                    alpha_best[0] = alpha
+                    alpha_best[1] = perf_criteria
+
+            alpha_perform.append(alpha_best)
+
+        alpha_perform = np.array(alpha_perform, dtype=np.float32)
+        print "inside hyperparameter:", alpha_perform ### test
+        return np.average(alpha_perform, axis=0)[0]
+
+    else:
+        tree = DecisionTree().buildtree(x, y)
+        alpha_list = tree.alphalist()
+        alpha_best = [-1, None]
+        for alpha in alpha_list:
+            y_pred = tree.predict(x_valid, alpha=alpha)
+            perf = LogR.perfMeasure(y_pred, y_valid, rankopt=True)
+            perf_criteria = perf[criteria]
+            if alpha_best[1] is not None and alpha_best[1] > perf_criteria:
+                pass
+            else:
+                alpha_best[0] = alpha
+                alpha_best[1] = perf_criteria
+        return alpha_best[0]
+
+
+def crossValidate(x,y, cv=5, alpha = 0.0, rank_weight = False, stop_criterion_mis_rate = None, stop_criterion_min_node = 1,
+                  stop_criterion_gain = 0.0, prune_criteria = 0):
+
+    results = {"alpha": [], "perf": []}
+
+    # cross validation #
+    np.random.seed(1100)
+    kf = KFold(n_splits=cv, shuffle=True, random_state=0)  ## for testing fixing random_state
+    for train, test in kf.split(x):
+        x_train = x[train, :]
+        y_train = y[train, :]
+        x_test = x[test, :]
+        y_test = y[test, :]
+
+        # training and predict
+
+        if alpha == None:
+            ## nested select validate and test ##
+            print "start searching alpha:", datetime.now() ### test
+            alpha_sel = hyperParameter(x_train, y_train, criteria=prune_criteria)
+            print "finish searching alpha:", datetime.now(), alpha ### test
+        else:
+            alpha_sel = alpha
+
+        # weight #
+        if rank_weight:
+            weights = rank2Weight(y_train)
+        else:
+            weights = None
+
+        tree = DecisionTree().buildtree(x_train,y_train, weights,
+                                        stop_criterion_mis_rate= stop_criterion_mis_rate,
+                                        stop_criterion_min_node = stop_criterion_min_node,
+                                        stop_criterion_gain=stop_criterion_gain)
+        alpha_list = tree.alphalist()
+        # performance measure
+        y_pred = tree.predict(x_test, alpha_sel)
+        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["alpha"].append(alpha_sel)
+        print alpha_sel, "alpha"
+
+    for key in results.keys():
+        item = np.array(results[key])
+        mean = np.nanmean(item, axis=0)
+        std = np.nanstd(item, axis=0)
+        results[key] = [mean, std]
+
+    return results
+
+##############################################
+## test sample ##
 def dataSimulated(Nsamp, Nfeature, Nclass):
     np.random.seed(seed=10)
     # x = np.arange(Nsamp*Nfeature,dtype="float").reshape([Nsamp,Nfeature])
     x = np.random.random(Nsamp*Nfeature).reshape([Nsamp, Nfeature])
     transfermatrix = np.random.random(Nfeature * Nclass).reshape([Nfeature, Nclass])
     print "transfermatrix: ", transfermatrix
-    y = np.dot(x,transfermatrix)
+    y = np.dot(x,transfermatrix) + np.random.random([Nsamp, Nclass]) * 0.5
     # y += np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
     y *= 100
     y = y.astype(int)
@@ -579,20 +641,17 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
 
 if __name__ == "__main__":
     ## test ###
-    x,y = dataSimulated(10000, 3, 6)
+    Nsamp = 10000
+    Nfeature = 3
+    Nclass = 6
+    x,y = dataSimulated(Nsamp, Nfeature, Nclass)
     Nsamp = x.shape[0]
-    tree = DecisionTree().buildtree(x,y)
-
-    alpha_list = tree.alphalist()
-    print alpha_list
-    for alpha in alpha_list:
-        print alpha
-        y_pred = tree.predict(x, alpha)
-        perform = LogR.perfMeasure(y_pred, y, rankopt=True)
-        print "training performance", perform
-        result = crossValidate(x,y,cv=5,alpha=alpha)
-        print "validation performance", result
-
+    result_nopruned = crossValidate(x,y)
+    result_pruned = crossValidate(x,y,alpha=None, prune_criteria=5+3*Nclass)
+    print "mis_rate: acc@all"
+    print "prune_criterion: kendall's tau (perf[5+3*Nclass])"
+    print result_nopruned
+    print result_pruned
 
     # # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
     # # y = label2Rank(y)
