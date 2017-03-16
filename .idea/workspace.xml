@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/DecisionTreeWeight.py" line="564" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f003390c-671c-4e50-b343-d6309f4e9a5f" name="Default" comment="" />
     <ignored path="emoticons.iws" />
@@ -22,111 +25,96 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="139" column="52" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
-              <folding>
-                <element signature="e#443#1380#0" expanded="false" />
-                <element signature="e#1408#1930#0" expanded="false" />
-                <element signature="e#2362#4554#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SMPrank.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SMPrank.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5491">
-              <caret line="328" column="57" selection-start-line="328" selection-start-column="57" selection-end-line="328" selection-end-column="57" />
-              <folding>
-                <element signature="e#84#102#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DecisionTreePruneTry.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DecisionTreePruneTry.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9367">
-              <caret line="559" column="30" selection-start-line="559" selection-start-column="30" selection-end-line="559" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="529" column="16" selection-start-line="529" selection-start-column="16" selection-end-line="529" selection-end-column="16" />
-              <folding>
-                <element signature="e#97#115#0" expanded="true" />
-                <element signature="e#657#1154#0" expanded="false" />
-                <element signature="e#1375#3879#0" expanded="false" />
-                <element signature="e#3925#4290#0" expanded="false" />
-                <element signature="e#4378#5319#0" expanded="false" />
-                <element signature="e#5404#6849#0" expanded="false" />
-                <element signature="e#6906#7638#0" expanded="false" />
-                <element signature="e#7725#8173#0" expanded="false" />
-                <element signature="e#9103#10374#0" expanded="false" />
-                <element signature="e#10420#10916#0" expanded="false" />
-                <element signature="e#10966#11284#0" expanded="false" />
-                <element signature="e#11343#14375#0" expanded="false" />
-                <element signature="e#14432#14825#0" expanded="false" />
-                <element signature="e#14897#15402#0" expanded="false" />
-                <element signature="e#15444#15841#0" expanded="false" />
-                <element signature="e#15896#16204#0" expanded="false" />
-                <element signature="e#16936#17006#0" expanded="false" />
-                <element signature="e#17035#18000#0" expanded="false" />
-                <element signature="e#18089#19625#0" expanded="false" />
-                <element signature="e#19655#20524#0" expanded="false" />
-                <element signature="e#22558#24201#0" expanded="false" />
-                <element signature="e#24316#24855#0" expanded="false" />
-                <marker date="1489610757394" expanded="false" signature="8252:8925" placeholder="..." />
-                <marker date="1489610757394" expanded="false" signature="16230:16793" placeholder="..." />
-                <marker date="1489610757394" expanded="false" signature="20665:22360" placeholder="..." />
-                <marker date="1489610757394" expanded="true" signature="22924:23269" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="result_dt_prunetry_synthetic_balanced.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="153" column="60" selection-start-line="153" selection-start-column="60" selection-end-line="153" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="biheap.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/biheap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="244" column="24" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.55271775">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="315">
+                  <caret line="720" column="0" selection-start-line="720" selection-start-column="0" selection-end-line="720" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#97#115#0" expanded="true" />
+                    <element signature="e#657#1154#0" expanded="false" />
+                    <element signature="e#1375#3879#0" expanded="false" />
+                    <element signature="e#3925#4290#0" expanded="false" />
+                    <element signature="e#4378#5319#0" expanded="false" />
+                    <element signature="e#5404#6849#0" expanded="false" />
+                    <element signature="e#6906#7638#0" expanded="false" />
+                    <element signature="e#9478#10749#0" expanded="false" />
+                    <element signature="e#10795#11291#0" expanded="false" />
+                    <element signature="e#11341#11659#0" expanded="false" />
+                    <element signature="e#11718#14750#0" expanded="false" />
+                    <element signature="e#14807#15200#0" expanded="false" />
+                    <element signature="e#15272#15777#0" expanded="false" />
+                    <element signature="e#15819#16216#0" expanded="false" />
+                    <element signature="e#16271#16579#0" expanded="false" />
+                    <element signature="e#17311#17381#0" expanded="false" />
+                    <element signature="e#17410#18375#0" expanded="false" />
+                    <element signature="e#18464#20000#0" expanded="false" />
+                    <element signature="e#20030#20899#0" expanded="false" />
+                    <element signature="e#24647#26290#0" expanded="false" />
+                    <element signature="e#26405#26944#0" expanded="false" />
+                    <marker date="1489694081320" expanded="false" signature="8627:9300" placeholder="..." />
+                    <marker date="1489694081320" expanded="false" signature="16605:17168" placeholder="..." />
+                    <marker date="1489694081320" expanded="false" signature="22754:24449" placeholder="..." />
+                    <marker date="1489694081320" expanded="true" signature="25013:25358" placeholder="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="result_dt_prunetry_synthetic_balanced.txt" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="346">
+                  <caret line="457" column="60" selection-start-line="457" selection-start-column="60" selection-end-line="457" selection-end-column="60" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="442">
+                  <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="biheap.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/biheap.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="206">
+                  <caret line="244" column="24" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="154">
+                  <caret line="384" column="59" selection-start-line="384" selection-start-column="59" selection-end-line="384" selection-end-column="59" />
+                  <folding>
+                    <element signature="e#443#1380#0" expanded="false" />
+                    <element signature="e#1408#1930#0" expanded="false" />
+                    <element signature="e#2362#4554#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -168,7 +156,6 @@
         <option value="$PROJECT_DIR$/result_dt_nytimes.txt" />
         <option value="$PROJECT_DIR$/result_dt_wsj.txt" />
         <option value="$PROJECT_DIR$/result_dt_washington.txt" />
-        <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
         <option value="$PROJECT_DIR$/DecisionTreeMallows.py" />
         <option value="$PROJECT_DIR$/readSushiData.py" />
         <option value="$PROJECT_DIR$/statsRank.py" />
@@ -183,6 +170,7 @@
         <option value="$PROJECT_DIR$/SMPrank.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/biheap.py" />
+        <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
         <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
         <option value="$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt" />
       </list>
@@ -529,7 +517,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5326902" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39199156" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1601686" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -745,24 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SMPrank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5491">
-          <caret line="328" column="57" selection-start-line="328" selection-start-column="57" selection-end-line="328" selection-end-column="57" />
-          <folding>
-            <element signature="e#84#102#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DecisionTreePruneTry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9367">
-          <caret line="559" column="30" selection-start-line="559" selection-start-column="30" selection-end-line="559" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -779,10 +749,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SMPrank.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5559">
+          <caret line="327" column="24" selection-start-line="327" selection-start-column="24" selection-end-line="327" selection-end-column="24" />
+          <folding>
+            <element signature="e#84#102#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DecisionTreePruneTry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="521" column="34" selection-start-line="521" selection-start-column="34" selection-end-line="521" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="139" column="52" selection-start-line="139" selection-start-column="52" selection-end-line="139" selection-end-column="52" />
+        <state relative-caret-position="154">
+          <caret line="384" column="59" selection-start-line="384" selection-start-column="59" selection-end-line="384" selection-end-column="59" />
           <folding>
             <element signature="e#443#1380#0" expanded="false" />
             <element signature="e#1408#1930#0" expanded="false" />
@@ -791,18 +779,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="153" column="60" selection-start-line="153" selection-start-column="60" selection-end-line="153" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="529" column="16" selection-start-line="529" selection-start-column="16" selection-end-line="529" selection-end-column="16" />
+        <state relative-caret-position="315">
+          <caret line="720" column="0" selection-start-line="720" selection-start-column="0" selection-end-line="720" selection-end-column="0" />
           <folding>
             <element signature="e#97#115#0" expanded="true" />
             <element signature="e#657#1154#0" expanded="false" />
@@ -811,26 +791,33 @@
             <element signature="e#4378#5319#0" expanded="false" />
             <element signature="e#5404#6849#0" expanded="false" />
             <element signature="e#6906#7638#0" expanded="false" />
-            <element signature="e#7725#8173#0" expanded="false" />
-            <element signature="e#9103#10374#0" expanded="false" />
-            <element signature="e#10420#10916#0" expanded="false" />
-            <element signature="e#10966#11284#0" expanded="false" />
-            <element signature="e#11343#14375#0" expanded="false" />
-            <element signature="e#14432#14825#0" expanded="false" />
-            <element signature="e#14897#15402#0" expanded="false" />
-            <element signature="e#15444#15841#0" expanded="false" />
-            <element signature="e#15896#16204#0" expanded="false" />
-            <element signature="e#16936#17006#0" expanded="false" />
-            <element signature="e#17035#18000#0" expanded="false" />
-            <element signature="e#18089#19625#0" expanded="false" />
-            <element signature="e#19655#20524#0" expanded="false" />
-            <element signature="e#22558#24201#0" expanded="false" />
-            <element signature="e#24316#24855#0" expanded="false" />
-            <marker date="1489610757394" expanded="false" signature="8252:8925" placeholder="..." />
-            <marker date="1489610757394" expanded="false" signature="16230:16793" placeholder="..." />
-            <marker date="1489610757394" expanded="false" signature="20665:22360" placeholder="..." />
-            <marker date="1489610757394" expanded="true" signature="22924:23269" placeholder="..." />
+            <element signature="e#9478#10749#0" expanded="false" />
+            <element signature="e#10795#11291#0" expanded="false" />
+            <element signature="e#11341#11659#0" expanded="false" />
+            <element signature="e#11718#14750#0" expanded="false" />
+            <element signature="e#14807#15200#0" expanded="false" />
+            <element signature="e#15272#15777#0" expanded="false" />
+            <element signature="e#15819#16216#0" expanded="false" />
+            <element signature="e#16271#16579#0" expanded="false" />
+            <element signature="e#17311#17381#0" expanded="false" />
+            <element signature="e#17410#18375#0" expanded="false" />
+            <element signature="e#18464#20000#0" expanded="false" />
+            <element signature="e#20030#20899#0" expanded="false" />
+            <element signature="e#24647#26290#0" expanded="false" />
+            <element signature="e#26405#26944#0" expanded="false" />
+            <marker date="1489694081320" expanded="false" signature="8627:9300" placeholder="..." />
+            <marker date="1489694081320" expanded="false" signature="16605:17168" placeholder="..." />
+            <marker date="1489694081320" expanded="false" signature="22754:24449" placeholder="..." />
+            <marker date="1489694081320" expanded="true" signature="25013:25358" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="457" column="60" selection-start-line="457" selection-start-column="60" selection-end-line="457" selection-end-column="60" />
+          <folding />
         </state>
       </provider>
     </entry>

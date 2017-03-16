@@ -197,19 +197,28 @@ class DecisionTree(object):
         return self
 
     # called even without pruning #
+    # def misRate(self, y_s, w_s, result):
+    #     """
+    #     calculate the misclassification rate in the node as ACC@all
+    #     :param y_s: labels of samples in the tree node
+    #     :param w_s: the weights of corresponding samples
+    #     :param result: predicted result for the node
+    #     :return: float
+    #     """
+    #     Norm = np.sum(w_s)
+    #     mis = 0.0
+    #     for i in range(y_s.shape[0]):
+    #         if self.diffLabel(result, y_s[i]):
+    #             mis += w_s[i]
+    #     return (mis / Norm)
+
     def misRate(self, y_s, w_s, result):
-        """
-        calculate the misclassification rate in the node
-        :param y_s: labels of samples in the tree node
-        :param w_s: the weights of corresponding samples
-        :param result: predicted result for the node
-        :return: float
-        """
+        ## Kendall's tau ##
         Norm = np.sum(w_s)
         mis = 0.0
         for i in range(y_s.shape[0]):
-            if self.diffLabel(result, y_s[i]):
-                mis += w_s[i]
+            tau = KendalltauSingle(result, y_s[i])
+            mis += ((1.0 - tau) / 2.0 * w_s[i]) # transform tau to mis_rate [0, 1] the larger the worse
         return (mis / Norm)
 
     ## with or without pruning ##
@@ -526,6 +535,63 @@ def rankPairwise(y_s):
                     paircomp_sub[emoti][emoti_cmp] += 1
     return paircomp, paircomp_sub
 
+
+def KendalltauSingle(y_pred, y_test):
+    """
+    calculate Kendall's tau for a pair of ranking
+    support tail abstention considering comparison between present and absent labels
+    """
+    cor = 0
+    dis = 0
+    Npair = 0
+    rp = y_pred.tolist()
+    rt = y_test.tolist()
+    Nclass = len(rp)
+    for emoti_a in range(Nclass):
+        for emoti_b in range(emoti_a + 1, Nclass):
+            prior = None
+            latter = None
+            if emoti_a not in rt:
+                if emoti_b not in rt:
+                    continue
+                else:
+                    prior = emoti_b
+                    latter = emoti_a
+            else:
+                if emoti_b not in rt:
+                    prior = emoti_a
+                    latter = emoti_b
+                else:
+                    ind_a = rt.index(emoti_a)
+                    ind_b = rt.index(emoti_b)
+                    if ind_a < ind_b:
+                        prior = emoti_a
+                        latter = emoti_b
+                    else:
+                        prior = emoti_b
+                        latter = emoti_a
+            if prior is None or latter is None:
+                continue
+            Npair += 1
+
+            if prior not in rp:
+                if latter not in rp:
+                    continue # neither cor nor dis
+                else:
+                    dis += 1
+            else:
+                if latter not in rp:
+                    cor += 1
+                else:
+                    if rp.index(prior) < rp.index(latter):
+                        cor += 1
+                    else:
+                        dis += 1
+    if Npair > 0:
+        return (cor - dis) * 1.0 / Npair
+    else:
+        return 1.0
+
 ##############################################
 ## train test ##
 def hyperParameter(x, y, x_valid=None, y_valid=None, cv = 5, criteria = 0):
@@ -646,11 +712,11 @@ if __name__ == "__main__":
     Nclass = 6
     x,y = dataSimulated(Nsamp, Nfeature, Nclass)
     Nsamp = x.shape[0]
-    result_nopruned = crossValidate(x,y)
+    # result_nopruned = crossValidate(x,y)
     result_pruned = crossValidate(x,y,alpha=None, prune_criteria=5+3*Nclass)
-    print "mis_rate: acc@all"
-    print "prune_criterion: kendall's tau (perf[5+3*Nclass])"
-    print result_nopruned
+    print "mis_rate: tau"
+    print "prune_criterion: tau (perf[5+3*Nclass])"
+    # print result_nopruned
     print result_pruned
 
     # # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
