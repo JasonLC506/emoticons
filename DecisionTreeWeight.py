@@ -706,31 +706,35 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
     return x,y
 
 if __name__ == "__main__":
-    ## test ###
-    Nsamp = 10000
-    Nfeature = 3
-    Nclass = 6
-    x,y = dataSimulated(Nsamp, Nfeature, Nclass)
-    Nsamp = x.shape[0]
-    # result_nopruned = crossValidate(x,y)
-    result_pruned = crossValidate(x,y,alpha=None, prune_criteria=5+3*Nclass)
-    print "mis_rate: tau"
-    print "prune_criterion: tau (perf[5+3*Nclass])"
-    # print result_nopruned
-    print result_pruned
+    # ## test ###
+    # Nsamp = 10000
+    # Nfeature = 3
+    # Nclass = 6
+    # x,y = dataSimulated(Nsamp, Nfeature, Nclass)
+    # Nsamp = x.shape[0]
+    # # result_nopruned = crossValidate(x,y)
+    # result_pruned = crossValidate(x,y,alpha=None, prune_criteria=5+3*Nclass)
+    # print "mis_rate: tau"
+    # print "prune_criterion: tau (perf[5+3*Nclass])"
+    # # print result_nopruned
+    # print result_pruned
 
-    # # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
-    # # y = label2Rank(y)
+    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
+    y = label2Rank(y)
     # ### sushi data ###
     # x,y = readSushiData()
     #
     #
-    # result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
-    # # write2result #
-    # file = open("result_dt_sushi.txt","a")
-    # file.write("number of samples: %d\n" % x.shape[0])
-    # file.write("NONERECALL: %f\n" % NONERECALL)
-    # file.write("CV: %d\n" % 5)
-    # file.write(str(result)+"\n")
-    # file.close()
-    # print result
+    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = 5+3*6)
+    # write2result #
+    file = open("results/result_dt_prunetry.txt","a")
+    file.write("normal user posts")
+    file.write("pruned with mis_rate=tau, criteria=tau")
+    file.write("number of samples: %d\n" % x.shape[0])
+    file.write("NONERECALL: %f\n" % NONERECALL)
+    file.write("CV: %d\n" % 5)
+    file.write(str(result)+"\n")
+    file.close()
+    print result
+    result_unpruned = crossValidate(x, y)
+    print result_unpruned
