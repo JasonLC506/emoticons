@@ -1,0 +1,994 @@
+# filtered posts:  2305
+start collecting post 0 5281959998_10151000311269999
+time for reactions 4996 37.598293
+time for comments 820 138.722522
+start collecting post 1 5281959998_10151000085789999
+time for reactions 5127 44.150262
+time for comments 190 38.804727
+start collecting post 2 5281959998_10151000253519999
+time for reactions 1771 16.725506
+time for comments 411 74.231408
+start collecting post 3 5281959998_10151000311269999
+time for reactions 4996 44.309695
+time for comments 820 209.793501
+start collecting post 4 5281959998_10151000085789999
+time for reactions 5127 58.870149
+time for comments 190 43.421835
+start collecting post 5 5281959998_10151000253519999
+time for reactions 1771 16.175227
+time for comments 411 118.099357
+start collecting post 6 5281959998_10151000240319999
+Traceback (most recent call last):
+  File "CrawlerEmotiComment_Grained.py", line 114, in <module>
+    cnt_reactions = getReactions(post_id)
+  File "CrawlerEmotiComment_Grained.py", line 57, in getReactions
+    profile = requests.get(profile["paging"]["next"]).json()
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/api.py", line 70, in get
+    return request('get', url, params=params, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 475, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 596, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/adapters.py", line 473, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', BadStatusLine("''",))
+# filtered posts:  2305
+start collecting post 6 5281959998_10151000240319999
+time for reactions 21680 166.327055
+time for comments 2377 432.663443
+start collecting post 7 5281959998_10151000240319999
+time for reactions 21680 307.624348
+time for comments 2377 437.44927
+start collecting post 8 5281959998_10151000103604999
+time for reactions 14167 109.310493
+time for comments 2215 377.942544
+start collecting post 9 5281959998_10151000103604999
+time for reactions 14167 100.412441
+time for comments 2215 402.686858
+start collecting post 10 5281959998_10151000178804999
+time for reactions 2727 46.766629
+time for comments 641 113.819142
+start collecting post 11 5281959998_10151000067629999
+time for reactions 2033 34.845269
+time for comments 316 54.789228
+start collecting post 12 5281959998_10151000067629999
+time for reactions 2033 14.472681
+time for comments 316 58.138646
+start collecting post 13 5281959998_10150999952829999
+time for reactions 1653 28.051595
+time for comments 52 9.593042
+start collecting post 14 5281959998_10150999952829999
+time for reactions 1653 12.106669
+time for comments 52 8.521274
+start collecting post 15 5281959998_10150999859059999
+time for reactions 1365 22.935481
+time for comments 63 10.989765
+start collecting post 16 5281959998_10150999859059999
+time for reactions 1365 9.641621
+time for comments 63 10.268796
+start collecting post 17 5281959998_10150999930139999
+time for reactions 3200 52.999937
+time for comments 746 132.830296
+start collecting post 18 5281959998_10150999930139999
+time for reactions 3200 22.678438
+time for comments 746 123.834367
+start collecting post 19 5281959998_10150999799819999
+time for reactions 22113 374.86552
+time for comments 2794 487.725832
+start collecting post 20 5281959998_10150999799819999
+time for reactions 22113 163.38655
+time for comments 2795 452.109004
+start collecting post 21 5281959998_10150989593314999
+time for reactions 7742 132.712606
+time for comments 285 49.070037
+start collecting post 22 5281959998_10150989593314999
+time for reactions 7742 51.811981
+time for comments 285 44.09841
+start collecting post 23 5281959998_10150999691159999
+time for reactions 7077 117.295663
+time for comments 788 135.821152
+start collecting post 24 5281959998_10150999691159999
+time for reactions 7077 54.134602
+time for comments 788 130.266776
+start collecting post 25 5281959998_10150998580999999
+time for reactions 2053 34.301727
+time for comments 112 22.526766
+start collecting post 26 5281959998_10150998580999999
+time for reactions 2053 14.890745
+time for comments 112 18.633036
+start collecting post 27 5281959998_10150999446534999
+time for reactions 2106 34.177341
+time for comments 322 56.507595
+start collecting post 28 5281959998_10150999446534999
+time for reactions 2106 14.746576
+time for comments 322 50.465776
+start collecting post 29 5281959998_10150999435334999
+time for reactions 6033 99.069217
+time for comments 423 68.788616
+start collecting post 30 5281959998_10150999435334999
+time for reactions 6033 41.286705
+time for comments 423 63.777537
+start collecting post 31 5281959998_10150999419734999
+time for reactions 13082 220.717034
+time for comments 559 99.93099
+start collecting post 32 5281959998_10150999419734999
+time for reactions 13082 93.339625
+Traceback (most recent call last):
+  File "CrawlerEmotiComment_Grained.py", line 130, in <module>
+    cnt_comments = getComments(post_id)
+  File "CrawlerEmotiComment_Grained.py", line 82, in getComments
+    comment_profile = graph.get_object(comment["ID"]+comment_query_single)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 105, in get_object
+    return self.request(self.version + "/" + id, args)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 247, in request
+    files=files)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 475, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 596, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/adapters.py", line 487, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='graph.facebook.com', port=443): Max retries exceeded with url: /v2.1/10150999419734999_10150999468599999/?fields=id,comment_count,like_count,parent&access_token=1667170370247678%7C6829d69135dab88c93930f1a3f80b3ab (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x2b1937b8ce10>: Failed to establish a new connection: [Errno 101] Network is unreachable',))
+# filtered posts:  2305
+start collecting post 32 5281959998_10150999419734999
+time for comments 559 147.389002
+start collecting post 33 5281959998_10150999319024999
+time for reactions 6977 135.034808
+time for comments 993 306.852275
+start collecting post 34 5281959998_10150999319024999
+time for reactions 6977 66.571952
+time for comments 993 218.685761
+start collecting post 35 5281959998_10150999303269999
+time for reactions 2475 43.177062
+time for comments 301 81.487505
+start collecting post 36 5281959998_10150999303269999
+time for reactions 2475 17.279892
+time for comments 301 50.655332
+start collecting post 37 5281959998_10150999233774999
+time for reactions 25991 541.743159
+time for comments 2307 442.901344
+start collecting post 38 5281959998_10150999233774999
+time for reactions 25991 192.036503
+time for comments 2308 579.300866
+start collecting post 39 5281959998_10150999226769999
+time for reactions 4043 87.114072
+time for comments 773 554.034511
+start collecting post 40 5281959998_10150999226769999
+time for reactions 4043 31.639442
+time for comments 773 128.977372
+start collecting post 41 5281959998_10150999112164999
+time for reactions 1251 22.173317
+time for comments 832 168.018388
+start collecting post 42 5281959998_10150999112164999
+time for reactions 1251 10.306051
+time for comments 832 178.840348
+start collecting post 43 5281959998_10150999071479999
+time for reactions 1355 25.355442
+time for comments 1185 336.118035
+start collecting post 44 5281959998_10150999071479999
+time for reactions 1355 14.03999
+time for comments 1185 305.096747
+start collecting post 45 5281959998_10150999018194999
+time for reactions 1353 24.631282
+time for comments 185 33.192672
+start collecting post 46 5281959998_10150999018194999
+time for reactions 1353 10.364393
+time for comments 185 30.834409
+start collecting post 47 5281959998_10150998965864999
+time for reactions 3352 75.187966
+time for comments 436 92.724559
+start collecting post 48 5281959998_10150998965864999
+time for reactions 3352 35.712449
+time for comments 436 107.852378
+start collecting post 49 5281959998_10150998910119999
+time for reactions 1516 26.784711
+time for comments 151 35.290516
+start collecting post 50 5281959998_10150998910119999
+time for reactions 1516 12.843689
+time for comments 151 37.654558
+start collecting post 51 5281959998_10150998919889999
+time for reactions 2026 38.797307
+time for comments 128 28.200972
+start collecting post 52 5281959998_10150998919889999
+time for reactions 2026 15.528347
+time for comments 128 23.14571
+start collecting post 53 5281959998_10150998720994999
+time for reactions 3710 67.855183
+time for comments 284 49.675701
+start collecting post 54 5281959998_10150998720994999
+time for reactions 3710 29.593454
+time for comments 284 53.635438
+start collecting post 55 5281959998_10150998737034999
+time for reactions 16733 317.746584
+time for comments 135 40.961479
+start collecting post 56 5281959998_10150998737034999
+time for reactions 16733 160.020717
+time for comments 135 48.009163
+start collecting post 57 5281959998_10150998796314999
+time for reactions 2761 59.896024
+time for comments 1770 332.202303
+start collecting post 58 5281959998_10150998796314999
+time for reactions 2761 20.827119
+time for comments 1770 291.611077
+start collecting post 59 5281959998_10150998779789999
+time for reactions 1079 16.551449
+time for comments 27 4.661242
+start collecting post 60 5281959998_10150998779789999
+time for reactions 1079 7.72353
+time for comments 27 4.335895
+start collecting post 61 5281959998_10150997654159999
+time for reactions 1518 25.867293
+time for comments 24 4.172234
+start collecting post 62 5281959998_10150997654159999
+time for reactions 1518 10.791713
+time for comments 24 3.757753
+start collecting post 63 5281959998_10150998627754999
+time for reactions 1227 20.176673
+Traceback (most recent call last):
+  File "CrawlerEmotiComment_Grained.py", line 136, in <module>
+    cnt_comments = getComments(post_id)
+  File "CrawlerEmotiComment_Grained.py", line 89, in getComments
+    if "next" not in profile["paging"]:
+KeyError: 'paging'
+# filtered posts:  2305
+start collecting post 63 5281959998_10150998627754999
+Traceback (most recent call last):
+  File "CrawlerEmotiComment_Grained.py", line 140, in <module>
+    cnt_comments = getComments(post_id)
+  File "CrawlerEmotiComment_Grained.py", line 85, in getComments
+    comment_profile = graph.get_object(comment["ID"]+comment_query_single)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 105, in get_object
+    return self.request(self.version + "/" + id, args)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 247, in request
+    files=files)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 475, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 596, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/adapters.py", line 487, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='graph.facebook.com', port=443): Max retries exceeded with url: /v2.1/10150998627754999_10150999136309999/?fields=id,comment_count,like_count,parent&access_token=1667170370247678%7C6829d69135dab88c93930f1a3f80b3ab (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x2b80fc5b0d10>: Failed to establish a new connection: [Errno 101] Network is unreachable',))
+# filtered posts:  2305
+start collecting post 63 5281959998_10150998627754999
+time for comments 197 41.774028
+start collecting post 64 5281959998_10150998627754999
+time for reactions 1227 9.553568
+time for comments 197 38.32559
+start collecting post 65 5281959998_10150998619049999
+time for reactions 1695 28.622262
+time for comments 110 23.558855
+start collecting post 66 5281959998_10150998619049999
+time for reactions 1695 11.463141
+time for comments 110 16.976968
+start collecting post 67 5281959998_10150998597324999
+time for reactions 1778 29.124492
+time for comments 183 54.818168
+start collecting post 68 5281959998_10150998597324999
+time for reactions 1778 23.52145
+time for comments 183 58.218005
+start collecting post 69 5281959998_10150987649424999
+time for reactions 1107 27.670151
+time for comments 122 38.220479
+start collecting post 70 5281959998_10150987649424999
+time for reactions 1107 9.503916
+time for comments 122 22.204648
+start collecting post 71 5281959998_10150998449474999
+time for reactions 4813 88.218714
+time for comments 177 44.255624
+start collecting post 72 5281959998_10150998449474999
+time for reactions 4813 70.817249
+time for comments 177 45.164063
+start collecting post 73 5281959998_10150997971639999
+time for reactions 3248 54.646554
+time for comments 366 73.472894
+start collecting post 74 5281959998_10150997971639999
+time for reactions 3248 45.852645
+time for comments 366 65.622197
+start collecting post 75 5281959998_10150997894894999
+time for reactions 1352 22.72932
+time for comments 79 14.390212
+start collecting post 76 5281959998_10150997894894999
+time for reactions 1352 10.02839
+time for comments 79 13.096863
+start collecting post 77 5281959998_10150997939854999
+time for reactions 1156 19.379725
+time for comments 251 49.617017
+start collecting post 78 5281959998_10150997939854999
+time for reactions 1156 8.444434
+time for comments 251 41.849387
+start collecting post 79 5281959998_10150997968374999
+time for reactions 1221 21.566467
+time for comments 298 52.338671
+start collecting post 80 5281959998_10150997968374999
+time for reactions 1221 9.006303
+time for comments 298 49.004947
+start collecting post 81 5281959998_10150998024149999
+time for reactions 18361 319.614333
+time for comments 893 248.141665
+start collecting post 82 5281959998_10150998024149999
+time for reactions 18361 170.316407
+time for comments 893 147.988916
+start collecting post 83 5281959998_10150998039449999
+time for reactions 3561 59.150611
+time for comments 364 59.664659
+start collecting post 84 5281959998_10150998039449999
+time for reactions 3561 54.282071
+time for comments 364 129.969699
+start collecting post 85 5281959998_10150997953984999
+time for reactions 1253 28.372322
+time for comments 52 17.643838
+start collecting post 86 5281959998_10150997953984999
+time for reactions 1253 21.916017
+time for comments 52 14.962254
+start collecting post 87 5281959998_10150998084689999
+time for reactions 1356 24.81221
+time for comments 704 170.953169
+start collecting post 88 5281959998_10150998084689999
+time for reactions 1356 9.472901
+time for comments 704 125.381569
+start collecting post 89 5281959998_10150997984639999
+time for reactions 1225 24.109998
+time for comments 871 152.211391
+start collecting post 90 5281959998_10150998010954999
+time for reactions 10853 174.978905
+time for comments 808 192.174221
+start collecting post 91 5281959998_10150997984639999
+time for reactions 1225 9.690001
+time for comments 871 137.538959
+start collecting post 92 5281959998_10150997904104999
+time for reactions 3599 53.506564
+time for comments 223 39.137748
+start collecting post 93 5281959998_10150997904104999
+time for reactions 3599 26.500518
+time for comments 223 61.072852
+start collecting post 94 5281959998_10150997637829999
+time for reactions 12466 221.799965
+time for comments 104 18.165466
+start collecting post 95 5281959998_10150997637829999
+time for reactions 12466 90.244968
+time for comments 104 17.759732
+start collecting post 96 5281959998_10150997746844999
+time for reactions 17853 310.460538
+time for comments 338 58.741659
+start collecting post 97 5281959998_10150997746844999
+time for reactions 17853 129.403143
+time for comments 338 56.332429
+start collecting post 98 5281959998_10150997772549999
+time for reactions 4937 78.125951
+time for comments 313 67.506485
+start collecting post 99 5281959998_10150997772549999
+time for reactions 4937 39.426082
+time for comments 313 80.430446
+start collecting post 100 5281959998_10150997727014999
+time for reactions 2057 40.794624
+time for comments 233 66.005091
+start collecting post 101 5281959998_10150997727014999
+time for reactions 2057 28.114621
+time for comments 233 41.880879
+start collecting post 102 5281959998_10150997745159999
+HTTPSConnectionPool(host='graph.facebook.com', port=443): Max retries exceeded with url: /v2.8/5281959998_10150997745159999/reactions?access_token=1667170370247678%7C6829d69135dab88c93930f1a3f80b3ab&limit=25&after=TVRBd01EQXlNakkyTURJd09EQXdPakUwT0RBNU9UYzVOems2TWpVME1EazJNVFl4TXc9PQZDZD (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x2b531110c3d0>: Failed to establish a new connection: [Errno 101] Network is unreachable',))
+time for reactions 43797 1026.653756
+time for comments 2928 509.809895
+start collecting post 103 5281959998_10150997745159999
+time for reactions 43797 418.762245
+Traceback (most recent call last):
+  File "CrawlerEmotiComment_Grained.py", line 140, in <module>
+    cnt_comments = getComments(post_id)
+  File "CrawlerEmotiComment_Grained.py", line 85, in getComments
+    comment_profile = graph.get_object(comment["ID"]+comment_query_single)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 105, in get_object
+    return self.request(self.version + "/" + id, args)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 247, in request
+    files=files)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 475, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 596, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/adapters.py", line 487, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='graph.facebook.com', port=443): Max retries exceeded with url: /v2.1/10150997745159999_1205657082857779/?fields=id,comment_count,like_count,parent&access_token=1667170370247678%7C6829d69135dab88c93930f1a3f80b3ab (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x2b5311134110>: Failed to establish a new connection: [Errno 101] Network is unreachable',))
+# filtered posts:  2305
+start collecting post 103 5281959998_10150997745159999
+time for comments 2927 695.598569
+start collecting post 104 5281959998_10150997780814999
+time for reactions 7031 119.463183
+time for comments 160 29.472606
+start collecting post 105 5281959998_10150997780814999
+time for reactions 7031 47.885371
+time for comments 160 24.854314
+start collecting post 106 5281959998_10150997557194999
+time for reactions 1628 25.373069
+time for comments 182 39.910285
+start collecting post 107 5281959998_10150997557194999
+time for reactions 1628 11.659474
+time for comments 182 53.059867
+start collecting post 108 5281959998_10150997702539999
+time for reactions 2287 48.34907
+time for comments 533 110.398132
+start collecting post 109 5281959998_10150997702539999
+time for reactions 2287 17.66851
+time for comments 533 96.650146
+start collecting post 110 5281959998_10150997717599999
+time for reactions 2620 43.250327
+time for comments 303 64.994332
+start collecting post 111 5281959998_10150997717599999
+time for reactions 2620 18.487569
+time for comments 303 66.695629
+start collecting post 112 5281959998_10150997690484999
+time for reactions 114934 2084.528471
+time for comments 6131 1117.001778
+start collecting post 113 5281959998_10150997690484999
+time for reactions 114934 917.683176
+time for comments 6130 1085.67657
+start collecting post 114 5281959998_10150997534769999
+time for reactions 1913 34.274761
+time for comments 294 53.660659
+start collecting post 115 5281959998_10150997534769999
+time for reactions 1913 13.57537
+time for comments 294 47.528585
+start collecting post 116 5281959998_10150997494059999
+time for reactions 2412 39.754154
+time for comments 71 12.294247
+start collecting post 117 5281959998_10150997494059999
+time for reactions 2412 17.372905
+time for comments 71 11.478581
+start collecting post 118 5281959998_10150997459829999
+time for reactions 1330 22.873387
+time for comments 205 34.680187
+start collecting post 119 5281959998_10150997459829999
+time for reactions 1330 9.361128
+time for comments 205 43.038209
+start collecting post 120 5281959998_10150997308399999
+time for reactions 1198 20.246657
+time for comments 370 73.246705
+start collecting post 121 5281959998_10150997308399999
+time for reactions 1198 8.543626
+time for comments 370 69.725569
+start collecting post 122 5281959998_10150997344569999
+time for reactions 1110 18.895284
+time for comments 219 38.857521
+start collecting post 123 5281959998_10150997344569999
+time for reactions 1110 8.103632
+time for comments 219 41.379134
+start collecting post 124 5281959998_10150997156429999
+time for reactions 18470 302.908169
+time for comments 1167 230.891579
+start collecting post 125 5281959998_10150997156429999
+time for reactions 18470 141.863752
+time for comments 1167 214.615745
+start collecting post 126 5281959998_10150997286944999
+time for reactions 3588 61.063855
+time for comments 255 48.334604
+start collecting post 127 5281959998_10150997286944999
+time for reactions 3588 23.91962
+time for comments 255 49.195628
+start collecting post 128 5281959998_10150997250019999
+time for reactions 12858 199.194139
+time for comments 1366 303.15101
+start collecting post 129 5281959998_10150997250019999
+time for reactions 12858 116.197724
+time for comments 1366 356.776239
+start collecting post 130 5281959998_10150996986479999
+time for reactions 28534 497.154364
+time for comments 645 111.46498
+start collecting post 131 5281959998_10150996986479999
+time for reactions 28534 211.609108
+time for comments 645 105.132596
+start collecting post 132 5281959998_10150996929064999
+time for reactions 8793 136.059058
+time for comments 2988 513.559859
+start collecting post 133 5281959998_10150996929064999
+time for reactions 8793 63.184988
+time for comments 2988 532.159996
+start collecting post 134 5281959998_10150996492764999
+time for reactions 1686 27.987773
+time for comments 501 91.773699
+start collecting post 135 5281959998_10150996492764999
+time for reactions 1686 12.006832
+time for comments 501 97.870132
+start collecting post 136 5281959998_10150996772164999
+time for reactions 2827 45.799262
+time for comments 204 35.261429
+start collecting post 137 5281959998_10150996772164999
+time for reactions 2827 20.217059
+time for comments 204 32.67613
+start collecting post 138 5281959998_10150996533439999
+time for reactions 6884 106.863798
+time for comments 95 16.190991
+start collecting post 139 5281959998_10150996533439999
+time for reactions 6884 51.156402
+time for comments 95 17.250873
+start collecting post 140 5281959998_10150996701854999
+time for reactions 1849 26.412961
+time for comments 564 106.624468
+start collecting post 141 5281959998_10150996701854999
+time for reactions 1849 14.326512
+time for comments 564 149.897464
+start collecting post 142 5281959998_10150996685739999
+time for reactions 4056 62.413963
+time for comments 336 57.895378
+start collecting post 143 5281959998_10150996685739999
+time for reactions 4056 29.524036
+time for comments 336 59.233529
+start collecting post 144 5281959998_10150996651969999
+time for reactions 1342 21.768017
+time for comments 35 11.258198
+start collecting post 145 5281959998_10150996651969999
+time for reactions 1342 9.85576
+time for comments 35 6.052805
+start collecting post 146 5281959998_10150996428644999
+time for reactions 16789 272.505911
+time for comments 771 142.706856
+start collecting post 147 5281959998_10150996428644999
+time for reactions 16789 121.258519
+time for comments 771 135.122195
+start collecting post 148 5281959998_10150996481539999
+time for reactions 1460 24.991408
+time for comments 100 17.37423
+start collecting post 149 5281959998_10150996481539999
+time for reactions 1460 10.144367
+time for comments 100 16.063553
+start collecting post 150 5281959998_10150996441029999
+time for reactions 5223 90.919047
+time for comments 103 19.378514
+start collecting post 151 5281959998_10150996441029999
+time for reactions 5223 42.170795
+time for comments 103 16.876537
+start collecting post 152 5281959998_10150996403814999
+time for reactions 1217 14.739446
+time for comments 175 29.454143
+start collecting post 153 5281959998_10150996403814999
+time for reactions 1217 8.464017
+time for comments 175 33.31364
+start collecting post 154 5281959998_10150996517709999
+time for reactions 5213 83.411568
+time for comments 1308 231.540683
+start collecting post 155 5281959998_10150996517709999
+time for reactions 5213 45.981338
+time for comments 1308 227.424618
+start collecting post 156 5281959998_10150996487714999
+time for reactions 5754 89.904939
+time for comments 98 17.249931
+start collecting post 157 5281959998_10150996487714999
+time for reactions 5754 41.07626
+time for comments 98 16.564165
+start collecting post 158 5281959998_10150987606159999
+time for reactions 10008 168.596301
+time for comments 241 41.867961
+start collecting post 159 5281959998_10150987606159999
+time for reactions 10008 76.779475
+time for comments 241 43.841344
+start collecting post 160 5281959998_10150996446714999
+time for reactions 7452 110.789208
+time for comments 524 145.116325
+start collecting post 161 5281959998_10150996446714999
+time for reactions 7452 67.949353
+time for comments 524 91.350001
+start collecting post 162 5281959998_10150996361114999
+time for reactions 1880 30.799804
+time for comments 61 10.66177
+start collecting post 163 5281959998_10150996361114999
+time for reactions 1880 13.534991
+time for comments 61 9.97816
+start collecting post 164 5281959998_10150996330684999
+time for reactions 2053 33.764594
+time for comments 353 71.942706
+start collecting post 165 5281959998_10150996330684999
+time for reactions 2053 14.740202
+time for comments 353 63.467004
+start collecting post 166 5281959998_10150995485399999
+time for reactions 1198 19.798818
+time for comments 172 29.459457
+start collecting post 167 5281959998_10150995485399999
+time for reactions 1198 8.636142
+time for comments 172 33.621628
+start collecting post 168 5281959998_10150995421999999
+time for reactions 2601 39.353148
+time for comments 108 18.842436
+start collecting post 169 5281959998_10150995421999999
+time for reactions 2601 23.757867
+time for comments 108 16.186005
+start collecting post 170 5281959998_10150995728709999
+time for reactions 1437 27.805041
+time for comments 164 36.380046
+start collecting post 171 5281959998_10150995728709999
+time for reactions 1437 9.643214
+time for comments 164 25.429816
+start collecting post 172 5281959998_10150995680779999
+time for reactions 6674 115.456328
+time for comments 219 46.759129
+start collecting post 173 5281959998_10150995680779999
+time for reactions 6674 69.213424
+time for comments 219 33.496022
+start collecting post 174 5281959998_10150995622069999
+time for reactions 1221 25.855708
+time for comments 634 156.6823
+start collecting post 175 5281959998_10150995622069999
+time for reactions 1221 9.50761
+time for comments 634 113.362126
+start collecting post 176 5281959998_10150995639454999
+time for reactions 18508 391.642666
+time for comments 1717 399.623609
+start collecting post 177 5281959998_10150992566209999
+time for reactions 1166 21.00282
+time for comments 22 3.97528
+start collecting post 178 5281959998_10150992566209999
+time for reactions 1166 8.42485
+time for comments 22 3.611839
+start collecting post 179 5281959998_10150995588704999
+time for reactions 75655 1407.44814
+{u'error': {u'code': 2, u'message': u'An unexpected error has occurred. Please retry your request later.', u'is_transient': True, u'type': u'OAuthException', u'fbtrace_id': u'D7GXn2Jo2ac'}}
+time for comments 1196 358.860099
+start collecting post 180 5281959998_10150995588704999
+time for reactions 75655 577.290187
+{u'error': {u'code': 2, u'message': u'An unexpected error has occurred. Please retry your request later.', u'is_transient': True, u'type': u'OAuthException', u'fbtrace_id': u'H2F2L0BNKdr'}}
+time for comments 1196 188.491787
+start collecting post 181 5281959998_10150995384379999
+time for reactions 1087 16.639374
+time for comments 35 5.786108
+start collecting post 182 5281959998_10150995384379999
+time for reactions 1087 7.114901
+time for comments 35 5.858769
+start collecting post 183 5281959998_10150995097089999
+time for reactions 1837 25.142221
+time for comments 144 22.773128
+start collecting post 184 5281959998_10150995097089999
+time for reactions 1837 12.069944
+time for comments 144 22.965956
+start collecting post 185 5281959998_10150995201204999
+time for reactions 1335 22.154198
+time for comments 63 11.623933
+start collecting post 186 5281959998_10150995201204999
+time for reactions 1335 9.369534
+time for comments 63 10.255862
+start collecting post 187 5281959998_10150995241074999
+time for reactions 48942 814.72324
+Traceback (most recent call last):
+  File "CrawlerEmotiComment_Grained.py", line 140, in <module>
+    cnt_comments = getComments(post_id)
+  File "CrawlerEmotiComment_Grained.py", line 85, in getComments
+    comment_profile = graph.get_object(comment["ID"]+comment_query_single)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 105, in get_object
+    return self.request(self.version + "/" + id, args)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/facebook/__init__.py", line 247, in request
+    files=files)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/api.py", line 56, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 475, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/sessions.py", line 596, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/jpz5181/anaconda2/lib/python2.7/site-packages/requests/adapters.py", line 487, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='graph.facebook.com', port=443): Max retries exceeded with url: /v2.1/10150995241074999_10150995330049999/?fields=id,comment_count,like_count,parent&access_token=1667170370247678%7C6829d69135dab88c93930f1a3f80b3ab (Caused by NewConnectionError('<requests.packages.urllib3.connection.VerifiedHTTPSConnection object at 0x2afb5aba6a10>: Failed to establish a new connection: [Errno 101] Network is unreachable',))
+# filtered posts:  2305
+start collecting post 187 5281959998_10150995241074999
+at  2017-03-23 10:50:55.606368
+time for comments 1511 304.634229
+start collecting post 188 5281959998_10150995241074999
+at  2017-03-23 10:56:00.240661
+time for reactions 48950 399.377389
+time for comments 1511 346.354327
+start collecting post 189 5281959998_10150995088104999
+at  2017-03-23 11:08:25.972449
+time for reactions 1263 20.297767
+time for comments 170 30.437208
+start collecting post 190 5281959998_10150995088104999
+at  2017-03-23 11:09:16.707495
+time for reactions 1263 9.850392
+time for comments 170 31.566048
+start collecting post 191 5281959998_10150995183699999
+at  2017-03-23 11:09:58.124007
+time for reactions 52662 1050.445052
+time for comments 3678 798.614781
+start collecting post 192 5281959998_10150995183699999
+at  2017-03-23 11:40:47.183910
+time for reactions 52662 589.789741
+time for comments 3678 734.969392
+start collecting post 193 5281959998_10150995070934999
+at  2017-03-23 12:02:51.943112
+time for reactions 16352 346.966547
+time for comments 218 73.408484
+start collecting post 194 5281959998_10150995070934999
+at  2017-03-23 12:09:52.318215
+time for reactions 16352 197.877086
+time for comments 218 37.400389
+start collecting post 195 5281959998_10150995078019999
+at  2017-03-23 12:13:47.595761
+time for reactions 7884 157.308342
+time for comments 2608 616.500854
+start collecting post 196 5281959998_10150995078019999
+at  2017-03-23 12:26:41.405028
+time for reactions 7884 92.031071
+time for comments 2608 524.78695
+start collecting post 197 5281959998_10150995057294999
+at  2017-03-23 12:36:58.223120
+time for reactions 2242 35.11832
+time for comments 96 16.353583
+start collecting post 198 5281959998_10150995057294999
+at  2017-03-23 12:37:49.695093
+time for reactions 2242 15.779077
+time for comments 96 14.866658
+start collecting post 199 5281959998_10150993717289999
+at  2017-03-23 12:38:20.340901
+time for reactions 14842 241.523321
+time for comments 605 108.67837
+start collecting post 200 5281959998_10150993717289999
+at  2017-03-23 12:44:10.542662
+time for reactions 14842 128.904941
+time for comments 605 110.078624
+start collecting post 201 5281959998_10150992564999999
+at  2017-03-23 12:48:09.526296
+time for reactions 3573 66.061906
+time for comments 189 51.738714
+start collecting post 202 5281959998_10150992564999999
+at  2017-03-23 12:50:07.326986
+time for reactions 3573 42.434413
+time for comments 189 36.433463
+start collecting post 203 5281959998_10150992561159999
+at  2017-03-23 12:51:26.194935
+time for reactions 10846 205.237549
+time for comments 618 175.830831
+start collecting post 204 5281959998_10150992561159999
+at  2017-03-23 12:57:47.263384
+time for reactions 10846 85.962869
+time for comments 618 110.996975
+start collecting post 205 5281959998_10150993758954999
+at  2017-03-23 13:01:04.223298
+time for reactions 3358 52.227852
+time for comments 404 76.219396
+start collecting post 206 5281959998_10150993758954999
+at  2017-03-23 13:03:12.670616
+time for reactions 3358 26.384104
+time for comments 404 73.427119
+start collecting post 207 5281959998_10150993682444999
+at  2017-03-23 13:04:52.481908
+time for reactions 7768 116.970118
+time for comments 337 58.560645
+start collecting post 208 5281959998_10150993682444999
+at  2017-03-23 13:07:48.012742
+time for reactions 7768 61.15188
+time for comments 337 105.98159
+start collecting post 209 5281959998_1788215094729338
+at  2017-03-23 13:10:35.146283
+time for reactions 2480 62.344887
+time for comments 158 33.119729
+start collecting post 210 5281959998_1788215094729338
+at  2017-03-23 13:12:10.610971
+time for reactions 2480 19.546767
+time for comments 158 25.179831
+start collecting post 211 5281959998_10150994144829999
+at  2017-03-23 13:12:55.337638
+time for reactions 4481 86.903897
+time for comments 695 132.641476
+start collecting post 212 5281959998_10150994144829999
+at  2017-03-23 13:16:34.883081
+time for reactions 4481 34.465826
+time for comments 695 129.457568
+start collecting post 213 5281959998_10150993716309999
+at  2017-03-23 13:19:18.806545
+time for reactions 8781 164.732914
+time for comments 206 54.447329
+start collecting post 214 5281959998_10150993716309999
+at  2017-03-23 13:22:57.986900
+time for reactions 8781 109.614027
+time for comments 206 37.863046
+start collecting post 215 5281959998_10150992412554999
+at  2017-03-23 13:25:25.464048
+time for reactions 1637 38.436706
+time for comments 77 30.78748
+start collecting post 216 5281959998_10150992412554999
+at  2017-03-23 13:26:34.688304
+time for reactions 1637 25.203337
+time for comments 77 27.10369
+start collecting post 217 5281959998_10150993790179999
+at  2017-03-23 13:27:26.995403
+time for reactions 1335 30.8744
+time for comments 322 75.977824
+start collecting post 218 5281959998_10150993790179999
+at  2017-03-23 13:29:13.847696
+time for reactions 1335 10.553999
+time for comments 322 54.286538
+start collecting post 219 5281959998_10150993570039999
+at  2017-03-23 13:30:18.688302
+time for reactions 2406 38.556671
+time for comments 286 50.752423
+start collecting post 220 5281959998_10150993570039999
+at  2017-03-23 13:31:47.997467
+time for reactions 2406 17.028909
+time for comments 286 52.85551
+start collecting post 221 5281959998_10150993648349999
+at  2017-03-23 13:32:57.881954
+time for reactions 8564 131.478043
+time for comments 270 44.673222
+start collecting post 222 5281959998_10150993648349999
+at  2017-03-23 13:35:54.033288
+time for reactions 8564 79.591205
+time for comments 270 41.295642
+start collecting post 223 5281959998_10150993498454999
+at  2017-03-23 13:37:54.920206
+time for reactions 1369 20.708827
+time for comments 116 19.313674
+start collecting post 224 5281959998_10150993498454999
+at  2017-03-23 13:38:34.942779
+time for reactions 1369 9.316941
+time for comments 116 17.78417
+start collecting post 225 5281959998_10150993414739999
+at  2017-03-23 13:39:02.043962
+time for reactions 1555 22.98317
+time for comments 26 4.401578
+start collecting post 226 5281959998_10150993414739999
+at  2017-03-23 13:39:29.428777
+time for reactions 1555 10.84898
+time for comments 26 4.180748
+start collecting post 227 5281959998_10150993440424999
+at  2017-03-23 13:39:44.458583
+time for reactions 1723 26.397175
+time for comments 327 53.464705
+start collecting post 228 5281959998_10150993440424999
+at  2017-03-23 13:41:04.320532
+time for reactions 1723 12.665142
+time for comments 327 54.717986
+start collecting post 229 5281959998_10150992409554999
+at  2017-03-23 13:42:11.703732
+time for reactions 1138 18.553628
+time for comments 55 9.75951
+start collecting post 230 5281959998_10150992409554999
+at  2017-03-23 13:42:40.016939
+time for reactions 1138 8.305561
+time for comments 55 9.453647
+start collecting post 231 5281959998_10150993384914999
+at  2017-03-23 13:42:57.776216
+time for reactions 1504 26.262255
+time for comments 632 113.294097
+start collecting post 232 5281959998_10150993384914999
+at  2017-03-23 13:45:17.332638
+time for reactions 1504 10.963107
+time for comments 632 112.080125
+start collecting post 233 5281959998_10150987536429999
+at  2017-03-23 13:47:20.375940
+time for reactions 2573 42.404268
+time for comments 236 39.068466
+start collecting post 234 5281959998_10150987536429999
+at  2017-03-23 13:48:41.848743
+time for reactions 2573 25.767364
+time for comments 236 89.074727
+start collecting post 235 5281959998_10150992796624999
+at  2017-03-23 13:50:36.690902
+time for reactions 5572 119.166446
+time for comments 976 198.634745
+start collecting post 236 5281959998_10150992796624999
+at  2017-03-23 13:55:54.492169
+time for reactions 5572 136.455004
+time for comments 976 228.811796
+start collecting post 237 5281959998_10150992805419999
+at  2017-03-23 14:01:59.759039
+time for reactions 1952 42.649065
+time for comments 123 33.521745
+start collecting post 238 5281959998_10150992805419999
+at  2017-03-23 14:03:15.929921
+time for reactions 1952 19.270128
+time for comments 123 26.522141
+start collecting post 239 5281959998_10150992790144999
+at  2017-03-23 14:04:01.722258
+time for reactions 4776 77.831806
+time for comments 346 82.10772
+start collecting post 240 5281959998_10150992790144999
+at  2017-03-23 14:06:41.661854
+time for reactions 4776 35.936695
+time for comments 346 57.327273
+start collecting post 241 5281959998_10150992769549999
+at  2017-03-23 14:08:14.925933
+time for reactions 1808 29.547555
+time for comments 146 27.040918
+start collecting post 242 5281959998_10150992769549999
+at  2017-03-23 14:09:11.514485
+time for reactions 1808 12.33678
+time for comments 146 22.680118
+start collecting post 243 5281959998_10150992604944999
+at  2017-03-23 14:09:46.531454
+time for reactions 1332 21.936346
+time for comments 102 18.977295
+start collecting post 244 5281959998_10150992604944999
+at  2017-03-23 14:10:27.445164
+time for reactions 1332 19.779145
+time for comments 102 38.704714
+start collecting post 245 5281959998_10150992813124999
+at  2017-03-23 14:11:25.929092
+time for reactions 26000 479.921055
+time for comments 2473 523.921979
+start collecting post 246 5281959998_10150992813124999
+at  2017-03-23 14:28:09.772195
+time for reactions 26000 233.543521
+time for comments 2473 569.987475
+start collecting post 247 5281959998_10150992776434999
+at  2017-03-23 14:41:33.303261
+time for reactions 3442 51.477967
+time for comments 60 10.69852
+start collecting post 248 5281959998_10150992776434999
+at  2017-03-23 14:42:35.479818
+time for reactions 3442 33.378267
+time for comments 60 23.504562
+start collecting post 249 5281959998_10150992716639999
+at  2017-03-23 14:43:32.362716
+time for reactions 7067 130.8571
+time for comments 129 25.444022
+start collecting post 250 5281959998_10150992716639999
+at  2017-03-23 14:46:08.663910
+time for reactions 7067 62.903718
+time for comments 129 27.618505
+start collecting post 251 5281959998_10150992715624999
+at  2017-03-23 14:47:39.186208
+time for reactions 9889 192.772311
+time for comments 1520 385.601738
+start collecting post 252 5281959998_10150992715624999
+at  2017-03-23 14:57:17.560327
+time for reactions 9889 74.086059
+time for comments 1520 260.913504
+start collecting post 253 5281959998_10150992688879999
+at  2017-03-23 15:02:52.559962
+time for reactions 3694 53.052915
+time for comments 220 45.111676
+start collecting post 254 5281959998_10150992688879999
+at  2017-03-23 15:04:30.724625
+time for reactions 3694 43.504968
+time for comments 220 48.00881
+start collecting post 255 5281959998_10150992659844999
+at  2017-03-23 15:06:02.238474
+time for reactions 1650 27.466388
+time for comments 104 19.823856
+start collecting post 256 5281959998_10150992633729999
+at  2017-03-23 15:06:49.528789
+time for reactions 1942 33.25696
+time for comments 129 46.081434
+start collecting post 257 5281959998_10150992659844999
+at  2017-03-23 15:08:08.867254
+time for reactions 1650 24.404236
+time for comments 104 18.742058
+start collecting post 258 5281959998_10150992633729999
+at  2017-03-23 15:08:52.013616
+time for reactions 1942 16.300749
+time for comments 129 23.444512
+start collecting post 259 5281959998_10150992614429999
+at  2017-03-23 15:09:31.758946
+time for reactions 8652 174.557647
+time for comments 1883 364.045059
+start collecting post 260 5281959998_10150992614429999
+at  2017-03-23 15:18:30.361723
+time for reactions 8652 66.752499
+time for comments 1883 340.738673
+start collecting post 261 5281959998_10150992520474999
+at  2017-03-23 15:25:17.852966
+time for reactions 5260 91.971613
+time for comments 599 131.757624
+start collecting post 262 5281959998_10150992514759999
+at  2017-03-23 15:29:01.582272
+time for reactions 1514 34.026983
+time for comments 105 36.337743
+start collecting post 263 5281959998_10150992520474999
+at  2017-03-23 15:30:11.947070
+time for reactions 5260 44.217229
+time for comments 599 99.243839
+start collecting post 264 5281959998_10150992514759999
+at  2017-03-23 15:32:35.408206
+time for reactions 1514 11.241324
+time for comments 105 16.985226
+start collecting post 265 5281959998_10150992438539999
+at  2017-03-23 15:33:03.634827
+time for reactions 6165 83.159654
+time for comments 1014 207.391929
+start collecting post 266 5281959998_10150992438539999
+at  2017-03-23 15:37:54.186481
+time for reactions 6165 86.844544
+time for comments 1014 210.87194
+start collecting post 267 5281959998_10150992370619999
+at  2017-03-23 15:42:51.903036
+time for reactions 41
