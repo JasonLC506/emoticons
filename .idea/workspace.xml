@@ -25,107 +25,155 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.55271775">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="233">
-                  <caret line="731" column="56" selection-start-line="731" selection-start-column="56" selection-end-line="731" selection-end-column="56" />
-                  <folding>
-                    <element signature="e#97#115#0" expanded="true" />
-                    <element signature="e#657#1154#0" expanded="false" />
-                    <element signature="e#1375#3879#0" expanded="false" />
-                    <element signature="e#3925#4290#0" expanded="false" />
-                    <element signature="e#4378#5319#0" expanded="false" />
-                    <element signature="e#5404#6849#0" expanded="false" />
-                    <element signature="e#6906#7638#0" expanded="false" />
-                    <element signature="e#9478#10749#0" expanded="false" />
-                    <element signature="e#10795#11291#0" expanded="false" />
-                    <element signature="e#11341#11659#0" expanded="false" />
-                    <element signature="e#11718#14750#0" expanded="false" />
-                    <element signature="e#14807#15200#0" expanded="false" />
-                    <element signature="e#15272#15777#0" expanded="false" />
-                    <element signature="e#15819#16216#0" expanded="false" />
-                    <element signature="e#16271#16579#0" expanded="false" />
-                    <element signature="e#17311#17381#0" expanded="false" />
-                    <element signature="e#17410#18375#0" expanded="false" />
-                    <element signature="e#18464#20000#0" expanded="false" />
-                    <element signature="e#20030#20899#0" expanded="false" />
-                    <element signature="e#20944#22615#0" expanded="false" />
-                    <element signature="e#24647#26290#0" expanded="false" />
-                    <element signature="e#26405#26944#0" expanded="false" />
-                    <marker date="1489786876635" expanded="false" signature="8627:9300" placeholder="..." />
-                    <marker date="1489786876635" expanded="false" signature="16605:17168" placeholder="..." />
-                    <marker date="1489786876635" expanded="false" signature="22754:24449" placeholder="..." />
-                    <marker date="1489786876635" expanded="true" signature="25013:25358" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_dt_prunetry.txt" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_dt_prunetry_synthetic_balanced.txt" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="27">
-                  <caret line="455" column="60" selection-start-line="455" selection-start-column="60" selection-end-line="455" selection-end-column="60" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="biheap.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/biheap.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="206">
-                  <caret line="244" column="24" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="154">
-                  <caret line="384" column="59" selection-start-line="384" selection-start-column="59" selection-end-line="384" selection-end-column="59" />
-                  <folding>
-                    <element signature="e#443#1380#0" expanded="false" />
-                    <element signature="e#1408#1930#0" expanded="false" />
-                    <element signature="e#2362#4554#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="736" column="16" selection-start-line="736" selection-start-column="16" selection-end-line="736" selection-end-column="16" />
+              <folding>
+                <element signature="e#97#115#0" expanded="true" />
+                <element signature="e#657#1154#0" expanded="false" />
+                <element signature="e#1375#3879#0" expanded="false" />
+                <element signature="e#3925#4290#0" expanded="false" />
+                <element signature="e#4378#5319#0" expanded="false" />
+                <element signature="e#5404#6849#0" expanded="false" />
+                <element signature="e#6906#7638#0" expanded="false" />
+                <element signature="e#8636#9305#0" expanded="false" />
+                <element signature="e#9478#10749#0" expanded="false" />
+                <element signature="e#10795#11291#0" expanded="false" />
+                <element signature="e#11341#11659#0" expanded="false" />
+                <element signature="e#11718#14750#0" expanded="false" />
+                <element signature="e#14807#15200#0" expanded="false" />
+                <element signature="e#15272#15777#0" expanded="false" />
+                <element signature="e#15819#16216#0" expanded="false" />
+                <element signature="e#16271#16579#0" expanded="false" />
+                <element signature="e#17311#17381#0" expanded="false" />
+                <element signature="e#17410#18375#0" expanded="false" />
+                <element signature="e#18464#20000#0" expanded="false" />
+                <element signature="e#20030#20899#0" expanded="false" />
+                <element signature="e#20944#22615#0" expanded="false" />
+                <element signature="e#22759#24449#0" expanded="false" />
+                <element signature="e#24647#26290#0" expanded="false" />
+                <element signature="e#26405#26944#0" expanded="false" />
+                <marker date="1490729480787" expanded="false" signature="16605:17168" placeholder="..." />
+                <marker date="1490729480787" expanded="true" signature="25013:25358" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_dt_prunetry_ordinaryuser.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_ordinaryuser.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="98" column="22" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DecisionTreeWeight_Bordar.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DecisionTreeWeight_Bordar.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="762" column="54" selection-start-line="762" selection-start-column="54" selection-end-line="762" selection-end-column="54" />
+              <folding>
+                <element signature="e#97#115#0" expanded="true" />
+                <element signature="e#700#1197#0" expanded="false" />
+                <element signature="e#1418#3922#0" expanded="false" />
+                <element signature="e#3968#4333#0" expanded="false" />
+                <element signature="e#4421#5362#0" expanded="false" />
+                <element signature="e#5447#6892#0" expanded="false" />
+                <element signature="e#6949#7681#0" expanded="false" />
+                <element signature="e#7687#7718#0" expanded="false" />
+                <element signature="e#8306#8591#0" expanded="false" />
+                <element signature="e#8679#9348#0" expanded="false" />
+                <element signature="e#11823#12319#0" expanded="false" />
+                <element signature="e#12369#12687#0" expanded="false" />
+                <element signature="e#12746#15778#0" expanded="false" />
+                <element signature="e#15835#16228#0" expanded="false" />
+                <element signature="e#16300#16805#0" expanded="false" />
+                <element signature="e#16847#17244#0" expanded="false" />
+                <element signature="e#17299#17607#0" expanded="false" />
+                <element signature="e#17642#18241#0" expanded="false" />
+                <element signature="e#18339#18409#0" expanded="false" />
+                <element signature="e#18438#19403#0" expanded="false" />
+                <element signature="e#19492#21028#0" expanded="false" />
+                <element signature="e#21058#21927#0" expanded="false" />
+                <element signature="e#21972#23643#0" expanded="false" />
+                <element signature="e#23787#25477#0" expanded="false" />
+                <element signature="e#25675#27318#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_dt_prunetry_wsj.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_wsj.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="146" column="61" selection-start-line="146" selection-start-column="60" selection-end-line="146" selection-end-column="61" />
+              <folding>
+                <element signature="e#443#1380#0" expanded="false" />
+                <element signature="e#1408#1930#0" expanded="false" />
+                <element signature="e#2362#4554#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_dt_prunetry.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="481">
+              <caret line="579" column="9" selection-start-line="579" selection-start-column="9" selection-end-line="579" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_dt.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results/result_dt.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="545">
+              <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="result_dt_prunetry_washington.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_washington.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="104" column="60" selection-start-line="104" selection-start-column="60" selection-end-line="104" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="biheap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biheap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -184,6 +232,7 @@
         <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
         <option value="$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt" />
         <option value="$PROJECT_DIR$/results/result_dt_prunetry.txt" />
+        <option value="$PROJECT_DIR$/DecisionTreeWeight_Bordar.py" />
         <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
       </list>
     </option>
@@ -219,6 +268,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -252,53 +302,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emoticons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emoticons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons\results" />
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons\data" />
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
-    </key>
   </component>
   <component name="RunManager" selected="Python.DecisionTreeWeight">
-    <configuration default="false" name="mallows_gini" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mallows_gini.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -363,6 +381,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DecisionTreeWeight.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DecisionTreeWeight_Bordar" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="emoticons" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DecisionTreeWeight_Bordar.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -502,19 +537,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.mallows_gini" />
-      <item index="1" class="java.lang.String" itemvalue="Python.test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.SMPrank" />
-      <item index="3" class="java.lang.String" itemvalue="Python.biheap" />
-      <item index="4" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
+      <item index="0" class="java.lang.String" itemvalue="Python.test" />
+      <item index="1" class="java.lang.String" itemvalue="Python.SMPrank" />
+      <item index="2" class="java.lang.String" itemvalue="Python.biheap" />
+      <item index="3" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
+      <item index="4" class="java.lang.String" itemvalue="Python.DecisionTreeWeight_Bordar" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
-        <item index="1" class="java.lang.String" itemvalue="Python.biheap" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.SMPrank" />
-        <item index="4" class="java.lang.String" itemvalue="Python.mallows_gini" />
+        <item index="1" class="java.lang.String" itemvalue="Python.DecisionTreeWeight_Bordar" />
+        <item index="2" class="java.lang.String" itemvalue="Python.biheap" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.SMPrank" />
       </list>
     </recent_temporary>
   </component>
@@ -540,16 +575,16 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5326902" sideWeight="0.503125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34035826" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4604847" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34035826" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -567,7 +602,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25605902" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34035826" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -591,42 +626,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/result.txt" />
-    <entry file="file://$PROJECT_DIR$/stats_result.txt" />
-    <entry file="file://$PROJECT_DIR$/result_rpp.txt" />
-    <entry file="file://$PROJECT_DIR$/data/foxnews_Feature_linkemotion.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-918">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foxnews_Feature_linkemotion.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84881">
-          <caret line="5014" column="0" selection-start-line="5014" selection-start-column="0" selection-end-line="5014" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/foxnews_raw">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80514">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deduplicate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats_result_washington.txt" />
     <entry file="file://$PROJECT_DIR$/stats_result_foxnews.txt" />
     <entry file="file://$PROJECT_DIR$/DTtest1.py" />
@@ -767,36 +771,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biheap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="244" column="24" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SMPrank.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5559">
           <caret line="327" column="24" selection-start-line="327" selection-start-column="24" selection-end-line="327" selection-end-column="24" />
-          <folding>
-            <element signature="e#84#102#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finaltest_paging1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreePruneTry.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="521" column="34" selection-start-line="521" selection-start-column="34" selection-end-line="521" selection-end-column="34" />
+        <state relative-caret-position="284">
+          <caret line="230" column="49" selection-start-line="230" selection-start-column="49" selection-end-line="230" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="545">
+          <caret line="145" column="9" selection-start-line="145" selection-start-column="9" selection-end-line="145" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="444" column="9" selection-start-line="444" selection-start-column="9" selection-end-line="444" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_nytimes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="60" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_ordinaryuser.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="98" column="22" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="384" column="59" selection-start-line="384" selection-start-column="59" selection-end-line="384" selection-end-column="59" />
+        <state relative-caret-position="120">
+          <caret line="146" column="61" selection-start-line="146" selection-start-column="60" selection-end-line="146" selection-end-column="61" />
           <folding>
             <element signature="e#443#1380#0" expanded="false" />
             <element signature="e#1408#1930#0" expanded="false" />
@@ -805,18 +840,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt">
+    <entry file="file://$PROJECT_DIR$/biheap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="455" column="60" selection-start-line="455" selection-start-column="60" selection-end-line="455" selection-end-column="60" />
+        <state relative-caret-position="506">
+          <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_wsj.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DecisionTreeWeight_Bordar.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="762" column="54" selection-start-line="762" selection-start-column="54" selection-end-line="762" selection-end-column="54" />
+          <folding>
+            <element signature="e#97#115#0" expanded="true" />
+            <element signature="e#700#1197#0" expanded="false" />
+            <element signature="e#1418#3922#0" expanded="false" />
+            <element signature="e#3968#4333#0" expanded="false" />
+            <element signature="e#4421#5362#0" expanded="false" />
+            <element signature="e#5447#6892#0" expanded="false" />
+            <element signature="e#6949#7681#0" expanded="false" />
+            <element signature="e#7687#7718#0" expanded="false" />
+            <element signature="e#8306#8591#0" expanded="false" />
+            <element signature="e#8679#9348#0" expanded="false" />
+            <element signature="e#11823#12319#0" expanded="false" />
+            <element signature="e#12369#12687#0" expanded="false" />
+            <element signature="e#12746#15778#0" expanded="false" />
+            <element signature="e#15835#16228#0" expanded="false" />
+            <element signature="e#16300#16805#0" expanded="false" />
+            <element signature="e#16847#17244#0" expanded="false" />
+            <element signature="e#17299#17607#0" expanded="false" />
+            <element signature="e#17642#18241#0" expanded="false" />
+            <element signature="e#18339#18409#0" expanded="false" />
+            <element signature="e#18438#19403#0" expanded="false" />
+            <element signature="e#19492#21028#0" expanded="false" />
+            <element signature="e#21058#21927#0" expanded="false" />
+            <element signature="e#21972#23643#0" expanded="false" />
+            <element signature="e#23787#25477#0" expanded="false" />
+            <element signature="e#25675#27318#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_washington.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="104" column="60" selection-start-line="104" selection-start-column="60" selection-end-line="104" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="731" column="56" selection-start-line="731" selection-start-column="56" selection-end-line="731" selection-end-column="56" />
+        <state relative-caret-position="447">
+          <caret line="736" column="16" selection-start-line="736" selection-start-column="16" selection-end-line="736" selection-end-column="16" />
           <folding>
             <element signature="e#97#115#0" expanded="true" />
             <element signature="e#657#1154#0" expanded="false" />
@@ -825,6 +910,7 @@
             <element signature="e#4378#5319#0" expanded="false" />
             <element signature="e#5404#6849#0" expanded="false" />
             <element signature="e#6906#7638#0" expanded="false" />
+            <element signature="e#8636#9305#0" expanded="false" />
             <element signature="e#9478#10749#0" expanded="false" />
             <element signature="e#10795#11291#0" expanded="false" />
             <element signature="e#11341#11659#0" expanded="false" />
@@ -838,20 +924,19 @@
             <element signature="e#18464#20000#0" expanded="false" />
             <element signature="e#20030#20899#0" expanded="false" />
             <element signature="e#20944#22615#0" expanded="false" />
+            <element signature="e#22759#24449#0" expanded="false" />
             <element signature="e#24647#26290#0" expanded="false" />
             <element signature="e#26405#26944#0" expanded="false" />
-            <marker date="1489786876635" expanded="false" signature="8627:9300" placeholder="..." />
-            <marker date="1489786876635" expanded="false" signature="16605:17168" placeholder="..." />
-            <marker date="1489786876635" expanded="false" signature="22754:24449" placeholder="..." />
-            <marker date="1489786876635" expanded="true" signature="25013:25358" placeholder="..." />
+            <marker date="1490729480787" expanded="false" signature="16605:17168" placeholder="..." />
+            <marker date="1490729480787" expanded="true" signature="25013:25358" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+        <state relative-caret-position="481">
+          <caret line="579" column="9" selection-start-line="579" selection-start-column="9" selection-end-line="579" selection-end-column="23" />
           <folding />
         </state>
       </provider>

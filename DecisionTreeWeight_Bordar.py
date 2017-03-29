@@ -11,6 +11,7 @@ from functools import partial
 from scipy.stats.mstats import gmean
 from datetime import datetime
 from stats import pairwise
+from DecisionTreeMallows import score2rank
 
 from logRegFeatureEmotion import NONERECALL
 
@@ -243,39 +244,65 @@ class DecisionTree(object):
 
     #######################################
     ## label ranking dependent functions ##
-    def nodeResult(self, y_s, w_s):
-        """
-        calculate the predict result for the node
-        :param y_s: labels of samples in the tree node
-        :param w_s: weights of corresponding samples
-        :return: type(y)
-        """
-        n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
-        Ranks = y_s.shape[1]
-        result = []
-        for rank in range(Ranks):
-            # assign ranking #
-            # current rank with highest priority, when zero appearance, from highest rank to lowest #
-            priority = [i for i in range(Ranks) if i != rank]
-            priority.insert(0, rank)
-            flag = False
-            for i in priority:
-                n_class_cur = n_rc[i]
-                while not flag:
-                    max_value = max(n_class_cur)
-                    if max_value == 0:
-                        break  # all are 0 in current rank
-                    emoti = n_class_cur.index(max_value)
-                    if emoti not in result:
-                        result.append(emoti)
-                        flag = True  # find best emoticon
-                    else:
-                        n_class_cur[emoti] = 0
-                if flag:
-                    break
-            if not flag:
-                result.append(-1)
-        return np.array(result)
+    # def nodeResult(self, y_s, w_s):
+    #     """
+    #     calculate the predict result for the node
+    #     :param y_s: labels of samples in the tree node
+    #     :param w_s: weights of corresponding samples
+    #     :return: type(y)
+    #     """
+    #     n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
+    #     Ranks = y_s.shape[1]
+    #     result = []
+    #     for rank in range(Ranks):
+    #         # assign ranking #
+    #         # current rank with highest priority, when zero appearance, from highest rank to lowest #
+    #         priority = [i for i in range(Ranks) if i != rank]
+    #         priority.insert(0, rank)
+    #         flag = False
+    #         for i in priority:
+    #             n_class_cur = n_rc[i]
+    #             while not flag:
+    #                 max_value = max(n_class_cur)
+    #                 if max_value == 0:
+    #                     break  # all are 0 in current rank
+    #                 emoti = n_class_cur.index(max_value)
+    #                 if emoti not in result:
+    #                     result.append(emoti)
+    #                     flag = True  # find best emoticon
+    #                 else:
+    #                     n_class_cur[emoti] = 0
+    #             if flag:
+    #                 break
+    #         if not flag:
+    #             result.append(-1)
+    #     return np.array(result)
+
+    def nodeResult(self, y, w_s):
+        ## bordar count ##
+        ## without weighting ##
+
+        if type(y) != np.ndarray:
+            y = np.array(y)
+        NRanks = y.shape[1]
+        N_class = NRanks
+        score_label_sum = [0 for i in range(N_class)]
+        ranks = y.tolist()
+        for rank in ranks:
+            score_label = [0 for i in range(N_class)]
+            for pos in range(N_class):
+                label = rank[pos]
+                if label >= 0:
+                    score_label[label] += (N_class - pos)
+            for lab in range(N_class):
+                score_label_sum[lab] += score_label[lab]
+        rank_double = score2rank(score_label_sum, cplt=True)
+        rank = [-1 for pos in range(N_class)]
+        for label in range(N_class):
+            pos = rank_double[label][0]
+            if score_label_sum[pos] > 0:
+                rank[pos] = label
+        return np.array(rank)
 
     def diffLabel(self, y_pred, y):
         """
@@ -706,30 +733,33 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
     return x,y
 
 if __name__ == "__main__":
-    # ## test ###
-    # Nsamp = 10000
+    ## test ###
+    # Nsamp = 5000
     # Nfeature = 3
     # Nclass = 6
     # x,y = dataSimulated(Nsamp, Nfeature, Nclass)
     # Nsamp = x.shape[0]
-    # # result_nopruned = crossValidate(x,y)
+    # result_nopruned = crossValidate(x,y)
+    # print "unpruned"
+    # print result_nopruned
     # result_pruned = crossValidate(x,y,alpha=None, prune_criteria=5+3*Nclass)
     # print "mis_rate: tau"
     # print "prune_criterion: tau (perf[5+3*Nclass])"
-    # # print result_nopruned
     # print result_pruned
 
-    x,y = LogR.dataClean("data/wsj_Feature_linkemotion.txt")
+    x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
     y = label2Rank(y)
     # ### sushi data ###
     # x,y = readSushiData()
     #
-    #
-    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = -1)
+    # result_unpruned = crossValidate(x, y, rank_weight=False, alpha=0.0)
+    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = 5+3*y.shape[1])
     # write2result #
-    file = open("results/result_dt_prunetry.txt","a")
-    file.write("wsj posts")
-    file.write("pruned with mis_rate=tau, criteria=GMR ")
+    file = open("results/result_dt_prunetry_washington.txt","a")
+    file.write("bordar count\n")
+    # file.write("unpruned\n")
+    # file.write(str(result_unpruned)+"\n")
+    file.write("pruned with misrate=tau, criterion=tau ")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % NONERECALL)
     file.write("CV: %d\n" % 5)
