@@ -127,9 +127,9 @@ def postsFilter(file_name, threshold = THRESHOLD_REACTIONS):
     return posts_list
 
 if __name__ == "__main__":
-    posts_list = postsFilter("data/nytimes_Feature_linkemotion.txt")
+    posts_list = postsFilter("data/wsj_Feature_linkemotion.txt")
     print "# filtered posts: ", len(posts_list)
-    start_id = 1285
+    start_id = 0
     reaction_done = False
     for i in range(len(posts_list)):
         if i < start_id:
