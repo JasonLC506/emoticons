@@ -718,22 +718,23 @@ if __name__ == "__main__":
     # print "prune_criterion: tau (perf[5+3*Nclass])"
     # # print result_nopruned
     # print result_pruned
-
-    x,y = LogR.dataClean("data/wsj_Feature_linkemotion.txt")
-    y = label2Rank(y)
-    # ### sushi data ###
-    # x,y = readSushiData()
-    #
-    #
-    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = -1)
-    # write2result #
-    file = open("results/result_dt_prunetry.txt","a")
-    file.write("wsj posts")
-    file.write("pruned with mis_rate=tau, criteria=GMR ")
-    file.write("number of samples: %d\n" % x.shape[0])
-    file.write("NONERECALL: %f\n" % NONERECALL)
-    file.write("CV: %d\n" % 5)
-    file.write(str(result)+"\n")
-    file.close()
-    print result
+    criteria_list = [0, 5+3*6, -1]
+    for criteria in criteria_list:
+        x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
+        y = label2Rank(y)
+        # ### sushi data ###
+        # x,y = readSushiData()
+        #
+        #
+        result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = criteria)
+        # write2result #
+        file = open("results/result_dt_prunetry.txt","a")
+        file.write("washington posts")
+        file.write("pruned with mis_rate=tau, criteria=%d" % criteria)
+        file.write("number of samples: %d\n" % x.shape[0])
+        file.write("NONERECALL: %f\n" % NONERECALL)
+        file.write("CV: %d\n" % 5)
+        file.write(str(result)+"\n")
+        file.close()
+        print result
 

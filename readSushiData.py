@@ -36,4 +36,5 @@ def readSushiData(filename_feature=filename_feature , filename_target=filename_t
     return x,y
 
 if __name__ == "__main__":
-    readSushiData()
+    x, y = readSushiData()
+    print y.shape[1]

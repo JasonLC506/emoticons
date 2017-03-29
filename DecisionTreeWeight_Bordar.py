@@ -233,7 +233,7 @@ class DecisionTree(object):
             if self.tb is None:
                 return self.result
             if self.alpha >= 0.0:
-                if self.alpha < alpha:
+                if self.alpha <= alpha:
                     return self.result
             value = x_test[self.feature]
             if value >= self.value:
@@ -244,65 +244,65 @@ class DecisionTree(object):
 
     #######################################
     ## label ranking dependent functions ##
-    # def nodeResult(self, y_s, w_s):
-    #     """
-    #     calculate the predict result for the node
-    #     :param y_s: labels of samples in the tree node
-    #     :param w_s: weights of corresponding samples
-    #     :return: type(y)
-    #     """
-    #     n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
-    #     Ranks = y_s.shape[1]
-    #     result = []
-    #     for rank in range(Ranks):
-    #         # assign ranking #
-    #         # current rank with highest priority, when zero appearance, from highest rank to lowest #
-    #         priority = [i for i in range(Ranks) if i != rank]
-    #         priority.insert(0, rank)
-    #         flag = False
-    #         for i in priority:
-    #             n_class_cur = n_rc[i]
-    #             while not flag:
-    #                 max_value = max(n_class_cur)
-    #                 if max_value == 0:
-    #                     break  # all are 0 in current rank
-    #                 emoti = n_class_cur.index(max_value)
-    #                 if emoti not in result:
-    #                     result.append(emoti)
-    #                     flag = True  # find best emoticon
-    #                 else:
-    #                     n_class_cur[emoti] = 0
-    #             if flag:
-    #                 break
-    #         if not flag:
-    #             result.append(-1)
-    #     return np.array(result)
+    def nodeResult(self, y_s, w_s):
+        """
+        calculate the predict result for the node
+        :param y_s: labels of samples in the tree node
+        :param w_s: weights of corresponding samples
+        :return: type(y)
+        """
+        n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
+        Ranks = y_s.shape[1]
+        result = []
+        for rank in range(Ranks):
+            # assign ranking #
+            # current rank with highest priority, when zero appearance, from highest rank to lowest #
+            priority = [i for i in range(Ranks) if i != rank]
+            priority.insert(0, rank)
+            flag = False
+            for i in priority:
+                n_class_cur = n_rc[i]
+                while not flag:
+                    max_value = max(n_class_cur)
+                    if max_value == 0:
+                        break  # all are 0 in current rank
+                    emoti = n_class_cur.index(max_value)
+                    if emoti not in result:
+                        result.append(emoti)
+                        flag = True  # find best emoticon
+                    else:
+                        n_class_cur[emoti] = 0
+                if flag:
+                    break
+            if not flag:
+                result.append(-1)
+        return np.array(result)
 
-    def nodeResult(self, y, w_s):
-        ## bordar count ##
-        ## without weighting ##
-
-        if type(y) != np.ndarray:
-            y = np.array(y)
-        NRanks = y.shape[1]
-        N_class = NRanks
-        score_label_sum = [0 for i in range(N_class)]
-        ranks = y.tolist()
-        for rank in ranks:
-            score_label = [0 for i in range(N_class)]
-            for pos in range(N_class):
-                label = rank[pos]
-                if label >= 0:
-                    score_label[label] += (N_class - pos)
-            for lab in range(N_class):
-                score_label_sum[lab] += score_label[lab]
-        rank_double = score2rank(score_label_sum, cplt=True)
-        rank = [-1 for pos in range(N_class)]
-        for label in range(N_class):
-            pos = rank_double[label][0]
-            if score_label_sum[pos] > 0:
-                rank[pos] = label
-        return np.array(rank)
+    # def nodeResult(self, y, w_s):
+    #     ## bordar count ##
+    #     ## without weighting ##
+    #
+    #     if type(y) != np.ndarray:
+    #         y = np.array(y)
+    #     NRanks = y.shape[1]
+    #     N_class = NRanks
+    #     score_label_sum = [0 for i in range(N_class)]
+    #     ranks = y.tolist()
+    #     for rank in ranks:
+    #         score_label = [0 for i in range(N_class)]
+    #         for pos in range(N_class):
+    #             label = rank[pos]
+    #             if label >= 0:
+    #                 score_label[label] += (N_class - pos)
+    #         for lab in range(N_class):
+    #             score_label_sum[lab] += score_label[lab]
+    #     rank_double = score2rank(score_label_sum, cplt=True)
+    #     rank = [-1 for pos in range(N_class)]
+    #     for label in range(N_class):
+    #         pos = rank_double[label][0]
+    #         if score_label_sum[pos] > 0:
+    #             rank[pos] = label
+    #     return np.array(rank)
 
     def diffLabel(self, y_pred, y):
         """
@@ -634,6 +634,7 @@ def hyperParameter(x, y, x_valid=None, y_valid=None, cv = 5, criteria = 0):
 
             tree = DecisionTree().buildtree(x_train, y_train)
             alpha_list = tree.alphalist()
+            print "alpha_list in hyperparameter tuning: ", alpha_list
             alpha_best = [-1, None]
             for alpha in alpha_list:
                 y_pred = tree.predict(x_valid, alpha=alpha)
@@ -702,6 +703,7 @@ def crossValidate(x,y, cv=5, alpha = 0.0, rank_weight = False, stop_criterion_mi
                                         stop_criterion_min_node = stop_criterion_min_node,
                                         stop_criterion_gain=stop_criterion_gain)
         alpha_list = tree.alphalist()
+        print "alpha_list for training: ", alpha_list
         # performance measure
         y_pred = tree.predict(x_test, alpha_sel)
         results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
@@ -747,16 +749,16 @@ if __name__ == "__main__":
     # print "prune_criterion: tau (perf[5+3*Nclass])"
     # print result_pruned
 
-    x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
-    y = label2Rank(y)
+    # x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
+    # y = label2Rank(y)
     # ### sushi data ###
-    # x,y = readSushiData()
+    x,y = readSushiData()
     #
     # result_unpruned = crossValidate(x, y, rank_weight=False, alpha=0.0)
     result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = 5+3*y.shape[1])
     # write2result #
-    file = open("results/result_dt_prunetry_washington.txt","a")
-    file.write("bordar count\n")
+    file = open("results/result_dt_prunetry_sushi.txt","a")
+    file.write("point_wise\n")
     # file.write("unpruned\n")
     # file.write(str(result_unpruned)+"\n")
     file.write("pruned with misrate=tau, criterion=tau ")
