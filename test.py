@@ -7,29 +7,16 @@ from scipy.stats import kendalltau
 from matplotlib import pyplot as plt
 from scipy.stats.mstats import gmean
 
-# NCLASS = 6
-# NRANK = 6
-# a = np.array([[1,2,3],[2,3,4]])
-# m = np.mean(a, axis=0)
-# print a-m
-# print m in a
-# print [1,2,3] in a
-#
-# b = 3*2.4/3.5 * a - a
-# print b
 
-class A:
-    def __init__(self, k):
-        self.k = k
+def cumulate(y, L, K):
+    x = np.zeros(L*K, dtype=np.float16).reshape([L, K])
+    for i in range(L):
+        x[i] = np.sum(y[:i, :], axis=0)
+    return x
 
-a = A(1)
-b = A(2)
-c = A(3)
-L = [a,b]
-for item in L:
-    print item.k
-L.append(c)
-c.k = 4
-for item in L:
-    print item.k
-
+x = np.arange(6).reshape([2,3])
+y = np.arange(12).reshape([4,3])
+print x, y
+print np.inner(x[1], y[2])
+a = np.zeros(10)
+print a.shape[0]
