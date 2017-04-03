@@ -3,6 +3,8 @@ Implementing Wang, Ting, Dashun Wang, and Fei Wang. "Quantifying herding effects
 """
 import numpy as np
 import math
+import random
+from matplotlib import pyplot as plt
 
 class Heard(object):
     def __init__(self):
@@ -55,6 +57,15 @@ class Heard(object):
         # calculate initial surrogate function value #
         self.setold()
         Q = self.Qcalculate(y) ### waiting for test of Q calculation
+        llh_minus_lamda = self.llhMinusLamdacheck(y)
+        ### test ###
+        try:
+            assert llh_minus_lamda == Q ### test
+        except AssertionError,e:
+            print "llh_minus_lamda", llh_minus_lamda
+            print "Q", Q
+            self.printmodel()
+            print "llh not consistent with Q"
         self.llh_minus_lamda = Q
 
         llh_minus_lamda_old = self.llh_minus_lamda
@@ -68,28 +79,43 @@ class Heard(object):
                         raise ValueError("wrong iteration")
                     else:
                         print "converge"
+                        self.printmodel()
                         break
                 else:
                     llh_minus_lamda_old = self.llh_minus_lamda
             # parameter updates #
             self.update(x, y)
+            self.intermediate(x, y)
 
             ### check the update process ###
             Q_updated = self.Qcalculate(y)
-            assert Q_updated <= llh_minus_lamda_old
+            try:
+                assert Q_updated <= llh_minus_lamda_old
+            except AssertionError, e:
+                print "Q_min: ", Q_updated
+                print "llh_minus_lamda_old: ", llh_minus_lamda_old
+                print self.printmodel()
 
             # calculate new likelihood #
             self.setold()
             Q = self.Qcalculate(y) ### waiting for test of Qcalculation
+            llh_minus_lamda = self.llhMinusLamdacheck(y)
+            ### test ###
+            try:
+                assert llh_minus_lamda == Q  ### test
+            except AssertionError, e:
+                print "llh_minus_lamda", llh_minus_lamda
+                print "Q", Q
+                self.printmodel()
+                print "llh not consistent with Q"
             self.llh_minus_lamda = Q
 
         return self
 
-
     def cumulate(self, y):
         x = np.zeros(self.L * self.K, dtype=np.float16).reshape([self.L, self.K])
         for i in range(1, self.L):
-            x[i] = y[i-1] + x[i-1]
+            x[i] = (y[i-1] + x[i-1]*(i-1)) * 1.0 / i
         return x
 
     def initialize(self, y):
@@ -98,13 +124,13 @@ class Heard(object):
         x_N = np.sum(y, axis=0)
         for i in range(self.K):
             if x_N[i] > 0:
-                self.mu[i] = np.log(x_N[i] * 1.0) # remove the denominator in [1]
+                self.mu[i] = np.log(x_N[i] * 1.0 / self.L) # remove the denominator in [1]
             else:
                 self.mu[i] = 0.0 # for label not present, treat it as appearing once
         # self.f #
         self.f = np.zeros(self.L)
         # self.theta #
-        self.theta = np.random.random([self.K, self.K]) - 0.5
+        self.theta = (np.random.random([self.K, self.K]) - 0.5) * 0.1
         return self
 
     def intermediate(self, x, y):
@@ -114,9 +140,9 @@ class Heard(object):
             z = 0.0
             for k in range(self.K):
                 self.phi[i,k] = self.mu[k] + self.f[i] * np.inner(self.theta[k], x[i])
-                z += self.phi[i,k]
+                z += np.exp(self.phi[i,k])
             for k in range(self.K):
-                self.beta[i,k] = self.phi[i,k] / z
+                self.beta[i,k] = np.exp(self.phi[i,k]) / z
         return self
 
     def setold(self):
@@ -136,7 +162,7 @@ class Heard(object):
                 sum_phi2 += math.pow(self.phi_old[i,k], 2.0)
                 sum_betaphi += (self.beta_old[i,k] * self.phi_old[i,k])
                 sum_phi += self.phi_old[i,k]
-                sum_expphi += math.exp(self.phi_old[i,k])
+                sum_expphi += np.exp(self.phi_old[i,k])
             self.c_old[i] = sum_phi2 - sum_betaphi - math.pow(sum_phi, 2.0)/self.K + np.log(sum_expphi)
 
         return self
@@ -148,6 +174,8 @@ class Heard(object):
         sum_mu2 = 0.0
         for k in range(self.K):
             sum_mu2 += math.pow(self.mu[k], 2.0)
+            for k_ in range(self.K):
+                sum_theta2 += (math.pow(self.theta[k, k_], 2.0))
         for i in range(self.L):
             sum_a_i = 0.0
             sum_b_i1 = 0.0
@@ -156,17 +184,85 @@ class Heard(object):
                 sum_a_i += (math.pow(self.phi[i,k], 2.0) + (self.beta_old[i,k] - 2.0*self.phi_old[i,k] - y[i,k]) * self.phi[i,k])
                 sum_b_i1 += (self.phi[i,k] - 2.0*self.phi_old[i,k])
                 sum_b_i2 += self.phi[i,k]
-                sum_theta2 += (math.pow(self.phi[i,k], 2.0))
             sum_a += sum_a_i
             sum_b += (sum_b_i1 * sum_b_i2)
         sum_complexity = sum_theta2 + sum_mu2 + funcComplexity(self.f)
         sum_c = np.sum(self.c_old)
 
+        # ### test ###
+        # print "llh in Q: ", sum_a/self.L - sum_b/self.K/self.L + sum_c/self.L
+        # # print "sum_complexity in Q: ", sum_complexity
+
         Q = sum_a/self.L - sum_b/self.K/self.L + sum_complexity*self.lamda/2.0 + sum_c/self.L
         return Q
 
+    def llhMinusLamdacheck(self, y):
+        llh = 0.0
+        for i in range(self.L):
+            for k in range(self.K):
+                llh += (y[i,k]*np.log(self.beta[i,k]))
+        llh = llh / self.L
+        sum_mu2 = 0.0
+        sum_theta2 = 0.0
+        for k in range(self.K):
+            sum_mu2 += math.pow(self.mu[k], 2.0)
+            for k_ in range(self.K):
+                sum_theta2 += math.pow(self.theta[k,k_],2.0)
+        sum_complexity = sum_theta2 + sum_mu2 + funcComplexity(self.f)
+        ### test ###
+        # print "llh in llh: ", llh
+        # print "sum_complexity in llh: ", sum_complexity
+
+        llh_minus_lamda = -llh + sum_complexity * self.lamda/2.0
+        return llh_minus_lamda
+
     def update(self, x, y):
-        pass
+        # updating f #
+        A = np.zeros(self.L, dtype=np.float16)
+        B = np.zeros(self.L, dtype=np.float16)
+        for i in range(self.L):
+            sum_A1 = 0.0
+            sum_AB2 = 0.0
+            sum_B1 = 0.0
+            for k in range(self.K):
+                prod_k_i = np.inner(self.theta_old[k],x[i])
+                sum_A1 += math.pow(prod_k_i, 2.0)
+                sum_AB2 += prod_k_i
+                sum_B1 += (2*self.mu_old[k] - 2*self.phi_old[i,k] + self.beta_old[i,k] - y[i,k]) * prod_k_i
+            A[i] = sum_A1/self.L - math.pow(sum_AB2,2.0)/(self.L*self.K)
+            B[i] = sum_B1/self.L + sum_AB2*(np.sum(self.phi_old[i])-np.sum(self.mu_old))*2.0/(self.L*self.K)
+        self.f = discreteODE(A ,B, self.lamda, f0 = 0.0, f1 = 0.0)
+        # updating mu #
+        for k in range(self.K):
+            sum_mu = 0.0
+            for i in range(self.L):
+                sum_mu += (y[i,k] - self.beta_old[i,k])
+            self.mu[k] = (self.K*sum_mu + 2*self.L*(self.K-1)*self.mu_old[k]) / (2*self.L*(self.K-1) + self.L*self.K*self.lamda)
+        # updating theta #
+        for k in range(self.K):
+            for k_ in range(self.K):
+                sum_theta1 = 0.0
+                sum_theta2 = 0.0
+                sum_theta3 = 0.0
+                for i in range(self.L):
+                    sum_theta1 += (self.f[i]*x[i,k_]*(y[i,k] - self.beta_old[i,k]))
+                    sum_theta2 += (math.pow(self.f[i],2.0)*math.pow(x[i,k_],2.0)*self.theta_old[k,k_])
+                    sum_theta3 += (math.pow(self.f[i],2.0)*math.pow(x[i,k_],2.0))
+                self.theta[k,k_] = (self.K*sum_theta1 + 2*(self.K-1)*sum_theta2) / (2*(self.K-1)*sum_theta3 + self.L*self.K*self.lamda)
+
+
+    def printmodel(self):
+        print "------ fit model ------"
+        print "mu\n"
+        print self.mu
+        print self.mu_old
+        print "theta\n"
+        print self.theta
+        print self.theta_old
+        plt.plot(self.f)
+        plt.show()
+        return self
+
 
 def funcComplexity(f):
     """
@@ -179,3 +275,55 @@ def funcComplexity(f):
     for i in range(1,L):
         complex += math.pow((f[i]-f[i-1]), 2.0)
     return complex
+
+
+def discreteODE(A, B, c, f0, f1):
+    """
+    solve discreteODE of form 2A[i]*f[i] + B[i] - c*f"[i]=0 | \forall i
+    or minimize \sum A[i](f[i]^2) + \sum B[i]f[i] + c/2*\sum f'[i]^2
+    :param f0: boundary condition
+    :param f1: boundary condition
+    """
+    L = A.shape[0]
+    f = np.zeros(L,dtype=np.float16)
+    if c == 0.0:
+        f = np.divide(A,B)
+    else:
+        # set boundary condition #
+        f[0] = f0
+        f[1] = f1
+        # iterative #
+        for i in range(2,L):
+            f[i] = 2*(1.0+A[i-1]/c)*f[i-1] - f[i-2] + B[i]/c
+    return f
+
+
+def synthetic(L,mu,theta,f):
+    K = mu.shape[0]
+    # no herding #
+    f = np.ones(L, dtype=np.float16)
+    x = np.zeros([L,K], dtype=np.float16)
+    y = np.zeros([L,K], dtype=np.float16)
+    for i in range(L):
+        beta = betacal(mu, f, theta, x, i)
+        rnd = random.random()
+        beta_sum = 0.0
+        for k in range(K):
+            beta_sum += beta[k]
+            if rnd <= beta_sum:
+                y[i,k] = 1
+                break
+    return y
+
+
+def betacal(mu, f, theta, x, i):
+    phi = mu + f[i]*np.inner(theta,x[i])
+    return np.exp(phi)/np.sum(np.exp(phi))
+
+
+if __name__ == "__main__":
+    np.random.seed(2017)
+    y = synthetic(1000, np.array([1.0,2.0,0.5]), np.zeros([3,3]), np.zeros(10))
+    print np.sum(y, axis=0)
+    heard = Heard().fit(y)
+    heard.printmodel()
