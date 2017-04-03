@@ -34,7 +34,7 @@ class Heard(object):
         self.c_old = [] # no need in parameter
 
 
-    def fit(self, y, lamda = 1.0, threshold = 0.001, max_interation = 100):
+    def fit(self, y, lamda = 1.0, threshold = 0.01, max_interation = 100):
         """
         fit HEARD model by data y
         :param y: label sequence data, np.ndarray([L,K])
@@ -56,23 +56,24 @@ class Heard(object):
 
         # calculate initial surrogate function value #
         self.setold()
-        Q = self.Qcalculate(y) ### waiting for test of Q calculation
-        llh_minus_lamda = self.llhMinusLamdacheck(y)
-        ### test ###
-        try:
-            assert llh_minus_lamda == Q ### test
-        except AssertionError,e:
-            print "llh_minus_lamda", llh_minus_lamda
-            print "Q", Q
-            self.printmodel()
-            print "llh not consistent with Q"
-        self.llh_minus_lamda = Q
+        self.llh_minus_lamda = self.Qcalculate(y) ### tested of Q calculation
+        # llh_minus_lamda = self.llhMinusLamdacheck(y)
+        # ### test ###
+        # try:
+        #     assert llh_minus_lamda == Q ### test
+        # except AssertionError,e:
+        #     print "llh_minus_lamda", llh_minus_lamda
+        #     print "Q", Q
+        #     self.printmodel()
+        #     print "llh not consistent with Q"
+        # self.llh_minus_lamda = Q
 
         llh_minus_lamda_old = self.llh_minus_lamda
 
         # iterative optimization #
         for iteration in range(max_interation):
             # check converging, correctness test #
+            self.printmodel() ### test
             if iteration > 0:
                 if self.llh_minus_lamda > llh_minus_lamda_old - threshold:
                     if self.llh_minus_lamda > llh_minus_lamda_old:
@@ -95,32 +96,33 @@ class Heard(object):
                 print "Q_min: ", Q_updated
                 print "llh_minus_lamda_old: ", llh_minus_lamda_old
                 print self.printmodel()
+                raise e
 
             # calculate new likelihood #
             self.setold()
-            Q = self.Qcalculate(y) ### waiting for test of Qcalculation
+            self.llh_minus_lamda = self.Qcalculate(y) ### waiting for test of Qcalculation
             llh_minus_lamda = self.llhMinusLamdacheck(y)
-            ### test ###
-            try:
-                assert llh_minus_lamda == Q  ### test
-            except AssertionError, e:
-                print "llh_minus_lamda", llh_minus_lamda
-                print "Q", Q
-                self.printmodel()
-                print "llh not consistent with Q"
-            self.llh_minus_lamda = Q
+            # ### test ###
+            # try:
+            #     assert llh_minus_lamda == Q  ### test
+            # except AssertionError, e:
+            #     print "llh_minus_lamda", llh_minus_lamda
+            #     print "Q", Q
+            #     self.printmodel()
+            #     print "llh not consistent with Q"
+            # self.llh_minus_lamda = Q
 
         return self
 
     def cumulate(self, y):
-        x = np.zeros(self.L * self.K, dtype=np.float16).reshape([self.L, self.K])
+        x = np.zeros(self.L * self.K, dtype=np.float64).reshape([self.L, self.K])
         for i in range(1, self.L):
             x[i] = (y[i-1] + x[i-1]*(i-1)) * 1.0 / i
         return x
 
     def initialize(self, y):
         # self.mu #
-        self.mu = np.zeros(self.K, dtype=np.float16)
+        self.mu = np.zeros(self.K, dtype=np.float64)
         x_N = np.sum(y, axis=0)
         for i in range(self.K):
             if x_N[i] > 0:
@@ -134,8 +136,8 @@ class Heard(object):
         return self
 
     def intermediate(self, x, y):
-        self.phi = np.zeros([self.L, self.K], dtype=np.float16)
-        self.beta = np.zeros([self.L, self.K], dtype=np.float16)
+        self.phi = np.zeros([self.L, self.K], dtype=np.float64)
+        self.beta = np.zeros([self.L, self.K], dtype=np.float64)
         for i in range(self.L):
             z = 0.0
             for k in range(self.K):
@@ -152,7 +154,7 @@ class Heard(object):
         self.phi_old = self.phi
         self.beta_old = self.beta
 
-        self.c_old = np.zeros(self.L, dtype=np.float16)
+        self.c_old = np.zeros(self.L, dtype=np.float64)
         for i in range(self.L):
             sum_phi2 = 0.0
             sum_betaphi = 0.0
@@ -218,8 +220,8 @@ class Heard(object):
 
     def update(self, x, y):
         # updating f #
-        A = np.zeros(self.L, dtype=np.float16)
-        B = np.zeros(self.L, dtype=np.float16)
+        A = np.zeros(self.L, dtype=np.float64)
+        B = np.zeros(self.L, dtype=np.float64)
         for i in range(self.L):
             sum_A1 = 0.0
             sum_AB2 = 0.0
@@ -232,6 +234,10 @@ class Heard(object):
             A[i] = sum_A1/self.L - math.pow(sum_AB2,2.0)/(self.L*self.K)
             B[i] = sum_B1/self.L + sum_AB2*(np.sum(self.phi_old[i])-np.sum(self.mu_old))*2.0/(self.L*self.K)
         self.f = discreteODE(A ,B, self.lamda, f0 = 0.0, f1 = 0.0)
+
+        ### constant f ###
+        self.f = np.ones(self.L, dtype=np.float64)
+
         # updating mu #
         for k in range(self.K):
             sum_mu = 0.0
@@ -285,7 +291,7 @@ def discreteODE(A, B, c, f0, f1):
     :param f1: boundary condition
     """
     L = A.shape[0]
-    f = np.zeros(L,dtype=np.float16)
+    f = np.zeros(L,dtype=np.float64)
     if c == 0.0:
         f = np.divide(A,B)
     else:
@@ -301,9 +307,9 @@ def discreteODE(A, B, c, f0, f1):
 def synthetic(L,mu,theta,f):
     K = mu.shape[0]
     # no herding #
-    f = np.ones(L, dtype=np.float16)
-    x = np.zeros([L,K], dtype=np.float16)
-    y = np.zeros([L,K], dtype=np.float16)
+    f = np.ones(L, dtype=np.float64)
+    x = np.zeros([L,K], dtype=np.float64)
+    y = np.zeros([L,K], dtype=np.float64)
     for i in range(L):
         beta = betacal(mu, f, theta, x, i)
         rnd = random.random()
@@ -311,8 +317,10 @@ def synthetic(L,mu,theta,f):
         for k in range(K):
             beta_sum += beta[k]
             if rnd <= beta_sum:
-                y[i,k] = 1
+                y[i,k] = 1.0
                 break
+        if np.sum(y[i])<1:
+            print rnd, beta_sum
     return y
 
 
@@ -322,8 +330,8 @@ def betacal(mu, f, theta, x, i):
 
 
 if __name__ == "__main__":
-    np.random.seed(2017)
-    y = synthetic(1000, np.array([1.0,2.0,0.5]), np.zeros([3,3]), np.zeros(10))
-    print np.sum(y, axis=0)
+    np.random.seed(2037)
+    y = synthetic(5000, np.array([1.0,2.0,0.5]), np.zeros([3,3]), np.zeros(10))
+    print np.sum(y, axis=0, dtype=np.float64)
     heard = Heard().fit(y)
     heard.printmodel()
