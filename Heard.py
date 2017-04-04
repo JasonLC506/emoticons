@@ -14,6 +14,7 @@ class Heard(object):
         self.theta = [[]] # herding amplitude between each pair of labels, theta[i][j] is herding from j to i
         self.K = 0
         self.L = 0 # length of training sequence
+        self.fCONSTANT = True # model selection whether f is a constant function
 
         # hyperparameter #
         self.lamda = 1.0
@@ -34,7 +35,7 @@ class Heard(object):
         self.c_old = [] # no need in parameter
 
 
-    def fit(self, y, lamda = 1.0, threshold = 0.01, max_interation = 100):
+    def fit(self, y, lamda = 1.0, threshold = 0.001, max_interation = 100, f_constant = True):
         """
         fit HEARD model by data y
         :param y: label sequence data, np.ndarray([L,K])
@@ -46,9 +47,10 @@ class Heard(object):
         self.threshold = threshold
         self.K = y.shape[1]
         self.L = y.shape[0]
+        self.fCONSTANT = f_constant
 
         # compute cumulative sequence #
-        x = self.cumulate(y)
+        x = cumulate(y)
 
         # initialize parameters #
         self.initialize(y)
@@ -113,12 +115,6 @@ class Heard(object):
             # self.llh_minus_lamda = Q
 
         return self
-
-    def cumulate(self, y):
-        x = np.zeros(self.L * self.K, dtype=np.float64).reshape([self.L, self.K])
-        for i in range(1, self.L):
-            x[i] = (y[i-1] + x[i-1]*(i-1)) * 1.0 / i
-        return x
 
     def initialize(self, y):
         # self.mu #
@@ -236,7 +232,8 @@ class Heard(object):
         self.f = discreteODE(A ,B, self.lamda, f0 = 0.0, f1 = 0.0)
 
         ### constant f ###
-        self.f = np.ones(self.L, dtype=np.float64)
+        if self.fCONSTANT:
+            self.f = np.ones(self.L, dtype=np.float64)
 
         # updating mu #
         for k in range(self.K):
@@ -259,15 +256,28 @@ class Heard(object):
 
     def printmodel(self):
         print "------ fit model ------"
-        print "mu\n"
-        print self.mu
-        print self.mu_old
-        print "theta\n"
-        print self.theta
-        print self.theta_old
+        print "llh_minus_lamda"
+        print self.llh_minus_lamda, "\n"
+        print "mu"
+        print self.mu, "\n"
+        print "theta"
+        print self.theta, "\n"
         plt.plot(self.f)
-        plt.show()
+        plt.show() ### test
         return self
+
+
+def cumulate(y):
+    """
+    cumulating differential label sequence into distribution evolution
+    :param y: np.ndarray([L,K]), one-hot vector for each row
+    :return: np.ndarray([L,K])
+    """
+    L,K = y.shape
+    x = np.zeros(L * K, dtype=np.float64).reshape([L, K])
+    for i in range(1, L):
+        x[i] = (y[i - 1] + x[i - 1] * (i - 1)) * 1.0 / i
+    return x
 
 
 def funcComplexity(f):
@@ -324,6 +334,31 @@ def synthetic(L,mu,theta,f):
     return y
 
 
+def synthetic2(L, mu, theta, f):
+    print "mu"
+    print mu
+    print "theta"
+    print theta
+    K = mu.shape[0]
+    f = np.arange(L, dtype=np.float64)*10.0/L # linear function
+    x = np.zeros([L,K], dtype = np.float64)
+    y = np.zeros([L,K], dtype = np.float64)
+    for i in range(L):
+        beta = betacal(mu, f, theta, x, i)
+        rnd = random.random()
+        beta_sum = 0.0
+        for k in range(K):
+            beta_sum += beta[k]
+            if rnd <= beta_sum:
+                y[i,k] = 1.0
+                break
+        if np.sum(y[i])<1:
+            print rnd, beta_sum
+        if i < L - 1:
+            x[i+1] = (x[i]*i + y[i])/(i+1)
+    return y
+
+
 def betacal(mu, f, theta, x, i):
     phi = mu + f[i]*np.inner(theta,x[i])
     return np.exp(phi)/np.sum(np.exp(phi))
@@ -331,7 +366,7 @@ def betacal(mu, f, theta, x, i):
 
 if __name__ == "__main__":
     np.random.seed(2037)
-    y = synthetic(5000, np.array([1.0,2.0,0.5]), np.zeros([3,3]), np.zeros(10))
+    y = synthetic2(10000, np.array([1.0,2.0,0.5]), np.random.random([3,3]), np.zeros(10))
     print np.sum(y, axis=0, dtype=np.float64)
-    heard = Heard().fit(y)
+    heard = Heard().fit(y, lamda=5.0, f_constant=False)
     heard.printmodel()
