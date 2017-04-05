@@ -35,7 +35,7 @@ class Heard(object):
         self.c_old = [] # no need in parameter
 
 
-    def fit(self, y, lamda = 1.0, threshold = 0.001, max_interation = 100, f_constant = True):
+    def fit(self, y, lamda = 1.0, threshold = 0.001, max_iteration = 100, f_constant = True):
         """
         fit HEARD model by data y
         :param y: label sequence data, np.ndarray([L,K])
@@ -73,7 +73,7 @@ class Heard(object):
         llh_minus_lamda_old = self.llh_minus_lamda
 
         # iterative optimization #
-        for iteration in range(max_interation):
+        for iteration in range(max_iteration):
             # check converging, correctness test #
             self.printmodel() ### test
             if iteration > 0:

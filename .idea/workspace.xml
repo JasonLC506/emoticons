@@ -25,88 +25,66 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DecisionTreeWeight.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="735" column="34" selection-start-line="735" selection-start-column="34" selection-end-line="735" selection-end-column="34" />
-              <folding>
-                <element signature="e#657#1154#0" expanded="false" />
-                <element signature="e#1375#3879#0" expanded="false" />
-                <element signature="e#3925#4290#0" expanded="false" />
-                <element signature="e#4378#5319#0" expanded="false" />
-                <element signature="e#5404#6849#0" expanded="false" />
-                <element signature="e#6906#7638#0" expanded="false" />
-                <element signature="e#8636#9305#0" expanded="false" />
-                <element signature="e#9478#10749#0" expanded="false" />
-                <element signature="e#10795#11291#0" expanded="false" />
-                <element signature="e#11341#11659#0" expanded="false" />
-                <element signature="e#11718#14750#0" expanded="false" />
-                <element signature="e#14807#15200#0" expanded="false" />
-                <element signature="e#15272#15777#0" expanded="false" />
-                <element signature="e#15819#16216#0" expanded="false" />
-                <element signature="e#16271#16579#0" expanded="false" />
-                <element signature="e#17311#17381#0" expanded="false" />
-                <element signature="e#17410#18375#0" expanded="false" />
-                <element signature="e#18464#20000#0" expanded="false" />
-                <element signature="e#20030#20899#0" expanded="false" />
-                <element signature="e#20944#22615#0" expanded="false" />
-                <element signature="e#22759#24449#0" expanded="false" />
-                <element signature="e#24647#26290#0" expanded="false" />
-                <element signature="e#26405#26944#0" expanded="false" />
-                <marker date="1490801958923" expanded="false" signature="16605:17168" placeholder="..." />
-                <marker date="1490801958923" expanded="true" signature="25013:25358" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DecisionTreeWeight_Bordar.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DecisionTreeWeight_Bordar.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="670" column="0" selection-start-line="670" selection-start-column="0" selection-end-line="718" selection-end-column="18" />
-              <folding>
-                <element signature="e#700#1197#0" expanded="false" />
-                <element signature="e#1418#3922#0" expanded="false" />
-                <element signature="e#3968#4333#0" expanded="false" />
-                <element signature="e#4421#5362#0" expanded="false" />
-                <element signature="e#5447#6892#0" expanded="false" />
-                <element signature="e#6949#7681#0" expanded="false" />
-                <element signature="e#7687#7718#0" expanded="false" />
-                <element signature="e#8306#8591#0" expanded="false" />
-                <element signature="e#11824#12320#0" expanded="false" />
-                <element signature="e#12370#12688#0" expanded="false" />
-                <element signature="e#12747#15779#0" expanded="false" />
-                <element signature="e#15836#16229#0" expanded="false" />
-                <element signature="e#16301#16806#0" expanded="false" />
-                <element signature="e#16848#17245#0" expanded="false" />
-                <element signature="e#17300#17608#0" expanded="false" />
-                <element signature="e#17643#18242#0" expanded="false" />
-                <element signature="e#18340#18410#0" expanded="false" />
-                <element signature="e#18439#19404#0" expanded="false" />
-                <element signature="e#19493#21029#0" expanded="false" />
-                <element signature="e#21059#21928#0" expanded="false" />
-                <element signature="e#21973#23644#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.4302554">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/test.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="391">
+                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="KNNPlackettLuce.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/KNNPlackettLuce.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="397">
+                  <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="36" />
+                  <folding>
+                    <element signature="e#160#178#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SMPrank.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/SMPrank.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="238">
+                  <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#84#102#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="PlackettLuce.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/PlackettLuce.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="155">
+                  <caret line="44" column="50" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="50" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                    <element signature="e#2512#3185#0" expanded="false" />
+                    <marker date="1491430937873" expanded="false" signature="3216:3298" placeholder="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -121,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/emoticons/test.py" />
         <option value="$PROJECT_DIR$/emoticons/DescisionTree.py" />
         <option value="$PROJECT_DIR$/balancedTest.txt" />
         <option value="$PROJECT_DIR$/balancedTest.py" />
@@ -159,16 +136,20 @@
         <option value="$PROJECT_DIR$/DecisionTreePruneTry.py" />
         <option value="$PROJECT_DIR$/mallows_gini.py" />
         <option value="$PROJECT_DIR$/SMPrank.py" />
-        <option value="$PROJECT_DIR$/biheap.py" />
         <option value="$PROJECT_DIR$/logRegFeatureEmotion.py" />
         <option value="$PROJECT_DIR$/results/result_dt_prunetry_synthetic_balanced.txt" />
         <option value="$PROJECT_DIR$/results/result_dt_prunetry.txt" />
         <option value="$PROJECT_DIR$/DecisionTreeWeight.py" />
         <option value="$PROJECT_DIR$/readSushiData.py" />
         <option value="$PROJECT_DIR$/results/result_dt_prunetry_sushi.txt" />
-        <option value="$PROJECT_DIR$/Heard.py" />
         <option value="$PROJECT_DIR$/DecisionTreeWeight_Bordar.py" />
+        <option value="$PROJECT_DIR$/biheap.py" />
+        <option value="$PROJECT_DIR$/Heard.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/Plackett-Luce.py" />
+        <option value="$PROJECT_DIR$/KNNPlackett-Luce.py" />
+        <option value="$PROJECT_DIR$/PlackettLuce.py" />
+        <option value="$PROJECT_DIR$/KNNPlackettLuce.py" />
       </list>
     </option>
   </component>
@@ -204,6 +185,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -232,6 +214,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emoticons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emoticons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Python-wrapper-master" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -242,7 +238,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -255,7 +250,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.KNNPlackettLuce">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -273,7 +268,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="DecisionTreeWeight" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="biheap" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -285,12 +280,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DecisionTreeWeight.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/biheap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="DecisionTreeWeight_Bordar" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Plackett-Luce" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -302,12 +297,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DecisionTreeWeight_Bordar.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\jpz5181\Documents\GitHub\emoticons\PlackettLuce.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="readSushiData" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="KNNPlackettLuce" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -319,12 +314,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/readSushiData.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/KNNPlackettLuce.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="Heard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="PlackettLuce" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -336,7 +331,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Heard.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlackettLuce.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -477,18 +472,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
-      <item index="2" class="java.lang.String" itemvalue="Python.DecisionTreeWeight_Bordar" />
-      <item index="3" class="java.lang.String" itemvalue="Python.readSushiData" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Heard" />
+      <item index="1" class="java.lang.String" itemvalue="Python.biheap" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Plackett-Luce" />
+      <item index="3" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
+      <item index="4" class="java.lang.String" itemvalue="Python.PlackettLuce" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.DecisionTreeWeight_Bordar" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Heard" />
-        <item index="3" class="java.lang.String" itemvalue="Python.readSushiData" />
-        <item index="4" class="java.lang.String" itemvalue="Python.DecisionTreeWeight" />
+        <item index="0" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
+        <item index="1" class="java.lang.String" itemvalue="Python.PlackettLuce" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Plackett-Luce" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.biheap" />
       </list>
     </recent_temporary>
   </component>
@@ -510,18 +505,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34035826" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49420443" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4288725" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39936775" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -565,13 +560,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint suspend="NONE" type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/result_dt_foxnews.txt" />
-    <entry file="file://$PROJECT_DIR$/result_wsj.txt" />
     <entry file="file://$PROJECT_DIR$/DecisionTreeMallows_parallel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4466">
@@ -617,13 +620,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/result_dt_sushi.txt" />
-    <entry file="file://$PROJECT_DIR$/LabelWiseRanking.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result_dt_sushi_prune_try.txt" />
     <entry file="file://$PROJECT_DIR$/DecisionTree.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -687,13 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SMPrank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5559">
-          <caret line="327" column="24" selection-start-line="327" selection-start-column="24" selection-end-line="327" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -767,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biheap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="153" column="17" selection-start-line="153" selection-start-column="17" selection-end-line="153" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry_sushi.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -785,19 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="148" column="37" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
-          <folding>
-            <element signature="e#443#1380#0" expanded="false" />
-            <element signature="e#1408#1930#0" expanded="false" />
-            <element signature="e#2362#4554#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -815,17 +784,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Heard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeWeight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
+        <state relative-caret-position="2261">
           <caret line="735" column="34" selection-start-line="735" selection-start-column="34" selection-end-line="735" selection-end-column="34" />
           <folding>
             <element signature="e#657#1154#0" expanded="false" />
@@ -859,7 +820,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeWeight_Bordar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="3298">
           <caret line="670" column="0" selection-start-line="670" selection-start-column="0" selection-end-line="718" selection-end-column="18" />
           <folding>
             <element signature="e#700#1197#0" expanded="false" />
@@ -887,12 +848,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/biheap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="284" column="25" selection-start-line="284" selection-start-column="25" selection-end-line="284" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        <state relative-caret-position="391">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Heard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+          <folding>
+            <element signature="e#126#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LabelWiseRanking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="826">
+          <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SMPrank.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="e#84#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="435" column="30" selection-start-line="435" selection-start-column="30" selection-end-line="435" selection-end-column="30" />
+          <folding>
+            <element signature="e#443#1380#0" expanded="false" />
+            <element signature="e#1408#1930#0" expanded="false" />
+            <element signature="e#2362#4554#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PlackettLuce.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="44" column="50" selection-start-line="44" selection-start-column="47" selection-end-line="44" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#2512#3185#0" expanded="false" />
+            <marker date="1491430937873" expanded="false" signature="3216:3298" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KNNPlackettLuce.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="36" />
+          <folding>
+            <element signature="e#160#178#0" expanded="true" />
           </folding>
         </state>
       </provider>
