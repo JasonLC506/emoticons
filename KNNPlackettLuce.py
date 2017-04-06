@@ -82,9 +82,9 @@ def crossValidate(x, y, cv=5, K=None):
         y_test = y[test, :]
 
         y_pred = KNN(K=K).fit(x_train, y_train).predict(x_test)
-        print y_pred ### test
+        # print y_pred ### test
         results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
-        print results["perf"][-1]
+        # print results["perf"][-1]
 
     for key in results.keys():
         item = np.array(results[key])
