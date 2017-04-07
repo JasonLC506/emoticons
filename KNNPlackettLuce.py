@@ -1,6 +1,5 @@
 """
-Implementing the algorithm in
-Cheng, W., Hullermeier, E. and Dembczynski, K.J., 2010. Label ranking methods based on the Plackett-Luce model. ICDM [1]
+General KNN class, with default KNN_Plackett-Luce model, referring to PlackettLuce.py
 """
 
 import numpy as np

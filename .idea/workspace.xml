@@ -18,6 +18,29 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="PlackettLuce.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/PlackettLuce.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="272">
+                    <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+                    <folding>
+                      <element signature="e#160#178#0" expanded="true" />
+                      <element signature="e#2672#3345#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="emoticons">
@@ -25,50 +48,16 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4302554">
+    <splitter split-orientation="horizontal" split-proportion="0.56254095">
       <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test.py">
+        <leaf>
+          <file leaf-file-name="KNNMallows.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/KNNMallows.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                <state relative-caret-position="541">
+                  <caret line="89" column="4" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
                   <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="KNNPlackettLuce.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/KNNPlackettLuce.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="331">
-                  <caret line="99" column="46" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
-                  <folding>
-                    <element signature="e#160#178#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="result_KNNPL.txt" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/results/result_KNNPL.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SMPrank.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/SMPrank.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="238">
-                  <caret line="14" column="34" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-                  <folding>
-                    <element signature="e#84#102#0" expanded="true" />
+                    <element signature="e#157#188#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -78,15 +67,12 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="PlackettLuce.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/PlackettLuce.py">
+          <file leaf-file-name="DecisionTreeMallows.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/DecisionTreeMallows.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="108" column="13" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                    <element signature="e#2512#3185#0" expanded="false" />
-                  </folding>
+                <state relative-caret-position="629">
+                  <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -108,7 +94,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/balancedTest.txt" />
         <option value="$PROJECT_DIR$/balancedTest.py" />
         <option value="$PROJECT_DIR$/result.txt" />
         <option value="$PROJECT_DIR$/result_rpp.txt" />
@@ -133,7 +118,6 @@
         <option value="$PROJECT_DIR$/result_dt_nytimes.txt" />
         <option value="$PROJECT_DIR$/result_dt_wsj.txt" />
         <option value="$PROJECT_DIR$/result_dt_washington.txt" />
-        <option value="$PROJECT_DIR$/DecisionTreeMallows.py" />
         <option value="$PROJECT_DIR$/statsRank.py" />
         <option value="$PROJECT_DIR$/stats_result_sushi.txt" />
         <option value="$PROJECT_DIR$/RankPairPref.py" />
@@ -156,9 +140,11 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/Plackett-Luce.py" />
         <option value="$PROJECT_DIR$/KNNPlackett-Luce.py" />
+        <option value="$PROJECT_DIR$/results/result_KNNPL.txt" />
         <option value="$PROJECT_DIR$/PlackettLuce.py" />
         <option value="$PROJECT_DIR$/KNNPlackettLuce.py" />
-        <option value="$PROJECT_DIR$/results/result_KNNPL.txt" />
+        <option value="$PROJECT_DIR$/DecisionTreeMallows.py" />
+        <option value="$PROJECT_DIR$/KNNMallows.py" />
       </list>
     </option>
   </component>
@@ -273,7 +259,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.KNNPlackettLuce">
+  <component name="RunManager" selected="Python.KNNMallows">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -287,23 +273,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="biheap" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/biheap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -355,6 +324,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlackettLuce.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="KNNMallows" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="emoticons" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/KNNMallows.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -495,18 +481,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.biheap" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Plackett-Luce" />
-      <item index="3" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
-      <item index="4" class="java.lang.String" itemvalue="Python.PlackettLuce" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Plackett-Luce" />
+      <item index="2" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
+      <item index="3" class="java.lang.String" itemvalue="Python.PlackettLuce" />
+      <item index="4" class="java.lang.String" itemvalue="Python.KNNMallows" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
-        <item index="1" class="java.lang.String" itemvalue="Python.PlackettLuce" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Plackett-Luce" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.biheap" />
+        <item index="0" class="java.lang.String" itemvalue="Python.KNNMallows" />
+        <item index="1" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
+        <item index="2" class="java.lang.String" itemvalue="Python.PlackettLuce" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Plackett-Luce" />
+        <item index="4" class="java.lang.String" itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -535,7 +521,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34035826" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4288725" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24130663" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -598,14 +584,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/result_dt_mallows.txt" />
-    <entry file="file://$PROJECT_DIR$/data/sushi3.udata">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stats.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-870">
@@ -645,13 +623,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/result_rpp_sushi.txt" />
-    <entry file="file://$PROJECT_DIR$/DecisionTreeMallows.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2295">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result_dt_nytimes.txt" />
     <entry file="file://$PROJECT_DIR$/result_dt_prunetry_nytimes.txt" />
     <entry file="file://$PROJECT_DIR$/result_dt_washington.txt" />
@@ -783,6 +754,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -922,32 +894,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/results/result_KNNPL.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6528">
+          <caret line="384" column="60" selection-start-line="384" selection-start-column="60" selection-end-line="384" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PlackettLuce.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="108" column="13" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="13" />
+        <state relative-caret-position="272">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2512#3185#0" expanded="false" />
+            <element signature="e#160#178#0" expanded="true" />
+            <element signature="e#2672#3345#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DecisionTreeMallows.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KNNPlackettLuce.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="99" column="46" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
+        <state relative-caret-position="-1227">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="e#160#178#0" expanded="true" />
+            <element signature="e#95#113#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/results/result_KNNPL.txt">
+    <entry file="file://$PROJECT_DIR$/results/result_KNNMallows.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+        <state relative-caret-position="748">
+          <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KNNMallows.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="541">
+          <caret line="89" column="4" selection-start-line="89" selection-start-column="4" selection-end-line="89" selection-end-column="4" />
+          <folding>
+            <element signature="e#157#188#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,3 +1,8 @@
+"""
+Implementing the algorithm in
+Cheng, W., Hullermeier, E. and Dembczynski, K.J., 2010. Label ranking methods based on the Plackett-Luce model. ICDM [1]
+"""
+
 import numpy as np
 from logRegFeatureEmotion import rankOrder
 
