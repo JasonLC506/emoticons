@@ -8,6 +8,9 @@ from biheap import BiHeap
 from PlackettLuce import PlackettLuce
 from sklearn.model_selection import KFold
 import logRegFeatureEmotion as LogR
+from datetime import datetime
+from datetime import timedelta
+from readSushiData import readSushiData
 
 class KNN(object):
     def __init__(self, K):
@@ -96,7 +99,23 @@ def crossValidate(x, y, cv=5, K=None):
 
 
 if __name__ == "__main__":
-    x,y = LogR.dataClean("data/posts_Feature_Emotion.txt")
-    y = np.array(map(LogR.rankOrder, y.tolist()))
+    datafile = "data/sushi data"
+    K = 20
+
+    # x,y = LogR.dataClean(datafile)
+    # y = np.array(map(LogR.rankOrder, y.tolist()))
+    x, y = readSushiData()
     # x,y = x[:1000, :], y[:1000, :]
-    print crossValidate(x,y,K=20)
+
+    start = datetime.now()
+    result = crossValidate(x,y,K=K)
+    duration = datetime.now() - start
+
+    print duration.total_seconds()
+    print result
+
+    with open("results/result_KNNPL.txt", "a") as f:
+        f.write("K = %d\n" % K)
+        f.write("data = %s\n" % datafile)
+        f.write("time = %f\n" % duration.total_seconds())
+        f.write(str(result)+"\n")
