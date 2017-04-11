@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
         print duration.total_seconds()
         print result
-    
+
         with open("results/result_KNNMallows.txt", "a") as f:
             f.write("K = %d\n" % K)
             f.write("data = %s\n" % datafile)

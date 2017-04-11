@@ -16,7 +16,7 @@ def cumulate(y, L, K):
         x[i] = np.sum(y[:i, :], axis=0)
     return x
 
-# x, y = readSushiData()
+x, y = readSushiData()
 
 # m = np.array([9,2,1]).reshape([1,3])
 # print np.repeat(m, 3, axis=0)
@@ -51,4 +51,4 @@ def crossValidateTest(x, y, cv=5, alpha=0.0, rank_weight=False, stop_criterion_m
 
     return results
 
-# print crossValidateTest(x,y)
+print crossValidateTest(x,y)
