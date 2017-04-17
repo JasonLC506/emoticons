@@ -80,23 +80,24 @@ def singlethreadPredict(x_test, y_pred, KNNobject):
         y_pred.append(result)
 
 if __name__ == "__main__":
-    datafile = "data/sushi data"
-    K = 20
+    datafile = "data/posts_Feature_Emotion.txt"
+    Ks = [10, 40, 80, 160, 320]
+    for K in Ks:
+        print K, "start at ", datetime.now()
+        x,y = LogR.dataClean(datafile)
+        y = np.array(map(LogR.rankOrder, y.tolist()))
+        # x, y = readSushiData()
+        # x,y = x[:1000, :], y[:1000, :]
 
-    # x,y = LogR.dataClean(datafile)
-    # y = np.array(map(LogR.rankOrder, y.tolist()))
-    x, y = readSushiData()
-    # x,y = x[:1000, :], y[:1000, :]
+        start = datetime.now()
+        result = crossValidate(x,y,K=K)
+        duration = datetime.now() - start
 
-    start = datetime.now()
-    result = crossValidate(x,y,K=K)
-    duration = datetime.now() - start
+        print duration.total_seconds()
+        print result
 
-    print duration.total_seconds()
-    print result
-
-    with open("results/result_KNNPL.txt", "a") as f:
-        f.write("K = %d\n" % K)
-        f.write("data = %s\n" % datafile)
-        f.write("time = %f\n" % duration.total_seconds())
-        f.write(str(result)+"\n")
+        with open("results/result_KNNPL.txt", "a") as f:
+            f.write("K = %d\n" % K)
+            f.write("data = %s\n" % datafile)
+            f.write("time = %f\n" % duration.total_seconds())
+            f.write(str(result)+"\n")
