@@ -1,5 +1,5 @@
-from KNNPlackettLuce import KNN
-from KNNMallows import KNNMallows
+# from KNNPlackettLuce import KNN
+from KNNMallows import KNNMallows as KNN # using Mallows model
 import threading
 import time
 import numpy as np
@@ -9,7 +9,7 @@ import math
 from readSushiData import readSushiData
 from datetime import datetime
 
-THREADS = 10
+THREADS = 20
 
 class myThread (threading.Thread):
     def __init__(self, threadID, x_test, y_pred, KNNobject):
@@ -81,7 +81,7 @@ def singlethreadPredict(x_test, y_pred, KNNobject):
 
 if __name__ == "__main__":
     datafile = "data/posts_Feature_Emotion.txt"
-    Ks = [10, 40, 80, 160, 320]
+    Ks = [10, 40, 80]
     for K in Ks:
         print K, "start at ", datetime.now()
         x,y = LogR.dataClean(datafile)
@@ -96,7 +96,7 @@ if __name__ == "__main__":
         print duration.total_seconds()
         print result
 
-        with open("results/result_KNNPL.txt", "a") as f:
+        with open("results/result_KNNMallows.txt", "a") as f:
             f.write("K = %d\n" % K)
             f.write("data = %s\n" % datafile)
             f.write("time = %f\n" % duration.total_seconds())
