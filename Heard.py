@@ -262,8 +262,8 @@ class Heard(object):
         print self.mu, "\n"
         print "theta"
         print self.theta, "\n"
-        plt.plot(self.f)
-        plt.show() ### test
+        # plt.plot(self.f)
+        # plt.show() ### test
         return self
 
 
@@ -335,12 +335,12 @@ def synthetic(L,mu,theta,f):
 
 
 def synthetic2(L, mu, theta, f):
+    random.seed(2037)
     print "mu"
     print mu
     print "theta"
     print theta
     K = mu.shape[0]
-    f = np.arange(L, dtype=np.float64)*10.0/L # linear function
     x = np.zeros([L,K], dtype = np.float64)
     y = np.zeros([L,K], dtype = np.float64)
     for i in range(L):
@@ -365,8 +365,13 @@ def betacal(mu, f, theta, x, i):
 
 
 if __name__ == "__main__":
-    np.random.seed(2037)
-    y = synthetic2(10000, np.array([1.0,2.0,0.5]), np.random.random([3,3]), np.zeros(10))
+    L = 1000
+    y = synthetic2(L, mu=np.array([-0.5,0.5]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.zeros(L))
     print np.sum(y, axis=0, dtype=np.float64)
-    heard = Heard().fit(y, lamda=5.0, f_constant=False)
+    y_cumulate = cumulate(y)
+    for d in range(y.shape[1]):
+        plt.plot(y_cumulate[:,d], label="%d" % d)
+    plt.legend()
+    plt.show()
+    heard = Heard().fit(y, lamda=5.0, f_constant=True)
     heard.printmodel()
