@@ -29,8 +29,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="821">
-              <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+            <state relative-caret-position="838">
+              <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -38,22 +38,71 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Heard.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Heard.py">
+      <file leaf-file-name="nytimes_Feature_linkemotion.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/nytimes_Feature_linkemotion.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3949">
-              <caret line="324" column="29" selection-start-line="324" selection-start-column="29" selection-end-line="324" selection-end-column="29" />
+            <state relative-caret-position="408">
+              <caret line="24" column="130" selection-start-line="24" selection-start-column="130" selection-end-line="24" selection-end-column="130" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonteCarloTimeSeries.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="queryAlchemy.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/queryAlchemy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logRegFeatureEmotion.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3672">
+              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Heard.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Heard.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="424">
+              <caret line="392" column="28" selection-start-line="392" selection-start-column="28" selection-end-line="392" selection-end-column="28" />
+              <folding>
+                <element signature="e#126#144#0" expanded="true" />
+                <element signature="e#377#1390#0" expanded="false" />
+                <element signature="e#5053#5568#0" expanded="false" />
+                <element signature="e#8031#8699#0" expanded="false" />
+                <element signature="e#10886#11232#0" expanded="false" />
+                <marker date="1492806677102" expanded="false" signature="5603:6065" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="6088:6844" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="6874:7984" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="10572:10862" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="11257:11542" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="11578:12109" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="12140:12633" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="12668:13258" placeholder="..." />
+                <marker date="1492806677102" expanded="false" signature="13293:13377" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MonteCarloTimeSeries.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MonteCarloTimeSeries.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="320">
+              <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+              <folding>
+                <element signature="e#110#128#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,7 +162,6 @@
         <option value="$PROJECT_DIR$/results/result_dt_prunetry_sushi.txt" />
         <option value="$PROJECT_DIR$/DecisionTreeWeight_Bordar.py" />
         <option value="$PROJECT_DIR$/biheap.py" />
-        <option value="$PROJECT_DIR$/Heard.py" />
         <option value="$PROJECT_DIR$/Plackett-Luce.py" />
         <option value="$PROJECT_DIR$/KNNPlackett-Luce.py" />
         <option value="$PROJECT_DIR$/PlackettLuce.py" />
@@ -124,14 +172,15 @@
         <option value="$PROJECT_DIR$/KNNPlackettLuceParallel.py" />
         <option value="$PROJECT_DIR$/results/result_KNNPL.txt" />
         <option value="$PROJECT_DIR$/MonteCarloTimeSeries.py" />
+        <option value="$PROJECT_DIR$/Heard.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-1288" />
+    <option name="y" value="304" />
+    <option name="width" value="1296" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -188,20 +237,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="results" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emoticons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emoticons" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -238,7 +273,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.KNNPlackettLuceParallel">
+  <component name="RunManager" selected="Python.Heard">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -273,23 +308,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="PlackettLuce" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PlackettLuce.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="KNNMallows" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -320,6 +338,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="C:\Users\jpz5181\Documents\GitHub\emoticons\KNNParallel.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Heard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="emoticons" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Heard.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -461,17 +496,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test" />
       <item index="1" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
-      <item index="2" class="java.lang.String" itemvalue="Python.PlackettLuce" />
-      <item index="3" class="java.lang.String" itemvalue="Python.KNNMallows" />
-      <item index="4" class="java.lang.String" itemvalue="Python.KNNPlackettLuceParallel" />
+      <item index="2" class="java.lang.String" itemvalue="Python.KNNMallows" />
+      <item index="3" class="java.lang.String" itemvalue="Python.KNNPlackettLuceParallel" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Heard" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.KNNPlackettLuceParallel" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.KNNMallows" />
-        <item index="3" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
-        <item index="4" class="java.lang.String" itemvalue="Python.PlackettLuce" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Heard" />
+        <item index="1" class="java.lang.String" itemvalue="Python.KNNPlackettLuceParallel" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.KNNMallows" />
+        <item index="4" class="java.lang.String" itemvalue="Python.KNNPlackettLuce" />
       </list>
     </recent_temporary>
   </component>
@@ -492,27 +527,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1288" y="304" width="1296" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30703124" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34035826" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24330118" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39936775" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36670178" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39936775" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -563,27 +598,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/statsRank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RankPairPref.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="194" column="32" selection-start-line="194" selection-start-column="32" selection-end-line="194" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/balancedTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-874">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/result_dt_sushi.txt" />
     <entry file="file://$PROJECT_DIR$/result_dt_sushi_prune_try.txt" />
     <entry file="file://$PROJECT_DIR$/DecisionTree.py">
@@ -762,13 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="435" column="30" selection-start-line="435" selection-start-column="30" selection-end-line="435" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DecisionTreeMallows.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -868,28 +875,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/MonteCarloTimeSeries.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="821">
-          <caret line="56" column="11" selection-start-line="56" selection-start-column="11" selection-end-line="56" selection-end-column="11" />
+        <state relative-caret-position="320">
+          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#110#128#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Heard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3949">
-          <caret line="324" column="29" selection-start-line="324" selection-start-column="29" selection-end-line="324" selection-end-column="29" />
+        <state relative-caret-position="424">
+          <caret line="392" column="28" selection-start-line="392" selection-start-column="28" selection-end-line="392" selection-end-column="28" />
+          <folding>
+            <element signature="e#126#144#0" expanded="true" />
+            <element signature="e#377#1390#0" expanded="false" />
+            <element signature="e#5053#5568#0" expanded="false" />
+            <element signature="e#8031#8699#0" expanded="false" />
+            <element signature="e#10886#11232#0" expanded="false" />
+            <marker date="1492806677102" expanded="false" signature="5603:6065" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="6088:6844" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="6874:7984" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="10572:10862" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="11257:11542" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="11578:12109" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="12140:12633" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="12668:13258" placeholder="..." />
+            <marker date="1492806677102" expanded="false" signature="13293:13377" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="838">
+          <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/wsj_Feature_linkemotion.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="90" selection-start-line="0" selection-start-column="90" selection-end-line="0" selection-end-column="118" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MonteCarloTimeSeries.py">
+    <entry file="file://$PROJECT_DIR$/data/nytimes_Feature_linkemotion.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="408">
+          <caret line="24" column="130" selection-start-line="24" selection-start-column="130" selection-end-line="24" selection-end-column="130" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/queryAlchemy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logRegFeatureEmotion.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3672">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
           <folding />
         </state>
       </provider>

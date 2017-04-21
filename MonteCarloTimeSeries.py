@@ -3,7 +3,6 @@ multivariate time series extropolate via Monte Carlo simulation
 default Dashun KDD'14 HEARD model [1]
 """
 import numpy as np
-from Heard import *
 from datetime import datetime
 from datetime import timedelta
 
@@ -72,22 +71,4 @@ class MonteCarloTimeSeries(object):
         return state_next
 
 if __name__ == "__main__":
-    L = 1000
-    y = synthetic2(L, mu=np.array([1.0,1.0]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.zeros(L))
-    print np.sum(y, axis=0, dtype=np.float64)
-    y_cumulate = cumulate(y)
-    for d in range(y.shape[1]):
-        plt.plot(y_cumulate[:,d], label="%d" % d)
-    plt.legend()
-    plt.show()
-    time_init = 200
-    time_target = 500
-    heard = Heard().fit(y[:time_init,:], lamda=5.0, f_constant=True)
-    heard.printmodel()
-    start = datetime.now()
-    MC = MonteCarloTimeSeries(state_init = y_cumulate[time_init,:], time_init = time_init, mu = heard.mu, theta= heard.theta, f = np.ones(L), Nsamp=2000)
-    state_predicted = MC.predict(time_target)
-    print "it takes ", (datetime.now() - start).total_seconds()
-    print "init", y_cumulate[time_init]
-    print "predicted", state_predicted
-    print "true", y_cumulate[time_target]
+    pass

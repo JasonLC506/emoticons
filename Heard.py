@@ -5,6 +5,9 @@ import numpy as np
 import math
 import random
 from matplotlib import pyplot as plt
+from MonteCarloTimeSeries import MonteCarloTimeSeries
+from datetime import datetime
+from datetime import timedelta
 
 class Heard(object):
     def __init__(self):
@@ -34,6 +37,8 @@ class Heard(object):
         self.beta_old = [[]]
         self.c_old = [] # no need in parameter
 
+        # for prediction #
+        self.state_endoftrain = []
 
     def fit(self, y, lamda = 1.0, threshold = 0.001, max_iteration = 100, f_constant = True):
         """
@@ -51,6 +56,7 @@ class Heard(object):
 
         # compute cumulative sequence #
         x = cumulate(y)
+        self.state_endoftrain = np.sum(y,axis=0)/self.L
 
         # initialize parameters #
         self.initialize(y)
@@ -93,7 +99,7 @@ class Heard(object):
             ### check the update process ###
             Q_updated = self.Qcalculate(y)
             try:
-                assert Q_updated <= llh_minus_lamda_old
+                assert Q_updated <= llh_minus_lamda_old + 0.001
             except AssertionError, e:
                 print "Q_min: ", Q_updated
                 print "llh_minus_lamda_old: ", llh_minus_lamda_old
@@ -115,6 +121,21 @@ class Heard(object):
             # self.llh_minus_lamda = Q
 
         return self
+
+    def predict(self, time_target):
+        MC = MonteCarloTimeSeries(state_init = self.state_endoftrain, time_init = self.L, mu = self.mu, theta = self.theta,
+                                  f = self.fExtend(self.f, time_target), Nsamp = 2000)
+        start = datetime.now()
+        state_target = MC.predict(time_target)
+        duration = (datetime.now() - start).total_seconds()
+        print "MC simulation takes %f seconds" % duration
+        return state_target
+
+    def fExtend(self, f, time_target):
+        if self.fCONSTANT:
+            return np.ones(time_target+1, dtype=np.float64)
+        else:
+            raise ValueError("not supporting general f function currently")
 
     def initialize(self, y):
         # self.mu #
@@ -253,7 +274,6 @@ class Heard(object):
                     sum_theta3 += (math.pow(self.f[i],2.0)*math.pow(x[i,k_],2.0))
                 self.theta[k,k_] = (self.K*sum_theta1 + 2*(self.K-1)*sum_theta2) / (2*(self.K-1)*sum_theta3 + self.L*self.K*self.lamda)
 
-
     def printmodel(self):
         print "------ fit model ------"
         print "llh_minus_lamda"
@@ -366,12 +386,18 @@ def betacal(mu, f, theta, x, i):
 
 if __name__ == "__main__":
     L = 1000
-    y = synthetic2(L, mu=np.array([-0.5,0.5]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.zeros(L))
+    time_init = 200
+    time_target = 900
+    y = synthetic2(L, mu=np.array([1.0,1.0]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.ones(L))
     print np.sum(y, axis=0, dtype=np.float64)
     y_cumulate = cumulate(y)
     for d in range(y.shape[1]):
         plt.plot(y_cumulate[:,d], label="%d" % d)
     plt.legend()
     plt.show()
-    heard = Heard().fit(y, lamda=5.0, f_constant=True)
+    heard = Heard().fit(y[:time_init,:], lamda=0.0, f_constant=True)
     heard.printmodel()
+    state_predicted = heard.predict(time_target)
+    print "init", y_cumulate[time_init]
+    print "predicted", state_predicted
+    print "true", y_cumulate[time_target]
