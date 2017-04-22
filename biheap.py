@@ -264,14 +264,25 @@ class BiHeap(object):
 
 
 if __name__ == "__main__":
-    h = BiHeap()
-    h.buildheap([[7,2,3.0,4],[2,1,1.0,1],[4,0,1.0,0],[5,3,4.0,2]], key=2, identifier = 0)
-    h.insert([1,2,9.0,0])
-    h.delete(0)
-    h.update(0,[3,7,5.0,9])
-    print h.originlist
-    print h.heap
-    print h.revmap
+    # h = BiHeap()
+    # h.buildheap([[7,2,3.0,4],[2,1,1.0,1],[4,0,1.0,0],[5,3,4.0,2]], key=2, identifier = 0)
+    # h.insert([1,2,9.0,0])
+    # h.delete(0)
+    # h.update(0,[3,7,5.0,9])
+    # print h.originlist
+    # print h.heap
+    # print h.revmap
+
+    queue = BiHeap()
+    queue.buildheap([], minimal=False, key = 1, identifier = 0)
+    K = 3
+    list = [[1,3],[2,5],[3,2],[4,7],[5,3],[6,1]]
+    for item in list:
+        queue.insert(item)
+        if queue.length>K:
+            _ = queue.pop()
+    for i in range(K):
+        print queue.pop()
 
     # h2 = BiHeap().buildheap([2,3,4,1,5,7], minimal=False)
     # h2.insert(-1)

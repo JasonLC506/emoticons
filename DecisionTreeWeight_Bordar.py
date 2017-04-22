@@ -244,65 +244,65 @@ class DecisionTree(object):
 
     #######################################
     ## label ranking dependent functions ##
-    def nodeResult(self, y_s, w_s):
-        """
-        calculate the predict result for the node
-        :param y_s: labels of samples in the tree node
-        :param w_s: weights of corresponding samples
-        :return: type(y)
-        """
-        n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
-        Ranks = y_s.shape[1]
-        result = []
-        for rank in range(Ranks):
-            # assign ranking #
-            # current rank with highest priority, when zero appearance, from highest rank to lowest #
-            priority = [i for i in range(Ranks) if i != rank]
-            priority.insert(0, rank)
-            flag = False
-            for i in priority:
-                n_class_cur = n_rc[i]
-                while not flag:
-                    max_value = max(n_class_cur)
-                    if max_value == 0:
-                        break  # all are 0 in current rank
-                    emoti = n_class_cur.index(max_value)
-                    if emoti not in result:
-                        result.append(emoti)
-                        flag = True  # find best emoticon
-                    else:
-                        n_class_cur[emoti] = 0
-                if flag:
-                    break
-            if not flag:
-                result.append(-1)
-        return np.array(result)
+    # def nodeResult(self, y_s, w_s):
+    #     """
+    #     calculate the predict result for the node
+    #     :param y_s: labels of samples in the tree node
+    #     :param w_s: weights of corresponding samples
+    #     :return: type(y)
+    #     """
+    #     n_rc = self.nRankClass(y_s, w_s, np.arange(y_s.shape[0]))
+    #     Ranks = y_s.shape[1]
+    #     result = []
+    #     for rank in range(Ranks):
+    #         # assign ranking #
+    #         # current rank with highest priority, when zero appearance, from highest rank to lowest #
+    #         priority = [i for i in range(Ranks) if i != rank]
+    #         priority.insert(0, rank)
+    #         flag = False
+    #         for i in priority:
+    #             n_class_cur = n_rc[i]
+    #             while not flag:
+    #                 max_value = max(n_class_cur)
+    #                 if max_value == 0:
+    #                     break  # all are 0 in current rank
+    #                 emoti = n_class_cur.index(max_value)
+    #                 if emoti not in result:
+    #                     result.append(emoti)
+    #                     flag = True  # find best emoticon
+    #                 else:
+    #                     n_class_cur[emoti] = 0
+    #             if flag:
+    #                 break
+    #         if not flag:
+    #             result.append(-1)
+    #     return np.array(result)
 
-    # def nodeResult(self, y, w_s):
-    #     ## bordar count ##
-    #     ## without weighting ##
-    #
-    #     if type(y) != np.ndarray:
-    #         y = np.array(y)
-    #     NRanks = y.shape[1]
-    #     N_class = NRanks
-    #     score_label_sum = [0 for i in range(N_class)]
-    #     ranks = y.tolist()
-    #     for rank in ranks:
-    #         score_label = [0 for i in range(N_class)]
-    #         for pos in range(N_class):
-    #             label = rank[pos]
-    #             if label >= 0:
-    #                 score_label[label] += (N_class - pos)
-    #         for lab in range(N_class):
-    #             score_label_sum[lab] += score_label[lab]
-    #     rank_double = score2rank(score_label_sum, cplt=True)
-    #     rank = [-1 for pos in range(N_class)]
-    #     for label in range(N_class):
-    #         pos = rank_double[label][0]
-    #         if score_label_sum[pos] > 0:
-    #             rank[pos] = label
-    #     return np.array(rank)
+    def nodeResult(self, y, w_s):
+        ## bordar count ##
+        ## without weighting ##
+
+        if type(y) != np.ndarray:
+            y = np.array(y)
+        NRanks = y.shape[1]
+        N_class = NRanks
+        score_label_sum = [0 for i in range(N_class)]
+        ranks = y.tolist()
+        for rank in ranks:
+            score_label = [0 for i in range(N_class)]
+            for pos in range(N_class):
+                label = rank[pos]
+                if label >= 0:
+                    score_label[label] += (N_class - pos)
+            for lab in range(N_class):
+                score_label_sum[lab] += score_label[lab]
+        rank_double = score2rank(score_label_sum, cplt=True)
+        rank = [-1 for pos in range(N_class)]
+        for label in range(N_class):
+            pos = rank_double[label][0]
+            if score_label_sum[pos] > 0:
+                rank[pos] = label
+        return np.array(rank)
 
     def diffLabel(self, y_pred, y):
         """
