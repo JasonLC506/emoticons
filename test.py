@@ -53,6 +53,7 @@ from readSushiData import readSushiData
 #
 # print crossValidateTest(x,y)
 
-x = np.array([1,2,3,4]).reshape([2,2])
-y = np.array([1,2])
-print np.inner(x,y)
+a = [1,2,3,4]
+m = a[::-1]
+print a
+print m

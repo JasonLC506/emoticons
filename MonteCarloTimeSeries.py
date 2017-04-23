@@ -33,6 +33,8 @@ class MonteCarloTimeSeries(object):
             # print "round ", samp, "takes ", (datetime.now()-start).total_seconds(), "with state", state_target
             state_targets.append(state_target)
         state_targets = np.array(state_targets, dtype=np.float64)
+        std = np.std(state_targets, axis = 0)
+        print "std in MC: ", std
         return np.mean(state_targets, axis=0)
 
     def predict_single(self, time_target):

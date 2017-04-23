@@ -81,7 +81,7 @@ class Heard(object):
         # iterative optimization #
         for iteration in range(max_iteration):
             # check converging, correctness test #
-            self.printmodel() ### test
+            # self.printmodel() ### test
             if iteration > 0:
                 if self.llh_minus_lamda > llh_minus_lamda_old - threshold:
                     if self.llh_minus_lamda > llh_minus_lamda_old:
@@ -122,9 +122,9 @@ class Heard(object):
 
         return self
 
-    def predict(self, time_target):
+    def predict(self, time_target, Nsamp = 2000):
         MC = MonteCarloTimeSeries(state_init = self.state_endoftrain, time_init = self.L, mu = self.mu, theta = self.theta,
-                                  f = self.fExtend(self.f, time_target), Nsamp = 2000)
+                                  f = self.fExtend(self.f, time_target), Nsamp = Nsamp)
         start = datetime.now()
         state_target = MC.predict(time_target)
         duration = (datetime.now() - start).total_seconds()
