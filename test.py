@@ -54,7 +54,6 @@ import sys
 # print crossValidateTest(x,y)
 
 a = [1,2,3,4]
-m = a[::-1]
+a = np.array(a)
+print np.random.shuffle(a)
 print a
-print m
-print sys.argv[1]
