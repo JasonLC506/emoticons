@@ -88,7 +88,7 @@ if __name__ == "__main__":
     result_file = "results/anomaly_KNN_PL.txt"
     x, y = dataClean("data/" + news + "_Feature_linkemotion.txt")
     y = label2Rank(y)
-    results = multitest(x[:50,:], y[:50,:])
+    results = multitest(x, y)
     print results
     with open(result_file, "a") as f:
         f.write("news: %s\n" % news)

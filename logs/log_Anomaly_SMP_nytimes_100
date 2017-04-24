@@ -18,3 +18,144 @@ Traceback (most recent call last):
   File "/home/jasonzhang/emoticons/SMPrank.py", line 16, in __init__
     self.mfeature = [[] for c in range(K)]
 TypeError: range() integer end argument expected, got str.
+/home/jasonzhang/emoticons/SMPrank.py:86: UserWarning: training set loss increase
+  warnings.warn("training set loss increase")
+N, d, L:  3374 5 6
+loss_valid 0 1.21363159413
+loss_train 0 1.19662914234
+loss_valid 1 1.03009836242
+loss_train 1 1.00941847891
+loss_valid 2 1.02016919272
+loss_train 2 0.996888184845
+loss_valid 3 1.01637471874
+loss_train 3 0.98381376522
+loss_valid 4 1.00481078385
+loss_train 4 0.994773388688
+last epoch loss:  0.98381376522
+current epoch loss:  0.994773388688
+loss_valid 5 1.00845166043
+loss_train 5 0.981822580743
+early stop at the end of epoch:  5
+N, d, L:  3374 5 6
+loss_valid 0 1.22787578438
+loss_train 0 1.21742153127
+loss_valid 1 1.02417604064
+loss_train 1 1.02541549175
+loss_valid 2 0.993004066738
+loss_train 2 1.00247226507
+loss_valid 3 0.988321608739
+loss_train 3 0.987201420203
+loss_valid 4 0.993475789652
+loss_train 4 0.986417146178
+early stop at the end of epoch:  4
+N, d, L:  3374 5 6
+loss_valid 0 1.21978657799
+loss_train 0 1.23943141606
+loss_valid 1 1.00896493301
+loss_train 1 1.03380728327
+loss_valid 2 0.972862753334
+loss_train 2 0.990930821518
+loss_valid 3 0.973384341839
+loss_train 3 0.983357859555
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.20482899669
+loss_train 0 1.24087439004
+loss_valid 1 1.00908248133
+loss_train 1 1.03032974699
+loss_valid 2 0.976931969449
+loss_train 2 0.994975857293
+loss_valid 3 0.967413400333
+loss_train 3 0.987097275902
+loss_valid 4 0.968332487631
+loss_train 4 0.988012122091
+last epoch loss:  0.987097275902
+current epoch loss:  0.988012122091
+early stop at the end of epoch:  4
+N, d, L:  3374 5 6
+loss_valid 0 1.25462323746
+loss_train 0 1.23191168875
+loss_valid 1 1.0558857819
+loss_train 1 1.02422422964
+loss_valid 2 1.02707035761
+loss_train 2 0.99581808685
+loss_valid 3 1.01072355728
+loss_train 3 0.984708126853
+loss_valid 4 1.01965404327
+loss_train 4 0.982231600275
+early stop at the end of epoch:  4
+N, d, L:  3374 5 6
+loss_valid 0 1.22281727907
+loss_train 0 1.2022120081
+loss_valid 1 1.03133885829
+loss_train 1 1.0179563822
+loss_valid 2 1.0001604542
+loss_train 2 0.991546618333
+loss_valid 3 1.00160654315
+loss_train 3 0.984016216306
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.26760618853
+loss_train 0 1.24733553492
+loss_valid 1 1.06407288836
+loss_train 1 1.03985909166
+loss_valid 2 1.02084915778
+loss_train 2 0.996657642055
+loss_valid 3 1.00536349182
+loss_train 3 0.982906200437
+loss_valid 4 0.999403309453
+loss_train 4 0.980847095719
+loss_valid 5 0.998861374793
+loss_train 5 0.973550665431
+loss_valid 6 1.0100619415
+loss_train 6 0.987602240569
+last epoch loss:  0.973550665431
+current epoch loss:  0.987602240569
+early stop at the end of epoch:  6
+N, d, L:  3374 5 6
+loss_valid 0 1.2278004581
+loss_train 0 1.2087910277
+loss_valid 1 1.05621230669
+loss_train 1 1.01565910681
+loss_valid 2 1.0250296367
+loss_train 2 0.985179739952
+loss_valid 3 1.02110831542
+loss_train 3 0.977725032906
+loss_valid 4 1.0209320139
+loss_train 4 0.974270732038
+loss_valid 5 1.02158827725
+loss_train 5 0.972029261081
+early stop at the end of epoch:  5
+N, d, L:  3374 5 6
+loss_valid 0 1.22964992975
+loss_train 0 1.20677622949
+loss_valid 1 1.04251270616
+loss_train 1 1.0195390379
+loss_valid 2 0.999576903412
+loss_train 2 0.982722363263
+loss_valid 3 0.994471588181
+loss_train 3 0.975536535641
+loss_valid 4 0.999106854819
+loss_train 4 0.974408574654
+early stop at the end of epoch:  4
+N, d, L:  3374 5 6
+loss_valid 0 1.23123945996
+loss_train 0 1.22472841757
+loss_valid 1 1.02711941297
+loss_train 1 1.02398403234
+loss_valid 2 0.990640109111
+loss_train 2 0.992212496157
+loss_valid 3 0.981886557546
+loss_train 3 0.98813624062
+loss_valid 4 0.974899788164
+loss_train 4 0.982642402011
+loss_valid 5 0.972402439754
+loss_train 5 0.982812375166
+last epoch loss:  0.982642402011
+current epoch loss:  0.982812375166
+loss_valid 6 0.986113797247
+loss_train 6 0.984806983698
+last epoch loss:  0.982812375166
+current epoch loss:  0.984806983698
+early stop at the end of epoch:  6
+{'perf': [array([ 0.69636752,  0.69636752]), array([ 0.01536234,  0.01536234])]}

@@ -18,3 +18,132 @@ Traceback (most recent call last):
   File "/home/jasonzhang/emoticons/SMPrank.py", line 16, in __init__
     self.mfeature = [[] for c in range(K)]
 TypeError: range() integer end argument expected, got str.
+/home/jasonzhang/emoticons/SMPrank.py:86: UserWarning: training set loss increase
+  warnings.warn("training set loss increase")
+N, d, L:  3374 5 6
+loss_valid 0 1.03171345674
+loss_train 0 1.05254867843
+loss_valid 1 0.971376197998
+loss_train 1 0.993951359507
+loss_valid 2 0.962715671967
+loss_train 2 0.983152187654
+loss_valid 3 0.961546037209
+loss_train 3 0.982667764854
+loss_valid 4 0.9650552337
+loss_train 4 0.978995674763
+early stop at the end of epoch:  4
+N, d, L:  3374 5 6
+loss_valid 0 1.1037611512
+loss_train 0 1.08850883592
+loss_valid 1 1.00746039086
+loss_train 1 0.996087117059
+loss_valid 2 0.997707236152
+loss_train 2 0.983761963889
+loss_valid 3 1.00317774162
+loss_train 3 0.986763668251
+last epoch loss:  0.983761963889
+current epoch loss:  0.986763668251
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.08652286896
+loss_train 0 1.07395512451
+loss_valid 1 0.999076924359
+loss_train 1 0.995626445094
+loss_valid 2 0.988956443926
+loss_train 2 0.989197556114
+loss_valid 3 0.9878079395
+loss_train 3 0.981437050937
+loss_valid 4 1.00103153266
+loss_train 4 1.00497272332
+last epoch loss:  0.981437050937
+current epoch loss:  1.00497272332
+early stop at the end of epoch:  4
+N, d, L:  3374 5 6
+loss_valid 0 1.08853397279
+loss_train 0 1.07752757811
+loss_valid 1 1.01314439526
+loss_train 1 0.996728524108
+loss_valid 2 0.994252639439
+loss_train 2 0.987390447407
+loss_valid 3 0.994009346147
+loss_train 3 0.984388974515
+loss_valid 4 0.993776481517
+loss_train 4 0.981495259046
+loss_valid 5 0.996243791322
+loss_train 5 0.984566079262
+last epoch loss:  0.981495259046
+current epoch loss:  0.984566079262
+early stop at the end of epoch:  5
+N, d, L:  3374 5 6
+loss_valid 0 1.12601232953
+loss_train 0 1.08428438463
+loss_valid 1 1.0115884979
+loss_train 1 0.992213089021
+loss_valid 2 1.01044035603
+loss_train 2 0.984705576475
+loss_valid 3 1.01522034099
+loss_train 3 0.981965877393
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.07570518529
+loss_train 0 1.06078765115
+loss_valid 1 1.01609435394
+loss_train 1 0.999138805147
+loss_valid 2 1.00305023539
+loss_train 2 0.98792325223
+loss_valid 3 1.00502308473
+loss_train 3 0.993080105877
+last epoch loss:  0.98792325223
+current epoch loss:  0.993080105877
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.09639983861
+loss_train 0 1.04366550014
+loss_valid 1 1.04402634727
+loss_train 1 0.994204970433
+loss_valid 2 1.03280472657
+loss_train 2 0.987615957587
+loss_valid 3 1.03943794938
+loss_train 3 0.990913670886
+last epoch loss:  0.987615957587
+current epoch loss:  0.990913670886
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.08977216409
+loss_train 0 1.0744202609
+loss_valid 1 1.02326200091
+loss_train 1 1.00156613692
+loss_valid 2 1.00922768735
+loss_train 2 0.990934739383
+loss_valid 3 1.0083463299
+loss_train 3 0.987528512409
+loss_valid 4 1.00608970025
+loss_train 4 0.981416103332
+loss_valid 5 1.02161093195
+loss_train 5 0.985421053953
+last epoch loss:  0.981416103332
+current epoch loss:  0.985421053953
+early stop at the end of epoch:  5
+N, d, L:  3374 5 6
+loss_valid 0 1.07751648452
+loss_train 0 1.08488072939
+loss_valid 1 1.00117901646
+loss_train 1 0.998863858387
+loss_valid 2 0.985425745987
+loss_train 2 0.989956219663
+loss_valid 3 0.988128073006
+loss_train 3 0.986620271622
+early stop at the end of epoch:  3
+N, d, L:  3374 5 6
+loss_valid 0 1.06405759701
+loss_train 0 1.05673545563
+loss_valid 1 1.00783166261
+loss_train 1 0.995367324656
+loss_valid 2 0.991840171186
+loss_train 2 0.984867656933
+loss_valid 3 0.997582502288
+loss_train 3 0.986629293289
+last epoch loss:  0.984867656933
+current epoch loss:  0.986629293289
+early stop at the end of epoch:  3
+{'perf': [array([ 0.6965812,  0.6965812]), array([ 0.01808051,  0.01808051])]}
