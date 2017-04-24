@@ -62,18 +62,23 @@ def traintest(time_series_list, time_init_prop, time_target_absdiff):
         time_target = time_init + time_target_absdiff
         assert time_target < L
         # fit #
-        heard = Heard().fit(series[:time_init,:], lamda = 1.0, f_constant=True)
+        ### using independent Poisson model no need of fitting ###
+        # heard = Heard().fit(series[:time_init,:], lamda = 1.0, f_constant=True)
         # write fit parameter #
-        result["mu"].append(heard.mu)
-        result["theta"].append(heard.theta)
+        # result["mu"].append(heard.mu)
+        # result["theta"].append(heard.theta)
         # predict #
-        state_init = heard.state_endoftrain
+        state_init = series_cumulate[time_init]
         state_target = series_cumulate[time_target]
-        state_predicted = heard.predict(time_target, Nsamp = MCSAMPLES) # MC samples
+        ### using independent Poisson model no need of fitting ###
+        # state_predicted = heard.predict(time_target, Nsamp = MCSAMPLES) # MC samples
+        state_predicted = state_init # prediction of independent Poisson model
         print "init state: ", state_init
         print "target state: ", state_target
         print "predicted state: ", state_predicted
-        diff_predict = stateDiff(state_init, state_predicted, time_init, time_target)
+        ### using independent Poisson model no need of fitting ###
+        # diff_predict = stateDiff(state_init, state_predicted, time_init, time_target)
+        diff_predict = state_init # prediction of independent Poisson model
         diff_true = stateDiff(state_init, state_target, time_init, time_target)
         result["perf"].append(performance(diff_predict, diff_true))
 
@@ -118,7 +123,7 @@ if __name__ == "__main__":
     ## input: python timeSeriesPredict_single.py news time_init_proportion ##
     news = str(sys.argv[1])
     filename = "data/" + news + "_grained_reaction"
-    result_filename = "results/Heard_predict.txt"
+    result_filename = "results/IMG_predict.txt"
     time_init_proportion = float(sys.argv[2])
     time_target_absdiff = 100
     time_series_list = readGrainedData(filename, Nclass=6)
