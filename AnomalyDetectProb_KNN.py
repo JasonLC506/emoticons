@@ -83,10 +83,12 @@ def multitest(x, y, Ntest = 10):
 if __name__ == "__main__":
     K_KNN = int(sys.argv[2])
     news = sys.argv[1]
+    # K_KNN = 10
+    # news = "nytimes"
     result_file = "results/anomaly_KNN_PL.txt"
     x, y = dataClean("data/" + news + "_Feature_linkemotion.txt")
     y = label2Rank(y)
-    results = multitest(x, y)
+    results = multitest(x[:50,:], y[:50,:])
     print results
     with open(result_file, "a") as f:
         f.write("news: %s\n" % news)
