@@ -1,0 +1,15 @@
+news: nytimes
+K_SMPrank: 20
+{'perf': [array([ 0.68504274,  0.68504274]), array([ 0.02305713,  0.02305713])]}
+news: nytimes
+K_SMPrank: 40
+{'perf': [array([ 0.70106838,  0.70106838]), array([ 0.02198779,  0.02198779])]}
+news: nytimes
+K_SMPrank: 60
+{'perf': [array([ 0.6965812,  0.6965812]), array([ 0.01808051,  0.01808051])]}
+news: nytimes
+K_SMPrank: 80
+{'perf': [array([ 0.69957265,  0.69957265]), array([ 0.02297779,  0.02297779])]}
+news: nytimes
+K_SMPrank: 100
+{'perf': [array([ 0.69636752,  0.69636752]), array([ 0.01536234,  0.01536234])]}
