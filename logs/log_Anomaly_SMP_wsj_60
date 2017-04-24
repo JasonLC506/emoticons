@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "AnomalyDetectProb_SMPrank.py", line 1, in <module>
+    from AnomalyDataPrep import anomalyDataPrep
+  File "/home/jasonzhang/emoticons/AnomalyDataPrep.py", line 4, in <module>
+    from logRegFeatureEmotion import dataClean
+  File "/home/jasonzhang/emoticons/logRegFeatureEmotion.py", line 5, in <module>
+    from queryAlchemy import emotion_list as EL
+  File "/home/jasonzhang/emoticons/queryAlchemy.py", line 2, in <module>
+    from watson_developer_cloud import AlchemyLanguageV1
+ImportError: No module named watson_developer_cloud
+Traceback (most recent call last):
+  File "AnomalyDetectProb_SMPrank.py", line 94, in <module>
+    results = multitest(x, y)
+  File "AnomalyDetectProb_SMPrank.py", line 77, in multitest
+    results["perf"].append(traintest(x_train, y_train, x_test, y_test))
+  File "AnomalyDetectProb_SMPrank.py", line 14, in traintest
+    smp = SMPrank.SmpRank(K = K_SMPrank)
+  File "/home/jasonzhang/emoticons/SMPrank.py", line 16, in __init__
+    self.mfeature = [[] for c in range(K)]
+TypeError: range() integer end argument expected, got str.

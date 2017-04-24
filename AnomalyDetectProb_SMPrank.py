@@ -86,7 +86,7 @@ def multitest(x, y, Ntest = 10):
 
 
 if __name__ == "__main__":
-    K_SMPrank = sys.argv[2]
+    K_SMPrank = int(sys.argv[2])
     news = sys.argv[1]
     result_file = "results/anomaly_SMP"+news+".txt"
     x, y = dataClean("data/" + news + "_Feature_linkemotion.txt")
