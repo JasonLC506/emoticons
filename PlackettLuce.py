@@ -59,6 +59,12 @@ class PlackettLuce(object):
     def predict(self):
         return rankOrder(self.v.tolist())
 
+    def probability(self, y):
+        y_s = y.reshape([1,y.shape[0]])
+        llh = self.loglikelihood(y_s)
+        prob = np.exp(llh)
+        return prob
+
     def initialize(self, y_s):
         self.v = np.random.random(self.Nclass)
         return self

@@ -34,6 +34,12 @@ class KNN(object):
         y_pred = self.aggregate(neighbors)
         return y_pred
 
+    def probcal(self, x_test, y_test):
+        ## only single sample calculation ##
+        neighbors = self.neighborhood(x_test)
+        prob = PlackettLuce().fit(self.y[neighbors,:]).probability(y_test)
+        return prob
+
     def neighborhood(self, x_test):
         """
         return neighborhood index of x_test, given self.x and self.K
