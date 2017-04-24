@@ -1,14 +1,14 @@
 import numpy as np
-from logRegFeatureEmotion import *
-from sklearn.model_selection import KFold
-import itertools
-import math
-from scipy.stats import kendalltau
-from matplotlib import pyplot as plt
-from scipy.stats.mstats import gmean
-import DecisionTreeWeight_Bordar as dtb
-from readSushiData import readSushiData
-
+#from logRegFeatureEmotion import *
+#from sklearn.model_selection import KFold
+#import itertools
+#import math
+#from scipy.stats import kendalltau
+#from matplotlib import pyplot as plt
+#from scipy.stats.mstats import gmean
+#import DecisionTreeWeight_Bordar as dtb
+#from readSushiData import readSushiData
+import sys
 
 # def cumulate(y, L, K):
 #     x = np.zeros(L*K, dtype=np.float16).reshape([L, K])
@@ -57,3 +57,4 @@ a = [1,2,3,4]
 m = a[::-1]
 print a
 print m
+print sys.argv[1]

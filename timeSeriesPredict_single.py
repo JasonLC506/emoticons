@@ -3,6 +3,7 @@ from Heard import *
 import numpy as np
 from datetime import datetime
 from datetime import timedelta
+import sys
 
 MCSAMPLES = 100 # number of MC samples
 
@@ -114,10 +115,11 @@ def performance(diff_pred, diff_true):
 
 
 if __name__ == "__main__":
-    news = "nytimes"
+    ## input: python timeSeriesPredict_single.py news time_init_proportion ##
+    news = str(sys.argv[1])
     filename = "data/" + news + "_grained_reaction"
     result_filename = "results/Heard_predict.txt"
-    time_init_proportion = 0.3
+    time_init_proportion = float(sys.argv[2])
     time_target_absdiff = 100
     time_series_list = readGrainedData(filename, Nclass=6)
     start = datetime.now()
@@ -128,5 +130,6 @@ if __name__ == "__main__":
         f.write(news+"\n")
         f.write("time_init_proportion: %f\n" % time_init_proportion)
         f.write("time_target_absdiff: %d\n" % time_target_absdiff)
+        f.write("MCSAMPLES: %d\n" % MCSAMPLES)
         f.write("takes %f seconds\n" % duration)
         f.write(str(result)+"\n")

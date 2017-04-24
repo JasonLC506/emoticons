@@ -4,7 +4,7 @@ Implementing Wang, Ting, Dashun Wang, and Fei Wang. "Quantifying herding effects
 import numpy as np
 import math
 import random
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 from MonteCarloTimeSeries import MonteCarloTimeSeries
 from datetime import datetime
 from datetime import timedelta
