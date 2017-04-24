@@ -6,6 +6,7 @@ from datetime import timedelta
 import sys
 
 MCSAMPLES = 100 # number of MC samples
+ZEROSUBSTITUTE = 0.001
 
 def readGrainedData(filename, Nclass, Nsamp=None):
     with open(filename, "r") as f:
@@ -79,6 +80,9 @@ def traintest(time_series_list, time_init_prop, time_target_absdiff):
         ### using independent Poisson model no need of fitting ###
         # diff_predict = stateDiff(state_init, state_predicted, time_init, time_target)
         diff_predict = state_init # prediction of independent Poisson model
+        for dim in range(diff_predict.shape[0]):
+            if diff_predict[dim] < ZEROSUBSTITUTE:
+                 diff_predict[dim] = ZEROSUBSTITUTE
         diff_true = stateDiff(state_init, state_target, time_init, time_target)
         result["perf"].append(performance(diff_predict, diff_true))
 
