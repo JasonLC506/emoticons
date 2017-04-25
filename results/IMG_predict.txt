@@ -52,3 +52,57 @@ time_target_absdiff: 100
 MCSAMPLES: 100
 takes 58.511816 seconds
 {'mu': [nan, nan], 'theta': [nan, nan], 'perf': [3.0559980621078791, 104.33863827727944]}
+wsj
+time_init_proportion: 0.700000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 6.402211 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.58086348710335545, 0.30049071905850394]}
+wsj
+time_init_proportion: 0.300000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 6.612605 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.60751814922266167, 0.30691890745088957]}
+wsj
+time_init_proportion: 0.500000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 6.951469 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.59203989384672395, 0.30026245359351089]}
+washington
+time_init_proportion: 0.700000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 24.876369 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.73655546471999467, 0.3653817636649781]}
+washington
+time_init_proportion: 0.500000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 25.578107 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.73857856648991271, 0.36436675274860159]}
+washington
+time_init_proportion: 0.300000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 27.240199 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.7434221213610307, 0.35764553995072257]}
+nytimes
+time_init_proportion: 0.300000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 54.864318 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.72873955711167282, 0.34390859880247876]}
+nytimes
+time_init_proportion: 0.500000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 55.408652 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.72191748297719804, 0.34926133524728553]}
+nytimes
+time_init_proportion: 0.700000
+time_target_absdiff: 100
+MCSAMPLES: 100
+takes 55.730666 seconds
+{'mu': [nan, nan], 'theta': [nan, nan], 'perf': [0.71457248279331498, 0.34774188579693288]}
