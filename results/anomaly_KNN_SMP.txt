@@ -1,0 +1,6 @@
+news: nytimes
+K_KNN: 10
+{'perf': [array([ 1.,  0.]), array([ 0.,  0.])]}
+news: nytimes
+K_KNN: 10
+{'perf': [array([ 0.575,  0.575]), array([ 0.11456439,  0.11456439])]}

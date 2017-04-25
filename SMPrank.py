@@ -314,6 +314,8 @@ class SmpRank(object):
 
 
 def frobeniusGaussianCore(x, m, sigma):
+    if sigma == 0.0:
+        return 1.0
     return np.exp(-pow(np.linalg.norm(x - m)/sigma, 2))
 
 

@@ -1,7 +1,8 @@
 from AnomalyDataPrep import anomalyDataPrep
 from logRegFeatureEmotion import dataClean
 from DecisionTreeWeight import label2Rank
-from KNNPlackettLuce import KNN
+# from KNNPlackettLuce import KNN
+from KNNSMP import KNNSMP as KNN
 import numpy as np
 import sys
 
@@ -85,7 +86,7 @@ if __name__ == "__main__":
     news = sys.argv[1]
     # K_KNN = 10
     # news = "nytimes"
-    result_file = "results/anomaly_KNN_PL.txt"
+    result_file = "results/anomaly_KNN_SMP.txt"
     x, y = dataClean("data/" + news + "_Feature_linkemotion.txt")
     y = label2Rank(y)
     results = multitest(x, y)
