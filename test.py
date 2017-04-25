@@ -53,4 +53,8 @@ import sys
 #
 # print crossValidateTest(x,y)
 
-print np.linalg.norm(np.zeros(3))
+m = np.array([1,2,34,4])
+n = m
+m[0]=0
+print n
+print m
