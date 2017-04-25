@@ -1,6 +1,6 @@
 #!/bin/bash
 news_list=('nytimes' 'wsj' 'washington')
-K_list=(20)
+K_list=(50)
 for((i=0;i<${#news_list[@]};i++))
 {
   for((j=0;j<${#K_list[@]};j++))

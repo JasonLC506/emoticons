@@ -1,6 +1,9 @@
 news: nytimes
-K_KNN: 10
-{'perf': [array([ 1.,  0.]), array([ 0.,  0.])]}
-news: nytimes
-K_KNN: 10
-{'perf': [array([ 0.575,  0.575]), array([ 0.11456439,  0.11456439])]}
+K_KNN: 50
+{'perf': [array([ 0.71346154,  0.71346154]), array([ 0.02276318,  0.02276318])]}
+news: washington
+K_KNN: 50
+{'perf': [array([ 0.70228758,  0.70343699]), array([ 0.01750426,  0.01753291])]}
+news: wsj
+K_KNN: 50
+{'perf': [array([ 0.72989276,  0.72989276]), array([ 0.01014259,  0.01014259])]}
