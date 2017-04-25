@@ -9,6 +9,7 @@ import numpy as np
 #import DecisionTreeWeight_Bordar as dtb
 #from readSushiData import readSushiData
 import sys
+import copy
 
 # def cumulate(y, L, K):
 #     x = np.zeros(L*K, dtype=np.float16).reshape([L, K])
@@ -53,8 +54,19 @@ import sys
 #
 # print crossValidateTest(x,y)
 
-m = np.array([1,2,34,4])
-n = m
-m[0]=0
-print n
-print m
+class TEST(object):
+    def __init__(self):
+        self.a = np.array([2,3,4,5])
+        self.b = []
+
+    def copyarray(self):
+        self.b = copy.deepcopy(self.a)
+        return self
+
+    def update(self):
+        self.a[0] = 0
+        return self
+
+test = TEST().copyarray().update()
+print test.a
+print test.b

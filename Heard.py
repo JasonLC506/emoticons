@@ -8,6 +8,7 @@ import random
 from MonteCarloTimeSeries import MonteCarloTimeSeries
 from datetime import datetime
 from datetime import timedelta
+import copy
 
 class Heard(object):
     def __init__(self):
@@ -84,7 +85,9 @@ class Heard(object):
             # self.printmodel() ### test
             if iteration > 0:
                 if self.llh_minus_lamda > llh_minus_lamda_old - threshold:
-                    if self.llh_minus_lamda > llh_minus_lamda_old:
+                    if int(self.llh_minus_lamda*1000) > int(llh_minus_lamda_old*1000):
+                        print "old llh ", llh_minus_lamda_old
+                        print "current llh", self.llh_minus_lamda
                         raise ValueError("wrong iteration")
                     else:
                         print "converge"
@@ -165,11 +168,11 @@ class Heard(object):
         return self
 
     def setold(self):
-        self.mu_old = self.mu
-        self.f_old = self.f
-        self.theta_old = self.theta
-        self.phi_old = self.phi
-        self.beta_old = self.beta
+        self.mu_old = copy.deepcopy(self.mu)
+        self.f_old = copy.deepcopy(self.f)
+        self.theta_old = copy.deepcopy(self.theta)
+        self.phi_old = copy.deepcopy(self.phi)
+        self.beta_old = copy.deepcopy(self.beta)
 
         self.c_old = np.zeros(self.L, dtype=np.float64)
         for i in range(self.L):
@@ -323,7 +326,11 @@ def discreteODE(A, B, c, f0, f1):
     L = A.shape[0]
     f = np.zeros(L,dtype=np.float64)
     if c == 0.0:
-        f = np.divide(A,B)
+        for i in range(1,L):
+            if A[i] == 0.0:
+                print "A", A
+                raise ValueError("divided by 0")
+        f[1:] = np.divide(B[1:],A[1:])/2.0
     else:
         # set boundary condition #
         f[0] = f0
@@ -388,6 +395,7 @@ if __name__ == "__main__":
     L = 1000
     time_init = 200
     time_target = 900
+    np.random.seed(2017)
     y = synthetic2(L, mu=np.array([1.0,1.0]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.ones(L))
     print np.sum(y, axis=0, dtype=np.float64)
     y_cumulate = cumulate(y)
@@ -395,9 +403,9 @@ if __name__ == "__main__":
     #     plt.plot(y_cumulate[:,d], label="%d" % d)
     # plt.legend()
     # plt.show()
-    heard = Heard().fit(y[:time_init,:], lamda=0.0, f_constant=True)
+    heard = Heard().fit(y, lamda=0.0, f_constant=True)
     heard.printmodel()
-    state_predicted = heard.predict(time_target)
-    print "init", y_cumulate[time_init]
-    print "predicted", state_predicted
-    print "true", y_cumulate[time_target]
+    # state_predicted = heard.predict(time_target)
+    # print "init", y_cumulate[time_init]
+    # print "predicted", state_predicted
+    # print "true", y_cumulate[time_target]

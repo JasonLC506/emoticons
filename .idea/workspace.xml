@@ -25,24 +25,24 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4643091">
+    <splitter split-orientation="horizontal" split-proportion="0.43640053">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="563">
-                  <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+                <state relative-caret-position="658">
+                  <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Heard.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Heard.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Heard.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="580">
-                  <caret line="403" column="0" selection-start-line="403" selection-start-column="0" selection-end-line="403" selection-end-column="0" />
+                <state relative-caret-position="-408">
+                  <caret line="93" column="41" selection-start-line="93" selection-start-column="41" selection-end-line="93" selection-end-column="41" />
                   <folding>
                     <element signature="e#126#144#0" expanded="true" />
                   </folding>
@@ -50,7 +50,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Heard_predict.txt" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Heard_predict.txt" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/results/Heard_predict.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="580">
@@ -96,25 +96,13 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="AnomalyDetectProb_KNN.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/AnomalyDetectProb_KNN.py">
+          <file leaf-file-name="Heard_batch.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Heard_batch.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+                <state relative-caret-position="518">
+                  <caret line="317" column="22" selection-start-line="317" selection-start-column="22" selection-end-line="317" selection-end-column="22" />
                   <folding>
-                    <element signature="e#0#43#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="AnomalyDetectProb_noncontext.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/AnomalyDetectProb_noncontext.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-525">
-                  <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-                  <folding>
-                    <element signature="e#0#43#0" expanded="true" />
+                    <element signature="e#180#198#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -137,7 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/data/atlantic_Feature_linkemotion.txt" />
         <option value="$PROJECT_DIR$/buildFeatureEmotion_news.py" />
         <option value="$PROJECT_DIR$/finaltest_paging1.py" />
         <option value="$PROJECT_DIR$/stats_result_nytimes.txt" />
@@ -174,7 +161,6 @@
         <option value="$PROJECT_DIR$/KNNPlackettLuceParallel.py" />
         <option value="$PROJECT_DIR$/results/result_KNNPL.txt" />
         <option value="$PROJECT_DIR$/MonteCarloTimeSeries.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/SMPrank.py" />
         <option value="$PROJECT_DIR$/AnomalyDetect.py" />
         <option value="$PROJECT_DIR$/AnomalyDataPrep.py" />
@@ -186,8 +172,10 @@
         <option value="$PROJECT_DIR$/AnomalyDetectProb_noncontext.py" />
         <option value="$PROJECT_DIR$/Poisson.py" />
         <option value="$PROJECT_DIR$/timeSeriesPredict_single.py" />
-        <option value="$PROJECT_DIR$/Heard.py" />
         <option value="$PROJECT_DIR$/results/IMG_predict.txt" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/Heard.py" />
+        <option value="$PROJECT_DIR$/Heard_batch.py" />
       </list>
     </option>
   </component>
@@ -252,7 +240,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="results" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -270,7 +258,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.timeSeriesPredict_single">
+  <component name="RunManager" selected="Python.Heard_batch">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -284,40 +272,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="AnomalyDataPrep" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/AnomalyDataPrep.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="AnomalyDetectProb" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="emoticons" />
-      <option name="SCRIPT_NAME" value="C:\Users\jpz5181\Documents\GitHub\emoticons\AnomalyDetectProb_SMPrank.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -352,6 +306,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="emoticons" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/timeSeriesPredict_single.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Heard_batch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="emoticons" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Heard_batch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Heard" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="emoticons" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Heard.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -492,18 +480,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.AnomalyDataPrep" />
-      <item index="2" class="java.lang.String" itemvalue="Python.AnomalyDetectProb" />
-      <item index="3" class="java.lang.String" itemvalue="Python.AnomalyDetectProb_KNN" />
-      <item index="4" class="java.lang.String" itemvalue="Python.timeSeriesPredict_single" />
+      <item index="1" class="java.lang.String" itemvalue="Python.AnomalyDetectProb_KNN" />
+      <item index="2" class="java.lang.String" itemvalue="Python.timeSeriesPredict_single" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Heard_batch" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Heard" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.timeSeriesPredict_single" />
-        <item index="1" class="java.lang.String" itemvalue="Python.AnomalyDetectProb_KNN" />
-        <item index="2" class="java.lang.String" itemvalue="Python.AnomalyDetectProb" />
-        <item index="3" class="java.lang.String" itemvalue="Python.AnomalyDataPrep" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Heard_batch" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Heard" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.timeSeriesPredict_single" />
+        <item index="4" class="java.lang.String" itemvalue="Python.AnomalyDetectProb_KNN" />
       </list>
     </recent_temporary>
   </component>
@@ -525,14 +513,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34035826" sideWeight="0.5052083" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25395152" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31928346" sideWeight="0.49479166" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -595,7 +583,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/results/result_dt_prunetry.txt" />
     <entry file="file://$PROJECT_DIR$/result_dt_prunetry_washington.txt" />
     <entry file="file://$PROJECT_DIR$/mallows_gini.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -938,19 +925,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AnomalyDetectProb_KNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AnomalyDetectProb_noncontext.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
+        <state relative-caret-position="-219">
           <caret line="32" column="37" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
@@ -964,24 +941,6 @@
           <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
           <folding>
             <element signature="e#95#113#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Heard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="403" column="0" selection-start-line="403" selection-start-column="0" selection-end-line="403" selection-end-column="0" />
-          <folding>
-            <element signature="e#126#144#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1017,6 +976,44 @@
         <state relative-caret-position="580">
           <caret line="269" column="0" selection-start-line="269" selection-start-column="0" selection-end-line="269" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AnomalyDetectProb_KNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="22" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="69" column="34" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Heard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="93" column="41" selection-start-line="93" selection-start-column="41" selection-end-line="93" selection-end-column="41" />
+          <folding>
+            <element signature="e#126#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Heard_batch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="317" column="22" selection-start-line="317" selection-start-column="22" selection-end-line="317" selection-end-column="22" />
+          <folding>
+            <element signature="e#180#198#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
