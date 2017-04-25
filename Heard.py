@@ -391,10 +391,10 @@ if __name__ == "__main__":
     y = synthetic2(L, mu=np.array([1.0,1.0]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.ones(L))
     print np.sum(y, axis=0, dtype=np.float64)
     y_cumulate = cumulate(y)
-    for d in range(y.shape[1]):
-        plt.plot(y_cumulate[:,d], label="%d" % d)
-    plt.legend()
-    plt.show()
+    # for d in range(y.shape[1]):
+    #     plt.plot(y_cumulate[:,d], label="%d" % d)
+    # plt.legend()
+    # plt.show()
     heard = Heard().fit(y[:time_init,:], lamda=0.0, f_constant=True)
     heard.printmodel()
     state_predicted = heard.predict(time_target)
