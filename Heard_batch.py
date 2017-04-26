@@ -10,8 +10,11 @@ from Heard import cumulate
 from Heard import funcComplexity
 from Heard import discreteODE
 from Heard import synthetic2
-from matplotlib import pyplot as plt
+# from matplotlib import pyplot as plt
 import copy
+from MonteCarloTimeSeries import MonteCarloTimeSeries
+from datetime import datetime
+from datetime import timedelta
 
 
 class HeardBatch(Heard):
@@ -93,7 +96,7 @@ class HeardBatch(Heard):
                     if int(self.llh_minus_lamda * 1000) > int(llh_minus_lamda_old * 1000):
                         raise ValueError("wrong iteration")
                     else:
-                        print "converge"
+                        print "converge at iter ", iteration
                         self.printmodel()
                         break
                 else:
@@ -118,6 +121,20 @@ class HeardBatch(Heard):
 
         return self
 
+    def predict(self, time_target, Nsamp = 2000):
+        state_targets = []
+        if type(time_target) != list:
+            time_targets = [time_target for m in range(self.M)]
+        else:
+            time_targets = time_target
+        for m in range(self.M):
+            MC = MonteCarloTimeSeries(state_init = self.state_endoftrain[m], time_init = self.L[m], mu = self.mu[m],
+                                      theta = self.theta, f = self.fExtend(self.f, time_targets[m]), Nsamp = Nsamp)
+            start = datetime.now()
+            state_targets.append(MC.predict(time_targets[m]))
+            duration = (datetime.now() - start).total_seconds()
+            print "MC simulation takes %f seconds" % duration
+        return state_targets
 
     def initialize(self, y_s):
         # mu #
@@ -297,22 +314,37 @@ class HeardBatch(Heard):
         print self.mu, "\n"
         print "theta"
         print self.theta, "\n"
-        plt.plot(self.f)
-        plt.show() ### test
+        # plt.plot(self.f)
+        # plt.show() ### test
         return self
 
 
 if __name__ == "__main__":
     L = 1000
-    # time_init = 200
-    # time_target = 900
+    M = 10
+    time_init = 200
+    time_target = 900
     np.random.seed(2017)
-    y = synthetic2(L, mu=np.array([1.0,1.0]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.ones(L))
-    print np.sum(y, axis=0, dtype=np.float64)
-    y_cumulate = cumulate(y)
-    for d in range(y.shape[1]):
-        plt.plot(y_cumulate[:,d], label="%d" % d)
-    plt.legend()
-    plt.show()
-    heard = HeardBatch().fit([y], lamda=0.0, f_constant=True)
+    mu = [np.array([-0.01*m, 0.01*m]) for m in range(M)]
+    theta = np.array([[1.0,-1.0],[-1.0,1.0]])
+    f = np.ones(L)
+    y_s = []
+    for m in range(M):
+        y_s.append(synthetic2(L-m, mu=mu[m], theta=theta, f=f))
+    # y = synthetic2(L, mu=np.array([1.0,1.0]), theta=np.array([[1.0,-1.0],[-1.0,1.0]]), f=np.ones(L))
+    print map(lambda item: np.sum(item, axis=0, dtype=np.float64), y_s)
+    y_s_cumulate = map(cumulate, y_s)
+    # for m in range(M):
+    #     y = y_s[m]
+    #     y_cumulate = y_s_cumulate[m]
+    #     for d in range(y.shape[1]):
+    #         plt.plot(y_cumulate[:,d], label="%d, m=%d" % (d, m))
+    # plt.legend()
+    # plt.show()
+    heard = HeardBatch().fit(map(lambda item: item[:time_init,:], y_s), lamda=1.0, f_constant=False)
     heard.printmodel()
+    states_predicted = heard.predict(time_target)
+    for m in range(M):
+        print "init", y_s_cumulate[m][time_init]
+        print "predicted", states_predicted[m]
+        print "true", y_s_cumulate[m][time_target]

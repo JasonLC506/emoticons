@@ -9,6 +9,7 @@ from MonteCarloTimeSeries import MonteCarloTimeSeries
 from datetime import datetime
 from datetime import timedelta
 import copy
+from scipy.optimize import curve_fit
 
 class Heard(object):
     def __init__(self):
@@ -134,11 +135,17 @@ class Heard(object):
         print "MC simulation takes %f seconds" % duration
         return state_target
 
-    def fExtend(self, f, time_target):
+    def fExtend(self, f, time_target, bounds=(0, [10.0, 0.1])):
         if self.fCONSTANT:
             return np.ones(time_target+1, dtype=np.float64)
         else:
-            raise ValueError("not supporting general f function currently")
+            t = np.arange(0, time_target+1, dtype = np.float64)
+            popt, pcov = curve_fit(self.fExtendModel, t[:f.shape[0]], f, bounds = bounds)
+            return self.fExtendModel(t, *popt)
+
+    def fExtendModel(self, x, a, b):
+        ## following [1] ##
+        return a * np.exp(b * x) - 1.0
 
     def initialize(self, y):
         # self.mu #

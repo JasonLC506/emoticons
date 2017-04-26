@@ -4,12 +4,13 @@ import numpy as np
 #import itertools
 #import math
 #from scipy.stats import kendalltau
-#from matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 #from scipy.stats.mstats import gmean
 #import DecisionTreeWeight_Bordar as dtb
 #from readSushiData import readSushiData
 import sys
 import copy
+from scipy.optimize import curve_fit
 
 # def cumulate(y, L, K):
 #     x = np.zeros(L*K, dtype=np.float16).reshape([L, K])
@@ -54,19 +55,22 @@ import copy
 #
 # print crossValidateTest(x,y)
 
-class TEST(object):
-    def __init__(self):
-        self.a = np.array([2,3,4,5])
-        self.b = []
+def fExtend(f, time_target, bounds = (0, [100.0,0.1])):
 
-    def copyarray(self):
-        self.b = copy.deepcopy(self.a)
-        return self
+    t = np.arange(0, time_target + 1, dtype=np.float64)
+    popt, pcov = curve_fit(fExtendModel, t[:f.shape[0]], f, bounds = bounds)
+    print popt
+    return fExtendModel(t, *popt)
 
-    def update(self):
-        self.a[0] = 0
-        return self
 
-test = TEST().copyarray().update()
-print test.a
-print test.b
+def fExtendModel(x, a, b):
+    ## following [1] ##
+    return a * np.exp(b * x) - 1.0
+
+t = np.arange(0,100, dtype = np.float64)
+f = fExtendModel(t, 1.0, 0.03)
+f = f + np.random.normal(size = t.size)
+plt.plot(t, f, label = "data")
+plt.plot(np.arange(0,111),fExtend(f, 110), label = "fit")
+plt.legend()
+plt.show()
