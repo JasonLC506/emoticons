@@ -66,23 +66,23 @@ def traintest(time_series_list, time_init_prop, time_target_absdiff):
         time_target = time_init + time_target_absdiff
         assert time_target < L
         # fit #
-        ### using independent Poisson model  ###
-        # heard = Heard().fit(series[:time_init,:], lamda = 1.0, f_constant=True)
+        #### using independent Poisson model  ###
+        heard = Heard().fit(series[:time_init,:], lamda = 1.0, f_constant=True)
         # write fit parameter #
-        # result["mu"].append(heard.mu)
-        # result["theta"].append(heard.theta)
+        result["mu"].append(heard.mu)
+        result["theta"].append(heard.theta)
         # predict #
         state_init = series_cumulate[time_init]
         state_target = series_cumulate[time_target]
-        ### using independent Poisson model no need of fitting ###
-        # state_predicted = heard.predict(time_target, Nsamp = MCSAMPLES) # MC samples
-        state_predicted = poisson().fit(state_init, time_init).predict() # prediction of independent Poisson model
+        #### using independent Poisson model no need of fitting ###
+        state_predicted = heard.predict(time_target, Nsamp = MCSAMPLES) # MC samples
+        # state_predicted = poisson().fit(state_init, time_init).predict() # prediction of independent Poisson model
         # print "init state: ", state_init
         # print "target state: ", state_target
         # print "predicted state: ", state_predicted
-        ### using independent Poisson model no need of fitting ###
-        # diff_predict = stateDiff(state_init, state_predicted, time_init, time_target)
-        diff_predict = state_predicted # prediction of independent Poisson model
+        #### using independent Poisson model no need of fitting ###
+        diff_predict = stateDiff(state_init, state_predicted, time_init, time_target)
+        # diff_predict = state_predicted # prediction of independent Poisson model
         diff_true = stateDiff(state_init, state_target, time_init, time_target)
         perf = performance(diff_predict, diff_true)
         if perf >= AlARMTHRESHOLD:
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     # time_init_proportion = 0.7
 
     filename = "data/" + news + "_grained_reaction"
-    result_filename = "results/IMG_predict.txt"
+    result_filename = "results/Heard_predict.txt"
 
     time_target_absdiff = 100
     time_series_list = readGrainedData(filename, Nclass=6)
@@ -149,8 +149,10 @@ if __name__ == "__main__":
     print result
     with open(result_filename, "a") as f:
         f.write(news+"\n")
+        f.write("total time series: %d\n" % len(time_series_list))
         f.write("time_init_proportion: %f\n" % time_init_proportion)
         f.write("time_target_absdiff: %d\n" % time_target_absdiff)
         f.write("MCSAMPLES: %d\n" % MCSAMPLES)
+        f.write("fconstant\n")
         f.write("takes %f seconds\n" % duration)
         f.write(str(result)+"\n")
