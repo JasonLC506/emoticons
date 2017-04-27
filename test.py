@@ -55,22 +55,9 @@ from scipy.optimize import curve_fit
 #
 # print crossValidateTest(x,y)
 
-def fExtend(f, time_target, bounds = (0, [100.0,0.1])):
-
-    t = np.arange(0, time_target + 1, dtype=np.float64)
-    popt, pcov = curve_fit(fExtendModel, t[:f.shape[0]], f, bounds = bounds)
-    print popt
-    return fExtendModel(t, *popt)
-
-
-def fExtendModel(x, a, b):
-    ## following [1] ##
-    return a * np.exp(b * x) - 1.0
-
-t = np.arange(0,100, dtype = np.float64)
-f = fExtendModel(t, 1.0, 0.03)
-f = f + np.random.normal(size = t.size)
-plt.plot(t, f, label = "data")
-plt.plot(np.arange(0,111),fExtend(f, 110), label = "fit")
-plt.legend()
-plt.show()
+map_uv = np.random.random(3 * 5).reshape([3, 5])
+print map_uv
+map_uv_sum = np.sum(map_uv, axis=1, keepdims=True)
+map_uv[:] = map_uv[:] / map_uv_sum[:]
+print map_uv
+print np.sum(map_uv, axis=1)
