@@ -55,9 +55,4 @@ from scipy.optimize import curve_fit
 #
 # print crossValidateTest(x,y)
 
-map_uv = np.random.random(3 * 5).reshape([3, 5])
-print map_uv
-map_uv_sum = np.sum(map_uv, axis=1, keepdims=True)
-map_uv[:] = map_uv[:] / map_uv_sum[:]
-print map_uv
-print np.sum(map_uv, axis=1)
+print np.exp(-15.0/0.0074/2.0)
