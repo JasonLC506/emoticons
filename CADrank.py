@@ -293,7 +293,7 @@ def Gaussian(x, mean, var, scalar_variance = False):
 
 
 def crossValid(x, y, cv = 5, Nu = 10, Nv = 20):
-    results = {"perf":[]}
+    results = {"perf":[], "Nu":[], "Nv":[]}
 
     np.random.seed(2017)
     kf = KFold(n_splits=cv, shuffle=True, random_state=0)
@@ -303,8 +303,17 @@ def crossValid(x, y, cv = 5, Nu = 10, Nv = 20):
         x_test = x[test,:]
         y_test = y[test,:]
 
-        y_pred = CADrank(Nu=Nu,Nv=Nv).fit(x_train, y_train).predict(x_test)
+        ## hyperparameter tuning ##
+        if type(Nu) == list:
+            # both parameters should be of the same type #
+            Nu_sel, Nv_sel = hyperparameters(x_train, y_train, cv=5, Nu = Nu, Nv = Nv)
+        else:
+            Nu_sel, Nv_sel = Nu, Nv
+
+        y_pred = CADrank(Nu=Nu_sel,Nv=Nv_sel).fit(x_train, y_train).predict(x_test)
         results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["Nu"].append(Nu_sel)
+        results["Nv"].append(Nv_sel)
 
     for key in results.keys():
         item = np.array(results[key])
@@ -315,10 +324,32 @@ def crossValid(x, y, cv = 5, Nu = 10, Nv = 20):
     return results
 
 
+def hyperparameters(x, y, Nu, Nv, cv=5, criterion = -1):
+    best_result = None
+    best_para = [None, None]
+    for Nu_sel in Nu:
+        for Nv_sel in Nv:
+            perfs = []
+            kf = KFold(n_splits=cv, shuffle=True, random_state=0)
+            for train, test in kf.split(x):
+                x_train = x[train, :]
+                y_train = y[train, :]
+                x_test = x[test, :]
+                y_test = y[test, :]
+                y_pred = CADrank(Nu=Nu_sel, Nv=Nv_sel).fit(x_train, y_train).predict(x_test)
+                perf = LogR.perfMeasure(y_pred, y_test, rankopt=True)
+                perfs.append(perf[criterion])
+            result = sum(perfs)/cv
+            if best_result is None or best_result < result:
+                best_result = result
+                best_para = [Nu_sel, Nv_sel]
+    return best_para[0], best_para[1]
+
 if __name__ == "__main__":
-    Nu = int(sys.argv[1])
-    Nv = int(sys.argv[2])
-    news = "atlantic"
+    Nu = [10,20,30]
+    Nv = [20,40,60,80,100]
+    news = sys.argv[1]
+    # news = "atlantic"
     np.random.seed(2017)
     x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
     y = label2Rank(y)
@@ -327,7 +358,7 @@ if __name__ == "__main__":
     with open("results/result_CAD.txt", "a") as f:
         f.write("prior weighted sum aggregation\n")
         f.write("scalar variance for preference matrix\n")
-        f.write("Nu: %d, Nv: %d\n" % (Nu, Nv))
+        f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
         f.write("news: %s\n" % news)
         f.write("dataset size: %d\n" % x.shape[0])
         f.write(str(result)+"\n")

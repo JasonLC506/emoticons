@@ -11,50 +11,32 @@ from matplotlib import pyplot as plt
 import sys
 import copy
 from scipy.optimize import curve_fit
-
-# def cumulate(y, L, K):
-#     x = np.zeros(L*K, dtype=np.float16).reshape([L, K])
-#     for i in range(L):
-#         x[i] = np.sum(y[:i, :], axis=0)
-#     return x
-
-# x, y = readSushiData()
-
-# m = np.array([9,2,1]).reshape([1,3])
-# print np.repeat(m, 3, axis=0)
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
 
 
-# def crossValidateTest(x, y, cv=5, alpha=0.0, rank_weight=False, stop_criterion_mis_rate=None, stop_criterion_min_node=1,
-#                   stop_criterion_gain=0.0, prune_criteria=0):
-#
-#
-#     results = {"perf": []}
-#
-#     # cross validation #
-#     np.random.seed(1100)
-#     kf = KFold(n_splits=cv, shuffle=True, random_state=0)  ## for testing fixing random_state
-#     for train, test in kf.split(x):
-#         x_train = x[train, :]
-#         y_train = y[train, :]
-#         x_test = x[test, :]
-#         y_test = y[test, :]
-#
-#         y_pred_single = dtb.DecisionTree().nodeResult(y_train,None)
-#         print "simple Bordar aggregation result: ", y_pred_single
-#         y_pred = np.repeat(y_pred_single.reshape([1,y_pred_single.shape[0]]), y_test.shape[0], axis=0)
-#         results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
-#
-#     for key in results.keys():
-#         item = np.array(results[key])
-#         mean = np.nanmean(item, axis=0)
-#         std = np.nanstd(item, axis=0)
-#         results[key] = [mean, std]
-#
-#     return results
-#
-# print crossValidateTest(x,y)
+fig = plt.figure()
+ax = fig.gca(projection='3d')
 
-a = np.ones([10,3,3])
-b = a.tolist()
-print b
+# Make data.
+X = np.arange(-5, 5, 0.25)
+Y = np.arange(-5, 5, 0.25)
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + Y**2)
+Z = np.sin(R)
+
+# Plot the surface.
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=False)
+
+# Customize the z axis.
+# ax.set_zlim(-1.01, 1.01)
+# ax.zaxis.set_major_locator(LinearLocator(10))
+# ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
+
+# Add a color bar which maps values to colors.
+# fig.colorbar(surf, shrink=0.5, aspect=5)
+
+plt.show()
