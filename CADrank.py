@@ -7,8 +7,10 @@ The Main structure of two GMMs mapping is based on Song, X., Wu, M., Jermaine, C
 
 import numpy as np
 from logRegFeatureEmotion import dataClean
+import logRegFeatureEmotion as LogR
 from DecisionTreeWeight import label2Rank
 from SMPrank import SmpRank
+from sklearn.model_selection import KFold
 
 THRESHOLD = 0.001
 MAX_ITERATION = 100
@@ -36,11 +38,15 @@ class CADrank(object):
         self.llh = 0        # current log-likelihood
         self.b = None       # weighted parameter used in [2]
 
-    def fit(self, x, y, threshold = THRESHOLD, max_iteration = MAX_ITERATION):
+    def fit(self, x, y_rank, threshold = THRESHOLD, max_iteration = MAX_ITERATION):
         """
         input x: feature variables np.ndarray([Nsamp, Du])
         input y: target variables, here preference matrices np.ndarray([Nsamp, Nclass, Nclass])
         """
+        ## from ranks to preference matrices ##
+        smp = SmpRank(K=1)
+        y = np.array(map(smp.rank2pair, y_rank.tolist()), dtype=np.float64)
+
         ## set data parameters ##
         self.Nsamp = x.shape[0]
         self.Du = x.shape[1]
@@ -127,18 +133,13 @@ class CADrank(object):
         return self
 
     def predict(self, x_test):
-        # ## batch predict ##
-        # if x_test.dim != 1:
-        #     N = x_test.shape[0]
-        #     y_rank_pred = [[] for i in range(N)]
-        #     for samp in range(N):
-        #         y_rank_pred[samp] = self.predict(x_test[samp])
-        #     return np.array(y_rank_pred, dtype = np.int8)
-
+        """
+        x_test: np.ndarray([Nsamp, Nfeature])
+        """
         ## weighted average of preference matrices ##
         pxu = self._pxucal(x_test) # shape[Nsamp_test, self.Nu]
         pv = np.dot(pxu, self.map_uv)
-
+        return self.aggregate(pv)
 
     def initialize(self, x, y):
         # pu #
@@ -189,8 +190,9 @@ class CADrank(object):
         return llh, pxu, pyv
 
     def _pxucal(self, x):
-        pxu = np.zeros([self.Nsamp, self.Nu], dtype = np.float64)
-        for isamp in range(self.Nsamp):
+        Nsamp = x.shape[0] # for fitting & predicting
+        pxu = np.zeros([Nsamp, self.Nu], dtype = np.float64)
+        for isamp in range(Nsamp):
             pxu_partial_sum = 0.0
             for iu in range(self.Nu):
                 pxu[isamp, iu] = Gaussian(x[isamp], self.mu_u[iu], self.sigma_u[iu]) * self.pu[iu]
@@ -242,6 +244,21 @@ class CADrank(object):
 
         return self
 
+    def aggregate(self, pv):
+        """
+        aggregate weighted mixed Gaussian of preference matrix into ranking
+        using prior weighted average of means
+        """
+        y_pref = np.dot(pv, np.transpose(self.mu_v, axes = (1,0,2)))
+        # using aggregate in SMPrank to transform preference matrix to ranking#
+        smp = SmpRank(K=1)
+        smp.L = self.Nclass
+        y_pref_list = y_pref.tolist()
+        # y_rank_list = map(smp.aggregate, y_pref_list)
+        y_rank_list = []
+        for i in range(len(y_pref_list)):
+            y_rank_list.append(smp.aggregate(np.array(y_pref_list[i])))
+        return np.array(y_rank_list, dtype = np.float64)
 
 def variance(x, mu_s, weights):
     """
@@ -274,14 +291,42 @@ def Gaussian(x, mean, var, scalar_variance = False):
     return prob
 
 
-def crossValid(x, y, cv = 5):
-    pass
+def crossValid(x, y, cv = 5, Nu = 10, Nv = 20):
+    results = {"perf":[]}
+
+    np.random.seed(2017)
+    kf = KFold(n_splits=cv, shuffle=True, random_state=0)
+    for train, test in kf.split(x):
+        x_train = x[train,:]
+        y_train = y[train,:]
+        x_test = x[test,:]
+        y_test = y[test,:]
+
+        y_pred = CADrank(Nu=Nu,Nv=Nv).fit(x_train, y_train).predict(x_test)
+        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+
+    for key in results.keys():
+        item = np.array(results[key])
+        mean = np.nanmean(item, axis=0)
+        std = np.nanstd(item, axis=0)
+        results[key] = [mean, std]
+
+    return results
 
 
 if __name__ == "__main__":
+    Nu = 10
+    Nv = 20
+    news = "atlantic"
     np.random.seed(2017)
-    x, y = dataClean("data/washington_Feature_linkemotion.txt")
+    x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
     y = label2Rank(y)
-    smp = SmpRank(K=1)
-    y_pref = np.array(map(smp.rank2pair, y.tolist()), dtype=np.float64)
-    cad = CADrank(Nu = 10, Nv = 20).fit(x,y_pref)
+    print "Nsamp total", x.shape[0]
+    result = crossValid(x, y)
+    with open("results/result_CAD.txt", "a") as f:
+        f.write("prior weighted sum aggregation\n")
+        f.write("scalar variance for preference matrix\n")
+        f.write("Nu: %d, Nv: %d\n" % (Nu, Nv))
+        f.write("news: %s\n" % news)
+        f.write("dataset size: %d\n" % x.shape[0])
+        f.write(str(result)+"\n")

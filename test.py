@@ -55,4 +55,6 @@ from scipy.optimize import curve_fit
 #
 # print crossValidateTest(x,y)
 
-print np.exp(-15.0/0.0074/2.0)
+a = np.ones([10,3,3])
+b = a.tolist()
+print b
