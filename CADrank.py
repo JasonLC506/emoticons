@@ -11,6 +11,7 @@ import logRegFeatureEmotion as LogR
 from DecisionTreeWeight import label2Rank
 from SMPrank import SmpRank
 from sklearn.model_selection import KFold
+import sys
 
 THRESHOLD = 0.001
 MAX_ITERATION = 100
@@ -315,14 +316,14 @@ def crossValid(x, y, cv = 5, Nu = 10, Nv = 20):
 
 
 if __name__ == "__main__":
-    Nu = 10
-    Nv = 20
+    Nu = int(sys.argv[1])
+    Nv = int(sys.argv[2])
     news = "atlantic"
     np.random.seed(2017)
     x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
     y = label2Rank(y)
     print "Nsamp total", x.shape[0]
-    result = crossValid(x, y)
+    result = crossValid(x, y, Nu=Nu, Nv=Nv)
     with open("results/result_CAD.txt", "a") as f:
         f.write("prior weighted sum aggregation\n")
         f.write("scalar variance for preference matrix\n")

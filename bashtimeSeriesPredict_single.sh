@@ -1,6 +1,6 @@
 #!/bin/bash
 news_list=('nytimes' 'wsj' 'washington')
-init_prop_list=(0.3 0.5 0.7)
+init_prop_list=(0.1 0.3 0.5)
 for((i=0;i<${#news_list[@]};i++))
 {
   for((j=0;j<${#init_prop_list[@]};j++))
