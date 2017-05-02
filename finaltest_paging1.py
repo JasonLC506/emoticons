@@ -15,7 +15,7 @@ from pymongo import MongoClient
 #setting up DataBase
 client = MongoClient("mongodb://localhost:27017")
 db = client.dataSet
-my_col = db.reactions_collection_foxnews
+my_col = db.reactions_collection_nytimes_early
 next_col = db.next_collection
 user_col = db.test_collection
 comm_col = db.trump_collection
