@@ -21,8 +21,8 @@ user_col = db.test_collection
 comm_col = db.trump_collection
 
 #connecting to FB graph API
-APP_ID = '1667170370247678'
-APP_SECRET = '6829d69135dab88c93930f1a3f80b3ab'
+APP_ID = '1522702467762176'
+APP_SECRET = '39846d105e1a79091bdecb16b888d28d'
 graph = facebook.GraphAPI(APP_ID + "|" + APP_SECRET)
 
 #setting up initial/basic query
@@ -190,13 +190,13 @@ def getUserCommentData(page_name):
 #get post reactions count
 def getReactionData(page_name):
 	new_query = page_name + query
-	new_query = new_query + "&since=2015-01-01" + "&until=2016-01-01"
+	new_query = new_query + "&since=2015-01-01" + "&until=2017-02-01"
 	profile = graph.get_object(new_query)
 	i=0
         cnt = 0
 	while True:
 		try:
-                        print "current post %d, id:" % cnt, profile["data"][i]["id"]
+                        print "current post %d, id:" % cnt, profile#["data"][i]["id"]
 			like_count, love_count, sad_count, haha_count, angry_count, wow_count, thankful_count = get_reactions_data_for_post(profile["data"][i]["reactions"])
 			created_time = profile["data"][i]["created_time"]
 			insert_row = my_col.insert_one(
