@@ -26,7 +26,7 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4727039">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="anomaly_KNN_PL.txt" pinned="false" current-in-tab="false">
@@ -54,7 +54,7 @@
           <file leaf-file-name="CADrank.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/CADrank.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="416">
+                <state relative-caret-position="6018">
                   <caret line="360" column="41" selection-start-line="360" selection-start-column="41" selection-end-line="360" selection-end-column="41" />
                   <folding>
                     <element signature="e#518#536#0" expanded="true" />
@@ -63,7 +63,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="bash.sh" pinned="false" current-in-tab="true">
+          <file leaf-file-name="bash.sh" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/bash.sh">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="255">
@@ -85,11 +85,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="finaltest_paging1.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="finaltest_paging1.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/finaltest_paging1.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+                <state relative-caret-position="170">
+                  <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -98,7 +98,7 @@
           <file leaf-file-name="readResult.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/readResult.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
+                <state relative-caret-position="1241">
                   <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
@@ -120,8 +120,8 @@
           <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
-                  <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+                <state relative-caret-position="340">
+                  <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
                   <folding />
                 </state>
               </provider>
@@ -130,12 +130,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="result_CAD.txt" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/results/result_CAD.txt">
+        <leaf>
+          <file leaf-file-name="crawlposts.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/crawlposts.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="467">
-                  <caret line="1750" column="0" selection-start-line="1750" selection-start-column="0" selection-end-line="1750" selection-end-column="0" />
+                <state relative-caret-position="365">
+                  <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -158,8 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/stats_result_wsj.txt" />
-        <option value="$PROJECT_DIR$/stats_result.txt" />
         <option value="$PROJECT_DIR$/deduplicate.py" />
         <option value="$PROJECT_DIR$/stats.py" />
         <option value="$PROJECT_DIR$/stats_result_foxnews.txt" />
@@ -204,11 +202,13 @@
         <option value="$PROJECT_DIR$/Heard.py" />
         <option value="$PROJECT_DIR$/Heard_batch.py" />
         <option value="$PROJECT_DIR$/timeSeriesPredict_single.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/readResult.py" />
         <option value="$PROJECT_DIR$/results/result_CAD.txt" />
         <option value="$PROJECT_DIR$/CADrank.py" />
         <option value="$PROJECT_DIR$/bash.sh" />
+        <option value="$PROJECT_DIR$/finaltest_paging1.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/crawlposts.py" />
       </list>
     </option>
   </component>
@@ -291,8 +291,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -305,7 +305,7 @@
       <recent name="C:\Users\jpz5181\Documents\GitHub\emoticons" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.CADrank">
+  <component name="RunManager" selected="Python.test">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -534,9 +534,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.CADrank" />
-        <item index="1" class="java.lang.String" itemvalue="Python.readResult" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.CADrank" />
+        <item index="2" class="java.lang.String" itemvalue="Python.readResult" />
         <item index="3" class="java.lang.String" itemvalue="Python.Heard_batch" />
         <item index="4" class="java.lang.String" itemvalue="Python.Heard" />
       </list>
@@ -559,7 +559,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1890625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -615,6 +615,12 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/crawlposts.py</url>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -625,18 +631,11 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DecisionTreeWeight_Bordar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3298">
-          <caret line="670" column="0" selection-start-line="670" selection-start-column="0" selection-end-line="718" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/biheap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -976,25 +975,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/finaltest_paging1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/readResult.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
+        <state relative-caret-position="1241">
           <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -1004,7 +987,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/results/result_CAD.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
+        <state relative-caret-position="804">
           <caret line="1750" column="0" selection-start-line="1750" selection-start-column="0" selection-end-line="1750" selection-end-column="0" />
           <folding />
         </state>
@@ -1012,7 +995,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CADrank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
+        <state relative-caret-position="6018">
           <caret line="360" column="41" selection-start-line="360" selection-start-column="41" selection-end-line="360" selection-end-column="41" />
           <folding>
             <element signature="e#518#536#0" expanded="true" />
@@ -1024,6 +1007,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawlposts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="80" column="25" selection-start-line="80" selection-start-column="25" selection-end-line="80" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/finaltest_paging1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
           <folding />
         </state>
       </provider>

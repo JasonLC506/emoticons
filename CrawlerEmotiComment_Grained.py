@@ -85,13 +85,14 @@ def getComments(post_id):
             try:
                 comment_profile = graph.get_object(comment["ID"]+comment_query_single)
             except requests.exceptions.ConnectionError, e:
-                time.sleep(10)
+                time.sleep(100)
                 comment_profile = graph.get_object(comment["ID"]+comment_query_single)
             comment["LIKES"] = comment_profile["like_count"]
             comment["COMMENTS"] = comment_profile["comment_count"]
             #print comment ### test
             col_user_comment.insert_one(comment)
             cnt += 1
+            time.sleep(1)
         if "paging" not in profile:
             break
         if "next" not in profile["paging"]:
@@ -127,10 +128,10 @@ def postsFilter(file_name, threshold = THRESHOLD_REACTIONS):
     return posts_list
 
 if __name__ == "__main__":
-    posts_list = postsFilter("data/wsj_Feature_linkemotion.txt")
+    posts_list = postsFilter("data/foxnews_Feature_linkemotion.txt")
     print "# filtered posts: ", len(posts_list)
-    start_id = 0
-    reaction_done = False
+    start_id = 240
+    reaction_done = True
     for i in range(len(posts_list)):
         if i < start_id:
            continue
