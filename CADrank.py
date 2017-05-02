@@ -191,7 +191,15 @@ class CADrank(object):
             for iu in range(self.Nu):
                 core[isamp] += (pxu[isamp, iu] * np.inner(self.map_uv[iu], pyv[isamp]))
             ### 0 test ###
-            assert core[isamp]>0.0
+            try:
+                assert core[isamp]>0.0
+            except AssertionError, e:
+                print "isamp: ", x[isamp], y[isamp]
+                print "pxu: ", pxu[isamp]
+                print "map: ", self.map_uv
+                print "pyv: ", pyv[isamp]
+                print "core[isamp]", core[isamp]
+                raise e
         llh = np.sum(np.log(core)) / self.Nsamp
 
         return llh, pxu, pyv
