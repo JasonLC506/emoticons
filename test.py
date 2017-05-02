@@ -16,6 +16,6 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import time
 
-ctime = time.strptime("2017-05-02T15:28:00+0000", "%Y-%m-%dT%H:%M:%S+0000")
-ntime = time.strptime("2015-05-02T15:28:00+0000", "%Y-%m-%dT%H:%M:%S+0000")
-print ntime > ctime
+a = np.ones([2,4])
+b = np.ones([10,4])
+print np.inner(a,b).shape

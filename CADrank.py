@@ -79,28 +79,32 @@ class CADrank(object):
             # M-step #
             self.Mstep(x, y)    # updating model parameters
             # calculate new llh #
-            self.llh, pxu, pyv = self.llhcal(x, y)
-
+            try:
+                self.llh, pxu, pyv = self.llhcal(x, y)
+            except AssertionError, e:
+                print "llh with sample with 0 probability"
+                print "optimization failed at iteration %d" % iteration
+                break
             ### test ###
             # converge with precision limit reached #
-            llh_pyv_new = 0.0
-            b_yv = np.sum(self.b, axis=1)
-            for isamp in range(self.Nsamp):
-                for iv in range(self.Nv):
-                    prob_yv = pyv[isamp,iv]
-                    if prob_yv == 0.0:
-                        if b_yv[isamp,iv] == 0.0:
-                            llh_pyv_new += 0.0
-                        else:
-                            print "b", b_yv[isamp, iv]
-                            print "pyv", pyv[isamp,iv]
-                            print "y", y[isamp]
-                            print "mu_v", self.mu_v[iv]
-                            print "sigma_v", self.sigma_v[iv]
-                            print "stop with precision limit at iter ", iteration
-                            return self
-                    else:
-                        llh_pyv_new += (b_yv[isamp,iv] * np.log(prob_yv))
+            # llh_pyv_new = 0.0
+            # b_yv = np.sum(self.b, axis=1)
+            # for isamp in range(self.Nsamp):
+            #     for iv in range(self.Nv):
+            #         prob_yv = pyv[isamp,iv]
+            #         if prob_yv == 0.0:
+            #             if b_yv[isamp,iv] == 0.0:
+            #                 llh_pyv_new += 0.0
+            #             else:
+            #                 print "b", b_yv[isamp, iv]
+            #                 print "pyv", pyv[isamp,iv]
+            #                 print "y", y[isamp]
+            #                 print "mu_v", self.mu_v[iv]
+            #                 print "sigma_v", self.sigma_v[iv]
+            #                 print "stop with precision limit at iter ", iteration
+            #                 return self
+            #         else:
+            #             llh_pyv_new += (b_yv[isamp,iv] * np.log(prob_yv))
             # # llh_pyv_new = np.sum(np.multiply(np.sum(self.b, axis=1), np.log(pyv)))
             # llh_map_new = np.sum(np.multiply(np.sum(self.b, axis=0), np.log(self.map_uv)))
             # pxu_temp = np.zeros([self.Nsamp, self.Nu], dtype=np.float64)
@@ -185,7 +189,9 @@ class CADrank(object):
         core = np.zeros(self.Nsamp, dtype = np.float64)
         for isamp in range(self.Nsamp):
             for iu in range(self.Nu):
-                core[isamp] += pxu[isamp, iu] * np.inner(self.map_uv[iu], pyv[isamp])
+                core[isamp] += (pxu[isamp, iu] * np.inner(self.map_uv[iu], pyv[isamp]))
+            ### 0 test ###
+            assert core[isamp]>0.0
         llh = np.sum(np.log(core)) / self.Nsamp
 
         return llh, pxu, pyv
@@ -348,17 +354,20 @@ def hyperparameters(x, y, Nu, Nv, cv=5, criterion = -1):
 if __name__ == "__main__":
     Nu = [10,20,30]
     Nv = [20,40,60,80,100]
-    news = sys.argv[1]
-    # news = "atlantic"
-    np.random.seed(2017)
+    # news = sys.argv[1]
+    # Nu = 10
+    # Nv = 20
+    news = "nytimes"
+    np.random.seed(2021)
     x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
     y = label2Rank(y)
     print "Nsamp total", x.shape[0]
     result = crossValid(x, y, Nu=Nu, Nv=Nv)
-    with open("results/result_CAD.txt", "a") as f:
-        f.write("prior weighted sum aggregation\n")
-        f.write("scalar variance for preference matrix\n")
-        f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
-        f.write("news: %s\n" % news)
-        f.write("dataset size: %d\n" % x.shape[0])
-        f.write(str(result)+"\n")
+    print result
+    # with open("results/result_CAD.txt", "a") as f:
+    #     f.write("prior weighted sum aggregation\n")
+    #     f.write("scalar variance for preference matrix\n")
+    #     f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
+    #     f.write("news: %s\n" % news)
+    #     f.write("dataset size: %d\n" % x.shape[0])
+    #     f.write(str(result)+"\n")
