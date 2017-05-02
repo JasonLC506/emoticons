@@ -26,7 +26,7 @@ APP_SECRET = '6829d69135dab88c93930f1a3f80b3ab'
 graph = facebook.GraphAPI(APP_ID + "|" + APP_SECRET)
 
 #setting up initial/basic query
-to_scrape_lists = ["FoxNews"]
+to_scrape_lists = ["nytimes"]
 query = "/posts/?fields=id,reactions,created_time,message,link&limit=26"
 comment_query = "/posts/?fields=id,message,comments&limit=26"
 
@@ -190,7 +190,7 @@ def getUserCommentData(page_name):
 #get post reactions count
 def getReactionData(page_name):
 	new_query = page_name + query
-	new_query = new_query + "&since=2016-03-01" + "&until=2016-08-13"
+	new_query = new_query + "&since=2015-01-01" + "&until=2016-01-01"
 	profile = graph.get_object(new_query)
 	i=0
         cnt = 0
