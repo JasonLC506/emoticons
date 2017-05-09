@@ -196,8 +196,10 @@ class CADrank(object):
             except AssertionError, e:
                 print "isamp: ", x[isamp], y[isamp]
                 print "pxu: ", pxu[isamp]
+                print "sigma_u: ", self.sigma_u
                 print "map: ", self.map_uv
                 print "pyv: ", pyv[isamp]
+                print "sigma_v: ", self.sigma_v
                 print "core[isamp]", core[isamp]
                 raise e
         llh = np.sum(np.log(core)) / self.Nsamp
@@ -228,6 +230,7 @@ class CADrank(object):
         return self
 
     def Mstep(self, x, y):
+        ### prior added ###
         ## update parameters ##
         b_part_sum_02 = np.sum(self.b, axis = (0,2))
         b_part_sum_01 = np.sum(self.b, axis = (0,1))
@@ -239,6 +242,8 @@ class CADrank(object):
             self.mu_u[iu,:] = self.mu_u[iu,:] / b_part_sum_02[iu]
         # sigma_u #
         self.sigma_u = variance(x, self.mu_u, weights = np.sum(self.b, axis = 2))
+        for iu in range(self.Nu):
+            self.sigma_u[iu] += (np.identity(self.Du, dtype=np.float64) * 1.0 / x.shape[0])
         # mu_v #
         self.mu_v = np.transpose(np.sum(np.dot(np.transpose(y, axes = (1,2,0)), np.transpose(self.b, axes = (1,0,2))), axis = 2),
                                  axes = (2,0,1))
@@ -251,7 +256,7 @@ class CADrank(object):
                 var_yv[isamp,iv] = np.power(np.linalg.norm(y[isamp] - self.mu_v[iv]),2)
         self.sigma_v = np.zeros(self.Nv, dtype= np.float64)
         for iv in range(self.Nv):
-            self.sigma_v[iv] = np.inner(np.sum(self.b, axis = 1)[:,iv], var_yv[:,iv]) / b_part_sum_01[iv] / np.power(self.Nclass,2)
+            self.sigma_v[iv] = np.inner(np.sum(self.b, axis = 1)[:,iv], var_yv[:,iv]) / b_part_sum_01[iv] / np.power(self.Nclass,2) + 1.0 / y.shape[0]
         # map_uv #
         self.map_uv = np.sum(self.b, axis = 0)
         for iu in range(self.Nu):
