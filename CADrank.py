@@ -365,22 +365,23 @@ def hyperparameters(x, y, Nu, Nv, cv=5, criterion = -1):
     return best_para[0], best_para[1]
 
 if __name__ == "__main__":
-    Nu = [10,20,30]
-    Nv = [20,40,60,80,100]
-    # news = sys.argv[1]
-    # Nu = 10
-    # Nv = 20
-    news = "nytimes"
+    # Nu = [10,20,30]
+    # Nv = [20,40,60,80,100]
+    news = sys.argv[1]
+    Nu = 20
+    Nv = 40
+    # news = "nytimes"
     np.random.seed(2021)
     x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
     y = label2Rank(y)
     print "Nsamp total", x.shape[0]
     result = crossValid(x, y, Nu=Nu, Nv=Nv)
     print result
-    # with open("results/result_CAD.txt", "a") as f:
-    #     f.write("prior weighted sum aggregation\n")
-    #     f.write("scalar variance for preference matrix\n")
-    #     f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
-    #     f.write("news: %s\n" % news)
-    #     f.write("dataset size: %d\n" % x.shape[0])
-    #     f.write(str(result)+"\n")
+    with open("results/result_CAD.txt", "a") as f:
+        f.write("parameter prior simple\n")
+        f.write("prior weighted sum aggregation\n")
+        f.write("scalar variance for preference matrix\n")
+        f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
+        f.write("news: %s\n" % news)
+        f.write("dataset size: %d\n" % x.shape[0])
+        f.write(str(result)+"\n")
