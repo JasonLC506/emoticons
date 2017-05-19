@@ -16,6 +16,6 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import time
 
-a = np.ones([2,4])
-b = np.ones([10,4])
-print np.inner(a,b).shape
+a = np.random.random(9).reshape((3,3))
+print a
+print 1/a

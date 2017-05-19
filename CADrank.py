@@ -141,7 +141,6 @@ class CADrank(object):
         """
         x_test: np.ndarray([Nsamp, Nfeature])
         """
-        ## weighted average of preference matrices ##
         pxu = self._pxucal(x_test) # shape[Nsamp_test, self.Nu]
         pv = np.dot(pxu, self.map_uv)
         return self.aggregate(pv)
@@ -299,15 +298,19 @@ def variance(x, mu_s, weights):
             var[iu] += (np.outer(diff, diff) * weights[isamp, iu] / weight_sum[iu])
     return var
 
-def Gaussian(x, mean, var, scalar_variance = False):
+def Gaussian(x, mean, var, scalar_variance = False, diagonal_variance = False):
     y = x.flatten()
     u = mean.flatten()
     if scalar_variance:
         prob = np.exp(-0.5 * np.inner((y-u),(y-u)) / var) \
                / np.sqrt(np.power(2 * np.pi * var, u.shape[0]))
     else:
-        prob = np.exp(-0.5 * np.inner((y- u), np.inner(np.linalg.inv(var), (y - u)))) \
-           / np.sqrt(np.power(2 * np.pi, u.shape[0]) * abs(np.linalg.det(var)))
+        if diagonal_variance:
+            prob = np.exp(-0.5 * np.sum(np.divide(np.power((y-u),2), var.flatten()))) \
+                / np.sqrt(np.power(2 * np.pi, u.shape[0]) * np.prod(var))
+        else:
+            prob = np.exp(-0.5 * np.inner((y- u), np.inner(np.linalg.inv(var), (y - u)))) \
+                / np.sqrt(np.power(2 * np.pi, u.shape[0]) * abs(np.linalg.det(var)))
     return prob
 
 

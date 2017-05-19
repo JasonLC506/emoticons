@@ -8,6 +8,7 @@ import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
 from DecisionTree import label2Rank
 import math
+import copy
 
 
 class SmpRank(object):
@@ -126,16 +127,17 @@ class SmpRank(object):
         :param y: L*L np.ndarray
         :return: L ranking
         """
+        L = y.shape[0]
         y_rank = []
-        labels = [label for label in range(self.L)]
-        y_to_max = np.array(y)
+        labels = [label for label in range(L)]
+        y_to_max = copy.deepcopy(y)
         while len(labels)>0:
             # find max value pair in preference matrix #
             ind_max = np.argmax(y_to_max)
-            prior, latter = ind_max / self.L, ind_max % self.L
+            prior, latter = ind_max / L, ind_max % L
             val_max = y_to_max[prior, latter]
-            if val_max == 0:
-                break
+            # if val_max == 0:
+            #     break
             # for test #
             if prior not in labels:
                 print y
@@ -165,7 +167,7 @@ class SmpRank(object):
                     y[ll, prior] = 0.0
                     y[prior, ll] = 0.0
         # tail abstention #
-        for pos in range(len(y_rank), self.L):
+        for pos in range(len(y_rank), L):
             y_rank.append(-1)
         return y_rank
 
