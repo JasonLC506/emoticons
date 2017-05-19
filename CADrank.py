@@ -6,10 +6,12 @@ The Main structure of two GMMs mapping is based on Song, X., Wu, M., Jermaine, C
 """
 
 import numpy as np
+from Math_Gaussian import Gaussian
 from logRegFeatureEmotion import dataClean
 import logRegFeatureEmotion as LogR
 from DecisionTreeWeight import label2Rank
 from SMPrank import SmpRank
+from GMMpredict import GMM
 from sklearn.model_selection import KFold
 import sys
 
@@ -263,21 +265,33 @@ class CADrank(object):
 
         return self
 
+    # def aggregate(self, pv):
+    #     """
+    #     aggregate weighted mixed Gaussian of preference matrix into ranking
+    #     using prior weighted average of means
+    #     """
+    #     y_pref = np.dot(pv, np.transpose(self.mu_v, axes = (1,0,2)))
+    #     # using aggregate in SMPrank to transform preference matrix to ranking#
+    #     smp = SmpRank(K=1)
+    #     smp.L = self.Nclass
+    #     y_pref_list = y_pref.tolist()
+    #     # y_rank_list = map(smp.aggregate, y_pref_list)
+    #     y_rank_list = []
+    #     for i in range(len(y_pref_list)):
+    #         y_rank_list.append(smp.aggregate(np.array(y_pref_list[i])))
+    #     return np.array(y_rank_list, dtype = np.float64)
+
     def aggregate(self, pv):
-        """
-        aggregate weighted mixed Gaussian of preference matrix into ranking
-        using prior weighted average of means
-        """
-        y_pref = np.dot(pv, np.transpose(self.mu_v, axes = (1,0,2)))
-        # using aggregate in SMPrank to transform preference matrix to ranking#
-        smp = SmpRank(K=1)
-        smp.L = self.Nclass
-        y_pref_list = y_pref.tolist()
-        # y_rank_list = map(smp.aggregate, y_pref_list)
         y_rank_list = []
-        for i in range(len(y_pref_list)):
-            y_rank_list.append(smp.aggregate(np.array(y_pref_list[i])))
-        return np.array(y_rank_list, dtype = np.float64)
+        for isamp in range(pv.shape[0]):
+            prior = pv[isamp]
+            mu = self.mu_v
+            sigma = np.ones([self.Nv, self.Nclass, self.Nclass], dtype=np.float64)
+            for iv in range(self.Nv):
+                sigma[iv,:,:] = self.sigma_v[iv]    # uniform diagonal covariance matrix
+            y_rank = GMM().setparas(prior, mu, sigma).predict()
+            y_rank_list.append(y_rank)
+        return np.array(y_rank_list, dtype=np.float64)
 
 def variance(x, mu_s, weights):
     """
@@ -297,21 +311,6 @@ def variance(x, mu_s, weights):
             diff = x[isamp] - mu_s[iu]
             var[iu] += (np.outer(diff, diff) * weights[isamp, iu] / weight_sum[iu])
     return var
-
-def Gaussian(x, mean, var, scalar_variance = False, diagonal_variance = False):
-    y = x.flatten()
-    u = mean.flatten()
-    if scalar_variance:
-        prob = np.exp(-0.5 * np.inner((y-u),(y-u)) / var) \
-               / np.sqrt(np.power(2 * np.pi * var, u.shape[0]))
-    else:
-        if diagonal_variance:
-            prob = np.exp(-0.5 * np.sum(np.divide(np.power((y-u),2), var.flatten()))) \
-                / np.sqrt(np.power(2 * np.pi, u.shape[0]) * np.prod(var))
-        else:
-            prob = np.exp(-0.5 * np.inner((y- u), np.inner(np.linalg.inv(var), (y - u)))) \
-                / np.sqrt(np.power(2 * np.pi, u.shape[0]) * abs(np.linalg.det(var)))
-    return prob
 
 
 def crossValid(x, y, cv = 5, Nu = 10, Nv = 20):
@@ -368,11 +367,11 @@ def hyperparameters(x, y, Nu, Nv, cv=5, criterion = -1):
     return best_para[0], best_para[1]
 
 if __name__ == "__main__":
-    # Nu = [10,20,30]
-    # Nv = [20,40,60,80,100]
+    Nu = [10,20,30]
+    Nv = [20,40,60,80,100]
     news = sys.argv[1]
-    Nu = 20
-    Nv = 40
+    # Nu = 20
+    # Nv = 40
     # news = "nytimes"
     np.random.seed(2021)
     x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
@@ -382,7 +381,7 @@ if __name__ == "__main__":
     print result
     with open("results/result_CAD.txt", "a") as f:
         f.write("parameter prior simple\n")
-        f.write("prior weighted sum aggregation\n")
+        f.write("True MLE aggregation\n")
         f.write("scalar variance for preference matrix\n")
         f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
         f.write("news: %s\n" % news)

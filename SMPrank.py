@@ -161,7 +161,7 @@ class SmpRank(object):
             y_rank.insert(pos_max, prior)
             # print "y_rank", y_rank### test ###
             del labels[labels.index(prior)]
-            y_to_max[prior,:] = 0.0 ## not to be picked again ##
+            y_to_max[prior,:] = -1.0 ## not to be picked again ##
             for ll in y_rank:
                 if ll != prior:
                     y[ll, prior] = 0.0

@@ -18,4 +18,5 @@ import time
 
 a = np.random.random(9).reshape((3,3))
 print a
-print 1/a
+a[:,:] = 0.0
+print a

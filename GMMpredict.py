@@ -5,7 +5,7 @@ Default prediction of label ranking via GMM of preference matrix, referred to SM
 
 import numpy as np
 from SMPrank import SmpRank
-from CADrank import Gaussian
+from Math_Gaussian import Gaussian
 import copy
 
 MAX_ITERATION = 100
@@ -45,6 +45,7 @@ class GMM(object):
         self.llh = self.llhcal()
         llh_old = self.llh
         y_rank_old = self.y_rank
+        print "initial with ranking ", y_rank_old
         for iter in range(max_iteration):
             self.Estep()
             # Q = self.Qcal()
@@ -72,6 +73,7 @@ class GMM(object):
                 self.llh = llh_old
                 self.y_rank = y_rank_old
                 print "TOUGH aggregation fails, early stop at iter ", iter+1
+                print "with ranking ", self.y_rank
                 break   # end iteration when TOUGH fails
             # print "at the end of iter ", iter + 1
             # print "Q before Mstep ", Q
@@ -84,6 +86,7 @@ class GMM(object):
             # check converge #
             if self.rankequal(y_rank_old, self.y_rank):
                 print "early converge at iter", iter+1
+                print "with ranking ", self.y_rank
                 break
             y_rank_old = self.y_rank
         return self.y_rank
@@ -116,7 +119,7 @@ class GMM(object):
         mu_weighted = np.multiply(w_comp, self.mu)
         self.w = np.sum(w_comp, axis = 0)
         mu_mean = np.divide(np.sum(mu_weighted, axis = 0), self.w)
-        print "mu_mean", mu_mean
+        # print "mu_mean", mu_mean
         Y = - 0.5 * (np.multiply(self.w, np.power((1-mu_mean), 2)) + np.transpose(np.multiply(self.w, np.power(mu_mean, 2))))
         Y_min = np.amin(Y)
         Y = Y - Y_min   # shift to all positive value
