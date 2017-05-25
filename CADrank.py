@@ -367,7 +367,7 @@ def hyperparameters(x, y, Nu, Nv, cv=5, criterion = -1):
     return best_para[0], best_para[1]
 
 if __name__ == "__main__":
-    Nu = [10,20,30]
+    Nu = [30,40,60,80,100]
     Nv = [20,40,60,80,100]
     news = sys.argv[1]
     # Nu = 20
