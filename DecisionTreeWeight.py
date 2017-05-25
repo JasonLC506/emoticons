@@ -6,11 +6,13 @@ import numpy as np
 import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
 from readSushiData import readSushiData
+from readSyntheticData import readSyntheticData
 from biheap import BiHeap
 from functools import partial
 from scipy.stats.mstats import gmean
 from datetime import datetime
 from stats import pairwise
+import sys
 
 from logRegFeatureEmotion import NONERECALL
 
@@ -718,23 +720,24 @@ if __name__ == "__main__":
     # print "prune_criterion: tau (perf[5+3*Nclass])"
     # # print result_nopruned
     # print result_pruned
-    criteria_list = [0, 5+3*6, -1]
-    for criteria in criteria_list:
-        x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
-        y = label2Rank(y)
-        # ### sushi data ###
-        # x,y = readSushiData()
-        #
-        #
-        result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False, alpha = None, prune_criteria = criteria)
-        # write2result #
-        file = open("results/result_dt_prunetry.txt","a")
-        file.write("washington posts")
-        file.write("pruned with mis_rate=tau, criteria=%d" % criteria)
-        file.write("number of samples: %d\n" % x.shape[0])
-        file.write("NONERECALL: %f\n" % NONERECALL)
-        file.write("CV: %d\n" % 5)
-        file.write(str(result)+"\n")
-        file.close()
-        print result
+
+    # x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
+    # y = label2Rank(y)
+    # ### sushi data ###
+    # x,y = readSushiData()
+    # ## synthetic data ##
+    # dataset = "bodyfat"
+    dataset = sys.argv[1]
+    x, y = readSyntheticData("data/synthetic/" + dataset)
+    result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
+    # write2result #
+    file = open("results/result_dt_synthetic.txt","a")
+    file.write("dataset: synthetic %s\n" % dataset)
+    file.write("no prune\n")
+    file.write("number of samples: %d\n" % x.shape[0])
+    file.write("NONERECALL: %f\n" % NONERECALL)
+    file.write("CV: %d\n" % 5)
+    file.write(str(result)+"\n")
+    file.close()
+    print result
 

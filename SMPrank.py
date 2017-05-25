@@ -9,6 +9,8 @@ from sklearn.model_selection import KFold
 from DecisionTree import label2Rank
 import math
 import copy
+from readSyntheticData import readSyntheticData
+import sys
 
 
 class SmpRank(object):
@@ -358,10 +360,12 @@ def simulateddata(N, L, d):
 
 
 if __name__ == "__main__":
-    x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
-    y = label2Rank(y)
+    # dataset = "bodyfat"
+    dataset = sys.argv[1]
+    x, y = readSyntheticData("data/synthetic/" + dataset)
     results = crossValidate(x,y,K=100)
     print results
-    with open("results/result_SMP_washington.txt", "a") as f:
+    with open("results/result_SMP_synthetic.txt", "a") as f:
+        f.write("dataset: synthetic %s\n" % dataset)
         f.write(str(results))
         f.write("\n")

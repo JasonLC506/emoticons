@@ -4,6 +4,8 @@ from queryAlchemy import emotion_list
 from logRegFeatureEmotion import emoticon_list
 from sklearn.model_selection import KFold
 from readSushiData import readSushiData
+from readSyntheticData import readSyntheticData
+import sys
 
 def score2pair(x,y, k = 2, Abstention = False):
     """
@@ -176,7 +178,10 @@ def rank2score(rank):
 if __name__ == "__main__":
     # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
     ## for ranking data ##
-    x,y = readSushiData()
+    # x,y = readSushiData()
+    # dataset = "glass"
+    dataset = sys.argv[1]
+    x, y = readSyntheticData("data/synthetic/" + dataset)
     y = y.tolist()
     y = map(rank2score, y)
     y = np.array(y)
@@ -186,7 +191,8 @@ if __name__ == "__main__":
     result = crossValidate(x, y, cv=5, Abstention=Absention, Inverse_laplace=Inverse_laplace)
     print result
     # write2result #
-    file = open("result_rpp_sushi.txt","a")
+    file = open("results/result_rpp_synthetic.txt","a")
+    file.write("dataset: synthetic %s\n" % dataset)
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)

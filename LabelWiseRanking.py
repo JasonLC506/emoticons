@@ -4,6 +4,8 @@ import logRegFeatureEmotion as LogR
 from DecisionTree import label2Rank
 import numpy as np
 from munkres import Munkres
+from readSyntheticData import readSyntheticData
+import sys
 
 def rank2position(y_train):
     """
@@ -98,9 +100,9 @@ def labelWiseRanking(x_train, y_train, x_test):
     :return: ranking data
     """
     y_train_pos, valid_samp, miss = rank2position(y_train)
-    print "miss", miss
-    print "y_train_pos", y_train_pos.shape
-    print "valid_samp", valid_samp.shape
+    # print "miss", miss
+    # print "y_train_pos", y_train_pos.shape
+    # print "valid_samp", valid_samp.shape
     Nsamp_test = x_test.shape[0]
     Nclass = y_train_pos.shape[1]
     posproblist_labels = [[] for label in range(Nclass)]
@@ -158,12 +160,15 @@ def crossValidate(x,y,cv=5):
 
 
 if __name__ == "__main__":
-    x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
-    y = label2Rank(y)
-
+    # x,y = LogR.dataClean("data/nytimes_Feature_linkemotion.txt")
+    # y = label2Rank(y)
+    # dataset = "bodyfat"
+    dataset = sys.argv[1]
+    x, y = readSyntheticData("data/synthetic/" + dataset)
     result = crossValidate(x,y)
 
-    file = open("result_LWR_nytimes.txt","a")
+    file = open("results/result_LWR_synthetic.txt","a")
+    file.write("dataset: synthetic %s\n" % dataset)
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % LogR.NONERECALL)
     file.write("CV: %d\n" % 5)
