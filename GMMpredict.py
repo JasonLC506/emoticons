@@ -45,7 +45,7 @@ class GMM(object):
         self.llh = self.llhcal()
         llh_old = self.llh
         y_rank_old = self.y_rank
-        print "initial with ranking ", y_rank_old
+        # print "initial with ranking ", y_rank_old
         for iter in range(max_iteration):
             self.Estep()
             # Q = self.Qcal()
@@ -85,8 +85,8 @@ class GMM(object):
             llh_old = self.llh
             # check converge #
             if self.rankequal(y_rank_old, self.y_rank):
-                print "early converge at iter", iter+1
-                print "with ranking ", self.y_rank
+                # print "early converge at iter", iter+1
+                # print "with ranking ", self.y_rank
                 break
             y_rank_old = self.y_rank
         return self.y_rank

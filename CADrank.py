@@ -14,6 +14,7 @@ from SMPrank import SmpRank
 from GMMpredict import GMM
 from sklearn.model_selection import KFold
 import sys
+from readSyntheticData import readSyntheticData
 
 THRESHOLD = 0.001
 MAX_ITERATION = 100
@@ -367,23 +368,31 @@ def hyperparameters(x, y, Nu, Nv, cv=5, criterion = -1):
     return best_para[0], best_para[1]
 
 if __name__ == "__main__":
-    Nu = [30,40,60,80,100]
-    Nv = [20,40,60,80,100]
-    news = sys.argv[1]
+    # Nu = [30,40,60,80,100]
+    # Nv = [20,40,60,80,100]
+    # news = sys.argv[1]
     # Nu = 20
     # Nv = 40
     # news = "nytimes"
     np.random.seed(2021)
-    x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
-    y = label2Rank(y)
-    print "Nsamp total", x.shape[0]
+    # x, y = dataClean("data/"+news+"_Feature_linkemotion.txt")
+    # y = label2Rank(y)
+    # dataset = "bodyfat"
+    dataset = sys.argv[1]
+    x, y = readSyntheticData("data/synthetic/" + dataset)
+    K = 20
+    Nsamp = x.shape[0]
+    Nu = int(Nsamp/K)
+    Nv = int(Nsamp/K)
+    print "Nsamp total", Nsamp
     result = crossValid(x, y, Nu=Nu, Nv=Nv)
     print result
-    with open("results/result_CAD.txt", "a") as f:
+    with open("results/result_CAD_synthetic.txt", "a") as f:
+        f.write("dataset: synthetic %s\n" % dataset)
         f.write("parameter prior simple\n")
         f.write("True MLE aggregation\n")
         f.write("scalar variance for preference matrix\n")
         f.write("Nu: %s, Nv: %s\n" % (str(Nu), str(Nv)))
-        f.write("news: %s\n" % news)
+        # f.write("news: %s\n" % news)
         f.write("dataset size: %d\n" % x.shape[0])
         f.write(str(result)+"\n")
