@@ -16,7 +16,7 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import time
 
-a = np.random.random(9).reshape((3,3))
-print a
-a[:,:] = 0.0
-print a
+p = np.zeros([3,4,5,6])
+x = np.arange(12).reshape([2,6])
+p[1,1,1, :] = x[1, :]
+print p[-2]

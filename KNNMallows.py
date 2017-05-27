@@ -13,6 +13,8 @@ import logRegFeatureEmotion as LogR
 from datetime import datetime
 from datetime import timedelta
 from readSushiData import readSushiData
+import sys
+from readSyntheticData import readSyntheticData
 
 class KNNMallows(KNN):
     def aggregate(self, neighbors):
@@ -72,14 +74,17 @@ def crossValidate(x, y, cv=5, K=None):
 
 
 if __name__ == "__main__":
-    newsfiles = ["nytimes","wsj","washington"]
-    for news in newsfiles:
-        datafile = "data/" + news + "_Feature_linkemotion.txt"
+        # news = "nytimes"
+        # datafile = "data/" + news + "_Feature_linkemotion.txt"
         K = 20
 
-        x,y = LogR.dataClean(datafile)
-        y = np.array(map(LogR.rankOrder, y.tolist()))
+        # x,y = LogR.dataClean(datafile)
+        # y = np.array(map(LogR.rankOrder, y.tolist()))
         # x, y = readSushiData()
+
+        # dataset = "bodyfat"
+        dataset = sys.argv[1]
+        x, y = readSyntheticData("data/synthetic/" + dataset)
 
         start = datetime.now()
         result = crossValidate(x,y,K=K)
@@ -88,8 +93,8 @@ if __name__ == "__main__":
         print duration.total_seconds()
         print result
 
-        with open("results/result_KNNMallows.txt", "a") as f:
+        with open("results/result_KNNMallows_synthetic.txt", "a") as f:
             f.write("K = %d\n" % K)
-            f.write("data = %s\n" % datafile)
+            f.write("dataset: synthetic %s\n" % dataset)
             f.write("time = %f\n" % duration.total_seconds())
             f.write(str(result)+"\n")
