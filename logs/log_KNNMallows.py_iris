@@ -1,0 +1,172 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  1
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  1
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  1
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+5.766489
+{'perf': [array([  0.94      ,   0.        ,   0.        ,   0.97333333,
+         0.98666667,   0.98      ,   0.97333333,   0.98666667,
+         0.98      ,  30.        ,  30.        ,  30.        ,
+         0.        ,   0.97982289,   0.96      ,          nan,
+         0.92800025,   0.90490196,   0.92669192,          nan,
+         0.94647686,   0.92914439,   0.88250916,          nan,
+         0.        ,  15.6       ,  14.6       ,  14.4       ,
+         0.        ,  20.        ,  15.4       ,  10.        ,
+         0.        ,   0.91896188]), array([ 0.02494438,  0.        ,  0.        ,  0.02494438,  0.01632993,
+        0.01632993,  0.02494438,  0.01632993,  0.01632993,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.00839755,  0.01662959,
+               nan,  0.02965296,  0.04097888,  0.01480315,         nan,
+        0.01178803,  0.02778932,  0.03460715,         nan,  0.        ,
+        3.61109402,  2.33238076,  3.61109402,  0.        ,  2.0976177 ,
+        2.33238076,  2.0976177 ,  0.        ,  0.00771661])]}

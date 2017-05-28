@@ -1,0 +1,146 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+Nsamp total 178
+---------  before iter 0 ---------
+llh_old:  -11.5559789533
+---------  before iter 1 ---------
+llh_old:  -3.69377616658
+---------  before iter 2 ---------
+llh_old:  1.29818279031
+---------  before iter 3 ---------
+llh_old:  11.6505777457
+---------  before iter 4 ---------
+llh_old:  13.6177802356
+---------  before iter 5 ---------
+llh_old:  13.6545454261
+---------  before iter 6 ---------
+llh_old:  13.656547296
+early converged at  6
+resulting llh  13.6557080207
+---------  before iter 0 ---------
+llh_old:  -11.602531341
+---------  before iter 1 ---------
+llh_old:  -3.07906200736
+---------  before iter 2 ---------
+llh_old:  -0.416053355889
+---------  before iter 3 ---------
+llh_old:  9.51486919236
+---------  before iter 4 ---------
+llh_old:  13.3500641123
+---------  before iter 5 ---------
+llh_old:  13.4369639669
+---------  before iter 6 ---------
+llh_old:  13.5000499319
+---------  before iter 7 ---------
+llh_old:  13.5368947173
+---------  before iter 8 ---------
+llh_old:  13.5495516733
+---------  before iter 9 ---------
+llh_old:  13.559462557
+---------  before iter 10 ---------
+llh_old:  13.5696017888
+---------  before iter 11 ---------
+llh_old:  13.5806468201
+---------  before iter 12 ---------
+llh_old:  13.5985393525
+---------  before iter 13 ---------
+llh_old:  13.614288717
+---------  before iter 14 ---------
+llh_old:  13.6325167099
+---------  before iter 15 ---------
+llh_old:  13.642900503
+---------  before iter 16 ---------
+llh_old:  13.6511013338
+---------  before iter 17 ---------
+llh_old:  13.675731111
+---------  before iter 18 ---------
+llh_old:  13.7109889158
+---------  before iter 19 ---------
+llh_old:  13.7377093626
+---------  before iter 20 ---------
+llh_old:  13.7415064295
+early converged at  20
+resulting llh  13.7416485416
+---------  before iter 0 ---------
+llh_old:  -12.4565243484
+---------  before iter 1 ---------
+llh_old:  -3.95958197497
+---------  before iter 2 ---------
+llh_old:  -0.399258991512
+---------  before iter 3 ---------
+llh_old:  10.4726282014
+---------  before iter 4 ---------
+llh_old:  13.5993576271
+---------  before iter 5 ---------
+llh_old:  13.6620881089
+---------  before iter 6 ---------
+llh_old:  13.6919948422
+---------  before iter 7 ---------
+llh_old:  13.7019132695
+---------  before iter 8 ---------
+llh_old:  13.7060468847
+---------  before iter 9 ---------
+llh_old:  13.7085985797
+early converged at  9
+resulting llh  13.7074982842
+---------  before iter 0 ---------
+llh_old:  -11.7089345473
+---------  before iter 1 ---------
+llh_old:  -3.20573565205
+---------  before iter 2 ---------
+llh_old:  1.9646199803
+---------  before iter 3 ---------
+llh_old:  11.5565480803
+---------  before iter 4 ---------
+llh_old:  13.6396660721
+---------  before iter 5 ---------
+llh_old:  13.7320036598
+---------  before iter 6 ---------
+llh_old:  13.766839545
+---------  before iter 7 ---------
+llh_old:  13.775009563
+early converged at  7
+resulting llh  13.7745401955
+---------  before iter 0 ---------
+llh_old:  -11.0476585162
+---------  before iter 1 ---------
+llh_old:  -3.44974893627
+---------  before iter 2 ---------
+llh_old:  2.1426860426
+---------  before iter 3 ---------
+llh_old:  12.454202499
+---------  before iter 4 ---------
+llh_old:  13.1359829263
+---------  before iter 5 ---------
+llh_old:  13.5144834599
+---------  before iter 6 ---------
+llh_old:  13.5320872873
+---------  before iter 7 ---------
+llh_old:  13.5415839638
+---------  before iter 8 ---------
+llh_old:  13.5528821738
+---------  before iter 9 ---------
+llh_old:  13.5551083702
+---------  before iter 10 ---------
+llh_old:  13.5562588379
+early converged at  10
+resulting llh  13.5556238307
+{'perf': [array([  0.84238095,   0.        ,   0.        ,   0.96031746,
+         0.91015873,   0.95492063,   0.96031746,   0.91015873,
+         0.95492063,  35.6       ,  35.6       ,  35.6       ,
+         0.        ,   0.94128114,   0.86507937,          nan,
+         0.9027269 ,   0.93816606,   0.75369306,          nan,
+         0.94698362,   0.84062049,   0.85179487,          nan,
+         0.        ,  20.4       ,  24.8       ,  15.2       ,
+         0.        ,  25.8       ,  10.8       ,   9.8       ,
+         0.        ,   0.86858759]), array([ 0.03961772,  0.        ,  0.        ,  0.02926409,  0.01068809,
+        0.03880749,  0.02926409,  0.01068809,  0.03880749,  0.48989795,
+        0.48989795,  0.48989795,  0.        ,  0.01860069,  0.05094224,
+               nan,  0.04205901,  0.023306  ,  0.03008309,         nan,
+        0.0360833 ,  0.04596045,  0.081296  ,         nan,  0.        ,
+        1.49666295,  3.12409987,  1.72046505,  0.        ,  2.85657137,
+        3.05941171,  2.71293199,  0.        ,  0.01971576])], 'Nv': [8.0, 0.0], 'Nu': [8.0, 0.0]}

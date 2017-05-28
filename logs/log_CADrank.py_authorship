@@ -1,0 +1,112 @@
+CADrank.py:219: RuntimeWarning: invalid value encountered in divide
+  pxu[isamp,:] = pxu[isamp,:] / pxu_partial_sum
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+Nsamp total 841
+---------  before iter 0 ---------
+llh_old:  -23.7028710331
+---------  before iter 1 ---------
+llh_old:  -3.96363479274
+---------  before iter 2 ---------
+llh_old:  3.11910943508
+---------  before iter 3 ---------
+llh_old:  28.3141495361
+---------  before iter 4 ---------
+llh_old:  35.9197652714
+---------  before iter 5 ---------
+llh_old:  36.0158388658
+early converged at  5
+resulting llh  36.0158388689
+---------  before iter 0 ---------
+llh_old:  -24.0568875919
+---------  before iter 1 ---------
+llh_old:  -4.68237834055
+---------  before iter 2 ---------
+llh_old:  2.20963949449
+---------  before iter 3 ---------
+llh_old:  26.7596132351
+---------  before iter 4 ---------
+llh_old:  35.804994036
+---------  before iter 5 ---------
+llh_old:  35.955168015
+early converged at  5
+resulting llh  35.9551687705
+---------  before iter 0 ---------
+llh_old:  -24.0973442815
+---------  before iter 1 ---------
+llh_old:  -4.40487923001
+---------  before iter 2 ---------
+llh_old:  3.30547575393
+---------  before iter 3 ---------
+llh_old:  23.2294087543
+---------  before iter 4 ---------
+llh_old:  35.8363333397
+---------  before iter 5 ---------
+llh_old:  35.9782027889
+early converged at  5
+resulting llh  35.9782027889
+---------  before iter 0 ---------
+llh_old:  -23.406650656
+---------  before iter 1 ---------
+llh_old:  -4.1354356319
+---------  before iter 2 ---------
+llh_old:  1.63877045269
+---------  before iter 3 ---------
+llh_old:  21.1369467674
+---------  before iter 4 ---------
+llh_old:  36.0037469013
+---------  before iter 5 ---------
+llh_old:  36.0082393139
+early converged at  5
+resulting llh  36.0082402133
+---------  before iter 0 ---------
+llh_old:  -24.5440692905
+---------  before iter 1 ---------
+llh_old:  -4.73830182338
+---------  before iter 2 ---------
+llh_old:  2.09121229828
+---------  before iter 3 ---------
+llh_old:  26.5344413808
+---------  before iter 4 ---------
+llh_old:  35.923435309
+---------  before iter 5 ---------
+llh_old:  35.9351413924
+early converged at  5
+resulting llh  35.9351413924
+{'perf': [array([  2.37390814e-03,   0.00000000e+00,   0.00000000e+00,
+         4.75274725e-02,   2.43723584e-01,   9.34643562e-01,
+         1.00000000e+00,   4.75274725e-02,   2.43723584e-01,
+         9.34643562e-01,   1.00000000e+00,   1.68200000e+02,
+         1.68200000e+02,   1.68200000e+02,   1.68200000e+02,
+         0.00000000e+00,   3.16880492e-01,  -2.96924016e-01,
+                    nan,   1.10420057e-02,   6.34743504e-03,
+         7.99426515e-03,   9.87670832e-01,              nan,
+         6.30748438e-03,   8.61894916e-03,   9.28571429e-01,
+         9.22683983e-01,              nan,   6.09057403e-02,
+         9.78557721e-01,   9.81749367e-01,   9.93518797e-01,
+                    nan,   0.00000000e+00,   8.88000000e+01,
+         1.55600000e+02,   1.23200000e+02,   7.94000000e+01,
+         0.00000000e+00,   1.56600000e+02,   1.14400000e+02,
+         1.26000000e+01,   1.16000000e+01,   0.00000000e+00,
+         1.58000000e+01,   4.50000000e+01,   5.38000000e+01,
+         1.52400000e+02,   0.00000000e+00,   1.03033428e-01]), array([  2.90745316e-03,   0.00000000e+00,   0.00000000e+00,
+         2.04878675e-02,   3.62399192e-02,   1.85960220e-02,
+         0.00000000e+00,   2.04878675e-02,   3.62399192e-02,
+         1.85960220e-02,   0.00000000e+00,   4.00000000e-01,
+         4.00000000e-01,   4.00000000e-01,   4.00000000e-01,
+         0.00000000e+00,   4.38385212e-02,   3.27413326e-02,
+                    nan,   5.56008243e-04,   1.21042520e-04,
+         2.34466410e-04,   7.56407430e-04,              nan,
+         1.22079322e-04,   4.77890141e-04,   1.30410133e-02,
+         1.54050525e-02,              nan,   2.00820025e-02,
+         1.95327853e-03,   2.63298177e-03,   1.69062908e-04,
+                    nan,   0.00000000e+00,   4.70744092e+00,
+         2.93938769e+00,   3.76297754e+00,   4.75815090e+00,
+         0.00000000e+00,   3.00665928e+00,   6.80000000e+00,
+         3.32264955e+00,   3.38230691e+00,   0.00000000e+00,
+         4.26145515e+00,   4.00000000e+00,   7.02566723e+00,
+         4.12795349e+00,   0.00000000e+00,   2.23603629e-03])], 'Nv': [42.0, 0.0], 'Nu': [42.0, 0.0]}

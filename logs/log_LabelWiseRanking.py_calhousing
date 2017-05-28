@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "LabelWiseRanking.py", line 6, in <module>
+    from munkres import Munkres
+ImportError: No module named munkres
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+{'perf': [array([  2.10998062e-01,   0.00000000e+00,   0.00000000e+00,
+         5.57412791e-01,   7.27374031e-01,   7.41666667e-01,
+         8.05135659e-01,   5.57412791e-01,   7.27374031e-01,
+         7.41666667e-01,   8.05135659e-01,   4.12800000e+03,
+         4.12800000e+03,   4.12800000e+03,   4.12800000e+03,
+         0.00000000e+00,   7.01384514e-01,   2.42942506e-01,
+                    nan,   4.37061379e-01,   2.56452613e-01,
+         6.20784967e-01,   7.41401732e-01,              nan,
+         7.39460796e-01,   6.10725701e-01,   8.79106221e-01,
+         4.55954783e-01,              nan,   6.20130072e-01,
+         6.46184733e-01,   6.33973763e-01,   6.45188662e-01,
+                    nan,   0.00000000e+00,   1.90580000e+03,
+         1.60060000e+03,   2.12220000e+03,   2.22220000e+03,
+         0.00000000e+00,   2.13700000e+03,   2.11000000e+03,
+         2.52740000e+03,   1.99100000e+03,   0.00000000e+00,
+         2.11780000e+03,   2.00580000e+03,   2.01800000e+03,
+         2.01020000e+03,   0.00000000e+00,   5.82554593e-01]), array([  4.15933644e-03,   0.00000000e+00,   0.00000000e+00,
+         8.99781178e-03,   1.07046236e-02,   1.40784270e-02,
+         9.76064309e-03,   8.99781178e-03,   1.07046236e-02,
+         1.40784270e-02,   9.76064309e-03,   0.00000000e+00,
+         0.00000000e+00,   0.00000000e+00,   0.00000000e+00,
+         0.00000000e+00,   3.85909588e-03,   5.08287519e-03,
+                    nan,   6.05304808e-03,   7.85745912e-03,
+         1.14308786e-02,   1.31237389e-02,              nan,
+         1.02072761e-02,   1.14786425e-02,   2.28997635e-03,
+         9.41269048e-03,              nan,   1.29072286e-02,
+         1.16756698e-02,   1.23264004e-02,   1.23355474e-02,
+                    nan,   0.00000000e+00,   3.55606524e+01,
+         1.25634390e+01,   3.79757818e+01,   3.55606524e+01,
+         0.00000000e+00,   2.71514272e+01,   4.00749298e+01,
+         1.25634390e+01,   2.71514272e+01,   0.00000000e+00,
+         4.24282924e+01,   3.79757818e+01,   4.00749298e+01,
+         4.24282924e+01,   0.00000000e+00,   3.68125095e-03])]}

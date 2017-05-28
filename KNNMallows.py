@@ -27,7 +27,6 @@ class Mallows(object):
     """
     def __init__(self):
         self.Nclass = 0
-        self.theta = 0.0
         self.median = None
 
     def fit(self, y_s, max_iteration = 100, iter_out = True):
@@ -35,7 +34,7 @@ class Mallows(object):
         self.Nclass = y_s.shape[1]
         ranks = y_s.tolist()
         ranks = map(rankO2New, ranks)
-        self.theta, self.median, iter = MM(ranks, max_iter = max_iteration, iter_out = iter_out)
+        _, self.median, iter = MM(ranks, max_iter = max_iteration, iter_out = iter_out, theta_calculate=False)
         print "converge in ", iter
         return self
 
@@ -82,8 +81,8 @@ if __name__ == "__main__":
         # y = np.array(map(LogR.rankOrder, y.tolist()))
         # x, y = readSushiData()
 
-        # dataset = "bodyfat"
-        dataset = sys.argv[1]
+        dataset = "calhousing"
+        # dataset = sys.argv[1]
         x, y = readSyntheticData("data/synthetic/" + dataset)
 
         start = datetime.now()

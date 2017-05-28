@@ -1,0 +1,34 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+0.0 alpha
+0.0 alpha
+0.0 alpha
+0.0 alpha
+0.0 alpha
+{'alpha': [0.0, 0.0], 'perf': [array([   0.70517751,    0.        ,    0.        ,    0.90251479,
+          0.87757819,    0.95954494,    0.92991688,    0.90251479,
+          0.87757819,    0.95954494,    0.92991688,  168.2       ,
+        168.2       ,  168.2       ,  168.2       ,    0.        ,
+          0.91647066,    0.87282333,           nan,    0.85021532,
+          0.98205779,    0.95661986,    0.84221606,           nan,
+          0.98216404,    0.91082342,    0.79761905,    0.79385281,
+                 nan,    0.67582432,    0.89721168,    0.88057731,
+          0.96769792,           nan,    0.        ,   88.8       ,
+        155.6       ,  123.2       ,   79.4       ,    0.        ,
+        156.6       ,  114.4       ,   12.6       ,   11.6       ,
+          0.        ,   15.8       ,   45.        ,   53.8       ,
+        152.4       ,    0.        ,    0.87001883]), array([ 0.0498534 ,  0.        ,  0.        ,  0.03134204,  0.03695943,
+        0.01899829,  0.03512994,  0.03134204,  0.03695943,  0.01899829,
+        0.03512994,  0.4       ,  0.4       ,  0.4       ,  0.4       ,
+        0.        ,  0.01598074,  0.02589324,         nan,  0.0498318 ,
+        0.01275076,  0.01552071,  0.04669868,         nan,  0.01266803,
+        0.02685995,  0.08972116,  0.08540958,         nan,  0.15901311,
+        0.06063747,  0.02953008,  0.01964274,         nan,  0.        ,
+        4.70744092,  2.93938769,  3.76297754,  4.7581509 ,  0.        ,
+        3.00665928,  6.8       ,  3.32264955,  3.38230691,  0.        ,
+        4.26145515,  4.        ,  7.02566723,  4.12795349,  0.        ,
+        0.01688903])]}

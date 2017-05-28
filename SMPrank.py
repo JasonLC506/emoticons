@@ -363,9 +363,12 @@ if __name__ == "__main__":
     # dataset = "bodyfat"
     dataset = sys.argv[1]
     x, y = readSyntheticData("data/synthetic/" + dataset)
-    results = crossValidate(x,y,K=100)
+    K = min(max(math.factorial(y.shape[1]-1), math.factorial(y.shape[1])/2), y.shape[0]/50)
+    print "dataset, N,d,L,K", dataset, y.shape[0], x.shape[1], y.shape[1], K
+    results = crossValidate(x,y,K=K)
     print results
     with open("results/result_SMP_synthetic.txt", "a") as f:
         f.write("dataset: synthetic %s\n" % dataset)
+        f.write("K: %d\n" % K)
         f.write(str(results))
         f.write("\n")

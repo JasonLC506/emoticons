@@ -43,7 +43,7 @@ class logLinear(object):
         loss_old = self.loss
         self.setold()
         for iter in range(max_iteration):
-            print "loss at iter: ", iter, self.loss
+            # print "loss at iter: ", iter, self.loss
             self.update(x, y_pref)
             self.loss = self.losscal(x,y_pref)
             # check convergence #
@@ -159,8 +159,8 @@ def crossValidate(x, y, cv=5, K=None):
         y_test = y[test, :]
 
         y_pred = logLinear().fit(x_train, y_train).predict(x_test)
-        print "y_pred", y_pred
-        print "y_test", y_test
+        # print "y_pred", y_pred
+        # print "y_test", y_test
         results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
         print results["perf"][-1]
 

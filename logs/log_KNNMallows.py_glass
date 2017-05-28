@@ -1,0 +1,277 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  2
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  2
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  3
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  1
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  2
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+12.065712
+{'perf': [array([  0.56998893,   0.        ,   0.        ,   0.99069767,
+         0.86888151,   0.77641196,   0.803433  ,   0.87818383,
+         0.93477298,   0.99069767,   0.86888151,   0.77641196,
+         0.803433  ,   0.87818383,   0.93477298,  42.8       ,
+        42.8       ,  42.8       ,  42.8       ,  42.8       ,
+        42.8       ,   0.        ,   0.8709719 ,   0.80726467,
+                nan,   0.9355384 ,   0.97470448,   0.97281345,
+         0.97567125,   0.95097236,   0.46545455,          nan,
+         0.66537433,   0.97544829,   0.9757874 ,   0.95811149,
+         0.14147727,   0.96409677,          nan,   0.87941679,
+         0.95139064,   0.92387523,   0.3224359 ,   0.21904762,
+         0.60555556,          nan,   0.94645597,   0.93680618,
+         0.1547619 ,   0.16309524,   0.34285714,   0.45142857,
+                nan,   0.91870676,   0.59238095,   0.69888889,
+         0.72095238,   0.70626984,   0.71287879,          nan,
+         0.        ,  35.6       ,  37.8       ,  35.        ,
+        39.2       ,  35.4       ,   7.2       ,   0.        ,
+        16.6       ,  38.8       ,  39.4       ,  36.6       ,
+         5.        ,  26.2       ,   0.        ,  34.2       ,
+        39.        ,  35.4       ,   7.8       ,   4.        ,
+         8.6       ,   0.        ,  38.6       ,  36.4       ,
+         3.6       ,   3.4       ,   3.8       ,   4.2       ,
+         0.        ,  35.2       ,   7.4       ,   6.2       ,
+         7.4       ,   6.4       ,   7.6       ,   0.        ,   0.62523161]), array([  5.87471284e-02,   0.00000000e+00,   0.00000000e+00,
+         1.86046512e-02,   4.17871589e-02,   8.20645082e-02,
+         4.48744177e-02,   5.68657596e-02,   2.69501457e-02,
+         1.86046512e-02,   4.17871589e-02,   8.20645082e-02,
+         4.48744177e-02,   5.68657596e-02,   2.69501457e-02,
+         4.00000000e-01,   4.00000000e-01,   4.00000000e-01,
+         4.00000000e-01,   4.00000000e-01,   4.00000000e-01,
+         0.00000000e+00,   1.53714998e-02,   4.95444084e-02,
+                    nan,   2.83066552e-02,   2.04609082e-03,
+         2.09111258e-03,   1.15044915e-03,   2.81087733e-02,
+         1.16581429e-01,              nan,   6.23138080e-02,
+         9.94301672e-04,   1.16756413e-03,   2.16019834e-02,
+         6.38869862e-02,   4.07871446e-03,              nan,
+         6.84443375e-02,   1.51176809e-02,   4.27110419e-02,
+         1.38461538e-01,   9.33138950e-02,   1.08748719e-01,
+                    nan,   3.36094643e-02,   3.67362756e-02,
+         1.19047619e-02,   2.34194233e-02,   1.36027208e-01,
+         4.10077146e-02,              nan,   5.01871021e-02,
+         1.07690663e-01,   6.26966044e-02,   1.06934660e-01,
+         1.50100831e-01,   1.04521053e-01,              nan,
+         0.00000000e+00,   2.05912603e+00,   3.31058907e+00,
+         2.82842712e+00,   2.03960781e+00,   1.62480768e+00,
+         1.83303028e+00,   0.00000000e+00,   2.80000000e+00,
+         1.72046505e+00,   2.05912603e+00,   1.74355958e+00,
+         3.46410162e+00,   3.05941171e+00,   0.00000000e+00,
+         2.92574777e+00,   1.67332005e+00,   1.62480768e+00,
+         2.56124969e+00,   1.54919334e+00,   2.72763634e+00,
+         0.00000000e+00,   1.74355958e+00,   1.01980390e+00,
+         1.85472370e+00,   1.85472370e+00,   1.46969385e+00,
+         1.46969385e+00,   0.00000000e+00,   1.16619038e+00,
+         1.62480768e+00,   1.72046505e+00,   1.62480768e+00,
+         1.01980390e+00,   1.20000000e+00,   0.00000000e+00,
+         3.45132438e-02])]}

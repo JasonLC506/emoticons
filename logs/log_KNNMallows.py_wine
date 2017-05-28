@@ -1,0 +1,200 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  2
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  3
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+converge in  0
+7.090784
+{'perf': [array([  0.92142857,   0.        ,   0.        ,   0.98888889,
+         0.93809524,   0.99444444,   0.98888889,   0.93809524,
+         0.99444444,  35.6       ,  35.6       ,  35.6       ,
+         0.        ,   0.97340203,   0.94761905,          nan,
+         0.94647017,   0.95570191,   0.84582535,          nan,
+         0.94137464,   0.90642136,   0.91044872,          nan,
+         0.        ,  20.4       ,  24.8       ,  15.2       ,
+         0.        ,  25.8       ,  10.8       ,   9.8       ,
+         0.        ,   0.9165431 ]), array([ 0.0322734 ,  0.        ,  0.        ,  0.01360828,  0.02123072,
+        0.01111111,  0.01360828,  0.02123072,  0.01111111,  0.48989795,
+        0.48989795,  0.48989795,  0.        ,  0.01082203,  0.0215156 ,
+               nan,  0.01694394,  0.01074843,  0.05292649,         nan,
+        0.02032755,  0.01560444,  0.02142752,         nan,  0.        ,
+        1.49666295,  3.12409987,  1.72046505,  0.        ,  2.85657137,
+        3.05941171,  2.71293199,  0.        ,  0.00640682])]}

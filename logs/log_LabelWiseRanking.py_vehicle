@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "LabelWiseRanking.py", line 6, in <module>
+    from munkres import Munkres
+ImportError: No module named munkres
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/sklearn/utils/optimize.py:203: ConvergenceWarning: newton-cg failed to converge. Increase the number of iterations.
+  "number of iterations.", ConvergenceWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+{'perf': [array([   0.7422694 ,    0.        ,    0.        ,    0.91959624,
+          0.89711103,    0.90066829,    0.97048381,    0.91959624,
+          0.89711103,    0.90066829,    0.97048381,  169.2       ,
+        169.2       ,  169.2       ,  169.2       ,    0.        ,
+          0.92130786,    0.86048962,           nan,    0.93468723,
+          0.92491927,    0.94951528,    0.81336648,           nan,
+          0.91400052,    0.95250423,    0.80593944,    0.81898879,
+                 nan,    0.92985002,    0.96374383,    0.96532885,
+          0.9578284 ,           nan,    0.        ,  116.6       ,
+        110.4       ,   75.8       ,   52.6       ,    0.        ,
+        111.2       ,   77.6       ,   58.8       ,   58.        ,
+          0.        ,   76.4       ,   93.4       ,   91.6       ,
+         92.8       ,    0.        ,    0.90838875]), array([ 0.04444656,  0.        ,  0.        ,  0.01623207,  0.02947593,
+        0.03080948,  0.01574777,  0.01623207,  0.02947593,  0.03080948,
+        0.01574777,  0.4       ,  0.4       ,  0.4       ,  0.4       ,
+        0.        ,  0.0152224 ,  0.02555938,         nan,  0.02048518,
+        0.01037056,  0.02698805,  0.05559851,         nan,  0.02417185,
+        0.01684086,  0.04736959,  0.05984099,         nan,  0.01530322,
+        0.02417851,  0.01943178,  0.01329134,         nan,  0.        ,
+        4.45421149,  7.31026675,  5.49181209,  4.49888875,  0.        ,
+        7.4404301 ,  5.46260011,  6.99714227,  7.12741187,  0.        ,
+        7.73563184,  5.42586399,  5.35163526,  7.6       ,  0.        ,
+        0.01589092])]}

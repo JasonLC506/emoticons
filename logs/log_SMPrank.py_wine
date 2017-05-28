@@ -1,0 +1,12 @@
+N, d, L:  128 13 3
+distinct features:  100 distinct pairlabel:  5
+Traceback (most recent call last):
+  File "SMPrank.py", line 366, in <module>
+    results = crossValidate(x,y,K=100)
+  File "SMPrank.py", line 342, in crossValidate
+    y_pred = SmpRank(K=K).fit(x_train, y_train).predict(x_test)
+  File "SMPrank.py", line 70, in fit
+    self.initialize(N,d,L, x_train, y_train)
+  File "SMPrank.py", line 229, in initialize
+    raise ValueError("too many prototypes")
+ValueError: too many prototypes

@@ -1,0 +1,15 @@
+Nsamp total 8192
+---------  before iter 0 ---------
+llh_old:  -46.4258116651
+---------  before iter 1 ---------
+llh_old:  -14.2459498743
+Traceback (most recent call last):
+  File "CADrank.py", line 388, in <module>
+    result = crossValid(x, y, Nu=Nu, Nv=Nv)
+  File "CADrank.py", line 335, in crossValid
+    y_pred = CADrank(Nu=Nu_sel,Nv=Nv_sel).fit(x_train, y_train).predict(x_test)
+  File "CADrank.py", line 70, in fit
+    self.Estep(pxu, pyv)    # updating weighted paramters self.b with intermediate paras
+  File "CADrank.py", line 224, in Estep
+    self.b = np.zeros([self.Nsamp, self.Nu, self.Nv], dtype = np.float64)
+MemoryError
