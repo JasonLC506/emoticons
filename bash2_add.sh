@@ -9,7 +9,7 @@ for((i=0;i<${#par_a[@]};i++))
      #b=${par_b[$j]}
      echo $a
      #echo $b
-     nohup python LabelWiseRanking.py $a >> logs/log_LabelWiseRanking.py_${a} &
+     nohup python logLinear.py $a >> logs/log_logLinear.py_${a} &
   #}
 }
 exit 0

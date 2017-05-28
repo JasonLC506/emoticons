@@ -9,7 +9,7 @@ for((i=0;i<${#par_a[@]};i++))
      # b=${par_b[$j]}
      echo $a
      # echo $b
-     nohup python CADrank.py $a >> logs/log_CADrank_${a} &
+     nohup python logLinear.py $a >> logs/log_logLinear_${a} &
   #}
 }
 exit 0
