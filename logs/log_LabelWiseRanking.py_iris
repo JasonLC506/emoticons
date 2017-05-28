@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "LabelWiseRanking.py", line 6, in <module>
+    from munkres import Munkres
+ImportError: No module named munkres
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+{'perf': [array([  0.97333333,   0.        ,   0.        ,   1.        ,
+         0.98666667,   0.98666667,   1.        ,   0.98666667,
+         0.98666667,  30.        ,  30.        ,  30.        ,
+         0.        ,   0.99100929,   0.98222222,          nan,
+         0.94050025,   0.93823529,   0.93578283,          nan,
+         0.93416916,   0.93255348,   0.88827839,          nan,
+         0.        ,  15.6       ,  14.6       ,  14.4       ,
+         0.        ,  20.        ,  15.4       ,  10.        ,
+         0.        ,   0.92743954]), array([ 0.03887301,  0.        ,  0.        ,  0.        ,  0.02666667,
+        0.01632993,  0.        ,  0.02666667,  0.01632993,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.0131066 ,  0.02591534,
+               nan,  0.01338998,  0.01085833,  0.01515564,         nan,
+        0.04221862,  0.01181738,  0.06924191,         nan,  0.        ,
+        3.61109402,  2.33238076,  3.61109402,  0.        ,  2.0976177 ,
+        2.33238076,  2.0976177 ,  0.        ,  0.01373987])]}

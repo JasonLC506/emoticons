@@ -1,0 +1,32 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/sklearn/linear_model/base.py:352: RuntimeWarning: overflow encountered in exp
+  np.exp(prob, prob)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+number of samples:  846
+{'perf': [array([   0.68552732,    0.        ,    0.        ,    0.91018448,
+          0.87346328,    0.88646015,    0.81802297,    0.91018448,
+          0.87346328,    0.88646015,    0.81802297,  169.2       ,
+        169.2       ,  169.2       ,  169.2       ,    0.        ,
+          0.87072193,    0.84435549,           nan,    0.90409241,
+          0.93175132,    0.96234908,    0.81731204,           nan,
+          0.86803763,    0.96949285,    0.75349997,    0.86341471,
+                 nan,    0.93411513,    0.96813943,    0.9674001 ,
+          0.97003595,           nan,    0.        ,  116.6       ,
+        110.4       ,   75.8       ,   52.6       ,    0.        ,
+        111.2       ,   77.6       ,   58.8       ,   58.        ,
+          0.        ,   76.4       ,   93.4       ,   91.6       ,
+         92.8       ,    0.        ,    0.90573916]), array([ 0.03692943,  0.        ,  0.        ,  0.01129419,  0.03495528,
+        0.03851931,  0.04324628,  0.01129419,  0.03495528,  0.03851931,
+        0.04324628,  0.4       ,  0.4       ,  0.4       ,  0.4       ,
+        0.        ,  0.01033884,  0.01227595,         nan,  0.02943439,
+        0.01177644,  0.02280192,  0.06182208,         nan,  0.03573551,
+        0.01318746,  0.06455335,  0.02981061,         nan,  0.01660071,
+        0.0243761 ,  0.03419855,  0.01953361,         nan,  0.        ,
+        4.45421149,  7.31026675,  5.49181209,  4.49888875,  0.        ,
+        7.4404301 ,  5.46260011,  6.99714227,  7.12741187,  0.        ,
+        7.73563184,  5.42586399,  5.35163526,  7.6       ,  0.        ,
+        0.00875912])]}

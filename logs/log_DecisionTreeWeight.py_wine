@@ -1,0 +1,26 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+0.0 alpha
+0.0 alpha
+0.0 alpha
+0.0 alpha
+0.0 alpha
+{'alpha': [0.0, 0.0], 'perf': [array([  0.87650794,   0.        ,   0.        ,   0.9268254 ,
+         0.9552381 ,   0.97190476,   0.9268254 ,   0.9552381 ,
+         0.97190476,  35.6       ,  35.6       ,  35.6       ,
+         0.        ,   0.95055714,   0.89153439,          nan,
+         0.90080783,   0.91148555,   0.88303111,          nan,
+         0.9259188 ,   0.86284271,   0.84878205,          nan,
+         0.        ,  20.4       ,  24.8       ,  15.2       ,
+         0.        ,  25.8       ,  10.8       ,   9.8       ,
+         0.        ,   0.88652258]), array([ 0.04504582,  0.        ,  0.        ,  0.03393412,  0.05159243,
+        0.01757251,  0.03393412,  0.05159243,  0.01757251,  0.48989795,
+        0.48989795,  0.48989795,  0.        ,  0.01757623,  0.04289828,
+               nan,  0.02240056,  0.04577484,  0.09099539,         nan,
+        0.03748923,  0.0613498 ,  0.07178697,         nan,  0.        ,
+        1.49666295,  3.12409987,  1.72046505,  0.        ,  2.85657137,
+        3.05941171,  2.71293199,  0.        ,  0.02116293])]}

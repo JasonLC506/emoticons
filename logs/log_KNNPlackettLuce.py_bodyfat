@@ -1,0 +1,326 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+converge in  5
+converge in  7
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  7
+converge in  5
+converge in  4
+converge in  7
+converge in  6
+converge in  6
+converge in  5
+converge in  4
+converge in  4
+converge in  6
+converge in  5
+converge in  6
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  4
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  9
+converge in  5
+converge in  5
+converge in  4
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  7
+converge in  4
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  4
+converge in  6
+converge in  4
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  4
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  4
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  7
+converge in  5
+converge in  7
+converge in  6
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  7
+converge in  5
+converge in  5
+converge in  5
+converge in  4
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  6
+converge in  4
+converge in  6
+converge in  6
+converge in  5
+converge in  6
+converge in  4
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  4
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  6
+converge in  6
+converge in  6
+converge in  4
+converge in  5
+converge in  5
+converge in  7
+converge in  4
+converge in  6
+converge in  6
+converge in  6
+converge in  6
+converge in  5
+converge in  4
+converge in  5
+converge in  4
+converge in  6
+converge in  4
+converge in  6
+converge in  5
+converge in  6
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  4
+converge in  6
+converge in  6
+converge in  6
+converge in  7
+converge in  5
+converge in  6
+converge in  7
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  6
+converge in  6
+converge in  6
+converge in  6
+converge in  7
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  5
+converge in  6
+converge in  4
+converge in  7
+converge in  5
+converge in  5
+converge in  4
+converge in  5
+converge in  7
+converge in  4
+converge in  5
+converge in  8
+converge in  7
+converge in  8
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  7
+converge in  6
+converge in  4
+converge in  5
+converge in  5
+converge in  8
+converge in  5
+converge in  5
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  9
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  5
+converge in  7
+converge in  6
+converge in  5
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  5
+converge in  7
+converge in  5
+converge in  6
+converge in  5
+converge in  4
+converge in  5
+converge in  5
+82.779136
+{'perf': [array([  1.97647059e-02,   0.00000000e+00,   0.00000000e+00,
+         5.82823529e-01,   6.51058824e-01,   5.91529412e-01,
+         5.99058824e-01,   6.27137255e-01,   6.66666667e-01,
+         5.71372549e-01,   5.82823529e-01,   6.51058824e-01,
+         5.91529412e-01,   5.99058824e-01,   6.27137255e-01,
+         6.66666667e-01,   5.71372549e-01,   5.04000000e+01,
+         5.04000000e+01,   5.04000000e+01,   5.04000000e+01,
+         5.04000000e+01,   5.04000000e+01,   5.04000000e+01,
+         0.00000000e+00,   6.09537734e-01,   2.27346405e-01,
+                    nan,   5.15348984e-01,   5.61786201e-01,
+         6.70009158e-01,   5.27167255e-01,   4.96184265e-01,
+         7.26823783e-01,   6.41164569e-01,              nan,
+         6.11472149e-01,   7.31540609e-01,   6.00697451e-01,
+         5.30826576e-01,   7.04067460e-01,   5.33320680e-01,
+         5.60245042e-01,              nan,   6.72662255e-01,
+         5.26486604e-01,   5.19371633e-01,   7.16591050e-01,
+         5.49973462e-01,   5.58562959e-01,   5.54850322e-01,
+                    nan,   6.00291005e-01,   4.62117216e-01,
+         7.01357228e-01,   5.37188380e-01,   5.02281052e-01,
+         6.08423280e-01,   6.33626374e-01,              nan,
+         4.75749241e-01,   7.46989394e-01,   7.06650929e-01,
+         6.75628969e-01,   7.20100478e-01,   6.68517115e-01,
+         7.35118508e-01,              nan,   8.00977758e-01,
+         5.66130268e-01,   5.69205094e-01,   5.46483516e-01,
+         5.97208539e-01,   5.80231212e-01,   4.51815592e-01,
+                    nan,   0.00000000e+00,   2.60000000e+01,
+         2.38000000e+01,   2.58000000e+01,   2.64000000e+01,
+         2.22000000e+01,   2.48000000e+01,   2.44000000e+01,
+         0.00000000e+00,   2.46000000e+01,   2.60000000e+01,
+         2.64000000e+01,   2.38000000e+01,   2.48000000e+01,
+         2.66000000e+01,   2.58000000e+01,   0.00000000e+00,
+         2.68000000e+01,   2.54000000e+01,   2.44000000e+01,
+         2.40000000e+01,   2.46000000e+01,   2.44000000e+01,
+         2.36000000e+01,   0.00000000e+00,   2.44000000e+01,
+         2.50000000e+01,   2.50000000e+01,   2.40000000e+01,
+         2.40000000e+01,   2.50000000e+01,   2.60000000e+01,
+         0.00000000e+00,   2.44000000e+01,   2.64000000e+01,
+         2.82000000e+01,   2.66000000e+01,   2.60000000e+01,
+         2.54000000e+01,   2.60000000e+01,   0.00000000e+00,
+         2.74000000e+01,   2.56000000e+01,   2.56000000e+01,
+         2.64000000e+01,   2.54000000e+01,   2.40000000e+01,
+         2.30000000e+01,   0.00000000e+00,   5.92905989e-01]), array([ 0.01771508,  0.        ,  0.        ,  0.05953628,  0.06829044,
+        0.0455244 ,  0.04370014,  0.0542524 ,  0.07040892,  0.0415331 ,
+        0.05953628,  0.06829044,  0.0455244 ,  0.04370014,  0.0542524 ,
+        0.07040892,  0.0415331 ,  0.48989795,  0.48989795,  0.48989795,
+        0.48989795,  0.48989795,  0.48989795,  0.48989795,  0.        ,
+        0.01121244,  0.05053111,         nan,  0.04489784,  0.14996788,
+        0.08712536,  0.09345222,  0.11380776,  0.07645987,  0.10614134,
+               nan,  0.06569219,  0.12217098,  0.06140907,  0.05785551,
+        0.08610494,  0.09973559,  0.01891755,         nan,  0.08357213,
+        0.07662828,  0.08826548,  0.05143287,  0.03978498,  0.04494985,
+        0.03827207,         nan,  0.11417305,  0.06893047,  0.08035998,
+        0.03357582,  0.09655933,  0.05929804,  0.0529683 ,         nan,
+        0.10678513,  0.04718505,  0.03337002,  0.05668247,  0.05399558,
+        0.12964056,  0.07046081,         nan,  0.09970178,  0.03344548,
+        0.03517264,  0.11052542,  0.06544364,  0.0607859 ,  0.08537734,
+               nan,  0.        ,  4.14728827,  1.46969385,  2.22710575,
+        1.74355958,  2.31516738,  1.72046505,  4.54312668,  0.        ,
+        1.74355958,  5.09901951,  4.45421149,  2.78567766,  5.30659966,
+        1.356466  ,  1.6       ,  0.        ,  2.71293199,  1.0198039 ,
+        2.05912603,  3.74165739,  2.41660919,  4.7581509 ,  2.87054002,
+        0.        ,  1.62480768,  1.78885438,  2.0976177 ,  2.        ,
+        4.33589668,  1.09544512,  1.78885438,  0.        ,  2.72763634,
+        5.0039984 ,  2.63818119,  2.57681975,  1.8973666 ,  2.15406592,
+        2.60768096,  0.        ,  1.8547237 ,  1.74355958,  5.08330601,
+        3.49857114,  1.74355958,  4.89897949,  1.67332005,  0.        ,
+        0.02270442])]}

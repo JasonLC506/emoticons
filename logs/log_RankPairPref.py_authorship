@@ -1,0 +1,36 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+number of samples:  841
+{'perf': [array([   0.7787898 ,    0.        ,    0.        ,    0.95001409,
+          0.92154832,    0.97024514,    0.92627501,    0.95001409,
+          0.92154832,    0.97024514,    0.92627501,  168.2       ,
+        168.2       ,  168.2       ,  168.2       ,    0.        ,
+          0.94157714,    0.91912745,           nan,    0.92975135,
+          0.9886051 ,    0.97117915,    0.90950146,           nan,
+          0.99120028,    0.93212192,    0.85714286,    0.88021645,
+                 nan,    0.74438556,    0.93546129,    0.90214179,
+          0.95217486,           nan,    0.        ,   88.8       ,
+        155.6       ,  123.2       ,   79.4       ,    0.        ,
+        156.6       ,  114.4       ,   12.6       ,   11.6       ,
+          0.        ,   15.8       ,   45.        ,   53.8       ,
+        152.4       ,    0.        ,    0.91178628]), array([  2.56852617e-02,   0.00000000e+00,   0.00000000e+00,
+         2.01594395e-02,   3.45077547e-02,   1.55327185e-02,
+         1.43995559e-02,   2.01594395e-02,   3.45077547e-02,
+         1.55327185e-02,   1.43995559e-02,   4.00000000e-01,
+         4.00000000e-01,   4.00000000e-01,   4.00000000e-01,
+         0.00000000e+00,   8.01085134e-03,   1.08518678e-02,
+                    nan,   2.88506514e-02,   4.69309729e-03,
+         1.11672563e-02,   3.61908177e-02,              nan,
+         2.99147764e-03,   2.65655442e-02,   5.88051859e-02,
+         3.72409124e-02,              nan,   1.50486404e-01,
+         3.06048434e-02,   4.49033984e-02,   1.34643253e-02,
+                    nan,   0.00000000e+00,   4.70744092e+00,
+         2.93938769e+00,   3.76297754e+00,   4.75815090e+00,
+         0.00000000e+00,   3.00665928e+00,   6.80000000e+00,
+         3.32264955e+00,   3.38230691e+00,   0.00000000e+00,
+         4.26145515e+00,   4.00000000e+00,   7.02566723e+00,
+         4.12795349e+00,   0.00000000e+00,   1.60155317e-02])]}

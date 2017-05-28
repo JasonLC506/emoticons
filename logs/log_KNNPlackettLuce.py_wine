@@ -1,0 +1,205 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+converge in  38
+converge in  62
+converge in  62
+converge in  56
+converge in  61
+converge in  61
+converge in  45
+converge in  41
+converge in  44
+converge in  44
+converge in  62
+converge in  61
+converge in  61
+converge in  62
+converge in  5
+converge in  6
+converge in  39
+converge in  37
+converge in  61
+converge in  41
+converge in  17
+converge in  37
+converge in  40
+converge in  61
+converge in  62
+converge in  7
+converge in  34
+converge in  14
+converge in  62
+converge in  10
+converge in  15
+converge in  24
+converge in  44
+converge in  41
+converge in  61
+converge in  28
+converge in  61
+converge in  62
+converge in  41
+converge in  55
+converge in  41
+converge in  45
+converge in  62
+converge in  62
+converge in  11
+converge in  20
+converge in  37
+converge in  37
+converge in  7
+converge in  8
+converge in  43
+converge in  45
+converge in  37
+converge in  9
+converge in  32
+converge in  44
+converge in  61
+converge in  62
+converge in  5
+converge in  21
+converge in  6
+converge in  17
+converge in  40
+converge in  17
+converge in  21
+converge in  62
+converge in  13
+converge in  21
+converge in  10
+converge in  21
+converge in  44
+converge in  61
+converge in  62
+converge in  61
+converge in  61
+converge in  62
+converge in  61
+converge in  62
+converge in  41
+converge in  37
+converge in  61
+converge in  60
+converge in  45
+converge in  62
+converge in  41
+converge in  6
+converge in  37
+converge in  39
+converge in  45
+converge in  18
+converge in  39
+converge in  61
+converge in  39
+converge in  15
+converge in  40
+converge in  40
+converge in  61
+converge in  15
+converge in  39
+converge in  62
+converge in  18
+converge in  44
+converge in  42
+converge in  41
+converge in  61
+converge in  12
+converge in  44
+converge in  62
+converge in  62
+converge in  38
+converge in  62
+converge in  62
+converge in  62
+converge in  62
+converge in  61
+converge in  60
+converge in  43
+converge in  37
+converge in  40
+converge in  61
+converge in  42
+converge in  62
+converge in  61
+converge in  39
+converge in  40
+converge in  41
+converge in  41
+converge in  45
+converge in  12
+converge in  61
+converge in  62
+converge in  36
+converge in  62
+converge in  4
+converge in  23
+converge in  13
+converge in  15
+converge in  11
+converge in  13
+converge in  23
+converge in  62
+converge in  13
+converge in  44
+converge in  62
+converge in  39
+converge in  38
+converge in  61
+converge in  62
+converge in  45
+converge in  45
+converge in  45
+converge in  61
+converge in  62
+converge in  41
+converge in  6
+converge in  21
+converge in  6
+converge in  37
+converge in  34
+converge in  44
+converge in  62
+converge in  44
+converge in  45
+converge in  62
+converge in  62
+converge in  61
+converge in  12
+converge in  9
+converge in  16
+converge in  44
+converge in  62
+converge in  62
+converge in  44
+converge in  41
+converge in  62
+converge in  44
+converge in  61
+converge in  41
+97.166684
+{'perf': [array([  0.91587302,   0.        ,   0.        ,   0.99444444,
+         0.93253968,   0.98888889,   0.99444444,   0.93253968,
+         0.98888889,  35.6       ,  35.6       ,  35.6       ,
+         0.        ,   0.97147948,   0.93640212,          nan,
+         0.95516582,   0.95570191,   0.81183842,          nan,
+         0.94137464,   0.88823954,   0.91044872,          nan,
+         0.        ,  20.4       ,  24.8       ,  15.2       ,
+         0.        ,  25.8       ,  10.8       ,   9.8       ,
+         0.        ,   0.90854912]), array([  1.70883908e-02,   0.00000000e+00,   0.00000000e+00,
+         1.11111111e-02,   1.39646460e-02,   1.36082763e-02,
+         1.11111111e-02,   1.39646460e-02,   1.36082763e-02,
+         4.89897949e-01,   4.89897949e-01,   4.89897949e-01,
+         0.00000000e+00,   5.79145674e-03,   1.88627121e-02,
+                    nan,   2.86718125e-03,   1.07484296e-02,
+         4.67267170e-02,              nan,   2.03275455e-02,
+         3.83241189e-02,   2.14275226e-02,              nan,
+         0.00000000e+00,   1.49666295e+00,   3.12409987e+00,
+         1.72046505e+00,   0.00000000e+00,   2.85657137e+00,
+         3.05941171e+00,   2.71293199e+00,   0.00000000e+00,
+         5.23370769e-03])]}

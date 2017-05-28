@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "LabelWiseRanking.py", line 6, in <module>
+    from munkres import Munkres
+ImportError: No module named munkres
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/sklearn/utils/optimize.py:203: ConvergenceWarning: newton-cg failed to converge. Increase the number of iterations.
+  "number of iterations.", ConvergenceWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+{'perf': [array([  0.63089701,   0.        ,   0.        ,   0.91605759,
+         0.87375415,   0.86024363,   0.89246955,   0.92070875,
+         0.95326689,   0.91605759,   0.87375415,   0.86024363,
+         0.89246955,   0.92070875,   0.95326689,  42.8       ,
+        42.8       ,  42.8       ,  42.8       ,  42.8       ,
+        42.8       ,   0.        ,   0.90131132,   0.88354374,
+                nan,   0.94069713,   0.92671914,   0.9679354 ,
+         0.96554305,   0.94009144,   0.52961039,          nan,
+         0.80942513,   0.95089033,   0.95114119,   0.9584705 ,
+         0.31988636,   0.94474194,          nan,   0.95001258,
+         0.96056399,   0.94009144,   0.60269231,   0.63809524,
+         0.67435897,          nan,   0.94599639,   0.96327151,
+         0.76785714,   0.66785714,   0.68095238,   0.72071429,
+                nan,   0.91399801,   0.6931746 ,   0.82333333,
+         0.74984127,   0.80563492,   0.78560606,          nan,
+         0.        ,  35.6       ,  37.8       ,  35.        ,
+        39.2       ,  35.4       ,   7.2       ,   0.        ,
+        16.6       ,  38.8       ,  39.4       ,  36.6       ,
+         5.        ,  26.2       ,   0.        ,  34.2       ,
+        39.        ,  35.4       ,   7.8       ,   4.        ,
+         8.6       ,   0.        ,  38.6       ,  36.4       ,
+         3.6       ,   3.4       ,   3.8       ,   4.2       ,
+         0.        ,  35.2       ,   7.4       ,   6.2       ,
+         7.4       ,   6.4       ,   7.6       ,   0.        ,   0.79521229]), array([ 0.02616793,  0.        ,  0.        ,  0.07575075,  0.0282685 ,
+        0.05660377,  0.02395818,  0.04296788,  0.01471494,  0.07575075,
+        0.0282685 ,  0.05660377,  0.02395818,  0.04296788,  0.01471494,
+        0.4       ,  0.4       ,  0.4       ,  0.4       ,  0.4       ,
+        0.4       ,  0.        ,  0.02271478,  0.02315345,         nan,
+        0.0413984 ,  0.03559255,  0.00850136,  0.01324414,  0.04288121,
+        0.11530946,         nan,  0.09934837,  0.02248747,  0.01618202,
+        0.02142793,  0.10053286,  0.02327028,         nan,  0.02146515,
+        0.01299848,  0.04288121,  0.08587868,  0.18952142,  0.10986813,
+               nan,  0.00803992,  0.01357937,  0.07963743,  0.13300875,
+        0.18783888,  0.1547282 ,         nan,  0.04741643,  0.072053  ,
+        0.06028738,  0.11751436,  0.0681387 ,  0.08791506,         nan,
+        0.        ,  2.05912603,  3.31058907,  2.82842712,  2.03960781,
+        1.62480768,  1.83303028,  0.        ,  2.8       ,  1.72046505,
+        2.05912603,  1.74355958,  3.46410162,  3.05941171,  0.        ,
+        2.92574777,  1.67332005,  1.62480768,  2.56124969,  1.54919334,
+        2.72763634,  0.        ,  1.74355958,  1.0198039 ,  1.8547237 ,
+        1.8547237 ,  1.46969385,  1.46969385,  0.        ,  1.16619038,
+        1.62480768,  1.72046505,  1.62480768,  1.0198039 ,  1.2       ,
+        0.        ,  0.03438559])]}

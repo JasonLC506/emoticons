@@ -1,0 +1,172 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+converge in  62
+converge in  62
+converge in  62
+converge in  56
+converge in  61
+converge in  61
+converge in  62
+converge in  62
+converge in  61
+converge in  61
+converge in  62
+converge in  18
+converge in  37
+converge in  38
+converge in  10
+converge in  7
+converge in  35
+converge in  37
+converge in  37
+converge in  9
+converge in  37
+converge in  38
+converge in  40
+converge in  37
+converge in  39
+converge in  37
+converge in  37
+converge in  14
+converge in  18
+converge in  37
+converge in  61
+converge in  62
+converge in  61
+converge in  61
+converge in  62
+converge in  15
+converge in  38
+converge in  39
+converge in  37
+converge in  10
+converge in  41
+converge in  41
+converge in  17
+converge in  9
+converge in  38
+converge in  8
+converge in  9
+converge in  38
+converge in  11
+converge in  8
+converge in  19
+converge in  18
+converge in  37
+converge in  38
+converge in  45
+converge in  9
+converge in  38
+converge in  39
+converge in  12
+converge in  18
+converge in  61
+converge in  62
+converge in  62
+converge in  60
+converge in  61
+converge in  62
+converge in  62
+converge in  62
+converge in  60
+converge in  60
+converge in  37
+converge in  37
+converge in  8
+converge in  18
+converge in  38
+converge in  16
+converge in  37
+converge in  37
+converge in  37
+converge in  39
+converge in  14
+converge in  38
+converge in  37
+converge in  44
+converge in  18
+converge in  11
+converge in  39
+converge in  14
+converge in  35
+converge in  33
+converge in  57
+converge in  61
+converge in  62
+converge in  61
+converge in  62
+converge in  61
+converge in  62
+converge in  61
+converge in  62
+converge in  62
+converge in  62
+converge in  62
+converge in  42
+converge in  62
+converge in  39
+converge in  36
+converge in  44
+converge in  19
+converge in  19
+converge in  16
+converge in  38
+converge in  10
+converge in  38
+converge in  37
+converge in  9
+converge in  21
+converge in  37
+converge in  37
+converge in  38
+converge in  37
+converge in  60
+converge in  62
+converge in  61
+converge in  62
+converge in  62
+converge in  61
+converge in  62
+converge in  62
+converge in  61
+converge in  61
+converge in  23
+converge in  36
+converge in  37
+converge in  19
+converge in  13
+converge in  38
+converge in  39
+converge in  37
+converge in  18
+converge in  36
+converge in  37
+converge in  15
+converge in  37
+converge in  41
+converge in  26
+converge in  37
+converge in  38
+converge in  38
+converge in  13
+converge in  36
+81.292834
+{'perf': [array([  0.93333333,   0.        ,   0.        ,   0.96666667,
+         0.98666667,   0.98      ,   0.96666667,   0.98666667,
+         0.98      ,  30.        ,  30.        ,  30.        ,
+         0.        ,   0.97749427,   0.95555556,          nan,
+         0.91688914,   0.90490196,   0.92669192,          nan,
+         0.94647686,   0.92005348,   0.89789377,          nan,
+         0.        ,  15.6       ,  14.6       ,  14.4       ,
+         0.        ,  20.        ,  15.4       ,  10.        ,
+         0.        ,   0.91831137]), array([ 0.03651484,  0.        ,  0.        ,  0.03651484,  0.01632993,
+        0.01632993,  0.03651484,  0.01632993,  0.01632993,  0.        ,
+        0.        ,  0.        ,  0.        ,  0.01246056,  0.02434322,
+               nan,  0.03174427,  0.04097888,  0.01480315,         nan,
+        0.01178803,  0.02531773,  0.03202773,         nan,  0.        ,
+        3.61109402,  2.33238076,  3.61109402,  0.        ,  2.0976177 ,
+        2.33238076,  2.0976177 ,  0.        ,  0.0111255 ])]}

@@ -1,0 +1,507 @@
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+converge in  9
+converge in  5
+converge in  6
+converge in  9
+converge in  9
+converge in  8
+converge in  10
+converge in  13
+converge in  50
+converge in  51
+converge in  17
+converge in  50
+converge in  12
+converge in  12
+converge in  9
+converge in  10
+converge in  10
+converge in  10
+converge in  7
+converge in  6
+converge in  9
+converge in  8
+converge in  10
+converge in  7
+converge in  7
+converge in  12
+converge in  10
+converge in  7
+converge in  6
+converge in  15
+converge in  5
+converge in  6
+converge in  8
+converge in  8
+converge in  16
+converge in  82
+converge in  7
+converge in  7
+converge in  7
+converge in  7
+converge in  6
+converge in  9
+converge in  7
+converge in  6
+converge in  7
+converge in  9
+converge in  16
+converge in  20
+converge in  20
+converge in  17
+converge in  10
+converge in  50
+converge in  20
+converge in  9
+converge in  8
+converge in  83
+converge in  60
+converge in  18
+converge in  5
+converge in  9
+converge in  6
+converge in  6
+converge in  11
+converge in  10
+converge in  22
+converge in  9
+converge in  9
+converge in  15
+converge in  10
+converge in  49
+converge in  7
+converge in  43
+converge in  85
+converge in  6
+converge in  43
+converge in  86
+converge in  95
+converge in  96
+converge in  90
+converge in  89
+converge in  95
+converge in  89
+converge in  95
+converge in  90
+converge in  14
+converge in  94
+converge in  86
+converge in  18
+converge in  10
+converge in  86
+converge in  10
+converge in  7
+converge in  11
+converge in  8
+converge in  8
+converge in  9
+converge in  9
+converge in  9
+converge in  6
+converge in  8
+converge in  7
+converge in  8
+converge in  7
+converge in  8
+converge in  8
+converge in  7
+converge in  8
+converge in  20
+converge in  22
+converge in  83
+converge in  19
+converge in  13
+converge in  11
+converge in  19
+converge in  18
+converge in  20
+converge in  13
+converge in  8
+converge in  12
+converge in  11
+converge in  10
+converge in  8
+converge in  10
+converge in  8
+converge in  7
+converge in  7
+converge in  5
+converge in  6
+converge in  5
+converge in  6
+converge in  6
+converge in  5
+converge in  9
+converge in  9
+converge in  16
+converge in  35
+converge in  82
+converge in  7
+converge in  8
+converge in  7
+converge in  8
+converge in  13
+converge in  20
+converge in  14
+converge in  10
+converge in  6
+converge in  10
+converge in  22
+converge in  7
+converge in  11
+converge in  6
+converge in  33
+converge in  51
+converge in  17
+converge in  17
+converge in  15
+converge in  7
+converge in  12
+converge in  7
+converge in  8
+converge in  6
+converge in  6
+converge in  6
+converge in  7
+converge in  59
+converge in  14
+converge in  98
+converge in  96
+converge in  97
+converge in  15
+converge in  90
+converge in  97
+converge in  94
+converge in  97
+converge in  6
+converge in  9
+converge in  90
+converge in  6
+converge in  20
+converge in  7
+converge in  7
+converge in  9
+converge in  8
+converge in  8
+converge in  9
+converge in  8
+converge in  8
+converge in  9
+converge in  6
+converge in  6
+converge in  7
+converge in  10
+converge in  8
+converge in  82
+converge in  13
+converge in  25
+converge in  54
+converge in  17
+converge in  16
+converge in  11
+converge in  6
+converge in  7
+converge in  6
+converge in  6
+converge in  7
+converge in  7
+converge in  7
+converge in  10
+converge in  8
+converge in  7
+converge in  6
+converge in  6
+converge in  7
+converge in  6
+converge in  7
+converge in  10
+converge in  9
+converge in  11
+converge in  11
+converge in  6
+converge in  7
+converge in  6
+converge in  7
+converge in  8
+converge in  6
+converge in  11
+converge in  17
+converge in  82
+converge in  60
+converge in  82
+converge in  5
+converge in  7
+converge in  7
+converge in  5
+converge in  9
+converge in  5
+converge in  6
+converge in  6
+converge in  9
+converge in  5
+converge in  6
+converge in  26
+converge in  19
+converge in  10
+converge in  53
+converge in  8
+converge in  9
+converge in  16
+converge in  6
+converge in  60
+converge in  37
+converge in  12
+converge in  8
+converge in  12
+converge in  7
+converge in  9
+converge in  11
+converge in  53
+converge in  16
+converge in  35
+converge in  53
+converge in  54
+converge in  6
+converge in  5
+converge /home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+in  13
+converge in  95
+converge in  87
+converge in  96
+converge in  94
+converge in  91
+converge in  91
+converge in  85
+converge in  19
+converge in  95
+converge in  87
+converge in  95
+converge in  12
+converge in  8
+converge in  8
+converge in  9
+converge in  10
+converge in  6
+converge in  10
+converge in  11
+converge in  8
+converge in  10
+converge in  8
+converge in  8
+converge in  11
+converge in  6
+converge in  25
+converge in  16
+converge in  19
+converge in  20
+converge in  17
+converge in  20
+converge in  25
+converge in  9
+converge in  12
+converge in  9
+converge in  10
+converge in  9
+converge in  7
+converge in  9
+converge in  19
+converge in  7
+converge in  7
+converge in  10
+converge in  11
+converge in  10
+converge in  6
+converge in  7
+converge in  6
+converge in  7
+converge in  10
+converge in  8
+converge in  39
+converge in  51
+converge in  6
+converge in  5
+converge in  9
+converge in  10
+converge in  9
+converge in  9
+converge in  8
+converge in  20
+converge in  81
+converge in  9
+converge in  7
+converge in  8
+converge in  7
+converge in  18
+converge in  38
+converge in  24
+converge in  9
+converge in  52
+converge in  35
+converge in  17
+converge in  10
+converge in  16
+converge in  31
+converge in  17
+converge in  7
+converge in  8
+converge in  8
+converge in  19
+converge in  7
+converge in  17
+converge in  39
+converge in  12
+converge in  82
+converge in  12
+converge in  11
+converge in  6
+converge in  45
+converge in  86
+converge in  87
+converge in  94
+converge in  94
+converge in  18
+converge in  23
+converge in  89
+converge in  7
+converge in  89
+converge in  6
+converge in  10
+converge in  7
+converge in  8
+converge in  9
+converge in  6
+converge in  7
+converge in  9
+converge in  7
+converge in  11
+converge in  11
+converge in  7
+converge in  50
+converge in  12
+converge in  11
+converge in  20
+converge in  54
+converge in  17
+converge in  20
+converge in  17
+converge in  10
+converge in  9
+converge in  8
+converge in  8
+converge in  9
+converge in  14
+converge in  10
+converge in  9
+converge in  10
+converge in  12
+converge in  5
+converge in  8
+converge in  8
+converge in  13
+converge in  11
+converge in  7
+converge in  5
+converge in  7
+converge in  7
+converge in  8
+converge in  11
+converge in  7
+converge in  8
+converge in  11
+converge in  29
+converge in  64
+converge in  61
+converge in  64
+converge in  64
+converge in  7
+converge in  22
+converge in  26
+converge in  20
+converge in  19
+converge in  9
+converge in  9
+converge in  8
+converge in  8
+converge in  7
+converge in  8
+converge in  28
+converge in  35
+converge in  60
+converge in  61
+converge in  50
+converge in  9
+converge in  7
+converge in  6
+converge in  7
+converge in  6
+converge in  9
+converge in  8
+converge in  8
+converge in  7
+converge in  6
+converge in  52
+converge in  7
+converge in  91
+converge in  95
+converge in  96
+converge in  10
+converge in  89
+converge in  19
+converge in  9
+converge in  9
+converge in  6
+converge in  6
+converge in  8
+converge in  8
+converge in  6
+converge in  11
+converge in  8
+525.558101
+{'perf': [array([   0.2766259 ,    0.        ,    0.        ,    0.68178994,
+          0.67000582,    0.75296059,    0.73341099,    0.69553485,
+          0.83987575,    0.68178994,    0.67000582,    0.75296059,
+          0.73341099,    0.69553485,    0.83987575,  101.2       ,
+        101.2       ,  101.2       ,  101.2       ,  101.2       ,
+        101.2       ,    0.        ,    0.72451241,    0.64748593,
+                 nan,    0.88501701,    0.7580087 ,    0.78368288,
+          0.6400527 ,    0.76350985,    0.81944008,           nan,
+          0.93057797,    0.88485964,    0.75637076,    0.525616  ,
+          0.83920564,    0.78703552,           nan,    0.83220889,
+          0.82978859,    0.88184766,    0.78862325,    0.85990636,
+          0.65814044,           nan,    0.73109845,    0.83477063,
+          0.65112332,    0.88652115,    0.7778442 ,    0.86270034,
+                 nan,    0.73013618,    0.87716952,    0.90470368,
+          0.9383062 ,    0.94153438,    0.82530604,           nan,
+          0.        ,   58.6       ,   45.4       ,   46.6       ,
+         48.        ,   50.8       ,   42.6       ,    0.        ,
+         55.2       ,   58.4       ,   50.4       ,   40.8       ,
+         55.8       ,   46.        ,    0.        ,   64.4       ,
+         53.8       ,   29.2       ,   54.6       ,   42.8       ,
+         36.8       ,    0.        ,   53.8       ,   32.        ,
+         53.2       ,   50.8       ,   47.4       ,   47.4       ,
+          0.        ,   47.6       ,   50.4       ,   60.4       ,
+         72.        ,   69.2       ,   53.6       ,    0.        ,
+          0.79827967]), array([ 0.03200651,  0.        ,  0.        ,  0.04237885,  0.07839488,
+        0.03810224,  0.07247565,  0.03420966,  0.06221399,  0.04237885,
+        0.07839488,  0.03810224,  0.07247565,  0.03420966,  0.06221399,
+        0.4       ,  0.4       ,  0.4       ,  0.4       ,  0.4       ,
+        0.4       ,  0.        ,  0.00721584,  0.01974199,         nan,
+        0.02905552,  0.04981686,  0.04908586,  0.03707005,  0.03203783,
+        0.0482757 ,         nan,  0.04455555,  0.03258476,  0.03846539,
+        0.08460406,  0.03689628,  0.01976951,         nan,  0.02741067,
+        0.0548874 ,  0.04887206,  0.04868133,  0.05324509,  0.08926116,
+               nan,  0.04855038,  0.05411323,  0.05578873,  0.03776972,
+        0.05916597,  0.02979544,         nan,  0.05316045,  0.03274883,
+        0.05899108,  0.01612238,  0.01731184,  0.05798199,         nan,
+        0.        ,  4.45421149,  2.87054002,  5.16139516,  4.14728827,
+        5.11468474,  4.58693798,  0.        ,  1.72046505,  2.8       ,
+        3.92937654,  6.04648658,  3.18747549,  1.78885438,  0.        ,
+        5.88557559,  2.78567766,  2.71293199,  5.46260011,  2.92574777,
+        6.04648658,  0.        ,  4.48998886,  3.46410162,  4.26145515,
+        3.7094474 ,  2.41660919,  4.2708313 ,  0.        ,  3.32264955,
+        5.27636238,  5.88557559,  2.44948974,  3.31058907,  3.38230691,
+        0.        ,  0.01061059])]}
