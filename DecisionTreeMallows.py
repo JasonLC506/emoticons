@@ -15,7 +15,7 @@ import logRegFeatureEmotion as LogR
 rankform = [[highest_possible_rank, lowest_possible_rank] for emoticon in emoticon_list]
 """
 
-def MM(ranks, max_iter = 10, iter_out = False):
+def MM(ranks, max_iter = 10, iter_out = False, theta_calculate = True):
     """
     The modified MM algorithm proposed for incomplete ranks
     :param ranks: y in ranks in given nodes
@@ -52,7 +52,10 @@ def MM(ranks, max_iter = 10, iter_out = False):
         print "warning: MM fails to converge"
 
     # start = datetime.now()
-    theta = MMMallowTheta(ranks_cplt, median)
+    if theta_calculate:
+        theta = MMMallowTheta(ranks_cplt, median)
+    else:
+        theta = None
     # duration = datetime.now()-start
     # print "find theta time: ", duration.total_seconds()
     if iter_out:
@@ -135,12 +138,14 @@ def MMMallowTheta(ranks_cplt, median):
     Nsamp = len(ranks_cplt)
     Nclass = len(ranks_cplt[0])
     distances = [discordant(ranks_cplt[i], median) for i in range(Nsamp)]
-    distances = np.array(distances, dtype=np.float16)
+    distances = np.array(distances, dtype=np.float64)
     dev = np.mean(distances)
     try:
         theta = ridder(MallowsThetaDev, 1e-5, 1e+5, args=(dev, Nclass))
         return theta
     except ValueError, e:
+        print "f(a)", MallowsThetaDev(1e-5, dev, Nclass)
+        print "f(b)", MallowsThetaDev(1e-5, dev, Nclass)
         print "!!!Not well chosen median"
         raise e
 
