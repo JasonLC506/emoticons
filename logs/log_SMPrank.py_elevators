@@ -358,3 +358,16 @@ early stop at the end of epoch:  20
          2.18668699e+01,   2.00658915e+01,   1.89673404e+01,
          1.81548891e+01,   1.89673404e+01,   0.00000000e+00,
          1.17645709e-02])]}
+dataset, N,d,L,K elevators 16599 9 9 331
+N, d, L:  11952 9 9
+distinct features:  331 distinct pairlabel:  127
+Traceback (most recent call last):
+  File "SMPrank.py", line 368, in <module>
+    results = crossValidate(x,y,K=K)
+  File "SMPrank.py", line 342, in crossValidate
+    y_pred = SmpRank(K=K).fit(x_train, y_train).predict(x_test)
+  File "SMPrank.py", line 70, in fit
+    self.initialize(N,d,L, x_train, y_train)
+  File "SMPrank.py", line 229, in initialize
+    raise ValueError("too many prototypes")
+ValueError: too many prototypes
