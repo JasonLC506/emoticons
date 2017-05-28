@@ -89,10 +89,18 @@ class SmpRank(object):
                 warnings.warn("training set loss increase")
                 print "last epoch loss: ", self.losssmp
                 print "current epoch loss: ", loss_train_now
+            elif np.isnan(loss_train_now):
+                print "nan train loss"
+                print "early stop at epoch", epoch
+                return self
             self.losssmp = loss_train_now
             # stop criterion #
             if not np.isnan(loss_valid) and loss_valid < loss_valid_now:
                 print "early stop at the end of epoch: ", epoch
+                return self
+            elif np.isnan(loss_valid_now):
+                print "nan valid loss"
+                print "early stop at epoch", epoch
                 return self
             loss_valid = loss_valid_now
         return self
@@ -360,10 +368,12 @@ def simulateddata(N, L, d):
 
 
 if __name__ == "__main__":
-    # dataset = "bodyfat"
+    # dataset = "wisconsin"
     dataset = sys.argv[1]
     x, y = readSyntheticData("data/synthetic/" + dataset)
     K = min(max(math.factorial(y.shape[1]-1), math.factorial(y.shape[1])/2), y.shape[0]/50)
+    if dataset == "elevators":
+        K = 50
     print "dataset, N,d,L,K", dataset, y.shape[0], x.shape[1], y.shape[1], K
     results = crossValidate(x,y,K=K)
     print results

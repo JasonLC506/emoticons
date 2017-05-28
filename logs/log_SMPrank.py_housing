@@ -135,3 +135,613 @@ Traceback (most recent call last):
   File "SMPrank.py", line 229, in initialize
     raise ValueError("too many prototypes")
 ValueError: too many prototypes
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/ma/core.py:867: RuntimeWarning: invalid value encountered in less_equal
+  return umath.less_equal(x, self.critical_value)
+dataset, N,d,L,K housing 506 6 6 10
+N, d, L:  364 6 6
+loss_valid 0 1.45977002454
+loss_train 0 1.41828931233
+loss_valid 1 1.24431514558
+loss_train 1 1.18756292188
+loss_valid 2 1.10338371475
+loss_train 2 1.03890984041
+loss_valid 3 1.00767347364
+loss_train 3 0.939705038645
+loss_valid 4 0.936529656819
+loss_train 4 0.868615806365
+loss_valid 5 0.874676267353
+loss_train 5 0.812253080459
+loss_valid 6 0.816511697064
+loss_train 6 0.763857113643
+loss_valid 7 0.762371694881
+loss_train 7 0.72059081547
+loss_valid 8 0.71462089144
+loss_train 8 0.682853822552
+loss_valid 9 0.678827683041
+loss_train 9 0.652705418216
+loss_valid 10 0.654977848397
+loss_train 10 0.630286521483
+loss_valid 11 0.638214732877
+loss_train 11 0.61274395885
+loss_valid 12 0.62534873186
+loss_train 12 0.599655471176
+loss_valid 13 0.612386336333
+loss_train 13 0.58794567043
+loss_valid 14 0.603973131532
+loss_train 14 0.579314552807
+loss_valid 15 0.598682174826
+loss_train 15 0.573189470386
+loss_valid 16 0.596622034555
+loss_train 16 0.56776049524
+loss_valid 17 0.594256918045
+loss_train 17 0.563543563231
+loss_valid 18 0.591284694272
+loss_train 18 0.560067663322
+loss_valid 19 0.589450407276
+loss_train 19 0.556794811217
+loss_valid 20 0.58732357911
+loss_train 20 0.553798201165
+loss_valid 21 0.585499846199
+loss_train 21 0.551216434081
+loss_valid 22 0.583573217681
+loss_train 22 0.548692040095
+loss_valid 23 0.580658517769
+loss_train 23 0.546327035161
+loss_valid 24 0.573850544376
+loss_train 24 0.543951729183
+loss_valid 25 0.566051271196
+loss_train 25 0.541542958119
+loss_valid 26 0.56444544208
+loss_train 26 0.539877684165
+loss_valid 27 0.562240902479
+loss_train 27 0.538178276677
+loss_valid 28 0.557345635871
+loss_train 28 0.536107153697
+loss_valid 29 0.555597828041
+loss_train 29 0.534391994295
+loss_valid 30 0.553331912588
+loss_train 30 0.53268693735
+loss_valid 31 0.551845037465
+loss_train 31 0.530962253681
+loss_valid 32 0.551045782256
+loss_train 32 0.529347229089
+loss_valid 33 0.550146894639
+loss_train 33 0.527826184484
+loss_valid 34 0.549673336779
+loss_train 34 0.5262803094
+loss_valid 35 0.550048031461
+loss_train 35 0.524662781036
+early stop at the end of epoch:  35
+[0.19607843137254902, 0, 0, 0.82352941176470584, 0.73529411764705888, 0.75490196078431371, 0.45098039215686275, 0.61764705882352944, 0.80392156862745101, 0.8235294117647058, 0.7352941176470589, 0.7549019607843137, 0.45098039215686275, 0.6176470588235294, 0.803921568627451, 102.0, 102.0, 102.0, 102.0, 102.0, 102.0, 0, 0.6839490430808286, 0.55032679738562096, nan, 0.896551724137931, 0.9302325581395349, 0.9512195121951219, 0.6458333333333334, 0.7755102040816326, 0.625, nan, 0.9824561403508771, 0.9830508474576272, 0.7368421052631579, 0.625, 0.6031746031746031, 0.6122448979591837, nan, 0.9838709677419355, 0.7868852459016393, 0.8857142857142857, 0.6, 0.6382978723404256, 0.11363636363636363, nan, 0.7868852459016393, 0.8648648648648649, 0.7413793103448276, 0.7551020408163265, 0.7333333333333333, 0.7333333333333333, nan, 0.6326530612244898, 0.8771929824561403, 0.6896551724137931, 0.8732394366197183, 0.8840579710144928, 0.8421052631578947, nan, 0, 56, 41, 39, 46, 47, 46, 0, 55, 57, 55, 46, 61, 47, 0, 60, 59, 33, 63, 45, 42, 0, 59, 35, 56, 47, 43, 43, 0, 47, 55, 56, 69, 67, 55, 0, 0.72403375798839986]
+N, d, L:  365 6 6
+loss_valid 0 1.24726665416
+loss_train 0 1.22437459703
+loss_valid 1 0.982909142714
+loss_train 1 0.962539953824
+loss_valid 2 0.849995293334
+loss_train 2 0.820662855929
+loss_valid 3 0.786792110058
+loss_train 3 0.741738329894
+loss_valid 4 0.751628160617
+loss_train 4 0.690070545617
+loss_valid 5 0.726284295375
+loss_train 5 0.651248418396
+loss_valid 6 0.69690197704
+loss_train 6 0.619097823786
+loss_valid 7 0.667356236527
+loss_train 7 0.593338554372
+loss_valid 8 0.647330809603
+loss_train 8 0.572183535211
+loss_valid 9 0.628979139076
+loss_train 9 0.555976394505
+loss_valid 10 0.61437696848
+loss_train 10 0.541688638521
+loss_valid 11 0.603331976646
+loss_train 11 0.530191115258
+loss_valid 12 0.589166887002
+loss_train 12 0.521004786972
+loss_valid 13 0.578551955968
+loss_train 13 0.51256649092
+loss_valid 14 0.576938070128
+loss_train 14 0.505203602054
+loss_valid 15 0.570595260729
+loss_train 15 0.498935859736
+loss_valid 16 0.572930823536
+loss_train 16 0.493437213231
+early stop at the end of epoch:  16
+[0.25742574257425743, 0, 0, 0.78217821782178221, 0.68316831683168322, 0.71287128712871284, 0.72277227722772275, 0.64356435643564358, 0.84158415841584155, 0.7821782178217822, 0.6831683168316832, 0.7128712871287128, 0.7227722772277227, 0.6435643564356436, 0.8415841584158416, 101.0, 101.0, 101.0, 101.0, 101.0, 101.0, 0, 0.7282088115174945, 0.65412541254125389, nan, 0.8596491228070176, 0.875, 0.8703703703703703, 0.6304347826086957, 0.8163265306122449, 0.8958333333333334, nan, 0.9482758620689655, 0.9516129032258065, 0.9215686274509803, 0.4897959183673469, 0.7543859649122807, 0.7659574468085106, nan, 0.8285714285714286, 0.7037037037037037, 0.9, 0.7647058823529411, 0.8372093023255814, 0.7714285714285715, nan, 0.7843137254901961, 0.8181818181818182, 0.6440677966101694, 0.7777777777777778, 0.7647058823529411, 0.7962962962962963, nan, 0.6458333333333334, 0.7857142857142857, 0.875, 0.9866666666666667, 0.9861111111111112, 0.8070175438596491, nan, 0, 55, 46, 52, 44, 47, 46, 0, 56, 60, 49, 47, 55, 45, 0, 68, 52, 28, 49, 41, 33, 0, 49, 31, 57, 52, 49, 52, 0, 46, 54, 54, 73, 70, 55, 0, 0.80039651047183669]
+N, d, L:  365 6 6
+loss_valid 0 1.18297745774
+loss_train 0 1.11216984084
+loss_valid 1 1.02091207418
+loss_train 1 0.927790525509
+loss_valid 2 0.920480520624
+loss_train 2 0.8056951835
+loss_valid 3 0.856182772819
+loss_train 3 0.727049609332
+loss_valid 4 0.810998604407
+loss_train 4 0.672172824376
+loss_valid 5 0.777044498002
+loss_train 5 0.632073342099
+loss_valid 6 0.749624489435
+loss_train 6 0.602113347898
+loss_valid 7 0.726975976674
+loss_train 7 0.57822870533
+loss_valid 8 0.709863076444
+loss_train 8 0.559423079303
+loss_valid 9 0.697190056619
+loss_train 9 0.545208716023
+loss_valid 10 0.689001838933
+loss_train 10 0.533967935552
+loss_valid 11 0.682050887501
+loss_train 11 0.524937927627
+loss_valid 12 0.677820350864
+loss_train 12 0.517490024902
+loss_valid 13 0.673046740729
+loss_train 13 0.510957217511
+loss_valid 14 0.668745184272
+loss_train 14 0.505174095331
+loss_valid 15 0.667167089337
+loss_train 15 0.499970632107
+loss_valid 16 0.662759819863
+loss_train 16 0.495011004066
+loss_valid 17 0.661443693562
+loss_train 17 0.491343451366
+loss_valid 18 0.664348693727
+loss_train 18 0.487242824149
+early stop at the end of epoch:  18
+[0.27722772277227725, 0, 0, 0.83168316831683164, 0.78217821782178221, 0.75247524752475248, 0.63366336633663367, 0.5544554455445545, 0.88118811881188119, 0.8316831683168316, 0.7821782178217822, 0.7524752475247525, 0.6336633663366337, 0.5544554455445545, 0.8811881188118812, 101.0, 101.0, 101.0, 101.0, 101.0, 101.0, 0, 0.73017163142183816, 0.63036303630363044, nan, 0.9848484848484849, 0.9038461538461539, 0.9607843137254902, 0.9130434782608695, 0.603448275862069, 0.8205128205128205, nan, 0.9655172413793104, 0.9830508474576272, 0.8461538461538461, 0.5714285714285714, 0.8867924528301887, 0.723404255319149, nan, 0.9298245614035088, 0.7169811320754716, 0.8064516129032258, 0.7222222222222222, 0.7608695652173914, 0.4791666666666667, nan, 0.7454545454545455, 0.9354838709677419, 0.423728813559322, 0.5660377358490566, 0.75, 0.8, nan, 0.49019607843137253, 0.9148936170212766, 0.8888888888888888, 0.9864864864864865, 0.8918918918918919, 0.9629629629629629, nan, 0, 64, 50, 49, 44, 56, 37, 0, 56, 57, 50, 40, 51, 45, 0, 55, 51, 29, 52, 44, 46, 0, 53, 29, 57, 51, 50, 48, 0, 49, 45, 61, 72, 72, 52, 0, 0.77847587402890861]
+N, d, L:  365 6 6
+loss_valid 0 1.20520399247
+loss_train 0 1.22943507539
+loss_valid 1 0.992286340558
+loss_train 1 1.06657896978
+loss_valid 2 0.84519810028
+loss_train 2 0.955259647808
+loss_valid 3 0.743008349306
+loss_train 3 0.873696087248
+loss_valid 4 0.672152639903
+loss_train 4 0.812029733534
+loss_valid 5 0.620540461472
+loss_train 5 0.76348155414
+loss_valid 6 0.58247820829
+loss_train 6 0.723327690329
+loss_valid 7 0.553427659603
+loss_train 7 0.688764519917
+loss_valid 8 0.532067803677
+loss_train 8 0.659386825619
+loss_valid 9 0.51632672202
+loss_train 9 0.634950634814
+loSMPrank.py:290: RuntimeWarning: invalid value encountered in double_scalars
+  self.probfeature[k] = self.probfeature[k] / sum_probf
+ss_valid 10 0.50558493375
+loss_train 10 0.613527522241
+loss_valid 11 0.49200611057
+loss_train 11 0.595073378514
+loss_valid 12 0.484335688872
+loss_train 12 0.582539780989
+loss_valid 13 0.47881017353
+loss_train 13 0.574667343943
+loss_valid 14 0.475496799112
+loss_train 14 0.567018241697
+loss_valid 15 0.473871128862
+loss_train 15 0.561087479482
+loss_valid 16 0.470027982503
+loss_train 16 0.55634482645
+loss_valid 17 0.469193979462
+loss_train 17 0.551480740451
+loss_valid 18 0.464824150119
+loss_train 18 0.547000853245
+loss_valid 19 0.460882379053
+loss_train 19 0.542888718765
+loss_valid 20 0.456146213457
+loss_train 20 0.539056121382
+loss_valid 21 0.454028827617
+loss_train 21 0.536009214247
+loss_valid 22 0.450308477521
+loss_train 22 0.53280021938
+loss_valid 23 0.447884712236
+loss_train 23 0.530308249464
+loss_valid 24 0.445738763276
+loss_train 24 0.528106049023
+loss_valid 25 0.44383055058
+loss_train 25 0.526188022169
+loss_valid 26 0.442085253977
+loss_train 26 0.524501639735
+loss_valid 27 0.440513765416
+loss_train 27 0.523013154446
+loss_valid 28 0.439130300589
+loss_train 28 0.52168433002
+loss_valid 29 0.43788894085
+loss_train 29 0.520494659704
+loss_valid 30 0.436765732277
+loss_train 30 0.519431038541
+loss_valid 31 0.435777708339
+loss_train 31 0.518461418755
+loss_valid 32 0.434868995401
+loss_train 32 0.517569363563
+loss_valid 33 0.434042648683
+loss_train 33 0.516738246127
+loss_valid 34 0.433280572227
+loss_train 34 0.51594797702
+loss_valid 35 0.432563189099
+loss_train 35 0.515187529991
+loss_valid 36 0.431887221155
+loss_train 36 0.51444588672
+loss_valid 37 0.431261594047
+loss_train 37 0.513738674024
+loss_valid 38 0.430664792205
+loss_train 38 0.513085743829
+loss_valid 39 0.430117150679
+loss_train 39 0.512480500348
+loss_valid 40 0.429607883334
+loss_train 40 0.511928576269
+loss_valid 41 0.429139569329
+loss_train 41 0.511421975739
+loss_valid 42 0.428710304743
+loss_train 42 0.510956124453
+loss_valid 43 0.428316417648
+loss_train 43 0.510526975216
+loss_valid 44 0.427955299225
+loss_train 44 0.510130914343
+loss_valid 45 0.427620047927
+loss_train 45 nan
+loss_valid 46 nan
+loss_train 46 nan
+loss_valid 47 nan
+loss_train 47 nan
+loss_valid 48 nan
+loss_train 48 nan
+loss_valid 49 nan
+loss_train 49 nan
+loss_valid 50 nan
+loss_train 50 nan
+loss_valid 51 nan
+loss_train 51 nan
+loss_valid 52 nan
+loss_train 52 nan
+loss_valid 53 nan
+loss_train 53 nan
+loss_valid 54 nan
+loss_train 54 nan
+loss_valid 55 nan
+loss_train 55 nan
+loss_valid 56 nan
+loss_train 56 nan
+loss_valid 57 nan
+loss_train 57 nan
+loss_valid 58 nan
+loss_train 58 nan
+loss_valid 59 nan
+loss_train 59 nan
+loss_valid 60 nan
+loss_train 60 nan
+loss_valid 61 nan
+loss_train 61 nan
+loss_valid 62 nan
+loss_train 62 nan
+loss_valid 63 nan
+loss_train 63 nan
+loss_valid 64 nan
+loss_train 64 nan
+loss_valid 65 nan
+loss_train 65 nan
+loss_valid 66 nan
+loss_train 66 nan
+loss_valid 67 nan
+loss_train 67 nan
+loss_valid 68 nan
+loss_train 68 nan
+loss_valid 69 nan
+loss_train 69 nan
+loss_valid 70 nan
+loss_train 70 nan
+loss_valid 71 nan
+loss_train 71 nan
+loss_valid 72 nan
+loss_train 72 nan
+loss_valid 73 nan
+loss_train 73 nan
+loss_valid 74 nan
+loss_train 74 nan
+loss_valid 75 nan
+loss_train 75 nan
+loss_valid 76 nan
+loss_train 76 nan
+loss_valid 77 nan
+loss_train 77 nan
+loss_valid 78 nan
+loss_train 78 nan
+loss_valid 79 nan
+loss_train 79 nan
+loss_valid 80 nan
+loss_train 80 nan
+loss_valid 81 nan
+loss_train 81 nan
+loss_valid 82 nan
+loss_train 82 nan
+loss_valid 83 nan
+loss_train 83 nan
+loss_valid 84 nan
+loss_train 84 nan
+loss_valid 85 nan
+loss_train 85 nan
+loss_valid 86 nan
+loss_train 86 nan
+loss_valid 87 nan
+loss_train 87 nan
+loss_valid 88 nan
+loss_train 88 nan
+loss_valid 89 nan
+loss_train 89 nan
+loss_valid 90 nan
+loss_train 90 nan
+loss_valid 91 nan
+loss_train 91 nan
+loss_valid 92 nan
+loss_train 92 nan
+loss_valid 93 nan
+loss_train 93 nan
+loss_valid 94 nan
+loss_train 94 nan
+loss_valid 95 nan
+loss_train 95 nan
+loss_valid 96 nan
+loss_train 96 nan
+loss_valid 97 nan
+loss_train 97 nan
+loss_valid 98 nan
+loss_train 98 nan
+loss_valid 99 nan
+loss_train 99 nan
+[0.009900990099009901, 0, 0, 0.18811881188118812, 0.37623762376237624, 0.62376237623762376, 0.72277227722772275, 0.8910891089108911, 1.0, 0.18811881188118812, 0.37623762376237624, 0.6237623762376238, 0.7227722772277227, 0.8910891089108911, 1.0, 101.0, 101.0, 101.0, 101.0, 101.0, 101.0, 0, 0.55246661767839489, 0.048184818481848191, nan, 0.017857142857142856, 0.02127659574468085, 0.018867924528301886, 0.01818181818181818, 0.020833333333333332, 0.9795918367346939, nan, 0.01694915254237288, 0.015384615384615385, 0.017857142857142856, 0.03125, 0.9827586206896551, 0.9782608695652174, nan, 0.014084507042253521, 0.017857142857142856, 0.037037037037037035, 0.9807692307692307, 0.975, 0.9705882352941176, nan, 0.0196078431372549, 0.03333333333333333, 0.98, 0.9795918367346939, 0.9795918367346939, 0.9814814814814815, nan, 0.022222222222222223, 0.9824561403508771, 0.9863013698630136, 0.9871794871794872, 0.9866666666666667, 0.9833333333333333, nan, 0, 54, 45, 51, 53, 46, 47, 0, 57, 63, 54, 30, 56, 44, 0, 69, 54, 25, 50, 38, 32, 0, 49, 28, 48, 47, 47, 52, 0, 43, 55, 71, 76, 73, 58, 0, 0.14236785968343965]
+N, d, L:  365 6 6
+loss_valid 0 1.41572805387
+loss_train 0 1.31043649225
+loss_valid 1 1.25535392645
+loss_train 1 1.14597852385
+loss_valid 2 1.11424462638
+loss_train 2 1.01673642675
+loss_valid 3 0.984852655178
+loss_train 3 0.911283559001
+loss_valid 4 0.886207519203
+loss_train 4 0.833337255431
+loss_valid 5 0.822913025861
+loss_train 5 0.781266534364
+loss_valid 6 0.776601383635
+loss_train 6 0.743769175847
+loss_valid 7 0.739461345152
+loss_train 7 0.713788675684
+loss_valid 8 0.708141786928
+loss_train 8 0.688340774395
+loss_valid 9 0.681976083598
+loss_train 9 0.666925225053
+loss_valid 10 0.661183192404
+loss_train 10 0.649455386944
+loss_valid 11 0.646156939617
+loss_train 11 0.635525467393
+loss_valid 12 0.635424963924
+loss_train 12 0.624533331555
+loss_valid 13 0.627056928133
+loss_train 13 0.615275742705
+loss_valid 14 0.6208837591
+loss_train 14 0.607123546633
+loss_valid 15 0.615622156375
+loss_train 15 0.600421630174
+loss_valid 16 0.611125877454
+loss_train 16 0.595099934723
+loss_valid 17 0.606875975925
+loss_train 17 0.590399650248
+loss_valid 18 0.603079981558
+loss_train 18 0.586269787826
+loss_valid 19 0.599879028991
+loss_train 19 0.582731566379
+loss_valid 20 0.596876891359
+loss_train 20 0.579406444136
+loss_valid 21 0.594456888649
+loss_train 21 0.576436558662
+loss_valid 22 0.591713090915
+loss_train 22 0.573520140834
+loss_valid 23 0.590110859345
+loss_train 23 0.571000868272
+loss_valid 24 0.586099123978
+loss_train 24 0.568406781992
+loss_valid 25 0.583117531885
+loss_train 25 nan
+loss_valid 26 nan
+loss_train 26 nan
+loss_valid 27 nan
+loss_train 27 nan
+loss_valid 28 nan
+loss_train 28 nan
+loss_valid 29 nan
+loss_train 29 nan
+loss_valid 30 nan
+loss_train 30 nan
+loss_valid 31 nan
+loss_train 31 nan
+loss_valid 32 nan
+loss_train 32 nan
+loss_valid 33 nan
+loss_train 33 nan
+loss_valid 34 nan
+loss_train 34 nan
+loss_valid 35 nan
+loss_train 35 nan
+loss_valid 36 nan
+loss_train 36 nan
+loss_valid 37 nan
+loss_train 37 nan
+loss_valid 38 nan
+loss_train 38 nan
+loss_valid 39 nan
+loss_train 39 nan
+loss_valid 40 nan
+loss_train 40 nan
+loss_valid 41 nan
+loss_train 41 nan
+loss_valid 42 nan
+loss_train 42 nan
+loss_valid 43 nan
+loss_train 43 nan
+loss_valid 44 nan
+loss_train 44 nan
+loss_valid 45 nan
+loss_train 45 nan
+loss_valid 46 nan
+loss_train 46 nan
+loss_valid 47 nan
+loss_train 47 nan
+loss_valid 48 nan
+loss_train 48 nan
+loss_valid 49 nan
+loss_train 49 nan
+loss_valid 50 nan
+loss_train 50 nan
+loss_valid 51 nan
+loss_train 51 nan
+loss_valid 52 nan
+loss_train 52 nan
+loss_valid 53 nan
+loss_train 53 nan
+loss_valid 54 nan
+loss_train 54 nan
+loss_valid 55 nan
+loss_train 55 nan
+loss_valid 56 nan
+loss_train 56 nan
+loss_valid 57 nan
+loss_train 57 nan
+loss_valid 58 nan
+loss_train 58 nan
+loss_valid 59 nan
+loss_train 59 nan
+loss_valid 60 nan
+loss_train 60 nan
+loss_valid 61 nan
+loss_train 61 nan
+loss_valid 62 nan
+loss_train 62 nan
+loss_valid 63 nan
+loss_train 63 nan
+loss_valid 64 nan
+loss_train 64 nan
+loss_valid 65 nan
+loss_train 65 nan
+loss_valid 66 nan
+loss_train 66 nan
+loss_valid 67 nan
+loss_train 67 nan
+loss_valid 68 nan
+loss_train 68 nan
+loss_valid 69 nan
+loss_train 69 nan
+loss_v/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:703: RuntimeWarning: Mean of empty slice
+  warnings.warn("Mean of empty slice", RuntimeWarning)
+/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/lib/nanfunctions.py:1202: RuntimeWarning: Degrees of freedom <= 0 for slice.
+  warnings.warn("Degrees of freedom <= 0 for slice.", RuntimeWarning)
+alid 70 nan
+loss_train 70 nan
+loss_valid 71 nan
+loss_train 71 nan
+loss_valid 72 nan
+loss_train 72 nan
+loss_valid 73 nan
+loss_train 73 nan
+loss_valid 74 nan
+loss_train 74 nan
+loss_valid 75 nan
+loss_train 75 nan
+loss_valid 76 nan
+loss_train 76 nan
+loss_valid 77 nan
+loss_train 77 nan
+loss_valid 78 nan
+loss_train 78 nan
+loss_valid 79 nan
+loss_train 79 nan
+loss_valid 80 nan
+loss_train 80 nan
+loss_valid 81 nan
+loss_train 81 nan
+loss_valid 82 nan
+loss_train 82 nan
+loss_valid 83 nan
+loss_train 83 nan
+loss_valid 84 nan
+loss_train 84 nan
+loss_valid 85 nan
+loss_train 85 nan
+loss_valid 86 nan
+loss_train 86 nan
+loss_valid 87 nan
+loss_train 87 nan
+loss_valid 88 nan
+loss_train 88 nan
+loss_valid 89 nan
+loss_train 89 nan
+loss_valid 90 nan
+loss_train 90 nan
+loss_valid 91 nan
+loss_train 91 nan
+loss_valid 92 nan
+loss_train 92 nan
+loss_valid 93 nan
+loss_train 93 nan
+loss_valid 94 nan
+loss_train 94 nan
+loss_valid 95 nan
+loss_train 95 nan
+loss_valid 96 nan
+loss_train 96 nan
+loss_valid 97 nan
+loss_train 97 nan
+loss_valid 98 nan
+loss_train 98 nan
+loss_valid 99 nan
+loss_train 99 nan
+[0.0, 0, 0, 0.17821782178217821, 0.44554455445544555, 0.58415841584158412, 0.63366336633663367, 0.87128712871287128, 1.0, 0.1782178217821782, 0.44554455445544555, 0.5841584158415841, 0.6336633663366337, 0.8712871287128713, 1.0, 101.0, 101.0, 101.0, 101.0, 101.0, 101.0, 0, 0.54291536733027912, 0.00066006600660066007, nan, 0.015151515151515152, 0.02127659574468085, 0.022727272727272728, 0.01818181818181818, 0.016666666666666666, 0.9743589743589743, nan, 0.018518518518518517, 0.017543859649122806, 0.021739130434782608, 0.023255813953488372, 0.9827586206896551, 0.9803921568627451, nan, 0.013888888888888888, 0.01818181818181818, 0.030303030303030304, 0.9836065573770492, 0.9791666666666666, 0.9696969696969697, nan, 0.01639344262295082, 0.02564102564102564, 0.98, 0.9830508474576272, 0.98, 0.9772727272727273, nan, 0.01818181818181818, 0.9777777777777777, 0.9838709677419355, 0.9861111111111112, 0.9848484848484849, 0.98, nan, 0, 64, 45, 42, 53, 58, 37, 0, 52, 55, 44, 41, 56, 49, 0, 70, 53, 31, 59, 46, 31, 0, 59, 37, 48, 57, 48, 42, 0, 53, 43, 60, 70, 64, 48, 0, 0.1380231045655011]
+{'perf': [array([   0.14812658,    0.        ,    0.        ,    0.56074549,
+          0.60448457,    0.68563386,    0.63277034,    0.71560862,
+          0.90533877,    0.56074549,    0.60448457,    0.68563386,
+          0.63277034,    0.71560862,    0.90533877,  101.2       ,
+        101.2       ,  101.2       ,  101.2       ,  101.2       ,
+        101.2       ,    0.        ,    0.64754229,    0.37673203,
+                 nan,    0.5548116 ,    0.55032638,    0.56479388,
+          0.44513505,    0.446557  ,    0.85905939,           nan,
+          0.58634338,    0.59012861,    0.50883217,    0.34814606,
+          0.84197405,    0.81205193,           nan,    0.55404807,
+          0.44872181,    0.53190119,    0.81026078,    0.83810868,
+          0.66090336,           nan,    0.47053096,    0.53550098,
+          0.75383518,    0.81231205,    0.84152621,    0.85767677,
+                 nan,    0.3618173 ,    0.90760696,    0.88474328,
+          0.96393664,    0.94671523,    0.91508382,           nan,
+          0.        ,   58.6       ,   45.4       ,   46.6       ,
+         48.        ,   50.8       ,   42.6       ,    0.        ,
+         55.2       ,   58.4       ,   50.4       ,   40.8       ,
+         55.8       ,   46.        ,    0.        ,   64.4       ,
+         53.8       ,   29.2       ,   54.6       ,   42.8       ,
+         36.8       ,    0.        ,   53.8       ,   32.        ,
+         53.2       ,   50.8       ,   47.4       ,   47.4       ,
+          0.        ,   47.6       ,   50.4       ,   60.4       ,
+         72.        ,   69.2       ,   53.6       ,    0.        ,
+          0.51665942]), array([ 0.11996715,  0.        ,  0.        ,  0.30876306,  0.16262589,
+        0.06947383,  0.09924704,  0.13840982,  0.08106152,  0.30876306,
+        0.16262589,  0.06947383,  0.09924704,  0.13840982,  0.08106152,
+        0.4       ,  0.4       ,  0.4       ,  0.4       ,  0.4       ,
+        0.4       ,  0.        ,  0.08324221,  0.29009802,         nan,
+        0.44140617,  0.43232054,  0.44528228,  0.36280359,  0.35653918,
+        0.13072416,         nan,  0.46439382,  0.46853615,  0.40359433,
+        0.26553518,  0.14583973,  0.14551275,         nan,  0.44376826,
+        0.3528009 ,  0.40805628,  0.15043771,  0.13002126,  0.32741516,
+               nan,  0.36978242,  0.41485054,  0.21141206,  0.15636554,
+        0.11333245,  0.10216287,         nan,  0.28422118,  0.07261167,
+        0.10799244,  0.04534991,  0.0480288 ,  0.07505826,         nan,
+        0.        ,  4.45421149,  2.87054002,  5.16139516,  4.14728827,
+        5.11468474,  4.58693798,  0.        ,  1.72046505,  2.8       ,
+        3.92937654,  6.04648658,  3.18747549,  1.78885438,  0.        ,
+        5.88557559,  2.78567766,  2.71293199,  5.46260011,  2.92574777,
+        6.04648658,  0.        ,  4.48998886,  3.46410162,  4.26145515,
+        3.7094474 ,  2.41660919,  4.2708313 ,  0.        ,  3.32264955,
+        5.27636238,  5.88557559,  2.44948974,  3.31058907,  3.38230691,
+        0.        ,  0.30838883])]}
