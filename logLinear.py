@@ -173,15 +173,15 @@ def crossValidate(x, y, cv=5, K=None):
     return results
 
 if __name__ == "__main__":
-    dataset = sys.argv[1]
-    x,y = LogR.dataClean("data/" + dataset + "_Feature_linkemotion.txt")
+    dataset = "posts_Feature_Emotion.txt"
+    x,y = LogR.dataClean("data/" + dataset )
     y = label2Rank(y)
     # dataset = "bodyfat"
-    # # dataset = sys.argv[1]
+    # dataset = sys.argv[1]
     # x, y = readSyntheticData("data/synthetic/" + dataset)
-    results = crossValidate(x,y,K=100)
+    results = crossValidate(x,y)
     print results
     with open("results/result_logLinear.txt", "a") as f:
-        f.write("dataset: synthetic %s\n" % dataset)
+        f.write("dataset: %s\n" % dataset)
         f.write(str(results))
         f.write("\n")

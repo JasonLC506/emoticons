@@ -1,0 +1,13 @@
+
+Traceback (most recent call last):
+  File "logLinear.py", line 182, in <module>
+    results = crossValidate(x,y)
+  File "logLinear.py", line 161, in crossValidate
+    y_pred = logLinear().fit(x_train, y_train).predict(x_test)
+  File "logLinear.py", line 47, in fit
+    self.update(x, y_pref)
+  File "logLinear.py", line 136, in update
+    wm += np.tensordot(q,- pm, axes = ([0,1],[0,1]))
+  File "/home/jasonzhang/anaconda2/lib/python2.7/site-packages/numpy/core/numeric.py", line 1298, in tensordot
+    if na != nb:
+KeyboardInterrupt
