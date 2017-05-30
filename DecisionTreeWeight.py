@@ -721,18 +721,18 @@ if __name__ == "__main__":
     # # print result_nopruned
     # print result_pruned
 
-    # x,y = LogR.dataClean("data/washington_Feature_linkemotion.txt")
-    # y = label2Rank(y)
+    x,y = LogR.dataClean("data/foxnews_Feature_linkemotion.txt")
+    y = label2Rank(y)
     # ### sushi data ###
     # x,y = readSushiData()
     # ## synthetic data ##
     # dataset = "bodyfat"
-    dataset = sys.argv[1]
-    x, y = readSyntheticData("data/synthetic/" + dataset)
+    # dataset = sys.argv[1]
+    # x, y = readSyntheticData("data/synthetic/" + dataset)
     result = crossValidate(x, y, stop_criterion_mis_rate=0.0, rank_weight = False)
     # write2result #
-    file = open("results/result_dt_synthetic.txt","a")
-    file.write("dataset: synthetic %s\n" % dataset)
+    file = open("results/result_dt_foxnews.txt","a")
+    # file.write("dataset: synthetic %s\n" % dataset)
     file.write("no prune\n")
     file.write("number of samples: %d\n" % x.shape[0])
     file.write("NONERECALL: %f\n" % NONERECALL)
