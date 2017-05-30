@@ -5,6 +5,8 @@ import numpy as np
 import math
 from queryAlchemy import emotion_list
 from logRegFeatureEmotion import rankOrder
+from readSyntheticData import readSyntheticData
+from SMPrank import SmpRank
 
 def stats(y):
     total = y.shape[0]
@@ -138,10 +140,46 @@ def statsAnal(x,y):
     return ps_whole, ps_multi
 
 
+def statsRank(x, y):
+    """
+    stats of ranking input
+    """
+    results = {}
+    results["Dfeature"] = x.shape[1]
+    results["Nsamp"] = x.shape[0]
+    results["Nclass"] = y.shape[1]
+    smp = SmpRank(K=1)
+    y_pref = np.array(map(lambda z: smp.rank2pair(np.array(z)), y.tolist()))
+    paircomp = np.sum(y_pref, axis = 0)
+    results["IMBA"] = imbalanceMeasureRank(paircomp)
+    return results
+
+
+def imbalanceMeasureRank(paircomp):
+    Nclass = len(paircomp)
+    imba = 0
+    cnt_pair = 0
+    for i in range(Nclass):
+        for j in range(i+1, Nclass):
+            imba += abs(math.log(paircomp[i][j]+1)-math.log(paircomp[j][i]+1))
+            cnt_pair += 1
+    print "imba: ", imba/cnt_pair
+    return imba/cnt_pair
+
+
+
 if __name__ == "__main__":
-    x, y = dataClean("data/foxnews_Feature_linkemotion_deduplic.txt")
-    stats(y)
-    statsAnal(x,y)
-    paircomp, paircomp_sub = pairwise(y)
-    imbalanceMeasure(paircomp)
-    imbalanceMeasureNolike(paircomp)
+    # x, y = dataClean("data/foxnews_Feature_linkemotion_deduplic.txt")
+    # stats(y)
+    # statsAnal(x,y)
+    # paircomp, paircomp_sub = pairwise(y)
+    # imbalanceMeasure(paircomp)
+    # imbalanceMeasureNolike(paircomp)
+    dataset_list = ["authorship", "bodyfat", "calhousing", "cpu", "elevators", "fried", "glass", "housing", "iris", "pendigits", "segment", "stock", "vehicle", "vowel", "wine", "wisconsin"]
+    #dataset = "bodyfat"
+    for dataset in dataset_list:
+        x, y = readSyntheticData("data/synthetic/" + dataset )
+        result = statsRank(x, y)
+        with open("results/stats_synthetic", "a") as f:
+            f.write(dataset + "\n")
+            f.write(str(result) + "\n")

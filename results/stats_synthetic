@@ -1,0 +1,32 @@
+authorship
+{'Nclass': 4L, 'Nsamp': 841L, 'IMBA': 1.5349418324662683, 'Dfeature': 70L}
+bodyfat
+{'Nclass': 7L, 'Nsamp': 252L, 'IMBA': 0.07885173449474314, 'Dfeature': 7L}
+calhousing
+{'Nclass': 4L, 'Nsamp': 20640L, 'IMBA': 0.1390377978928544, 'Dfeature': 4L}
+cpu
+{'Nclass': 5L, 'Nsamp': 8192L, 'IMBA': 0.4822782451508387, 'Dfeature': 6L}
+elevators
+{'Nclass': 9L, 'Nsamp': 16599L, 'IMBA': 0.9694324173313714, 'Dfeature': 9L}
+fried
+{'Nclass': 5L, 'Nsamp': 40768L, 'IMBA': 0.0052686115546762835, 'Dfeature': 9L}
+glass
+{'Nclass': 6L, 'Nsamp': 214L, 'IMBA': 1.7566524322166372, 'Dfeature': 9L}
+housing
+{'Nclass': 6L, 'Nsamp': 506L, 'IMBA': 0.28500829608295497, 'Dfeature': 6L}
+iris
+{'Nclass': 3L, 'Nsamp': 150L, 'IMBA': 0.271642342973662, 'Dfeature': 4L}
+pendigits
+{'Nclass': 10L, 'Nsamp': 10992L, 'IMBA': 1.0950596036045013, 'Dfeature': 16L}
+segment
+{'Nclass': 7L, 'Nsamp': 2310L, 'IMBA': 0.8686881349424308, 'Dfeature': 18L}
+stock
+{'Nclass': 5L, 'Nsamp': 950L, 'IMBA': 0.27047897478876576, 'Dfeature': 5L}
+vehicle
+{'Nclass': 4L, 'Nsamp': 846L, 'IMBA': 0.43989113727770707, 'Dfeature': 18L}
+vowel
+{'Nclass': 11L, 'Nsamp': 528L, 'IMBA': 0.5530347997424006, 'Dfeature': 10L}
+wine
+{'Nclass': 3L, 'Nsamp': 178L, 'IMBA': 0.6891385211577394, 'Dfeature': 13L}
+wisconsin
+{'Nclass': 16L, 'Nsamp': 194L, 'IMBA': 0.11039585576693842, 'Dfeature': 16L}
