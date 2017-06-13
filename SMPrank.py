@@ -4,14 +4,13 @@ follow Grbovic et al. 2013 IJCAI [1]
 """
 import numpy as np
 import warnings
-import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
-from DecisionTree import label2Rank
 import math
 import copy
-from readSyntheticData import readSyntheticData
 import sys
 
+from PerfMeasure import perfMeasure
+import ReadData
 
 class SmpRank(object):
     def __init__(self, K):
@@ -92,7 +91,7 @@ class SmpRank(object):
             elif np.isnan(loss_train_now):
                 print "nan train loss"
                 print "early stop at epoch", epoch
-                return self
+                return self     # due to decreasing variance
             self.losssmp = loss_train_now
             # stop criterion #
             if not np.isnan(loss_valid) and loss_valid < loss_valid_now:
@@ -101,7 +100,7 @@ class SmpRank(object):
             elif np.isnan(loss_valid_now):
                 print "nan valid loss"
                 print "early stop at epoch", epoch
-                return self
+                return self     # due to decreasing variance
             loss_valid = loss_valid_now
         return self
 
@@ -200,7 +199,7 @@ class SmpRank(object):
         return agree_add
 
     def initialize(self, N, d, L, x_train, y_train):
-        ## initialize parameters according [1] ##
+        ## initialize parameters according to [1] ##
         self.decayvarf = N*5.0
         self.initvarf = float(np.mean(np.linalg.norm(
             x_train - np.mean(x_train, axis = 0),
@@ -348,7 +347,7 @@ def crossValidate(x, y, cv=5, K=None):
         y_test = y[test, :]
 
         y_pred = SmpRank(K=K).fit(x_train, y_train).predict(x_test)
-        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["perf"].append(perfMeasure(y_pred, y_test, rankopt=True))
         print results["perf"][-1]
 
     for key in results.keys():
@@ -363,14 +362,14 @@ def simulateddata(N, L, d):
     x_train = np.random.random([N,d])
     y_train = np.zeros([N,L], dtype=np.int8)
     for i in range(N):
-        y_train[i] = np.array(LogR.rankOrder(x_train[i].tolist()))
+        y_train[i] = np.array(ReadData.rankOrder(x_train[i].tolist()))
     return x_train, y_train
 
 
 if __name__ == "__main__":
     # dataset = "wisconsin"
     dataset = sys.argv[1]
-    x, y = readSyntheticData("data/synthetic/" + dataset)
+    x, y = ReadData.readSyntheticData("data/synthetic/" + dataset)
     K = min(max(math.factorial(y.shape[1]-1), math.factorial(y.shape[1])/2), y.shape[0]/50)
     if dataset == "elevators":
         K = 50

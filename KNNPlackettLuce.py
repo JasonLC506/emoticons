@@ -3,15 +3,15 @@ General KNN class, with default KNN_Plackett-Luce model, referring to PlackettLu
 """
 
 import numpy as np
-from biheap import BiHeap
-from PlackettLuce import PlackettLuce
 from sklearn.model_selection import KFold
-import logRegFeatureEmotion as LogR
 from datetime import datetime
 from datetime import timedelta
-from readSushiData import readSushiData
 import sys
-from readSyntheticData import readSyntheticData
+
+from biheap import BiHeap
+from PlackettLuce import PlackettLuce
+import ReadData
+from PerfMeasure import perfMeasure
 
 class KNN(object):
     def __init__(self, K):
@@ -93,7 +93,7 @@ def crossValidate(x, y, cv=5, K=None):
 
         y_pred = KNN(K=K).fit(x_train, y_train).predict(x_test)
         # print y_pred ### test
-        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["perf"].append(perfMeasure(y_pred, y_test, rankopt=True))
         # print results["perf"][-1]
 
     for key in results.keys():
@@ -116,7 +116,7 @@ if __name__ == "__main__":
     K = 20
     # dataset = "bodyfat"
     dataset = sys.argv[1]
-    x, y = readSyntheticData("data/synthetic/" + dataset)
+    x, y = ReadData.readSyntheticData("data/synthetic/" + dataset)
 
     start = datetime.now()
     result = crossValidate(x,y,K=K)

@@ -1,20 +1,16 @@
 """
+Decision Tree with Point-wise Gini index
 Using gini_rank as split and also pruning
 pruning hyperparameter validation using G-mean
 """
 import numpy as np
-import logRegFeatureEmotion as LogR
 from sklearn.model_selection import KFold
-from readSushiData import readSushiData
-from readSyntheticData import readSyntheticData
-from biheap import BiHeap
-from functools import partial
-from scipy.stats.mstats import gmean
 from datetime import datetime
-from stats import pairwise
 import sys
 
-from logRegFeatureEmotion import NONERECALL
+from biheap import BiHeap
+import ReadData
+from PerfMeasure import perfMeasure
 
 
 class DecisionTree(object):
@@ -442,14 +438,8 @@ class DecisionTree(object):
         return gain_from_leaf
     ########################################
 
-###########################################
-## Label ranking specific ##
-def label2Rank(y):
-    y = map(LogR.rankOrder, y)
-    y = np.array(y, dtype=int)
-    return y
-
-
+##############################################
+## ranking weight calculation for cost-sensitive ##
 def rank2Weight(y_s):
     """
 
@@ -537,6 +527,7 @@ def rankPairwise(y_s):
                     paircomp_sub[emoti][emoti_cmp] += 1
     return paircomp, paircomp_sub
 
+#####################################################
 
 def KendalltauSingle(y_pred, y_test):
     """
@@ -612,7 +603,7 @@ def hyperParameter(x, y, x_valid=None, y_valid=None, cv = 5, criteria = 0):
             alpha_best = [-1, None]
             for alpha in alpha_list:
                 y_pred = tree.predict(x_valid, alpha=alpha)
-                perf = LogR.perfMeasure(y_pred, y_valid, rankopt=True)
+                perf = perfMeasure(y_pred, y_valid, rankopt=True)
                 perf_criteria = perf[criteria]
                 if alpha_best[1] is not None and alpha_best[1]>perf_criteria:
                     pass
@@ -632,7 +623,7 @@ def hyperParameter(x, y, x_valid=None, y_valid=None, cv = 5, criteria = 0):
         alpha_best = [-1, None]
         for alpha in alpha_list:
             y_pred = tree.predict(x_valid, alpha=alpha)
-            perf = LogR.perfMeasure(y_pred, y_valid, rankopt=True)
+            perf = perfMeasure(y_pred, y_valid, rankopt=True)
             perf_criteria = perf[criteria]
             if alpha_best[1] is not None and alpha_best[1] > perf_criteria:
                 pass
@@ -676,10 +667,11 @@ def crossValidate(x,y, cv=5, alpha = 0.0, rank_weight = False, stop_criterion_mi
                                         stop_criterion_mis_rate= stop_criterion_mis_rate,
                                         stop_criterion_min_node = stop_criterion_min_node,
                                         stop_criterion_gain=stop_criterion_gain)
+        # prune #
         alpha_list = tree.alphalist()
         # performance measure
         y_pred = tree.predict(x_test, alpha_sel)
-        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["perf"].append(perfMeasure(y_pred, y_test, rankopt=True))
         results["alpha"].append(alpha_sel)
         print alpha_sel, "alpha"
 
@@ -703,7 +695,7 @@ def dataSimulated(Nsamp, Nfeature, Nclass):
     # y += np.random.random(Nsamp*Nclass).reshape([Nsamp, Nclass])
     y *= 100
     y = y.astype(int)
-    y = map(LogR.rankOrder,y)
+    y = map(ReadData.rankOrder,y)
     y = np.array(y)
     return x,y
 
@@ -715,14 +707,10 @@ if __name__ == "__main__":
     # x,y = dataSimulated(Nsamp, Nfeature, Nclass)
     # Nsamp = x.shape[0]
     # # result_nopruned = crossValidate(x,y)
-    # result_pruned = crossValidate(x,y,alpha=None, prune_criteria=5+3*Nclass)
-    # print "mis_rate: tau"
-    # print "prune_criterion: tau (perf[5+3*Nclass])"
-    # # print result_nopruned
-    # print result_pruned
 
-    x,y = LogR.dataClean("data/foxnews_Feature_linkemotion.txt")
-    y = label2Rank(y)
+
+    x,y = ReadData.dataFacebook("data/nytimes_Feature_linkemotion.txt")
+    y = ReadData.label2Rank(y)
     # ### sushi data ###
     # x,y = readSushiData()
     # ## synthetic data ##
@@ -735,7 +723,6 @@ if __name__ == "__main__":
     # file.write("dataset: synthetic %s\n" % dataset)
     file.write("no prune\n")
     file.write("number of samples: %d\n" % x.shape[0])
-    file.write("NONERECALL: %f\n" % NONERECALL)
     file.write("CV: %d\n" % 5)
     file.write(str(result)+"\n")
     file.close()

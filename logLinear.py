@@ -8,9 +8,8 @@ from sklearn.model_selection import KFold
 import sys
 
 from SMPrank import SmpRank
-from DecisionTreeWeight import label2Rank
-import logRegFeatureEmotion as LogR
-from readSyntheticData import readSyntheticData
+from PerfMeasure import perfMeasure
+import ReadData
 
 MAX_ITERATION = 100
 THRESHOLD = 0.001
@@ -59,7 +58,7 @@ class logLinear(object):
 
     def inputwrite(self, x, y):
         """
-        write self.p to keep all dataset infor
+        write input info
         """
         self.Nclass = y.shape[1]
         self.K = self.Nclass
@@ -139,7 +138,7 @@ class logLinear(object):
 
     def predict(self, x_test):
         f = np.tensordot(x_test, self.lamda, axes=(1,1))
-        return label2Rank(f.tolist())
+        return ReadData.label2Rank(f.tolist())
 
 
 def crossValidate(x, y, cv=5, K=None):
@@ -161,7 +160,7 @@ def crossValidate(x, y, cv=5, K=None):
         y_pred = logLinear().fit(x_train, y_train).predict(x_test)
         # print "y_pred", y_pred
         # print "y_test", y_test
-        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["perf"].append(perfMeasure(y_pred, y_test, rankopt=True))
         print results["perf"][-1]
 
     for key in results.keys():
@@ -174,8 +173,8 @@ def crossValidate(x, y, cv=5, K=None):
 
 if __name__ == "__main__":
     dataset = "posts_Feature_Emotion.txt"
-    x,y = LogR.dataClean("data/" + dataset )
-    y = label2Rank(y)
+    x,y = ReadData.dataFacebook("data/" + dataset )
+    y = ReadData.label2Rank(y)
     # dataset = "bodyfat"
     # dataset = sys.argv[1]
     # x, y = readSyntheticData("data/synthetic/" + dataset)

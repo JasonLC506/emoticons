@@ -4,7 +4,7 @@ Cheng, W., Hullermeier, E. and Dembczynski, K.J., 2010. Label ranking methods ba
 """
 
 import numpy as np
-from logRegFeatureEmotion import rankOrder
+from ReadData import rankOrder
 
 class PlackettLuce(object):
     def __init__(self):

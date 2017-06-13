@@ -2,19 +2,19 @@
 KNN Mallows model
 implementing Cheng, W., Huhn, J. and Hullermeier, E., 2009, June. Decision tree and instance-based learning for label ranking [1]
 """
+import numpy as np
+from sklearn.model_selection import KFold
+from datetime import datetime
+from datetime import timedelta
+import sys
 
 from KNNPlackettLuce import KNN
 from DecisionTreeMallows import MM
 from DecisionTreeMallows import rankO2New
 from DecisionTreeMallows import rankN2Old
-import numpy as np
-from sklearn.model_selection import KFold
-import logRegFeatureEmotion as LogR
-from datetime import datetime
-from datetime import timedelta
-from readSushiData import readSushiData
-import sys
-from readSyntheticData import readSyntheticData
+import ReadData
+from PerfMeasure import perfMeasure
+
 
 class KNNMallows(KNN):
     def aggregate(self, neighbors):
@@ -60,7 +60,7 @@ def crossValidate(x, y, cv=5, K=None):
 
         y_pred = KNNMallows(K=K).fit(x_train, y_train).predict(x_test)
         # print y_pred ### test
-        results["perf"].append(LogR.perfMeasure(y_pred, y_test, rankopt=True))
+        results["perf"].append(perfMeasure(y_pred, y_test, rankopt=True))
         # print results["perf"][-1]
 
     for key in results.keys():
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
         dataset = "calhousing"
         # dataset = sys.argv[1]
-        x, y = readSyntheticData("data/synthetic/" + dataset)
+        x, y = ReadData.readSyntheticData("data/synthetic/" + dataset)
 
         start = datetime.now()
         result = crossValidate(x,y,K=K)
